@@ -1,0 +1,14 @@
+{
+  "name": "PluginRepository",
+  "version": "0.0.1",
+  "description": "Repository for RRF/DSF/DWC plugins",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "BUILD_PATH='.vuepress' vuepress build src"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
