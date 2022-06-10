@@ -5,13 +5,13 @@ rm -rf .vuepress
 
 set -e
 
+cd src
+ln -s ../plugins/
+cd ../
+
 npm run build
 
 cd src/.vuepress/dist
-
-# cd .vuepress/dist
-# mv assets ./src/assets
-# cd src
 
 git init
 git add -A
