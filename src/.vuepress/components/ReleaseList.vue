@@ -11,9 +11,10 @@
     if (typeof window !== "undefined"){
       window.global = window;
     }
+    //Remove this once api.js is imported as a plugin
 
     window.axios = require('axios');
-
+    //Not a good practice. Import api.js as a plugin
 
 export default {
   data() {
