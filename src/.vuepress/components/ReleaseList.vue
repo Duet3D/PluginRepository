@@ -2,37 +2,30 @@
   <div>
     <h2>Releases</h2>
     <li v-for="item in items" :key="item.id">
-      {{ item.message }}
+      {{ item.tag_name }}
     </li>
   </div>
 </template>
 
 <script>
-// const {getReleases} = require('../api')
-import axios from "axios"
+    if (typeof window !== "undefined"){
+      window.global = window;
+    }
 
-const getReleases = async () => {
-    const {data} = await axios.get('https://api.github.com/repos/Duet3D/DSF-Plugins/releases')
-    const releases = data.map(x => {tag_name : x.tag_name})
-    console.log(releases)
-    return releases
-}
+    window.axios = require('axios');
+
 
 export default {
   data() {
-      return getReleases().then((res) => {return res})
-    // return {
-    //     items = []
-    // //   items: [
-    // //     { id: 1, message: "foo2" },
-    // //     { id: 2, message: "Bar" },
-    // //   ],
-    // };
+
   },
-  methods: {
-      fetchReleases : () => {
-          getReleases().then((res) => {this.items = res})
-      }
+  created(){
+    window.axios.get('https://api.github.com/repos/Duet3D/DSF-Plugins/releases').then(data => {
+      const items = data.data.map((x) => {
+        return {tag_name : x.tag_name}
+        })
+      this.$data.items = items
+    })
   }
 };
 </script>
