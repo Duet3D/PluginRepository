@@ -18,7 +18,9 @@
 
 export default {
   data() {
-
+    return {
+      items: [],
+    };
   },
   created(){
     window.axios.get('https://api.github.com/repos/Duet3D/DSF-Plugins/releases').then(data => {
