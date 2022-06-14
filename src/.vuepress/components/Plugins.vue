@@ -10,7 +10,7 @@
                     <a target="_self" :href="`/PluginRepository/plugins/${item}.html`">
                         <h3 class="h3_class">{{item}}</h3>
                     </a>
-                    <span id="pkg-list-exact-match" class="highlight_1">OEM</span>
+                    <span class="highlight_1">Duet3D</span>
                 </div>
                 <p class="description_1">Lorem ipsum lorem ipsum</p>
                 <ul class="card_footer">
