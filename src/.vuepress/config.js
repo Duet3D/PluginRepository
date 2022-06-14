@@ -57,6 +57,7 @@ module.exports = {
         '',
         'EndstopsMonitor',
         'MotionWebcamServer',
+        'InputShapingPlugin',
         'ObjectCancelPlugin',
         'RobotViewer'
       ]

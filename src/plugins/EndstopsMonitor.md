@@ -1,6 +1,6 @@
 # Endstops Monitor Plugin
 
-<ReleaseList gituser="Duet3D" gitrepo="DSF-Plugins"/>
+<ReleaseList gituser="Duet3D" gitrepo="EndstopsMonitorPlugin"/>
 
 ## Description
 

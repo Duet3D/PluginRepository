@@ -1,6 +1,6 @@
 # Motion Webcam Server
 
-<ReleaseList  gituser="Duet3D" gitrepo="DuetWebControl"/>
+<ReleaseList  gituser="Duet3D" gitrepo="MotionWebcamServerPlugin"/>
 
 
 ## Description

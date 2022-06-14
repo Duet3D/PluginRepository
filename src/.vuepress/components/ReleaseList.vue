@@ -3,7 +3,7 @@
 		<h2>Releases</h2>
 		<ul>
 			<li v-for="item in items" :key="item.tagName">
-				<a :href="item.zipballUrl">
+				<a :href="item.browser_download_url">
 					{{ item.tagName }}
 				</a>
 			</li>
@@ -29,9 +29,11 @@ export default {
 			.then(res => res.json())
 			.then(data => {
 				this.$data.items = data.map(item => {
+          const {browser_download_url, download_count} = item.assets[0]
 					return {
 						tagName: item.tag_name,
-						zipballUrl: item.zipball_url
+						browser_download_url,
+            download_count
 					}
 				})
 			});
