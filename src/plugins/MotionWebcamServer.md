@@ -1,5 +1,8 @@
 # Motion Webcam Server
 
+<ReleaseList  gituser="Duet3D" gitrepo="DuetWebControl"/>
+
+
 ## Description
 
 This plugin runs the [motion](https://github.com/Motion-Project/motion) webcam streaming service as a DSF plugin. The main `motion.conf` file is accessible via `0:/sys/motion.conf`.

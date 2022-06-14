@@ -2,7 +2,7 @@
   <div>
     <h2>Releases</h2>
     <li v-for="item in items" :key="item.id">
-      {{ item.tag_name }}
+      <a v-bind:href="item.zipball_url">{{ item.tag_name }}</a>
     </li>
   </div>
 </template>
@@ -22,10 +22,11 @@ export default {
       items: [],
     };
   },
+  props: ['gituser', 'gitrepo'],
   created(){
-    window.axios.get('https://api.github.com/repos/Duet3D/DSF-Plugins/releases').then(data => {
+    window.axios.get(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`).then(data => {
       const items = data.data.map((x) => {
-        return {tag_name : x.tag_name}
+        return {tag_name : x.tag_name, zipball_url: x.zipball_url}
         })
       this.$data.items = items
     })
