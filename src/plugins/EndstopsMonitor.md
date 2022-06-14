@@ -1,3 +1,13 @@
+---
+title: Endstops Monitor Plugin
+tags:
+  - monitoring
+  - endstop
+  - dwc
+  - test_tag_1
+  - duet3d
+---
+
 # Endstops Monitor Plugin
 
 <ReleaseList gituser="Duet3D" gitrepo="EndstopsMonitorPlugin"/>
