@@ -4,23 +4,24 @@
 		<h2>All Plugins</h2>
         <br>
             
-        <section class="card2" v-for="item in items" :key="item">
+        <section class="card2" v-for="item in items" :key="item.key">
             <div class="div_1">
                 <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository/plugins/${item}.html`">
-                        <h3 class="h3_class">{{item}}</h3>
+                    <a target="_self" :href="`/PluginRepository${item.path}`">
+                        <h3 class="h3_class">{{item.title}}</h3>
                     </a>
-                    <span class="highlight_1">Duet3D</span>
+                    <span class="highlight_1" v-if="item.frontmatter.oem">{{'Duet3D'}}</span>
                 </div>
-                <p class="description_1">Lorem ipsum lorem ipsum</p>
+                <p class="description_1">{{item.frontmatter.abstract}}</p>
                 <ul class="card_footer">
-                    <li><span title="Published Date" class="card_footer_1">📅 2022-01-05</span></li>
-                    <li><span title="Release" class="card_footer_1">🔖 v3.4 </span></li>
-                    <li><span title="Last Release Date" class="card_footer_1">📅 2022-05-16</span></li>
+                    <li><span title="Published Date" class="card_footer_1">{{"📅 " + `${item.frontmatter.published_date}`}}</span></li>
+                    <li><span title="Release" class="card_footer_1">{{"🔖 " + `${item.frontmatter.latest_version}`}}</span></li>
+                    <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${item.frontmatter.release_date}`}}</span></li>
                 </ul>
                 <ul class="keyword_1">
-                    <li><a href="/search?q=tag:keyword_1" class="keyword_list_1">keyword_1</a></li>
-                    <li><a href="/search?q=tag:keyword_2" class="keyword_list_1">keyword_2</a></li>
+                    <li v-for="keyword in item.frontmatter.tags" :key="keyword">
+                        <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -28,7 +29,6 @@
 </template>
 
 <script>
-import fetch from 'cross-fetch';
 
 export default {
 	data() {
@@ -36,19 +36,8 @@ export default {
 			items: [],
 		};
 	},
-	props: {
-		gituser: String,
-		gitrepo: String
-	},
 	mounted() {
-		fetch(`https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins`)
-			.then(res => res.json())
-			.then(data => {
-                this.$data.items = data.flatMap(item => {
-                    const name = item.name.slice(0, -3);
-                    return name === 'README' ? [] : name    
-                })
-			});
+        this.$data.items = this.$site.pages.filter( x => x.regularPath.substring(0,9) === '/plugins/' && x.regularPath.length > 9)
 	}
 };
 </script>

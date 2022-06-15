@@ -1,3 +1,14 @@
+---
+title: Input Shaping Plugin
+abstract: This plugin lets you fine-tune input shaping and try out different shaper types
+tags:
+  - shaper
+oem: true
+published_date: "2019-02-25"
+latest_version: 3.1
+release_date: "2022-04-11"
+---
+
 # Input Shaping Plugin
 
 <ReleaseList  gituser="Duet3D" gitrepo="InputShapingPlugin"/>

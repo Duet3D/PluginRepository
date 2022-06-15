@@ -1,11 +1,15 @@
 ---
 title: Endstops Monitor Plugin
+abstract: It lets users monitor the endstops interactively
 tags:
   - monitoring
   - endstop
   - dwc
-  - test_tag_1
   - duet3d
+oem: true
+published_date: "2022-01-05"
+latest_version: 3.4
+release_date: "2022-05-15"
 ---
 
 # Endstops Monitor Plugin

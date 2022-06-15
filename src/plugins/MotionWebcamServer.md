@@ -1,3 +1,16 @@
+---
+title: Motion Webcam Server
+abstract: This plugin runs the webcam streaming service as a DSF plugin
+tags:
+  - webcam
+  - streaming
+  - DSF
+oem: true
+published_date: "2022-03-14"
+latest_version: 2.8
+release_date: "2022-05-21"
+---
+
 # Motion Webcam Server
 
 <ReleaseList  gituser="Duet3D" gitrepo="MotionWebcamServerPlugin"/>
