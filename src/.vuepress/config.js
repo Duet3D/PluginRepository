@@ -24,6 +24,12 @@ module.exports = {
     lastUpdated: false,
     nextLinks: false,
     prevLinks: false,
+    algolia: {
+      apiKey: process.env.ALGOLIA_API_KEY,
+      indexName: 'PluginRepository',
+      // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
+      appId: 'MRSLYS435Q',
+    },
     nav: [
       {
         text: 'Guide',
