@@ -1,10 +1,13 @@
 <template>
 	<div>
-        <br>
 		<h2>All Plugins</h2>
+        <div class="search_box_1">         
+            <input type="text" v-model="input" placeholder="Search plugins..." />
+        </div>
+
         <br>
             
-        <section class="card2" v-for="item in items" :key="item.key">
+        <section class="card2" v-for="item in filterPlugins" :key="item.key">
             <div class="div_1">
                 <div class="div_2">
                     <a target="_self" :href="`/PluginRepository${item.path}`">
@@ -25,6 +28,7 @@
                 </ul>
             </div>
         </section>
+
 	</div>
 </template>
 
@@ -33,11 +37,20 @@
 export default {
 	data() {
 		return {
+            input: '',
 			items: [],
 		};
 	},
 	mounted() {
         this.$data.items = this.$site.pages.filter( x => x.regularPath.substring(0,9) === '/plugins/' && x.regularPath.length > 9)
-	}
+	},
+    computed: {
+        filterPlugins() {
+            return this.$data.items.filter(item => {
+                const inp = this.input.toLowerCase()
+                return item.title.toLowerCase().includes(inp) || item.frontmatter.tags.toString().toLowerCase().includes(inp)
+            })
+        }
+    }
 };
 </script>
