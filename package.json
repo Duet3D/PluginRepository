@@ -13,9 +13,6 @@
     "vuepress": "^1.5.3"
   },
   "dependencies": {
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.0",
-    "cross-fetch": "^3.1.5",
-    "flexsearch": "github:nextapps-de/flexsearch",
-    "vuepress-plugin-flexsearch": "^0.3.0"
+    "cross-fetch": "^3.1.5"
   }
 }
