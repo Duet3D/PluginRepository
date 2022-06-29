@@ -25,22 +25,30 @@ module.exports = {
     nextLinks: false,
     prevLinks: false,
     nav: [
+      // {
+      //   text: 'Guide',
+      //   link: '/guide/',
+      // },
+      // {
+      //   text: 'Config',
+      //   link: '/config/'
+      // },
       {
-        text: 'Guide',
-        link: '/guide/',
+        text: 'Products',
+        link: 'https://www.duet3d.com/products'
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'Forum',
+        link: 'https://forum.duet3d.com'
       },
       {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      },
-      {
-        text: 'Plugins',
-        link: '/plugins/'
+        text: 'GitHub',
+        link: 'https://github.com/duet3D/'
       }
+      // {
+      //   text: 'Plugins',
+      //   link: '/plugins/'
+      // }
     ],
     sidebar: {
       '/guide/': [
