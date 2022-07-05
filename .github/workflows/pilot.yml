@@ -1,0 +1,79 @@
+name: submit-new-plugin
+# on:
+#   issues:
+#     types: [opened]
+on: 
+  workflow_dispatch:
+    inputs:
+      PluginAuthor:
+        description: Repo owner
+        required: true
+      PluginRepo:
+        description: Repo name
+        required: true
+      PluginBranch:
+        description: Branch name
+        default: master
+        required: false
+      PluginTitle:
+        description: Plugin title
+        required: true
+      PluginAbstract:
+        description: Summary
+        required: true
+      IsOEM:
+        description: is plugin OEM
+        required: false
+      PluginTags:
+        description: Plugin tags/keywords
+        required: true
+jobs:
+  pull-readme-md:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Get release version
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."tag_name"'
+          
+      - uses: actions/checkout@v2
+      - name: Fetch and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo test 
+          echo $(ls -a)
+
+          branchName=submission/$(date +"%y%m%d")${{ github.event.inputs.PluginRepo }}
+          commituser=yasasw
+
+          cd src/plugins 
+
+          wget https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/README.md -O ${{ github.event.inputs.PluginRepo }}.md
+
+          touch frontmatter.txt
+          echo -- >> frontmatter.txt
+          echo title:${{ github.event.inputs.PluginTitle }} >> frontmatter.txt
+          echo abstract:${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
+          echo oem:${{ github.event.inputs.IsOEM }} >> frontmatter.txt
+          echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+          echo -- >> frontmatter.txt
+
+          i=1
+          j='i'
+          while IFS= read -r line; do
+            sed -i "$i$j$line" ${{ github.event.inputs.PluginRepo }}.md
+            i=`expr $i + 1`
+          done < frontmatter.txt
+
+          rm frontmatter.txt
+          
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add ${{ github.event.inputs.PluginRepo }}.md
+          git commit -m "Updating plugin ${{ github.event.inputs.PluginRepo }}.md"
+          git push -u origin $branchName
+
+          hub pull-request -m "$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName

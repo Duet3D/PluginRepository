@@ -1,0 +1,81 @@
+name: Plugin Submission
+description: Submit a new plugin for approval
+title: "[PluginSubmission]: "
+labels: [plugin submission]
+assignees:
+- yasasw
+body:
+- type: markdown
+  attributes:
+    value: |
+      # Some cool markdown content
+      ## Important Information
+      - Plugin has to be in a GitHub repository
+      - It has to have the following......
+- type: input
+  id: PluginTitle
+  attributes:
+    label: Plugin Title
+    description: Title of your plugin
+    placeholder: My plugin
+  validations:
+    required: true
+- type: input
+  id: PluginAbstract
+  attributes:
+    label: Summary
+    description: A summary of what your plugin does (Try to keep it below 75 characters)
+    placeholder: This plugin...
+  validations:
+    required: true
+- type: input
+  id: PluginAuthor
+  attributes:
+    label: GitHub username
+    description: Repo name of the plugin (https://github.com/user/repo)
+    placeholder: user
+  validations:
+    required: true
+- type: input
+  id: PluginRepo
+  attributes:
+    label: GitHub repository name
+    description: Repo name of the plugin (https://github.com/user/repo)
+    placeholder: repo
+  validations:
+    required: true
+- type: input
+  id: PluginBranch
+  attributes:
+    label: GitHub branch name
+    description: Name of the main/master branch
+    placeholder: main
+  validations:
+    required: true
+- type: dropdown
+  id: IsOEM
+  attributes:
+    label: Is this plugin by Duet3D?
+    options:
+      - No
+  validations:
+    required: true
+- type: input
+  id: PluginTags
+  attributes:
+    label: Tags
+    description: Tags/Keywords
+    placeholder: keyword1, keyword2
+  validations:
+    required: true
+- type: checkboxes
+  id: PluginPlatform
+  attributes:
+    label: Duet3D Platform/Tool
+    description: Check all the applicable platforms
+    options:
+      - label: RRF
+      - label: DSF/SBC
+      - label: DWC
+  validations:
+    required: true
