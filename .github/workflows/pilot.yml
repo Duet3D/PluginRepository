@@ -30,13 +30,18 @@ on:
 jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
       - name: Get release version
         uses: sergeysova/jq-action@v2
         id: version
         with:
           cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."tag_name"'
-          
+      - name: Get download count
+        uses: sergeysova/jq-action@v2
+        id: download_count
+        with:
+          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count | paste -sd+ bc "' 
+
       - uses: actions/checkout@v2
       - name: Fetch and create PR
         env:
@@ -58,6 +63,7 @@ jobs:
           echo abstract:${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
           echo oem:${{ github.event.inputs.IsOEM }} >> frontmatter.txt
           echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+          echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
           echo -- >> frontmatter.txt
 
           i=1
@@ -76,4 +82,4 @@ jobs:
           git commit -m "Updating plugin ${{ github.event.inputs.PluginRepo }}.md"
           git push -u origin $branchName
 
-          hub pull-request -m "$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
