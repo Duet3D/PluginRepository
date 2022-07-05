@@ -46,7 +46,7 @@ jobs:
           echo $(ls -a)
 
           branchName=submission/$(date +"%y%m%d")${{ github.event.inputs.PluginRepo }}
-          commituser=yasasw
+          commituser=Duet3D
 
           cd src/plugins 
 
