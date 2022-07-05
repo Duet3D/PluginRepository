@@ -40,7 +40,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: download_count
         with:
-          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count | paste -sd+ bc "' 
+          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc"' 
 
       - uses: actions/checkout@v2
       - name: Fetch and create PR
