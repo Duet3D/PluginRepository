@@ -34,7 +34,8 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
       - name: init print
         uses: actions/checkout@v2
-        run: echo ${{ steps.issue-parser.outputs.jsonString }}
+        with:
+          cmd: echo ${{ steps.issue-parser.outputs.jsonString }}
 
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
