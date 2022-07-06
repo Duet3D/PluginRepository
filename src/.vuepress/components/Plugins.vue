@@ -17,7 +17,7 @@
                 </div>
                 <p class="description_1">{{item.frontmatter.abstract}}</p>
                 <ul class="card_footer">
-                    <li><span title="Published Date" class="card_footer_1">{{"📅 " + `${item.frontmatter.published_date}`}}</span></li>
+                    <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${item.frontmatter.download_count}`}}</span></li>
                     <li><span title="Release" class="card_footer_1">{{"🔖 " + `${item.frontmatter.latest_version}`}}</span></li>
                     <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${item.frontmatter.release_date}`}}</span></li>
                 </ul>

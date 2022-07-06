@@ -36,6 +36,11 @@ jobs:
         id: version
         with:
           cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."tag_name"'
+      - name: Get last release published date
+        uses: sergeysova/jq-action@v2
+        id: published_at
+        with:
+          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."published_at"'
       - name: Get download count
         uses: sergeysova/jq-action@v2
         id: download_count
@@ -68,6 +73,7 @@ jobs:
           echo abstract: ${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
           echo oem: ${{ github.event.inputs.IsOEM }} >> frontmatter.txt
           echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+          echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
           echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
           echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
           echo tags: >> frontmatter.txt
