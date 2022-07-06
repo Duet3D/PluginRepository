@@ -5,7 +5,7 @@ oem: true
 latest_version: v3.4.1-b1
 release_date: 2022-06-20T14:34:10Z
 license: GPL-3.0-or-later
-download_count: 8
+download_count: 10
 tags:
 -  "input shaping"
 -  "tuning"
