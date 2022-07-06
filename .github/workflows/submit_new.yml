@@ -31,7 +31,7 @@ jobs:
       - uses: stefanbuck/github-issue-parser@v2
         id: issue-parser
         with:
-          template-path: .github/ISSUE_TEMPLATE/bug-report.yml
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
       - name: init print
         uses: actions/checkout@v2
         run: echo ${{ steps.issue-parser.outputs.jsonString }}
