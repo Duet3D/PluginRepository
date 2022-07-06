@@ -34,6 +34,10 @@ jobs:
           echo test 
           echo $(ls -a)
           echo ${{ github.event.issue.number }}
+          echo $(curl \
+          -H "Accept: application/vnd.github+json" \ 
+          -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/Duet3D/PluginRepository/issues/22)
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
       #   id: version
