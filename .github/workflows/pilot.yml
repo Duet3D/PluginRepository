@@ -41,6 +41,11 @@ jobs:
         id: download_count
         with:
           cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
+      - name: Get license info
+        uses: sergeysova/jq-action@v2
+        id: license
+        with:
+          cmd: 'curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."license"' 
 
       - uses: actions/checkout@v2
       - name: Fetch and create PR
@@ -63,6 +68,7 @@ jobs:
           echo abstract: ${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
           echo oem: ${{ github.event.inputs.IsOEM }} >> frontmatter.txt
           echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+          echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
           echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."tags"[] | awk '{print "  - ",$0}' >> frontmatter.txt 
