@@ -1,4 +1,4 @@
---
+---
 title: Input Shaping Plugin
 abstract: This plugin lets you shape the input
 oem: true
@@ -9,7 +9,7 @@ download_count: 8
 tags:
 -  "input shaping"
 -  "tuning"
---
+---
 # Input Shaping Plugin
 
 ## Description
