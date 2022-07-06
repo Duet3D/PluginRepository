@@ -28,18 +28,12 @@ jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
     steps:
-      - uses: stefanbuck/github-issue-parser@v2
-        id: issue_parser
-        with:
-          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
-
-      - run: echo '${{ steps.issue_parser.outputs.jsonString }}' > bug-details.json
       - uses: actions/checkout@v2
       - name: running commands
         run: |
           echo test 
           echo $(ls -a)
-          cat bug-details.json
+          echo ${{ github.event.issue.number }}
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
       #   id: version
