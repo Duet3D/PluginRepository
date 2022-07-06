@@ -28,69 +28,81 @@ jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
     steps:
-      - name: Get release version
-        uses: sergeysova/jq-action@v2
-        id: version
+      - name: Parse Issue Body
+        uses: peter-murray/issue-body-parser-action@v1
+        id: issue_body_parser
         with:
-          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."tag_name"'
-      - name: Get last release published date
-        uses: sergeysova/jq-action@v2
-        id: published_at
-        with:
-          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."published_at"'
-      - name: Get download count
-        uses: sergeysova/jq-action@v2
-        id: download_count
-        with:
-          cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
-      - name: Get license info
-        uses: sergeysova/jq-action@v2
-        id: license
-        with:
-          cmd: 'curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."license"' 
-
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            issue_id: ${{ github.event.issue.number }}
       - uses: actions/checkout@v2
-      - name: Fetch and create PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: running commands
         run: |
           echo test 
           echo $(ls -a)
+          echo ${{ steps.issue_body_parser.outputs.value }}
+      # - name: Get release version
+      #   uses: sergeysova/jq-action@v2
+      #   id: version
+      #   with:
+      #     cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."tag_name"'
+      # - name: Get last release published date
+      #   uses: sergeysova/jq-action@v2
+      #   id: published_at
+      #   with:
+      #     cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[0]."published_at"'
+      # - name: Get download count
+      #   uses: sergeysova/jq-action@v2
+      #   id: download_count
+      #   with:
+      #     cmd: 'curl https://api.github.com/repos/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
+      # - name: Get license info
+      #   uses: sergeysova/jq-action@v2
+      #   id: license
+      #   with:
+      #     cmd: 'curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."license"' 
 
-          branchName=submission/$(date +"%y%m%d")${{ github.event.inputs.PluginRepo }}
-          commituser=Duet3D
+      # - uses: actions/checkout@v2
+      # - name: Fetch and create PR
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     echo test 
+      #     echo $(ls -a)
 
-          cd src/plugins 
+      #     branchName=submission/$(date +"%y%m%d")${{ github.event.inputs.PluginRepo }}
+      #     commituser=Duet3D
 
-          wget https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/README.md -O ${{ github.event.inputs.PluginRepo }}.md
+      #     cd src/plugins 
 
-          touch frontmatter.txt
-          echo --- >> frontmatter.txt
-          echo title: ${{ github.event.inputs.PluginTitle }} >> frontmatter.txt
-          echo abstract: ${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
-          echo oem: ${{ github.event.inputs.IsOEM }} >> frontmatter.txt
-          echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
-          echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
-          echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
-          echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
-          echo tags: >> frontmatter.txt
-          curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
-          echo --- >> frontmatter.txt
+      #     wget https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/README.md -O ${{ github.event.inputs.PluginRepo }}.md
 
-          i=1
-          j='i'
-          while IFS= read -r line; do
-            sed -i "$i$j$line" ${{ github.event.inputs.PluginRepo }}.md
-            i=`expr $i + 1`
-          done < frontmatter.txt
+      #     touch frontmatter.txt
+      #     echo --- >> frontmatter.txt
+      #     echo title: ${{ github.event.inputs.PluginTitle }} >> frontmatter.txt
+      #     echo abstract: ${{ github.event.inputs.PluginAbstract }} >> frontmatter.txt
+      #     echo oem: ${{ github.event.inputs.IsOEM }} >> frontmatter.txt
+      #     echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+      #     echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
+      #     echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
+      #     echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
+      #     echo tags: >> frontmatter.txt
+      #     curl https://raw.githubusercontent.com/${{ github.event.inputs.PluginAuthor }}/${{ github.event.inputs.PluginRepo }}/${{ github.event.inputs.PluginBranch }}/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
+      #     echo --- >> frontmatter.txt
 
-          rm frontmatter.txt
+      #     i=1
+      #     j='i'
+      #     while IFS= read -r line; do
+      #       sed -i "$i$j$line" ${{ github.event.inputs.PluginRepo }}.md
+      #       i=`expr $i + 1`
+      #     done < frontmatter.txt
+
+      #     rm frontmatter.txt
           
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
-          git checkout -b $branchName
-          git add ${{ github.event.inputs.PluginRepo }}.md
-          git commit -m "Updating plugin ${{ github.event.inputs.PluginRepo }}.md"
-          git push -u origin $branchName
+      #     git config --global user.name "yasasw"
+      #     git config --global user.email "yasas.wijetilake@gmail.com"
+      #     git checkout -b $branchName
+      #     git add ${{ github.event.inputs.PluginRepo }}.md
+      #     git commit -m "Updating plugin ${{ github.event.inputs.PluginRepo }}.md"
+      #     git push -u origin $branchName
 
-          hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
+      #     hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
