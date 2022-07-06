@@ -60,14 +60,6 @@ body:
       - No
   validations:
     required: true
-- type: input
-  id: PluginTags
-  attributes:
-    label: Tags
-    description: Tags/Keywords
-    placeholder: keyword1, keyword2
-  validations:
-    required: true
 - type: checkboxes
   id: PluginPlatform
   attributes:
