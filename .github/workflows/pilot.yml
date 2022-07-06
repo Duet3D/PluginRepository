@@ -24,9 +24,6 @@ on:
       IsOEM:
         description: is plugin OEM
         required: false
-      PluginTags:
-        description: Plugin tags/keywords
-        required: true
 jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
