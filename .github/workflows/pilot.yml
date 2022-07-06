@@ -28,18 +28,18 @@ jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
     steps:
-      - name: Parse Issue Body
-        uses: peter-murray/issue-body-parser-action@v1
-        id: issue_body_parser
+      - uses: stefanbuck/github-issue-parser@v2
+        id: issue_parser
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            issue_id: ${{ github.event.issue.number }}
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue_parser.outputs.jsonString }}' > bug-details.json
       - uses: actions/checkout@v2
       - name: running commands
         run: |
           echo test 
           echo $(ls -a)
-          echo ${{ steps.issue_body_parser.outputs.value }}
+          cat bug-details.json
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
       #   id: version
