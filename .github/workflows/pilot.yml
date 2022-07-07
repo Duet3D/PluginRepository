@@ -37,6 +37,8 @@ jobs:
 
       - run: | 
           issue='${{ steps.issue-parser.outputs.jsonString }}'
+        
+      - run: |
           echo $issue | jq ."PluginAbstract"
 
       # - name: Get release version
