@@ -89,9 +89,9 @@ jobs:
           branchName=submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
 
-          author=$(cat issue.json | jq ."PluginAuthor")
-          repo=$(cat issue.json | jq ."PluginRepo")
-          branch=$(cat issue.json | jq ."PluginBranch")
+          author=$(cat issue.json | jq ."PluginAuthor" | sed 's/"//g')
+          repo=$(cat issue.json | jq ."PluginRepo" | sed 's/"//g')
+          branch=$(cat issue.json | jq ."PluginBranch" | sed 's/"//g')
 
           title=$(cat issue.json | jq ."PluginTitle")
           abstract=$(cat issue.json | jq ."PluginAbstract")
