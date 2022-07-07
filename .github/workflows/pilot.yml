@@ -29,12 +29,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: running commands
-        run: |
-          echo test 
-          echo $(ls -a)
-          echo ${{ github.event.issue.number }}
-          echo $(curl -H "Accept: application/vnd.github+json" -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/Duet3D/PluginRepository/issues/22)
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: cat ${{ steps.issue-parser.outputs.jsonString }} | jq
+
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
       #   id: version
