@@ -35,6 +35,7 @@ jobs:
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}'
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' | jq ."PluginAbstract" 
 
 
