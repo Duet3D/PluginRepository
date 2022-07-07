@@ -35,7 +35,7 @@ jobs:
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
-       - run: echo $(cat '${{ steps.issue-parser.outputs.jsonString }}' | jq ."PluginAbstract")
+      - run: echo $(cat '${{ steps.issue-parser.outputs.jsonString }}' | jq ."PluginAbstract")
       - run: |
           pluginauthor=echo $(cat '${{ steps.issue-parser.outputs.jsonString }}' | jq ."PluginAuthor")
           echo $pluginauthor
