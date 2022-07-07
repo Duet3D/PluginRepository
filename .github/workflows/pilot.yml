@@ -36,7 +36,7 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
       - run: issue=$(echo '${{ steps.issue-parser.outputs.jsonString }} | jq')
-      - run: echo $issue
+      - run: echo $issue | jq ."PluginAbstract"
 
       # - name: Get release version
       #   uses: sergeysova/jq-action@v2
