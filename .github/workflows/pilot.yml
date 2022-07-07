@@ -47,7 +47,7 @@ jobs:
       #       repo=$(cat issue.json | jq ."PluginRepo")
       #       branch=$(cat issue.json | jq ."PluginBranch")
       #       echo $brn
-      #       'curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[0]."tag_name"'
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name"'
       # - name: Get last release published date
       #   uses: sergeysova/jq-action@v2
       #   id: published_at
@@ -56,7 +56,7 @@ jobs:
       #       author=$(cat issue.json | jq ."PluginAuthor")
       #       repo=$(cat issue.json | jq ."PluginRepo")
       #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[0]."published_at"'
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at"'
       # - name: Get download count
       #   uses: sergeysova/jq-action@v2
       #   id: download_count
@@ -65,7 +65,7 @@ jobs:
       #       author=$(cat issue.json | jq ."PluginAuthor")
       #       repo=$(cat issue.json | jq ."PluginRepo")
       #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
       # - name: Get license info
       #   uses: sergeysova/jq-action@v2
       #   id: license
@@ -74,7 +74,7 @@ jobs:
       #       author=$(cat issue.json | jq ."PluginAuthor")
       #       repo=$(cat issue.json | jq ."PluginRepo")
       #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/plugin.json | jq ."license"' 
+      #       'curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license"' 
 
       - name: Fetch and create PR
         env:
@@ -86,7 +86,7 @@ jobs:
           mv issue.json src/plugins/
           cd src/plugins 
 
-          branchName=submission/$(date +"%y%m%d")InputShapingPlugin
+          branchName=submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
 
           author=$(cat issue.json | jq ."PluginAuthor")
@@ -96,44 +96,46 @@ jobs:
           title=$(cat issue.json | jq ."PluginTitle")
           abstract=$(cat issue.json | jq ."PluginAbstract")
 
-          latest_version=$(curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[0]."tag_name")
-          release_date=$(curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[0]."published_at")
-          license=$(curl https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/plugin.json | jq ."license")
-          download_count=$(curl https://api.github.com/repos/Duet3D/InputShapingPlugin/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
+          echo $author
+
+        # latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
+          # release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
+          # license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
+          # download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
 
 
-          wget https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/README.md -O InputShapingPlugin.md
+          # wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md
 
-          touch frontmatter.txt
-          echo --- >> frontmatter.txt
-          echo title: $title >> frontmatter.txt
-          echo abstract: $abstract >> frontmatter.txt
-          echo author: Duet3D >> frontmatter.txt
-          echo repo: InputShapingPlugin >> frontmatter.txt
-          echo branch: master >> frontmatter.txt
-          echo latest_version: $latest_version >> frontmatter.txt
-          echo release_date: $release_date >> frontmatter.txt
-          echo license: $license >> frontmatter.txt
-          echo download_count: $download_count >> frontmatter.txt
-          echo tags: >> frontmatter.txt
-          curl https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
-          echo --- >> frontmatter.txt
+          # touch frontmatter.txt
+          # echo --- >> frontmatter.txt
+          # echo title: $title >> frontmatter.txt
+          # echo abstract: $abstract >> frontmatter.txt
+          # echo author: $author >> frontmatter.txt
+          # echo repo: $repo >> frontmatter.txt
+          # echo branch: $branch >> frontmatter.txt
+          # echo latest_version: $latest_version >> frontmatter.txt
+          # echo release_date: $release_date >> frontmatter.txt
+          # echo license: $license >> frontmatter.txt
+          # echo download_count: $download_count >> frontmatter.txt
+          # echo tags: >> frontmatter.txt
+          # curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
+          # echo --- >> frontmatter.txt
 
-          i=1
-          j='i'
-          while IFS= read -r line; do
-            sed -i "$i$j$line" InputShapingPlugin.md
-            i=`expr $i + 1`
-          done < frontmatter.txt
+          # i=1
+          # j='i'
+          # while IFS= read -r line; do
+          #   sed -i "$i$j$line" $repo.md
+          #   i=`expr $i + 1`
+          # done < frontmatter.txt
 
-          rm frontmatter.txt
-          rm issue.json
+          # rm frontmatter.txt
+          # rm issue.json
           
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
-          git checkout -b masterName
-          git add InputShapingPlugin.md
-          git commit -m "Updating plugin InputShapingPlugin.md"
-          git push -u origin masterName
+          # git config --global user.name "yasasw"
+          # git config --global user.email "yasas.wijetilake@gmail.com"
+          # git checkout -b $branchName
+          # git add $repo.md
+          # git commit -m "Updating plugin $repo.md"
+          # git push -u origin $branchName
 
-          hub pull-request -m "masterName" --base $commituser:master --head $commituser:masterName
+          # hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
