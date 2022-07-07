@@ -89,16 +89,18 @@ jobs:
           branchName=submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
 
+          author=$(cat issue.json | jq ."PluginAuthor")
+          repo=$(cat issue.json | jq ."PluginRepo")
+          branch=$(cat issue.json | jq ."PluginBranch")
+
+          title=$(cat issue.json | jq ."PluginTitle")
+          abstract=$(cat issue.json | jq ."PluginAbstract")
+
           latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
           release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
           license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
           download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
 
-          author=$(cat issue.json | jq ."PluginAuthor")
-          repo=$(cat issue.json | jq ."PluginRepo")
-          branch=$(cat issue.json | jq ."PluginBranch")
-          title=$(cat issue.json | jq ."PluginTitle")
-          abstract=$(cat issue.json | jq ."PluginAbstract")
 
           wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md
 
