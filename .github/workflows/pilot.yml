@@ -38,44 +38,43 @@ jobs:
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
 
 
-      - name: Get release version
-        uses: sergeysova/jq-action@v2
-        id: version
-        with:
-          cmd: |
-            author=$(cat issue.json | jq ."PluginAuthor")
-            repo=$(cat issue.json | jq ."PluginRepo")
-            branch=$(cat issue.json | jq ."PluginBranch")
-            echo test-----test
-            echo $repo
-            'curl https://api.github.com/repos/${{ $author }}/${{ $repo }}/releases | jq .[0]."tag_name"'
-      - name: Get last release published date
-        uses: sergeysova/jq-action@v2
-        id: published_at
-        with:
-          cmd: |
-            author=$(cat issue.json | jq ."PluginAuthor")
-            repo=$(cat issue.json | jq ."PluginRepo")
-            branch=$(cat issue.json | jq ."PluginBranch")
-            'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at"'
-      - name: Get download count
-        uses: sergeysova/jq-action@v2
-        id: download_count
-        with:
-          cmd: |
-            author=$(cat issue.json | jq ."PluginAuthor")
-            repo=$(cat issue.json | jq ."PluginRepo")
-            branch=$(cat issue.json | jq ."PluginBranch")
-            'curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
-      - name: Get license info
-        uses: sergeysova/jq-action@v2
-        id: license
-        with:
-          cmd: |
-            author=$(cat issue.json | jq ."PluginAuthor")
-            repo=$(cat issue.json | jq ."PluginRepo")
-            branch=$(cat issue.json | jq ."PluginBranch")
-            'curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license"' 
+      # - name: Get release version
+      #   uses: sergeysova/jq-action@v2
+      #   id: version
+      #   with:
+      #     cmd: |
+      #       author=$(cat issue.json | jq ."PluginAuthor")
+      #       repo=$(cat issue.json | jq ."PluginRepo")
+      #       branch=$(cat issue.json | jq ."PluginBranch")
+      #       echo $brn
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name"'
+      # - name: Get last release published date
+      #   uses: sergeysova/jq-action@v2
+      #   id: published_at
+      #   with:
+      #     cmd: |
+      #       author=$(cat issue.json | jq ."PluginAuthor")
+      #       repo=$(cat issue.json | jq ."PluginRepo")
+      #       branch=$(cat issue.json | jq ."PluginBranch")
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at"'
+      # - name: Get download count
+      #   uses: sergeysova/jq-action@v2
+      #   id: download_count
+      #   with:
+      #     cmd: |
+      #       author=$(cat issue.json | jq ."PluginAuthor")
+      #       repo=$(cat issue.json | jq ."PluginRepo")
+      #       branch=$(cat issue.json | jq ."PluginBranch")
+      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
+      # - name: Get license info
+      #   uses: sergeysova/jq-action@v2
+      #   id: license
+      #   with:
+      #     cmd: |
+      #       author=$(cat issue.json | jq ."PluginAuthor")
+      #       repo=$(cat issue.json | jq ."PluginRepo")
+      #       branch=$(cat issue.json | jq ."PluginBranch")
+      #       'curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license"' 
 
       - name: Fetch and create PR
         env:
@@ -84,30 +83,36 @@ jobs:
           echo test 
           echo $(ls -a)
 
-          branchName=submission/$(date +"%y%m%d")$repo
-          commituser=Duet3D
-
           mv issue.json src/plugins/
           cd src/plugins 
 
+          branchName=submission/$(date +"%y%m%d")$repo
+          commituser=Duet3D
+
+          latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
+          release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
+          license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
+          download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
 
           author=$(cat issue.json | jq ."PluginAuthor")
           repo=$(cat issue.json | jq ."PluginRepo")
           branch=$(cat issue.json | jq ."PluginBranch")
+          title=$(cat issue.json | jq ."PluginTitle")
+          abstract=$(cat issue.json | jq ."PluginAbstract")
 
           wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md
 
           touch frontmatter.txt
           echo --- >> frontmatter.txt
-          echo title: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginTitle" >> frontmatter.txt
-          echo abstract: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAbstract" >> frontmatter.txt
+          echo title: $title >> frontmatter.txt
+          echo abstract: $abstract >> frontmatter.txt
           echo author: $author >> frontmatter.txt
           echo repo: $repo >> frontmatter.txt
           echo branch: $branch >> frontmatter.txt
-          echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
-          echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
-          echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
-          echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
+          echo latest_version: $latest_version >> frontmatter.txt
+          echo release_date: $release_date >> frontmatter.txt
+          echo license: $license >> frontmatter.txt
+          echo download_count: $download_count >> frontmatter.txt
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
           echo --- >> frontmatter.txt
