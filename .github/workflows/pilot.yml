@@ -46,7 +46,9 @@ jobs:
             author=$(cat issue.json | jq ."PluginAuthor")
             repo=$(cat issue.json | jq ."PluginRepo")
             branch=$(cat issue.json | jq ."PluginBranch")
-            curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name"
+            echo test-----test
+            echo $repo
+            'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name"'
       - name: Get last release published date
         uses: sergeysova/jq-action@v2
         id: published_at
