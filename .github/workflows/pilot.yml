@@ -35,76 +35,75 @@ jobs:
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
-      - run: | 
-          issue='${{ steps.issue-parser.outputs.jsonString }}'
-        
-      - run: |
-          echo $issue | jq ."PluginAbstract"
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
 
-      # - name: Get release version
-      #   uses: sergeysova/jq-action@v2
-      #   id: version
-      #   with:
-      #     cmd: 'curl https://api.github.com/repos/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/releases | jq .[0]."tag_name"'
-      # - name: Get last release published date
-      #   uses: sergeysova/jq-action@v2
-      #   id: published_at
-      #   with:
-      #     cmd: 'curl https://api.github.com/repos/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/releases | jq .[0]."published_at"'
-      # - name: Get download count
-      #   uses: sergeysova/jq-action@v2
-      #   id: download_count
-      #   with:
-      #     cmd: 'curl https://api.github.com/repos/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
-      # - name: Get license info
-      #   uses: sergeysova/jq-action@v2
-      #   id: license
-      #   with:
-      #     cmd: 'curl https://raw.githubusercontent.com/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginBranch"/plugin.json | jq ."license"' 
 
-      # - name: Fetch and create PR
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     echo test 
-      #     echo $(ls -a)
+      - name: Get release version
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'curl https://api.github.com/repos/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/releases | jq .[0]."tag_name"'
+      - name: Get last release published date
+        uses: sergeysova/jq-action@v2
+        id: published_at
+        with:
+          cmd: 'curl https://api.github.com/repos/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/releases | jq .[0]."published_at"'
+      - name: Get download count
+        uses: sergeysova/jq-action@v2
+        id: download_count
+        with:
+          cmd: 'curl https://api.github.com/repos/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
+      - name: Get license info
+        uses: sergeysova/jq-action@v2
+        id: license
+        with:
+          cmd: 'curl https://raw.githubusercontent.com/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/$(cat issue.json | jq ."PluginBranch")/plugin.json | jq ."license"' 
 
-      #     branchName=submission/$(date +"%y%m%d")${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"
-      #     commituser=Duet3D
+      - name: Fetch and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo test 
+          echo $(ls -a)
 
-      #     cd src/plugins 
+          branchName=submission/$(date +"%y%m%d")$(cat issue.json | jq ."PluginRepo")
+          commituser=Duet3D
 
-      #     wget https://raw.githubusercontent.com/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginBranch"/README.md -O ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo".md
+          mv issue.json src/plugins/
+          cd src/plugins 
 
-      #     touch frontmatter.txt
-      #     echo --- >> frontmatter.txt
-      #     echo title: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginTitle" >> frontmatter.txt
-      #     echo abstract: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAbstract" >> frontmatter.txt
-      #     echo author: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor" >> frontmatter.txt
-      #     echo repo: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo" >> frontmatter.txt
-      #     echo branch: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginBranch" >> frontmatter.txt
-      #     echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
-      #     echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
-      #     echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
-      #     echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
-      #     echo tags: >> frontmatter.txt
-      #     curl https://raw.githubusercontent.com/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAuthor"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo"/${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginBranch"/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
-      #     echo --- >> frontmatter.txt
+          wget https://raw.githubusercontent.com/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/$(cat issue.json | jq ."PluginBranch")/README.md -O $(cat issue.json | jq ."PluginRepo").md
 
-      #     i=1
-      #     j='i'
-      #     while IFS= read -r line; do
-      #       sed -i "$i$j$line" ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo".md
-      #       i=`expr $i + 1`
-      #     done < frontmatter.txt
+          touch frontmatter.txt
+          echo --- >> frontmatter.txt
+          echo title: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginTitle" >> frontmatter.txt
+          echo abstract: ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginAbstract" >> frontmatter.txt
+          echo author: $(cat issue.json | jq ."PluginAuthor") >> frontmatter.txt
+          echo repo: $(cat issue.json | jq ."PluginRepo") >> frontmatter.txt
+          echo branch: $(cat issue.json | jq ."PluginBranch") >> frontmatter.txt
+          echo latest_version: ${{ steps.version.outputs.value }} >> frontmatter.txt
+          echo release_date: ${{ steps.published_at.outputs.value }} >> frontmatter.txt
+          echo license: ${{ steps.license.outputs.value }} >> frontmatter.txt
+          echo download_count: ${{ steps.download_count.outputs.value }} >> frontmatter.txt
+          echo tags: >> frontmatter.txt
+          curl https://raw.githubusercontent.com/$(cat issue.json | jq ."PluginAuthor")/$(cat issue.json | jq ."PluginRepo")/$(cat issue.json | jq ."PluginBranch")/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
+          echo --- >> frontmatter.txt
 
-      #     rm frontmatter.txt
+          i=1
+          j='i'
+          while IFS= read -r line; do
+            sed -i "$i$j$line" $(cat issue.json | jq ."PluginRepo").md
+            i=`expr $i + 1`
+          done < frontmatter.txt
+
+          rm frontmatter.txt
+          rm issue.json
           
-      #     git config --global user.name "yasasw"
-      #     git config --global user.email "yasas.wijetilake@gmail.com"
-      #     git checkout -b $branchName
-      #     git add ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo".md
-      #     git commit -m "Updating plugin ${{ steps.issue-parser.outputs.jsonString }} | jq ."PluginRepo".md"
-      #     git push -u origin $branchName
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add $(cat issue.json | jq ."PluginRepo").md
+          git commit -m "Updating plugin $(cat issue.json | jq ."PluginRepo").md"
+          git push -u origin $branchName
 
-      #     hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
