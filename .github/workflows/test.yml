@@ -1,0 +1,17 @@
+name: test
+on: [workflow_dispatch]
+jobs:
+  pull-readme-md:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: listPullRequests
+        uses: buildsville/list-pull-requests@v1
+        id: list pull requests
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: '["plugin-submission"]'
+          skip_hour: '24'
+      - name: output
+        run: echo '${{ steps.list.outputs.pulls }}'
