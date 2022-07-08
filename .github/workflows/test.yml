@@ -11,6 +11,5 @@ jobs:
         id: list
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          labels: '["plugin-submission"]'
       - name: output
         run: echo '${{ steps.list.outputs.pulls }}'
