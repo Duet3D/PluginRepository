@@ -2,28 +2,6 @@ name: submit-new-plugin
 on:
   issues:
     types: [opened]
-# on: 
-#   workflow_dispatch:
-#     inputs:
-#       PluginAuthor:
-#         description: Repo owner
-#         required: true
-#       PluginRepo:
-#         description: Repo name
-#         required: true
-#       PluginBranch:
-#         description: Branch name
-#         default: master
-#         required: false
-#       PluginTitle:
-#         description: Plugin title
-#         required: true
-#       PluginAbstract:
-#         description: Summary
-#         required: true
-#       IsOEM:
-#         description: is plugin OEM
-#         required: false
 jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
@@ -36,45 +14,6 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
-
-
-      # - name: Get release version
-      #   uses: sergeysova/jq-action@v2
-      #   id: version
-      #   with:
-      #     cmd: |
-      #       author=$(cat issue.json | jq ."PluginAuthor")
-      #       repo=$(cat issue.json | jq ."PluginRepo")
-      #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       echo $brn
-      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name"'
-      # - name: Get last release published date
-      #   uses: sergeysova/jq-action@v2
-      #   id: published_at
-      #   with:
-      #     cmd: |
-      #       author=$(cat issue.json | jq ."PluginAuthor")
-      #       repo=$(cat issue.json | jq ."PluginRepo")
-      #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at"'
-      # - name: Get download count
-      #   uses: sergeysova/jq-action@v2
-      #   id: download_count
-      #   with:
-      #     cmd: |
-      #       author=$(cat issue.json | jq ."PluginAuthor")
-      #       repo=$(cat issue.json | jq ."PluginRepo")
-      #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc' 
-      # - name: Get license info
-      #   uses: sergeysova/jq-action@v2
-      #   id: license
-      #   with:
-      #     cmd: |
-      #       author=$(cat issue.json | jq ."PluginAuthor")
-      #       repo=$(cat issue.json | jq ."PluginRepo")
-      #       branch=$(cat issue.json | jq ."PluginBranch")
-      #       'curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license"' 
 
       - name: Fetch and create PR
         env:
