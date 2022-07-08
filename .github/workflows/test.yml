@@ -12,6 +12,6 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           labels: '["plugin-submission"]'
-          default: '0'
+          skip_hour: '0'
       - name: output
         run: echo '${{ steps.list.outputs.pulls }}'
