@@ -8,10 +8,9 @@ jobs:
 
       - name: listPullRequests
         uses: buildsville/list-pull-requests@v1
-        id: list pull requests
+        id: list
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           labels: '["plugin-submission"]'
-          skip_hour: '24'
       - name: output
         run: echo '${{ steps.list.outputs.pulls }}'
