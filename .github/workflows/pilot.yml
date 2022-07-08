@@ -75,4 +75,4 @@ jobs:
           git commit -m "Updating plugin $repo.md"
           git push -u origin $branchName
 
-          hub pull-request -m "$branchName" --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" --base $commituser:master --head $commituser:$branchName
