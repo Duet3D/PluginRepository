@@ -2,7 +2,7 @@ name: merge-pr-on-issue-approval
 on: 
   issues:
     types:
-      - labeled
+      - labeled 
 jobs:
   merge-pr:
     if: ${{ github.event.label.name == 'approved' }}
