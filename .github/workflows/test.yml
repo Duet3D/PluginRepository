@@ -8,9 +8,7 @@ jobs:
       - name: listPullRequests
         run: |
           curl \
-          -H "Accept: application/vnd.github+json" \ 
-          -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" \
-          https://api.github.com/repos/Duet3D/PluginRepository/pulls
+          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls
       # - name: listPullRequests
       #   uses: buildsville/list-pull-requests@v1
       #   id: list
