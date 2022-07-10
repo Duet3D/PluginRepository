@@ -1,5 +1,9 @@
 name: test
 on: [workflow_dispatch]
+  inputs:
+        issue_number:
+          description: 'Issue number'
+          required: true
 jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
@@ -9,7 +13,7 @@ jobs:
         run: |
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[59]"))' | jq ."url")
+          | jq '.[] | select(.title | startswith("[${{ github.event.inputs.issue_number }}]"))' | jq ."url" | sed 's/"//g')
 
           echo $url/merge
       # - name: listPullRequests
