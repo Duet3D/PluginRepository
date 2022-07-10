@@ -5,11 +5,11 @@ on:
       - labeled
 jobs:
   test:
+    if: ${{ github.event.label.name == 'enhancement' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: test
-      - if: ${{ github.event.label.name == 'enhancement' }}
         run: |
             echo ${{ github.event.issue.number }}
             echo ${{ github.event.label.name }}
