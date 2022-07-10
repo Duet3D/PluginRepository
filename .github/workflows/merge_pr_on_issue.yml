@@ -5,7 +5,7 @@ on:
       - labeled
 jobs:
   merge-pr:
-    if: ${{ github.event.label.name == 'enhancement' }} #change to approval later
+    if: ${{ github.event.label.name == 'approved' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
