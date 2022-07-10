@@ -1,9 +1,10 @@
 name: test
-on: [workflow_dispatch]
-  inputs:
-        issue_number:
-          description: 'Issue number'
-          required: true
+on: 
+  workflow_dispatch:
+    inputs:
+          issue_number:
+            description: 'Issue number'
+            required: true
 jobs:
   pull-readme-md:
     runs-on: ubuntu-latest
