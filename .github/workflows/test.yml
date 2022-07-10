@@ -14,9 +14,9 @@ jobs:
         run: |
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[${{ github.event.inputs.issue_number }}]"))' | jq ."url" | sed 's/"//g')
+          | jq '.[] | select(.title | startswith("[${{ github.event.inputs.issue_number }}]"))' | jq ."url" | sed 's/"//g')/merge
 
-          echo $url/merge
+          echo $url
       # - name: listPullRequests
       #   uses: buildsville/list-pull-requests@v1
       #   id: list
