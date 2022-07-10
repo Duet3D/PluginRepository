@@ -1,0 +1,2 @@
+cat pr_list_response.txt | jq '.[] | select(.title | startswith("[59]"))'
+cat pr_list_response.txt | jq '.[] | select(.title == "[59]-submission/220708InputShapingPlugin")'
