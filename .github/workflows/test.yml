@@ -1,21 +1,14 @@
 name: test
-on: 
-  workflow_dispatch:
-    inputs:
-          issue_number:
-            description: 'Issue number'
-            required: true
+on:
+  issues:
+    types:
+      - labeled
 jobs:
-  pull-readme-md:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: listPullRequests
+      - name: test
         run: |
-          url=$(curl \
-          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[${{ github.event.inputs.issue_number }}]"))' | jq ."url" | sed 's/"//g')/merge
-
-          echo $url
-
-          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq)
+            echo ${{ github.event.issue.number }}
+            echo ${{ github.event.label.name }}
