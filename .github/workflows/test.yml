@@ -17,12 +17,5 @@ jobs:
           | jq '.[] | select(.title | startswith("[${{ github.event.inputs.issue_number }}]"))' | jq ."url" | sed 's/"//g')/merge
 
           echo $url
-      # - name: listPullRequests
-      #   uses: buildsville/list-pull-requests@v1
-      #   id: list
-      #   with:
-      #     token: ${{secrets.GITHUB_TOKEN}}
-      #     labels: '["plugin-submission"]'
-      #     skip_hour: '0'
-      # - name: output
-      #   run: echo '${{ steps.list.outputs.pulls }}'
+
+          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq)
