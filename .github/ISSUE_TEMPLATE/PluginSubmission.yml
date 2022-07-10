@@ -1,7 +1,7 @@
 name: Plugin Submission
 description: Submit a new plugin for approval
 title: "[PluginSubmission]: "
-labels: [plugin-submission]
+labels: [plugin-submission, approval]
 assignees:
 - yasasw
 body:
