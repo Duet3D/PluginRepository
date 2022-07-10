@@ -1,0 +1,20 @@
+name: merge-pr-on-issue-approval
+on: 
+  issues:
+    types:
+      - labeled
+jobs:
+  merge-pr:
+    if: ${{ github.event.label.name == 'enhancement' }} #change to approval later
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: merge-pr
+        run: |
+          url=$(curl \
+          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
+          | jq '.[] | select(.title | startswith("[${{ github.event.issue.number }}]"))' | jq ."url" | sed 's/"//g')/merge
+
+          echo $url
+
+          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq)

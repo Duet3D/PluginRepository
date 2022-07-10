@@ -3,7 +3,8 @@ on:
   issues:
     types: [opened]
 jobs:
-  pull-readme-md:
+  plugin-submission:
+    if: ${{ github.event.label.name == 'plugin-submission' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -77,4 +78,4 @@ jobs:
           git commit -m "Updating plugin $repo.md"
           git push -u origin $branchName
 
-          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l approval --base $commituser:master --head $commituser:$branchName
