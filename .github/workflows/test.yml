@@ -5,13 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: listPullRequests
-        uses: buildsville/list-pull-requests@v1
-        id: list
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          labels: '["plugin-submission"]'
-          skip_hour: '0'
-      - name: output
-        run: echo '${{ steps.list.outputs.pulls }}'
+        run: |
+          curl \
+          -H "Accept: application/vnd.github+json" \ 
+          -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" \
+          https://api.github.com/repos/Duet3D/PluginRepository/pulls
+      # - name: listPullRequests
+      #   uses: buildsville/list-pull-requests@v1
+      #   id: list
+      #   with:
+      #     token: ${{secrets.GITHUB_TOKEN}}
+      #     labels: '["plugin-submission"]'
+      #     skip_hour: '0'
+      # - name: output
+      #   run: echo '${{ steps.list.outputs.pulls }}'
