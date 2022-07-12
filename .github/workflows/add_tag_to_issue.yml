@@ -57,7 +57,7 @@ jobs:
           echo plugin.json name: $res >> checklog.txt 
           isOK=$(($isOK*$res))
 
-          plugin_author=$(cat assetunzipped/plugin.json | jq ."author" | sed 's/"//g') #Check if empty
+          plugin_author=$(cat assetunzipped/plugin.json | jq ."autho1r" | sed 's/"//g') #Check if empty
           plugin_author_n=$(echo $plugin_author | awk '{print length}') #Check if empty
           res=$(if [[ "$plugin_author" != null ]]&&[[ "$plugin_author_n" > 0 ]]; then echo 1; else echo 0; fi)
           echo plugin.json author: $res >> checklog.txt
