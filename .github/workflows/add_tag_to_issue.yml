@@ -38,10 +38,9 @@ jobs:
           # 4.:OK Download latest ZIP bundle
           wget $url -O asset.zip
           unzip asset.zip -d assetunzipped
-          cd assetunzipped
 
           # 5.:OK Make sure plugin.json exists
-          res=$((ls plugin.json >> /dev/null 2>&1  && echo 1) || echo 0)
+          res=$((ls assetunzipped/plugin.json >> /dev/null 2>&1  && echo 1) || echo 0)
           echo plugin.json check 1: $res >> checklog.txt
           isOK=$(($isOK*$res))
 
