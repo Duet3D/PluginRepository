@@ -73,7 +73,7 @@ jobs:
     
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.inputs.issue_number }}/comments \
-            -d '{"body":'echo "$txt"'}'
+            -d '{"body":'echo "\"$txt"\"'}'
 #
             #           curl \
             # -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.inputs.issue_number }}/labels \
