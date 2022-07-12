@@ -66,14 +66,13 @@ jobs:
 
           # 7.:NOT OK Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
 
-          txt=""
+          txt="Log:"
           while IFS= read -r line; do
             txt="$txt \n $line"
           done < checklog.txt
     
           response="{"\"body"\": "\"$txt"\"}"
 
-          abc="\"my commentttttt"\"
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.inputs.issue_number }}/comments \
             -d "$response"
