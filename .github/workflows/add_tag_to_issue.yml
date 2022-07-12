@@ -54,7 +54,7 @@ jobs:
           plugin_name=$(cat plugin.json | jq ."name" | sed 's/"//g') #Check if less than 64 characters
           plugin_name_n=$(echo $plugin_name | awk '{print length}') #Check if less than 64 characters
           res=$(if [[ "$plugin_name" != null ]]&&[[ "$plugin_name_n" < 64 ]]; then echo 1; else echo 0; fi)
-          echo plugin.json name: $res >> checklog.txt
+          echo plugin.json name: $res >> checklog.txt 
           isOK=$(($isOK*$res))
 
           plugin_author=$(cat plugin.json | jq ."author" | sed 's/"//g') #Check if empty
