@@ -70,14 +70,14 @@ jobs:
             echo $line
             txt="$txt \n $line"
           done < checklog.txt
-
-          echo $isOK
     
           response="{"\"body"\": "\"$txt"\"}"
 
-
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.inputs.issue_number }}/comments \
             -d "$response"
+
+          echo $isOK
+
 
             #           curl \
             # -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.inputs.issue_number }}/labels \
