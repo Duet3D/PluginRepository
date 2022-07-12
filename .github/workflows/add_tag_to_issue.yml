@@ -45,19 +45,19 @@ jobs:
           isOK=$(($isOK*$res))
 
           # 6.:OK Ensure properties id, name, author are present. Validate them as specified in https://github.com/Duet3D/DuetWebControl/blob/master/src/plugins/manifest.js
-          plugin_id=$(cat plugin.json | jq ."id" | sed 's/"//g') #Check if less than 32 characters
+          plugin_id=$(cat assetunzipped/plugin.json | jq ."id" | sed 's/"//g') #Check if less than 32 characters
           plugin_id_n=$(echo $plugin_id | awk '{print length}') #Check if less than 32 characters
           res=$(if [[ "$plugin_id" != null ]]&&[[ "$plugin_id_n" < 32 ]]; then echo 1; else echo 0; fi)
           echo plugin.json id: $res >> checklog.txt
           isOK=$(($isOK*$res))
 
-          plugin_name=$(cat plugin.json | jq ."name" | sed 's/"//g') #Check if less than 64 characters
+          plugin_name=$(cat assetunzipped/plugin.json | jq ."name" | sed 's/"//g') #Check if less than 64 characters
           plugin_name_n=$(echo $plugin_name | awk '{print length}') #Check if less than 64 characters
           res=$(if [[ "$plugin_name" != null ]]&&[[ "$plugin_name_n" < 64 ]]; then echo 1; else echo 0; fi)
           echo plugin.json name: $res >> checklog.txt 
           isOK=$(($isOK*$res))
 
-          plugin_author=$(cat plugin.json | jq ."author" | sed 's/"//g') #Check if empty
+          plugin_author=$(cat assetunzipped/plugin.json | jq ."author" | sed 's/"//g') #Check if empty
           plugin_author_n=$(echo $plugin_author | awk '{print length}') #Check if empty
           res=$(if [[ "$plugin_author" != null ]]&&[[ "$plugin_author_n" > 0 ]]; then echo 1; else echo 0; fi)
           echo plugin.json author: $res >> checklog.txt
@@ -70,6 +70,8 @@ jobs:
             echo $line
             txt="$txt \n $line"
           done < checklog.txt
+
+          echo $isOK
     
           response="{"\"body"\": "\"$txt"\"}"
 
