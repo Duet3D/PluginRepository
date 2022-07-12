@@ -68,6 +68,7 @@ jobs:
 
           txt="Log:"
           while IFS= read -r line; do
+            echo $line
             txt="$txt \n $line"
           done < checklog.txt
     
