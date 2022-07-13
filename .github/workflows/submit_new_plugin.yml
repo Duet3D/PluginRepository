@@ -92,6 +92,19 @@ jobs:
 
           # 7.:NOT OK Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
 
+          dwcVersion=$(cat assetunzipped/plugin.json | jq ."dwcVersion" | sed 's/"//g') #Check if empty
+          sbcDSfVersion=$(cat assetunzipped/plugin.json | jq ."sbcDSfVersion" | sed 's/"//g') #Check if empty
+          rrfVersion=$(cat assetunzipped/plugin.json | jq ."rrfVersion" | sed 's/"//g') #Check if empty
+
+          dwcVersionOK=$(if [[ "${dwcVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
+          sbcDSfVersionOK=$(if [[ "${sbcDSfVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
+          rrfVersionOK=$(if [[ "${rrfVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
+          res=$((dwcVersionOK||sbcDSfVersionOK||rrfVersionOK))
+
+
+          echo plugin.json platform version: $res >> checklog.txt
+          isOK=$(($isOK*$res))
+
           txt="Log:"
           while IFS= read -r line; do
             echo $line
