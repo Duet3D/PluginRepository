@@ -52,22 +52,3 @@ body:
     placeholder: main
   validations:
     required: true
-- type: dropdown
-  id: IsOEM
-  attributes:
-    label: Is this plugin by Duet3D?
-    options:
-      - No
-  validations:
-    required: true
-- type: checkboxes
-  id: PluginPlatform
-  attributes:
-    label: Duet3D Platform/Tool
-    description: Check all the applicable platforms
-    options:
-      - label: RRF
-      - label: DSF/SBC
-      - label: DWC
-  validations:
-    required: true
