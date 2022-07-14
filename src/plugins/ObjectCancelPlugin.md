@@ -7,6 +7,7 @@ tags:
 oem: false
 published_date: "2021-06-19"
 latest_version: 1.1
+download_count: 5
 release_date: "2021-09-14"
 ---
 

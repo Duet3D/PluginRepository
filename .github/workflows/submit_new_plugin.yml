@@ -156,9 +156,12 @@ jobs:
 
 
           latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
+          release_page=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."html_url")
           release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
           license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
           download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
+          oem=$(if [[ "$author" = Duet3D ]]; then echo true; else echo false; fi)
+
 
 
           wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md
@@ -170,8 +173,10 @@ jobs:
           echo author: $author >> frontmatter.txt
           echo repo: $repo >> frontmatter.txt
           echo branch: $branch >> frontmatter.txt
+          echo oem: $oem >> frontmatter.txt
           echo latest_version: $latest_version >> frontmatter.txt
           echo release_date: $release_date >> frontmatter.txt
+          echo release_page: $release_page >> frontmatter.txt
           echo license: $license >> frontmatter.txt
           echo download_count: $download_count >> frontmatter.txt
           echo tags: >> frontmatter.txt

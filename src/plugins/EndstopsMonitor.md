@@ -9,6 +9,7 @@ tags:
 oem: true
 published_date: "2022-01-05"
 latest_version: 3.4
+release_page: https://github.com/Duet3D/EndstopsMonitorPlugin/releases/tag/v3.4
 release_date: "2022-05-15"
 ---
 

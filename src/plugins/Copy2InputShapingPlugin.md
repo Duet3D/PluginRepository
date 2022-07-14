@@ -5,6 +5,7 @@ tags:
   - shaper
 oem: true
 published_date: "2019-02-25"
+download_count: 5
 latest_version: 3.1
 release_date: "2022-04-11"
 ---
