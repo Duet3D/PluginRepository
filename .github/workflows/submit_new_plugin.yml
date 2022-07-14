@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: stefanbuck/github-issue-praser@v2
-        id: issue-parser
+        id: issue-parser 
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
 
@@ -18,7 +18,9 @@ jobs:
       - name: precheck-steps
         run: |
 
-          author=$(cat issue.json | jq ."PluginAuthor" | sed 's/"//g')
+          cat issue.json
+
+          author=$(cat issue.json | jq -r ."PluginAuthor")
           repo=$(cat issue.json | jq ."PluginRepo" | sed 's/"//g')
           branch=$(cat issue.json | jq ."PluginBranch" | sed 's/"//g')
 
