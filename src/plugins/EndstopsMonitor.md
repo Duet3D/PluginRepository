@@ -1,6 +1,7 @@
 ---
 title: Endstops Monitor Plugin
 abstract: It lets users monitor the endstops interactively
+author: Duet3D
 tags:
   - monitoring
   - endstop

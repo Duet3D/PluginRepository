@@ -1,6 +1,7 @@
 ---
 title: Object Cancel Plugin
 abstract: Allows you to quickly cancel objects in your prints in a simple view
+author: Duet3D
 tags:
   - print
   - cancel

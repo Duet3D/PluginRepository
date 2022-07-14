@@ -20,6 +20,7 @@
                     <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${item.frontmatter.download_count}`}}</span></li>
                     <li><a target="_self" :href="`${item.frontmatter.release_page}`"><span title="Release" class="card_footer_1">{{"🔖 " + `${item.frontmatter.latest_version}`}}</span></a></li>
                     <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${item.frontmatter.release_date.substring(0,10)}`}}</span></li>
+                    <li><a target="_self" :href="`https://github.com/${item.frontmatter.author}`"><span title="Author" class="card_footer_1">{{"👤 " + `${item.frontmatter.author}`}}</span></a></li>
                 </ul>
                 <ul class="keyword_1">
                     <li v-for="keyword in item.frontmatter.tags" :key="keyword">
