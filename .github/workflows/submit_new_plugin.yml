@@ -42,7 +42,7 @@ jobs:
           isOK=$(($isOK*$res))
 
 
-            # branch
+            # branch 
           len=$(echo "$repo" | tr -d '[:alnum:]/._-' | awk '{print length}')
           res=$(if [[ "$len" = 0 ]]; then echo 1; else echo 0; fi)
           echo git branch name: $res >> checklog.txt
