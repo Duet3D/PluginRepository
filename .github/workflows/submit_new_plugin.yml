@@ -76,18 +76,17 @@ jobs:
           res=$(if [[ "$status_code" = 200 ]]; then echo 1; else echo 0; fi)
           echo README.md: $res >> checklog.txt
           isOK=$(($isOK*$res))
-
           echo README.md: $res
 
 
           # 3.:OK Make sure there is at least one release with at least one ZIP file
           url=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."assets"[0]."browser_download_url" | sed 's/"//g')
           #if url exists, then at least one asset is there
-          if [[ "$url" = null ]]; then precheckFail; fi
+          if [[ "$url" = null ]]; then precheckFail && exit 1; fi
 
           ext=$(echo $url | rev | cut -d'.' -f 1 |rev)
           #check if ext is zip to confirm it's a zip
-          res=$(if [[ "$ext" = zip ]]; then echo 1; else echo 0; fi)
+          res=$(if [[ "$ext" = zip ]]; then echo Release not available >> checklog.txt && exit 1; else echo 0; fi)
           echo Release: $res >> checklog.txt
           isOK=$(($isOK*$res))
 
