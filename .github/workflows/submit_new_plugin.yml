@@ -25,8 +25,6 @@ jobs:
               txt="$txt \n $line"
             done < checklog.txt
 
-          echo "::stop-commands::plugin-submission"
-          exit 1
           response="{"\"body"\": "\"$txt"\"}"
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
@@ -166,11 +164,14 @@ jobs:
 
           echo $isOK
 
-          if [[ "$isOK" = 1 ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'; else exit 1; fi
+          if [[ "$isOK" = 1 ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}' && exit 0; else exit 1; fi
 
 
                       
   plugin-submission:
+    needs: precheck
+    if: needs.precheck.outputs.status == 'success'
+
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
