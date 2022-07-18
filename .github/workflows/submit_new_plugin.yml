@@ -18,7 +18,7 @@ jobs:
       - name: precheck-steps
         run: |
 
-          cat ls
+          echo $(ls)
           exit 1
 
           commentLog () {
