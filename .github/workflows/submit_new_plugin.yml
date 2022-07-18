@@ -24,10 +24,12 @@ jobs:
               echo $line
               txt="$txt \n $line"
             done < checklog.txt
-      
-            response="{"\"body"\": "\"$txt"\"}"
 
-            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
+          echo "::stop-commands::plugin-submission"
+          exit 1
+          response="{"\"body"\": "\"$txt"\"}"
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
               -d "$response"
           }
 
