@@ -18,9 +18,6 @@ jobs:
       - name: precheck-steps
         run: |
 
-          echo $(ls)
-          exit 1
-
           commentLog () {
             txt="Log:"
             while IFS= read -r line; do
@@ -42,6 +39,14 @@ jobs:
 
           touch checklog.txt
           isOK=1
+
+          # 0.:Check if repo name exists already
+          res=$((ls src/plugins/$repo.md >> /dev/null 2>&1  && echo 0) || echo 1)
+          echo Plugin name available: $res >> checklog.txt
+          isOK=$(($isOK*$res))
+
+          echo Plugin name available: $res
+
 
           # 1.:OK Check for illegal characters (allow only alphanumeric GH user+repo+branch names)
             # user
