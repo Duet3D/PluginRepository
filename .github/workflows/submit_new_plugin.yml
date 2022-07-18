@@ -18,6 +18,9 @@ jobs:
       - name: precheck-steps
         run: |
 
+          cat ls
+          exit 1
+
           commentLog () {
             txt="Log:"
             while IFS= read -r line; do
