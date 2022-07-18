@@ -83,9 +83,7 @@ jobs:
           # 3.:OK Make sure there is at least one release with at least one ZIP file
           url=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."assets"[0]."browser_download_url" | sed 's/"//g')
           #if url exists, then at least one asset is there
-
-          echo $url
-          exit 1
+          if [[ "$url" = null ]]; then precheckFail; fi
 
           ext=$(echo $url | rev | cut -d'.' -f 1 |rev)
           #check if ext is zip to confirm it's a zip
