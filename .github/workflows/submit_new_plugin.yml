@@ -18,6 +18,10 @@ jobs:
       - name: precheck-steps
         run: |
 
+          echo '${{ github.actor }}'
+          echo '${{ github.event.sender }}'
+          echo '${{ github.event.issue.user.login }}'
+
           commentLog () {
             txt="Log:"
             while IFS= read -r line; do
