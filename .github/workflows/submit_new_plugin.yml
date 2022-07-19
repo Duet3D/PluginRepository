@@ -195,7 +195,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo test 
           echo $(ls -a)
 
           mv issue.json src/plugins/
@@ -246,7 +245,7 @@ jobs:
           echo --- >> frontmatter.txt
 
           echo # $plugin_title --- >> frontmatter.txt
-          echo <ReleaseList gituser="$author" gitrepo="$repo"/> >> frontmatter.txt
+          echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
 
           i=1
           j='i'
