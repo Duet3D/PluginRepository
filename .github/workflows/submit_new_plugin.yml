@@ -97,7 +97,7 @@ jobs:
           # 3.:OK Make sure there is at least one release with at least one ZIP file
           url=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."assets"[0]."browser_download_url" | sed 's/"//g')
           #if url exists, then at least one asset is there
-          if [[ "$url" = null ]]; then echo Exiting as release not available >> checklog.txt && commentLog && exit 1; fi
+          if [[ "$url" = null ]]; then echo Release not available, Exiting >> checklog.txt && commentLog && exit 1; fi
 
           ext=$(echo $url | rev | cut -d'.' -f 1 |rev)
           #check if ext is zip to confirm it's a zip
@@ -228,9 +228,14 @@ jobs:
 
 
 
+          url=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."assets"[0]."browser_download_url" | sed 's/"//g')
+          wget $url -O asset.zip
+          unzip asset.zip -d assetunzipped
+          plugin_title=$(cat assetunzipped/plugin.json | jq ."name")
+
           touch frontmatter.txt
           echo --- >> frontmatter.txt
-          echo title: $title >> frontmatter.txt
+          echo title: $plugin_title >> frontmatter.txt
           echo abstract: $abstract >> frontmatter.txt
           echo author: $author >> frontmatter.txt
           echo repo: $repo >> frontmatter.txt
@@ -244,6 +249,9 @@ jobs:
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
           echo --- >> frontmatter.txt
+
+          echo # $plugin_title --- >> frontmatter.txt
+          echo <ReleaseList gituser="$author" gitrepo="$repo"/> >> frontmatter.txt
 
           i=1
           j='i'
