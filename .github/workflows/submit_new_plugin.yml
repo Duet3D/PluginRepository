@@ -207,7 +207,7 @@ jobs:
           repo=$(cat issue.json | jq ."PluginRepo" | sed 's/"//g')
           branch=$(cat issue.json | jq ."PluginBranch" | sed 's/"//g')
 
-          title=$(cat issue.json | jq ."PluginTitle")
+          plugin_title=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."name")
           abstract=$(cat issue.json | jq ."PluginAbstract")
 
           branchName=submission/$(date +"%y%m%d")$repo
@@ -217,7 +217,6 @@ jobs:
           latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
           release_page=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."html_url")
           release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
-          plugin_title=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."name")
           homepage=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."homepage")
           license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
           download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
