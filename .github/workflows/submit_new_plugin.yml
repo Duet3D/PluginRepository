@@ -222,7 +222,7 @@ jobs:
 
 
 
-          plugin__mdstatus=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
+          plugin__md_status=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
           if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
 
 
@@ -244,7 +244,7 @@ jobs:
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
           echo --- >> frontmatter.txt
 
-          echo # $plugin_title --- >> frontmatter.txt
+          echo \# $plugin_title --- >> frontmatter.txt
           echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
 
           i=1
