@@ -13,14 +13,6 @@ body:
       - Plugin has to be in a GitHub repository
       - It has to have the following......
 - type: input
-  id: PluginTitle
-  attributes:
-    label: Plugin Title
-    description: Title of your plugin
-    placeholder: My plugin
-  validations:
-    required: true
-- type: input
   id: PluginAbstract
   attributes:
     label: Summary
