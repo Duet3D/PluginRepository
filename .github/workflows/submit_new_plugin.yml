@@ -195,8 +195,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo $(needs.precheck.outputs.status)
-          exit 1
           echo test 
           echo $(ls -a)
 
