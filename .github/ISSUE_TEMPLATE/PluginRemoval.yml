@@ -8,15 +8,13 @@ body:
 - type: markdown
   attributes:
     value: |
-      # Some cool markdown content
-      ## Important Information
+      # Important Information
       - Removal request has to be made from the same account that it was submitted from.
- - type: input
+- type: input
   id: PluginID
   attributes:
-    label: Summary
-    description: A summary of what your plugin does (Try to keep it below 75 characters)
-    placeholder: This plugin...
+    label: Plugin ID
+    description: Same as repo name
   validations:
     required: true
 - type: input
@@ -31,6 +29,6 @@ body:
   id: AdditionalInfo
   attributes:
     label: Additional Information
-    placeholder: 
+    description: Additional Information
   validations:
     required: false
