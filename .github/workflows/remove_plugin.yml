@@ -2,9 +2,19 @@ name: submit-new-plugin
 on:
   issues:
     types: [opened]
-jobs:                      
+jobs:
+  issue-label-check:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Remove plugin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
+          if [[ "$issue_label" = plugin-removal ]]; then exit 0; else exit 1; fi
   plugin-removal:
-    if: ${{ github.event.label.name == 'plugin-removal' }}
+    needs: issue-label-check
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
