@@ -18,10 +18,7 @@ jobs:
           echo $url
 
           echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
-          cat merge_response.json | jq ."merged" | sed 's/"//g'
+          cat merge_response.json | jq
           merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
 
-          if [$merged != true]
-          then
-            echo "Not merged"
-            exit 1
+          if [[ "$merged" = true ]]; then exit 0; else exit 1; fi
