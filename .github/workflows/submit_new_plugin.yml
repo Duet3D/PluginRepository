@@ -27,6 +27,8 @@ jobs:
 
           response="{"\"body"\": "\"$txt"\"}"
 
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["cannot-be-approved"]}'
+
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
               -d "$response"
           }
@@ -173,7 +175,7 @@ jobs:
 
           echo $isOK
 
-          if [[ "$isOK" = 1 ]]; then exit 0; else exit 1; fi
+          if [[ "$isOK" = 1 ]]; then exit 0; else curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["cannot-be-approved"]}' && exit 1; fi
 
 
                       
