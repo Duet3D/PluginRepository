@@ -1,4 +1,4 @@
-name: submit-new-plugin
+name: remove-plugin
 on:
   issues:
     types: [opened]
