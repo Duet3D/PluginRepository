@@ -1,0 +1,78 @@
+name: submit-new-plugin
+on:
+  issues:
+    types: [opened]
+jobs:                      
+  plugin-removal:
+    if: ${{ github.event.label.name == 'plugin-removal' }}
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: Remove plugin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          commentLog () {
+            txt="Log:"
+            while IFS= read -r line; do
+              echo $line
+              txt="$txt \n $line"
+            done < checklog.txt
+
+          response="{"\"body"\": "\"$txt"\"}"
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["cannot-be-approved"]}'
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
+              -d "$response"
+          }
+
+
+          set -e
+
+          cat issue.json
+          plugin=$(cat issue.json | jq -r ."PluginID")
+          plugin_file="$plugin".md
+
+          touch checklog.txt
+
+          # 0. Checking if plugin.md exists
+          res=$((ls src/plugins/plugin_file >> /dev/null 2>&1  && echo 1) || echo 0)
+          echo Removal-requested plugin exists: $res >> checklog.txt
+          echo Removal-requested plugin exists: $res
+          if [[ "$res" = 0 ]]; then echo Requested plugin is not available, Exiting >> checklog.txt && commentLog && exit 1; fi
+
+
+          # 1. Checking if the same user submitted the removal request
+          cd src/plugins
+          user=$(sed '2!d' $plugin_file | sed -e "s/plugin_submitted_by://")
+          res=$(if [[ "$user" = "${{ github.event.issue.user.login }}" ]]; then echo 1; else echo 0; fi)
+          if [[ "$res" = 0 ]]; then echo Request removal using the user $user for approval. Exiting >> checklog.txt && commentLog && exit 1; fi
+
+          # if all okay, continue
+
+
+          branchName=removal/$(date +"%y%m%d")$plugin
+          commituser=Duet3D
+
+          rm $plugin_file
+
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add $plugin_file
+          git commit -m "Deleting plugin plugin_file"
+          git push -u origin $branchName
+
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'

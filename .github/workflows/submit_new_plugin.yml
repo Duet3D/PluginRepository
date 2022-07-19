@@ -239,6 +239,7 @@ jobs:
 
           touch frontmatter.txt
           echo --- >> frontmatter.txt
+          echo plugin_submitted_by: ${{ github.event.issue.user.login }}
           echo title: $plugin_title >> frontmatter.txt
           echo abstract: $abstract >> frontmatter.txt
           echo author: $author >> frontmatter.txt
@@ -256,7 +257,6 @@ jobs:
           echo download_count: $download_count >> frontmatter.txt
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
-          echo plugin_submitted_by : ${{ github.event.issue.user.login }}
           echo --- >> frontmatter.txt
 
           echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
