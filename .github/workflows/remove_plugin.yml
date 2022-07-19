@@ -56,7 +56,7 @@ jobs:
           touch checklog.txt
 
           # 0. Checking if plugin.md exists
-          res=$((ls src/plugins/plugin_file >> /dev/null 2>&1  && echo 1) || echo 0)
+          res=$((ls src/plugins/$plugin_file >> /dev/null 2>&1  && echo 1) || echo 0)
           echo Removal-requested plugin exists: $res >> checklog.txt
           echo Removal-requested plugin exists: $res
           if [[ "$res" = 0 ]]; then echo Requested plugin is not available, Exiting >> checklog.txt && commentLog && exit 1; fi
