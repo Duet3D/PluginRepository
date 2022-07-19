@@ -18,10 +18,6 @@ jobs:
       - name: precheck-steps
         run: |
 
-          echo '${{ github.actor }}'
-          echo '${{ github.event.sender }}'
-          echo '${{ github.event.issue.user.login }}'
-
           commentLog () {
             txt="Log:"
             while IFS= read -r line; do
@@ -260,6 +256,7 @@ jobs:
           echo download_count: $download_count >> frontmatter.txt
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
+          echo plugin_submitted_by : ${{ github.event.issue.user.login }}
           echo --- >> frontmatter.txt
 
           echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
