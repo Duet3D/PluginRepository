@@ -8,27 +8,14 @@ body:
 - type: markdown
   attributes:
     value: |
-      # Important Information
-      - Removal request has to be made from the same account that it was submitted from.
+      # Some cool markdown content
+      ## Important Information
+      - Plugin has to be in a GitHub repository
 - type: input
-  id: PluginID
+  id: PluginAbstract
   attributes:
-    label: Plugin ID
-    description: Same as repo name
+    label: Summary
+    description: A summary of what your plugin does (Try to keep it below 75 characters)
+    placeholder: This plugin...
   validations:
     required: true
-- type: input
-  id: Description
-  attributes:
-    label: Reason
-    description: Reason for removal
-    placeholder: I want to remove because
-  validations:
-    required: true
-- type: input
-  id: AdditionalInfo
-  attributes:
-    label: Additional Information
-    description: Additional Information
-  validations:
-    required: false
