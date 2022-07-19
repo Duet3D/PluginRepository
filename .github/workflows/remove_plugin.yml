@@ -40,7 +40,7 @@ jobs:
           set -e
 
           cat issue.json
-          plugin=$(cat issue.json | jq -r ."PluginID")
+          plugin=$(cat issue.json | jq -r ."plugin_id")
           plugin_file="$plugin".md
 
           touch checklog.txt
