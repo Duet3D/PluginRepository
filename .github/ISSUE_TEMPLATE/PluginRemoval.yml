@@ -11,7 +11,7 @@ body:
       # Some cool markdown content
       ## Important Information
       - Removal request has to be made from the same account that it was submitted from.
- - type: input
+- type: input
   id: PluginID
   attributes:
     label: Summary
