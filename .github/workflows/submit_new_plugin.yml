@@ -77,12 +77,21 @@ jobs:
 
 
           # 2.:OK Check if README.md or PLUGIN.md is present on the specified repo
-          status_code=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/README.md)
 
-          res=$(if [[ "$status_code" = 200 ]]; then echo 1; else echo 0; fi)
-          echo README.md: $res >> checklog.txt
+          status_code_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
+
+          status_code_2=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/README.md)
+
+          res_1=$(if [[ "$status_code_1" = 200 ]]; then echo 1; else echo 0; fi)
+          res_2=$(if [[ "$status_code_2" = 200 ]]; then echo 1; else echo 0; fi)
+          res=$(if [[ "$res_1" = 1 ]]||[[ "$res_2" = 1 ]]; then echo 1; else echo 0; fi)
+          echo PLUGIN.md: $res_1 >> checklog.txt
+          echo README.md: $res_2 >> checklog.txt
+          echo Plugin markdown: $res >> checklog.txt
           isOK=$(($isOK*$res))
-          echo README.md: $res
+          echo PLUGIN.md: $res_1
+          echo README.md: $res_2
+          echo Plugin markdown: $res
 
 
           # 3.:OK Make sure there is at least one release with at least one ZIP file
@@ -214,7 +223,10 @@ jobs:
 
 
 
-          wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md
+          plugin__mdstatus=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
+          if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
+
+
 
           touch frontmatter.txt
           echo --- >> frontmatter.txt
