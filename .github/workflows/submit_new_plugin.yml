@@ -225,6 +225,12 @@ jobs:
           download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
           oem=$(if [[ "$author" = Duet3D ]]; then echo true; else echo false; fi)
 
+          dwcVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."dwcVersion")
+          sbcDSfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."sbcDSfVersion")
+          rrfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."rrfVersion")
+          
+          if [[ "$dwcVersion" = null ]]; then echo Release not available, Exiting >> checklog.txt && commentLog && exit 1; fi
+
 
 
           plugin_md_status=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
@@ -239,6 +245,9 @@ jobs:
           echo repo: $repo >> frontmatter.txt
           echo branch: $branch >> frontmatter.txt
           echo homepage: $homepage >> frontmatter.txt
+          echo dwcVersion: $dwcVersion >> frontmatter.txt
+          echo sbcDSfVersion: $sbcDSfVersion >> frontmatter.txt
+          echo rrfVersion: $rrfVersion >> frontmatter.txt
           echo oem: $oem >> frontmatter.txt
           echo latest_version: $latest_version >> frontmatter.txt
           echo release_date: $release_date >> frontmatter.txt
@@ -249,7 +258,6 @@ jobs:
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
           echo --- >> frontmatter.txt
 
-          echo \# $plugin_title --- >> frontmatter.txt
           echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
 
           i=1
