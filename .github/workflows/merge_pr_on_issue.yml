@@ -21,4 +21,4 @@ jobs:
           cat merge_response.json | jq
           merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
 
-          if [[ "$merged" = true ]]; then exit 0; else exit 1; fi
+          if [[ "$merged" = true ]]; then exit 0; else exit 1; fi 
