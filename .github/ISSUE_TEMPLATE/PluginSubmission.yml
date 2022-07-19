@@ -11,7 +11,6 @@ body:
       # Some cool markdown content
       ## Important Information
       - Plugin has to be in a GitHub repository
-      - It has to have the following......
 - type: input
   id: PluginAbstract
   attributes:
