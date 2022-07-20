@@ -64,7 +64,7 @@ jobs:
 
           # 1. Checking if the same user submitted the removal request
           cd src/plugins
-          submitted_user=$(sed '2!d' $plugin_file | sed -e "s/plugin_submitted_by://")
+          submitted_user=$(sed '2!d' $plugin_file | sed -e "s/plugin_submitted_by://" | tr -d ' ')
           removal_user=${{ github.event.issue.user.login }}
           echo $submitted_user 
           echo $removal_user
