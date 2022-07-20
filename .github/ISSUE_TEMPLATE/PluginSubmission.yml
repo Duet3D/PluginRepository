@@ -10,7 +10,12 @@ body:
     value: |
       # Some cool markdown content
       ## Important Information
-      - Plugin has to be in a GitHub repository
+      ### Ensure that your:
+      - plugin has to be in a GitHub repository
+      - markdown files are renamed (case-sensitive) as PLUGIN.md, README.md
+      - plugin manifest file is renamed (case-sensitive) as plugin.json
+      - applicable platforms versions are exactly (case-sensitive) as dwcVersion, sbcDSfVersion, rrfVersion.
+      Otherwise the checks will not pass.
 - type: input
   id: PluginAbstract
   attributes:
