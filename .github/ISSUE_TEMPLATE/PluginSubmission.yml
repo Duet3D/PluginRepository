@@ -16,19 +16,19 @@ body:
       - plugin manifest file is renamed (case-sensitive) as plugin.json
       - applicable platforms versions are exactly (case-sensitive) as dwcVersion, sbcDSfVersion, rrfVersion
         ```
-        { ... ,
+        { ...
           "dwcVersion": "3.4",
           ...
         }
         ```
         ```
-        { ... ,
+        { ...
           "sbcDSfVersion": "3.4",
           ...
         }
         ```
         ```
-        { ... ,
+        { ...
           "rrfVersion": "3.4",
           ...
         }
