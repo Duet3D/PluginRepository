@@ -249,7 +249,7 @@ jobs:
 
           touch frontmatter.txt
           echo --- >> frontmatter.txt
-          echo plugin_submitted_by: ${{ github.event.issue.user.login }}
+          echo plugin_submitted_by: ${{ github.event.issue.user.login }} >> frontmatter.txt
           echo title: $plugin_title >> frontmatter.txt
           echo abstract: $abstract >> frontmatter.txt
           echo author: $author >> frontmatter.txt
