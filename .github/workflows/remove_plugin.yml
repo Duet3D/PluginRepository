@@ -65,6 +65,7 @@ jobs:
           # 1. Checking if the same user submitted the removal request
           cd src/plugins
           user=$(sed '2!d' $plugin_file | sed -e "s/plugin_submitted_by://")
+          echo $user
           res=$(if [[ "$user" = "${{ github.event.issue.user.login }}" ]]; then echo 1; else echo 0; fi)
           if [[ "$res" = 0 ]]; then echo Request removal using the user $user for approval. Exiting >> checklog.txt && commentLog && exit 1; fi
 
