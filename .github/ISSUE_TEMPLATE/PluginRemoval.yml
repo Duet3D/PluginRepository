@@ -8,8 +8,12 @@ body:
 - type: markdown
   attributes:
     value: |
-      # Important Information
-      - Removal request has to be made from the same account that it was submitted from.
+      ## Checklist
+      ### Ensure that you are:
+      - creating the removal request using the same account that the plugin was submitted from
+      - stating the reasons for removal clearly (This helps us understand how we can improve the plugin submission/removal process)
+      ## Important Information
+      - Although the plugin is removed from the repository, it may still exist with any user who may have already downloaded/installed
 - type: input
   id: PluginID
   attributes:
