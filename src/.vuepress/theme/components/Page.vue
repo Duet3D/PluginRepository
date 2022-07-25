@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top" />
 
-    <div class="lgside ">
+    <div class="lgstyling ">
         <section class="card2">
             <div class="div_1">
                 <div class="div_2">
@@ -26,11 +26,11 @@
             </div>
         </section>
     </div>
-    <!-- <div class="xsbelow">xyz</div> -->
+    <!-- <div class="mobilestyling">xyz</div> -->
     <Content class="theme-default-content" />
 
 
-    <div class="xsbelow theme-default-content">
+    <div class="mobilestyling theme-default-content">
 
         <section class="card2">
             <div class="div_1">
@@ -88,7 +88,7 @@ $wrapper
   padding-bottom 2rem
   display block
 
-.lgside
+.lgstyling
   font-size 16px
   background-color #fff
   width $sidebarWidth
@@ -103,13 +103,13 @@ $wrapper
   border-right 1px solid $borderColor
   overflow-y auto
 
-.xsbelow
+.mobilestyling
   background-color #fff
 
 
 @media (min-width: (1400px))
   .theme-container.no-sidebar
-    .xsbelow
+    .mobilestyling
       display none
 
     .page
@@ -117,7 +117,7 @@ $wrapper
 
 @media (max-width: (1400px))
   .theme-container.no-sidebar
-    .lgside
+    .lgstyling
       display none
 
     .page
