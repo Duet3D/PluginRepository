@@ -1,5 +1,4 @@
 ---
-layout: CustomPageLayout
 plugin_submitted_by: yasasw
 title: "Endstops Monitor"
 abstract: "Endstop monitoring"
