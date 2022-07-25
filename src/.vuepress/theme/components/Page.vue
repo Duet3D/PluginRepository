@@ -4,12 +4,13 @@
 
     <div class="margindiv"/>
 
-    <div class="sidebar2">abc</div>
-    <div class="sidebar3">xyz</div>
+    <div class="lgside ">abc</div>
+    <!-- <div class="xsbelow">xyz</div> -->
     <Content class="theme-default-content" />
-    <PageEdit />
 
-    <h1>aaaaaaaaa</h1>
+
+    <div class="xsbelow ">abc</div>
+    <PageEdit />
 
     <PageNav v-bind="{ sidebarItems }" />
 
@@ -30,7 +31,7 @@ export default {
 <style lang="stylus">
 
 $wrapper
-  max-width $contentWidth
+  max-width $sidebarWidth
   margin 0 auto
   padding 2rem 2.5rem
   @media (max-width: $MQNarrow)
@@ -46,7 +47,7 @@ $wrapper
   padding-top 25px
 
 
-.sidebar2
+.lgside
   font-size 16px
   background-color #00ff00
   width $sidebarWidth
@@ -60,19 +61,27 @@ $wrapper
   border-right 1px solid $borderColor
   overflow-y auto
 
-
-.sidebar3
+.xsbelow
   font-size 16px
   background-color #00fff0
-  width $sidebarWidth
-  position fixed
-  z-index 10
-  margin 0
-  top $navbarHeight
-  right 0
-  bottom 0
-  box-sizing border-box
-  border-right 1px solid $borderColor
-  overflow-y auto
+  width $contentWidth
+
+
+@media (min-width: ($MQMobile + 1px))
+  .theme-container.no-sidebar
+    .xsbelow
+      display none
+
+    .page
+      padding-left 0
+
+@media (max-width: ($MQMobile + 1px))
+  .theme-container.no-sidebar
+    .lgside
+      display none
+
+    .page
+      padding-left 0
+
 
 </style>
