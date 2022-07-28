@@ -3,13 +3,13 @@
     <slot name="top" />
 
     <div class="lgstyling ">
-      <SideSummary :gituser="`${this.$page.frontmatter.author}`" :gitrepo="`${this.$page.frontmatter.repo}`"/>
+      <SideSummary/>
     </div>
 
     <Content class="theme-default-content" />
 
     <div class="mobilestyling theme-default-content">
-      <SideSummary :gituser="`${this.$page.frontmatter.author}`" :gitrepo="`${this.$page.frontmatter.repo}`"/>
+      <SideSummary/>
     </div>
     <PageEdit />
 

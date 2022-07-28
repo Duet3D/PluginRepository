@@ -6,7 +6,7 @@
                   <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview">
-                  <li >{{"Latest release: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
+                  <li >{{"Latest version: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
                   <li >{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
                   <li >{{"First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
                   <li >{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
@@ -19,9 +19,9 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Releases</h3>
+                  <h3 class="h3_class">Downloads</h3>
                 </div>
-				<ReleaseList :gituser="`${this.gituser}`" :gitrepo="`${this.gitrepo}`"/>
+				<ReleaseList :gituser="`${this.$data.gituser}`" :gitrepo="`${this.$data.gitrepo}`"/>
                 <br>
             </div>
         </section>
@@ -41,10 +41,10 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Platform Versions</h3>
+                  <h3 class="h3_class">Compatible Platforms</h3>
                 </div>
                 <ul class="overview">
-                  <li >{{`${this.$page.frontmatter.license}`}}</li>
+                  <li v-for="platform in getPlatforms" :key="platform.platform">{{`${platform.platform}: ${platform.version}`}}</li>
 				</ul>
                 <br>
             </div>
@@ -74,10 +74,21 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
+                  <h3 class="h3_class">Source Code</h3>
+                </div>
+                <ul class="overview">
+                  <li ><a target="_self" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`}}</a></li>
+				</ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
                   <h3 class="h3_class">Author</h3>
                 </div>
                 <ul class="overview">
-                  <li ><a target="_self" :href="`https://github.com/${this.gituser}`" class="bold">{{`${this.gituser}`}}</a></li>
+                  <li ><a target="_self" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`${this.$data.gituser}`}}</a></li>
 				</ul>
                 <br>
             </div>
@@ -95,11 +106,14 @@ export default {
 		};
 	},
 	props: {
-		gituser: String,
-		gitrepo: String
+
 	},
 	mounted() {
-		fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
+		this.$data.gituser = this.$page.frontmatter.author;
+		this.$data.gitrepo = this.$page.frontmatter.repo;
+		this.$data.gitbranch = this.$page.frontmatter.branch
+
+		fetch(`https://api.github.com/repos/${this.$data.gituser}/${this.$data.gitrepo}/releases`)
 			.then(res => res.json())
 			.then(data => {
 
@@ -110,7 +124,6 @@ export default {
 						},0);
 				const {published_at: first_release_date} = (data||[])[release_count-1] || {}
 
-				console.log(data[release_count])
 				const item = data[0]
           		const {browser_download_url, download_count:download_count_latest} = item.assets[0]
 				const {tag_name, published_at} = item || {}
@@ -120,8 +133,21 @@ export default {
 				this.$forceUpdate();
 			});
 	},
-	methods: {
-		getLatestRelease: item => (item.latest_release || {}).browser_download_url,
+	computed: {
+		getPlatforms() {
+			const platforms = []
+			const predef = ['dwcVersion', 'sbcDSfVersion', 'rrfVersion']
+			predef.forEach(platform => {
+				console.log('XX')
+				if(this.$page.frontmatter[platform])
+					platforms.push({
+						platform,
+						version: this.$page.frontmatter[platform]
+					})
+			})
+			console.log(platforms)
+			return platforms
+		}
 	}
 };
 </script>

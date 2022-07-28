@@ -269,8 +269,6 @@ jobs:
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
           echo --- >> frontmatter.txt
 
-          echo \<ReleaseList gituser=\"$author\" gitrepo=\"$repo\"\/\> >> frontmatter.txt
-
           i=1
           j='i'
           while IFS= read -r line; do
