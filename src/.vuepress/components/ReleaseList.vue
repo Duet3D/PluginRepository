@@ -1,7 +1,6 @@
 <template>
-	<div>
-		<h2>Releases</h2>
-		<ul>
+	<div class="div_2">
+		<ul class="overview">
 			<li v-for="item in items" :key="item.tagName">
 				<a :href="item.browser_download_url">
 					{{ item.tagName }}

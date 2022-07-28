@@ -6,53 +6,80 @@
                   <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview">
-                  <li :key="items.latest_release">{{"Latest release: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
-                  <li :key="items.latest_release">{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
-                  <li :key="items.latest_release">{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
-                  <li :key="items.latest_release">{{"Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
-                  <li :key="items.latest_release">{{"Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
+                  <li >{{"Latest release: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
+                  <li >{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
+                  <li >{{"First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
+                  <li >{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
+                  <li >{{"Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
+                  <li >{{"Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
                 </ul>
-                <ul class="keyword_1">
-                    <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
-                    </li>
-                </ul>
-                <br>    
-
-                <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository${this.$page.frontmatter.path}`">
-                        <h3 class="h3_class">Stats</h3>
-                    </a>
-                </div>
-                <ul>
-                  <li>abc</li>
-                  <li>ass</li>
-                  <li>dd</li>
-                  <li>sss</li>
-                </ul>
-
+                <br>
             </div>
         </section>
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository${this.$page.frontmatter.path}`">
-                        <h3 class="h3_class">{{this.$page.frontmatter.title}}</h3>
-                    </a>
-                    <span class="highlight_1" v-if="this.$page.frontmatter.oem">{{'Duet3D'}}</span>
+                  <h3 class="h3_class">Releases</h3>
                 </div>
-                <p class="description_1">{{this.$page.frontmatter.abstract}}</p>
-                <ul class="card_footer">
-                    <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${this.$page.frontmatter.download_count}`}}</span></li>
-                    <li><a target="_self" :href="`${this.$page.frontmatter.release_page}`"><span title="Release" class="card_footer_1">{{"🔖 " + `${this.$page.frontmatter.latest_version}`}}</span></a></li>
-                    <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${this.$page.frontmatter.release_date.substring(0,10)}`}}</span></li>
-                    <li><a target="_self" :href="`https://github.com/${this.$page.frontmatter.author}`"><span title="Author" class="card_footer_1">{{"👤 " + `${this.$page.frontmatter.author}`}}</span></a></li>
-                </ul>
+				<ReleaseList :gituser="`${this.gituser}`" :gitrepo="`${this.gitrepo}`"/>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Tags</h3>
+                </div>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
                         <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Platform Versions</h3>
+                </div>
+                <ul class="overview">
+                  <li >{{`${this.$page.frontmatter.license}`}}</li>
+				</ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">License</h3>
+                </div>
+                <ul class="overview">
+                  <li >{{`${this.$page.frontmatter.license}`}}</li>
+				</ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Homepage</h3>
+                </div>
+                <ul class="overview">
+                  <li ><a target="_self" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`${this.$page.frontmatter.homepage}`}}</a></li>
+				</ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Author</h3>
+                </div>
+                <ul class="overview">
+                  <li ><a target="_self" :href="`https://github.com/${this.gituser}`" class="bold">{{`${this.gituser}`}}</a></li>
+				</ul>
+                <br>
             </div>
         </section>
 	</div>
@@ -77,22 +104,24 @@ export default {
 			.then(data => {
 
 				const release_count = (data || []).length
-
-				console.log(release_count)
-
 				const download_count_all_time = data.reduce(
 					(previousValue, item) => {
 						return previousValue + ((item||{}).assets[0]||{}).download_count || 0
 						},0);
+				const {published_at: first_release_date} = (data||[])[release_count-1] || {}
 
+				console.log(data[release_count])
 				const item = data[0]
           		const {browser_download_url, download_count:download_count_latest} = item.assets[0]
 				const {tag_name, published_at} = item || {}
 
-				this.$data.items.latest_release = {browser_download_url, download_count_latest, tag_name, published_at, download_count_all_time, release_count}
+				this.$data.items.latest_release = {browser_download_url, download_count_latest, tag_name, published_at, download_count_all_time, release_count, first_release_date}
 
 				this.$forceUpdate();
 			});
+	},
+	methods: {
+		getLatestRelease: item => (item.latest_release || {}).browser_download_url,
 	}
 };
 </script>

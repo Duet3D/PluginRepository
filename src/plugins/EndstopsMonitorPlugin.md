@@ -18,7 +18,6 @@ download_count: 26
 tags:
 -  "endstops"
 ---
-<ReleaseList gituser="Duet3D" gitrepo="EndstopsMonitorPlugin"/>
 # Endstops Monitor Plugin
 
 ## Description
