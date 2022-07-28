@@ -3,20 +3,14 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Overview3</h3>
+                  <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview">
-                  <li :key="items">{{"Latest release: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
-                  <li :key="items">{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
-                  <li :key="items">{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
-                  <li :key="items">{{"Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
-                  <li :key="items">{{"Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
-                </ul>
-                <ul class="card_footer">
-                    <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${this.$page.frontmatter.download_count}`}}</span></li>
-                    <li><a target="_self" :href="`${this.$page.frontmatter.release_page}`"><span title="Release" class="card_footer_1">{{"🔖 " + `${this.$page.frontmatter.latest_version}`}}</span></a></li>
-                    <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${this.$page.frontmatter.release_date.substring(0,10)}`}}</span></li>
-                    <li><a target="_self" :href="`https://github.com/${this.$page.frontmatter.author}`"><span title="Author" class="card_footer_1">{{"👤 " + `${this.$page.frontmatter.author}`}}</span></a></li>
+                  <li :key="items.latest_release">{{"Latest release: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
+                  <li :key="items.latest_release">{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
+                  <li :key="items.latest_release">{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
+                  <li :key="items.latest_release">{{"Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
+                  <li :key="items.latest_release">{{"Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
                 </ul>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
