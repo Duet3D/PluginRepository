@@ -3,57 +3,13 @@
     <slot name="top" />
 
     <div class="lgstyling ">
-        <section class="card2">
-            <div class="div_1">
-                <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository${this.$page.frontmatter.path}`">
-                        <h3 class="h3_class">{{this.$page.frontmatter.title}}</h3>
-                    </a>
-                    <span class="highlight_1" v-if="this.$page.frontmatter.oem">{{'Duet3D'}}</span>
-                </div>
-                <p class="description_1">{{this.$page.frontmatter.abstract}}</p>
-                <ul class="card_footer">
-                    <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${this.$page.frontmatter.download_count}`}}</span></li>
-                    <li><a target="_self" :href="`${this.$page.frontmatter.release_page}`"><span title="Release" class="card_footer_1">{{"🔖 " + `${this.$page.frontmatter.latest_version}`}}</span></a></li>
-                    <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${this.$page.frontmatter.release_date.substring(0,10)}`}}</span></li>
-                    <li><a target="_self" :href="`https://github.com/${this.$page.frontmatter.author}`"><span title="Author" class="card_footer_1">{{"👤 " + `${this.$page.frontmatter.author}`}}</span></a></li>
-                </ul>
-                <ul class="keyword_1">
-                    <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+      <SideSummary :gituser="`${this.$page.frontmatter.author}`" :gitrepo="`${this.$page.frontmatter.repo}`"/>
     </div>
-    <!-- <div class="mobilestyling">xyz</div> -->
+
     <Content class="theme-default-content" />
 
-
     <div class="mobilestyling theme-default-content">
-
-        <section class="card2">
-            <div class="div_1">
-                <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository${this.$page.frontmatter.path}`">
-                        <h3 class="h3_class">{{this.$page.frontmatter.title}}</h3>
-                    </a>
-                    <span class="highlight_1" v-if="this.$page.frontmatter.oem">{{'Duet3D'}}</span>
-                </div>
-                <p class="description_1">{{this.$page.frontmatter.abstract}}</p>
-                <ul class="card_footer">
-                    <li><span title="Downloads" class="card_footer_1">{{"⬇️ " + `${this.$page.frontmatter.download_count}`}}</span></li>
-                    <li><a target="_self" :href="`${this.$page.frontmatter.release_page}`"><span title="Release" class="card_footer_1">{{"🔖 " + `${this.$page.frontmatter.latest_version}`}}</span></a></li>
-                    <li><span title="Last Release Date" class="card_footer_1">{{"📅 " + `${this.$page.frontmatter.release_date.substring(0,10)}`}}</span></li>
-                    <li><a target="_self" :href="`https://github.com/${this.$page.frontmatter.author}`"><span title="Author" class="card_footer_1">{{"👤 " + `${this.$page.frontmatter.author}`}}</span></a></li>
-                </ul>
-                <ul class="keyword_1">
-                    <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+      <SideSummary :gituser="`${this.$page.frontmatter.author}`" :gitrepo="`${this.$page.frontmatter.repo}`"/>
     </div>
     <PageEdit />
 
@@ -66,10 +22,18 @@
 <script>
 import PageEdit from '@vuepress/theme-default/components/PageEdit.vue'
 import PageNav from '@vuepress/theme-default/components/PageNav.vue'
+import SideSummary from './SideSummary.vue'
 
 export default {
-  components: { PageEdit, PageNav },
-  props: ['sidebarItems']
+  components: { PageEdit, PageNav, SideSummary },
+  props: ['sidebarItems'],
+	data() {
+		return {
+			items: {},
+		};
+	},
+	mounted() {
+	}
 }
 </script>
 
