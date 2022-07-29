@@ -231,7 +231,7 @@ jobs:
           release_page=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."html_url")
           release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
           homepage=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."homepage")
-          license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."license")
+          license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq -r ."license")
           download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
           oem=$(if [[ "$author" = Duet3D ]]; then echo true; else echo false; fi)
 
@@ -249,7 +249,7 @@ jobs:
 
           license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE)
           license_status_2=$(curl --write-out %{http_code} --silent --output /dev/null https://spdx.org/licenses/$license)
-          if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://spdx.org/licenses/$license; else license_file=https://github.com/$author/$repo; fi
+          if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://spdx.org/licenses/$license; else license_file=https://github.com/$author/$repo; fi
 
 
           touch frontmatter.txt
