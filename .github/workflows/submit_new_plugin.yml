@@ -247,6 +247,11 @@ jobs:
           if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
 
 
+          license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE)
+          license_status_2=$(curl --write-out %{http_code} --silent --output /dev/null https://spdx.org/licenses/$license)
+          if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE; else license_file=https://github.com/$author/$repo; fi
+
+
           touch frontmatter.txt
           echo --- >> frontmatter.txt
           echo plugin_submitted_by: ${{ github.event.issue.user.login }} >> frontmatter.txt
@@ -264,6 +269,7 @@ jobs:
           echo release_date: $release_date >> frontmatter.txt
           echo release_page: $release_page >> frontmatter.txt
           echo license: $license >> frontmatter.txt
+          echo license_file: $license_file >> frontmatter.txt
           echo download_count: $download_count >> frontmatter.txt
           echo tags: >> frontmatter.txt
           curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 

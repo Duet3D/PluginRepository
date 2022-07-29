@@ -55,7 +55,9 @@
                   <h3 class="h3_class">License</h3>
                 </div>
                 <ul class="overview">
-                  <li >{{`${this.$page.frontmatter.license}`}}</li>
+                  <li >
+                    <a :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`${this.$page.frontmatter.license}`}}</a>
+                  </li>
 				</ul>
                 <br>
             </div>
