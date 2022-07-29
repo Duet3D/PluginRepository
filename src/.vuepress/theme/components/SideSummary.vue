@@ -140,14 +140,12 @@ export default {
 			const platforms = []
 			const predef = ['dwcVersion', 'sbcDSfVersion', 'rrfVersion']
 			predef.forEach(platform => {
-				console.log('XX')
 				if(this.$page.frontmatter[platform])
 					platforms.push({
 						platform,
 						version: this.$page.frontmatter[platform]
 					})
 			})
-			console.log(platforms)
 			return platforms
 		}
 	}
