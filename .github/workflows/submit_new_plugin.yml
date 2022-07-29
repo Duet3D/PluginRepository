@@ -247,7 +247,7 @@ jobs:
           if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
 
 
-          license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE)
+          license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE)
           license_status_2=$(curl --write-out %{http_code} --silent --output /dev/null https://spdx.org/licenses/$license)
           if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENCE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://spdx.org/licenses/$license; else license_file=https://github.com/$author/$repo; fi
 
