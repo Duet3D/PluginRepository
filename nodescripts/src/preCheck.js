@@ -13,7 +13,7 @@ const precheck = async () => {
     let res;
 
     //0. Check if repo name exists already
-    res = !checkFile.local(`src/plugins/${repo}.md`);
+    res = !checkFile.local(`../../src/plugins/${repo}.md`);
     checklog = insertLineToStr(`Plugin name available: ${getStatus(res)}`, checklog);
     isOK = isOK && res;
 
