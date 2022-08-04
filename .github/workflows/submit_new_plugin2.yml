@@ -31,7 +31,7 @@ jobs:
         run: |
           ls -a
           cat issue.json
-          cp issue.json /nodescripts/src/
+          cp issue.json nodescripts/src/
           cd nodescripts
           npm install
           cd src
