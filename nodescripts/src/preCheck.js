@@ -5,6 +5,7 @@ const wget = require('node-wget');
 const precheck = async () => {
     process.argv.forEach(x=>console.log(x))
     console.log(process.env.GITHUB_ISSUE)
+    console.log(process.env.GITHUB_TOKEN)
     // Initalize variables
     let checklog = '';
     const issue = await readFile('issue.json');
