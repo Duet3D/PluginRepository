@@ -30,6 +30,7 @@ jobs:
       - name: precheck-steps
         run: |
 
+          cp issue.json /nodescripts/src/
           cd nodescripts
           npm install
           cd src
