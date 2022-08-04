@@ -9,7 +9,7 @@ const insertLineToStr = (text, host_str = "") => {
 
 const git = {
     labelIssue : async (label) => {
-        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.argv[2]}/labels`, {"labels":[label]}, 
+        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.argv[3]}/labels`, {"labels":[label]}, 
         {
             headers: {
                 'Authorization' : "token ${{secrets.GITHUB_TOKEN}}",
@@ -18,10 +18,10 @@ const git = {
         })
     },
     commentIssue : async (comment) => {
-        axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.argv[2]}/comments`, {"body":comment}, 
+        axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.argv[3]}/comments`, {"body":comment}, 
         {
             headers: {
-                'Authorization' : "token ${{secrets.GITHUB_TOKEN}}",
+                'Authorization' : `token ${process.argv[2]}`,
                 "Accept": "application/vnd.github+json"
             }
         })

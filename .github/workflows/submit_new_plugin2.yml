@@ -35,7 +35,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node test.js ${{github.event.issue.number}} 
+          node test.js ${{secrets.GITHUB_TOKEN}} ${{github.event.issue.number}} 
           exit 1;
 
         
