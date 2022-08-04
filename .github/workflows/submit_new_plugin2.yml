@@ -17,7 +17,8 @@ jobs:
   precheck:
     runs-on: ubuntu-latest
     env:
-      Greeting: HelloXXXX
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_ISSUE: ${{github.event.issue.number}}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -38,7 +39,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node test.js ${{secrets.GITHUB_TOKEN}} ${{github.event.issue.number}} 
+          node test.js
           exit 1;
 
         
