@@ -1,7 +1,7 @@
 name: submit-new-plugin
 on:
   issues:
-    types: [opened]
+    types: []
 jobs:
   issue-label-check:
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
           touch checklog.txt
           isOK=1
 
-          # 0.:Check if repo name exists already
+          # 0. Check if repo name exists already
           res=$((ls src/plugins/$repo.md >> /dev/null 2>&1  && echo 0) || echo 1)
           echo Plugin name available: $res >> checklog.txt
           isOK=$(($isOK*$res))
@@ -60,7 +60,7 @@ jobs:
           echo Plugin name available: $res
 
 
-          # 1.:OK Check for illegal characters (allow only alphanumeric GH user+repo+branch names)
+          # 1. Check for illegal characters (allow only alphanumeric GH user+repo+branch names)
             # user
           len=$(echo "$author" | tr -d '[:alnum:]._-' | awk '{print length}')
           res=$(if [[ "$len" = 0 ]]; then echo 1; else echo 0; fi)
@@ -88,7 +88,7 @@ jobs:
           echo git branch name: $res
 
 
-          # 2.:OK Check if README.md or PLUGIN.md is present on the specified repo
+          # 2. Check if README.md or PLUGIN.md is present on the specified repo
 
           status_code_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
 
@@ -106,7 +106,7 @@ jobs:
           echo Plugin markdown: $res
 
 
-          # 3.:OK Make sure there is at least one release with at least one ZIP file
+          # 3. Make sure there is at least one release with at least one ZIP file
           url=$(curl https://api.github.com/repos/$author/$repo/releases | jq -r .[0]."assets"[0]."browser_download_url")
           #if url exists, then at least one asset is there
           if [[ "$url" = null ]]; then echo Release not available, Exiting >> checklog.txt && commentLog && exit 1; fi
@@ -120,11 +120,11 @@ jobs:
           echo Release: $res
 
 
-          # 4.:OK Download latest ZIP bundle
+          # 4. Download latest ZIP bundle
           wget $url -O asset.zip
           unzip asset.zip -d assetunzipped
 
-          # 5.:OK Make sure plugin.json exists
+          # 5. Make sure plugin.json exists
           res=$((ls assetunzipped/plugin.json >> /dev/null 2>&1  && echo 1) || echo 0)
           echo plugin.json check 1: $res >> checklog.txt
           isOK=$(($isOK*$res))
@@ -132,7 +132,7 @@ jobs:
           echo plugin.json check 1: $res
 
 
-          # 6.:OK Ensure properties id, name, author are present. Validate them as specified in https://github.com/Duet3D/DuetWebControl/blob/master/src/plugins/manifest.js
+          # 6. Ensure properties id, name, author are present. Validate them as specified in https://github.com/Duet3D/DuetWebControl/blob/master/src/plugins/manifest.js
           plugin_id=$(cat assetunzipped/plugin.json | jq -r ."id") #Check if less than 32 characters
           plugin_id_n=$(echo $plugin_id | awk '{print length}') #Check if less than 32 characters
           res=$(if [[ "$plugin_id" != null ]]&&[[ "$plugin_id_n" < 32 ]]; then echo 1; else echo 0; fi)
@@ -156,7 +156,7 @@ jobs:
           isOK=$(($isOK*$res))
           echo plugin.json author: $res
 
-          # 7.:NOT OK Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
+          # 7. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
 
           dwcVersion=$(cat assetunzipped/plugin.json | jq -r ."dwcVersion") #Check if empty
           sbcDSfVersion=$(cat assetunzipped/plugin.json | jq -r ."sbcDSfVersion") #Check if empty
@@ -239,9 +239,6 @@ jobs:
           sbcDSfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."sbcDSfVersion")
           rrfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."rrfVersion")
           
-          if [[ "$dwcVersion" = null ]]; then echo Release not available, Exiting >> checklog.txt && commentLog && exit 1; fi
-
-
 
           plugin_md_status=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
           if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi

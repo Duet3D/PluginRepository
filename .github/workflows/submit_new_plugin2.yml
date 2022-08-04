@@ -1,0 +1,144 @@
+name: submit-new-plugin2
+on:
+  issues:
+    types: [opened]
+jobs:
+  issue-label-check:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Remove plugin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
+          if [[ "$issue_label" = plugin-submission ]]; then exit 0; else exit 1; fi
+  precheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          node-version: 18.x
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser 
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: precheck-steps
+        run: |
+
+          cd nodescripts
+          npm install
+          cd src
+          node test.js          
+          exit 1;
+
+        
+
+                      
+  plugin-submission:
+    needs: precheck
+
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: Fetch and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          set -e
+          
+          echo $(ls -a)
+
+          mv issue.json src/plugins/
+          cd src/plugins 
+
+
+          author=$(cat issue.json | jq -r ."PluginAuthor")
+          repo=$(cat issue.json | jq -r ."PluginRepo")
+          branch=$(cat issue.json | jq -r ."PluginBranch")
+
+          plugin_title=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."name")
+          abstract=$(cat issue.json | jq ."PluginAbstract")
+
+          branchName=submission/$(date +"%y%m%d")$repo
+          commituser=Duet3D
+
+
+          latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
+          release_page=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."html_url")
+          release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
+          homepage=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."homepage")
+          license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq -r ."license")
+          download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
+          oem=$(if [[ "$author" = Duet3D ]]; then echo true; else echo false; fi)
+
+          dwcVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."dwcVersion")
+          sbcDSfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."sbcDSfVersion")
+          rrfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."rrfVersion")
+          
+
+          plugin_md_status=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
+          if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
+
+
+          license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE)
+          license_status_2=$(curl --write-out %{http_code} --silent --output /dev/null https://spdx.org/licenses/$license)
+          if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://spdx.org/licenses/$license; else license_file=https://github.com/$author/$repo; fi
+
+
+          touch frontmatter.txt
+          echo --- >> frontmatter.txt
+          echo plugin_submitted_by: ${{ github.event.issue.user.login }} >> frontmatter.txt
+          echo title: $plugin_title >> frontmatter.txt
+          echo abstract: $abstract >> frontmatter.txt
+          echo author: $author >> frontmatter.txt
+          echo repo: $repo >> frontmatter.txt
+          echo branch: $branch >> frontmatter.txt
+          echo homepage: $homepage >> frontmatter.txt
+          echo dwcVersion: $dwcVersion >> frontmatter.txt
+          echo sbcDSfVersion: $sbcDSfVersion >> frontmatter.txt
+          echo rrfVersion: $rrfVersion >> frontmatter.txt
+          echo oem: $oem >> frontmatter.txt
+          echo latest_version: $latest_version >> frontmatter.txt
+          echo release_date: $release_date >> frontmatter.txt
+          echo release_page: $release_page >> frontmatter.txt
+          echo license: $license >> frontmatter.txt
+          echo license_file: $license_file >> frontmatter.txt
+          echo download_count: $download_count >> frontmatter.txt
+          echo tags: >> frontmatter.txt
+          curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
+          echo --- >> frontmatter.txt
+
+          i=1
+          j='i'
+          while IFS= read -r line; do
+            sed -i "$i$j$line" $repo.md
+            i=`expr $i + 1`
+          done < frontmatter.txt
+
+          rm frontmatter.txt
+          rm issue.json
+          
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add $repo.md
+          git commit -m "Updating plugin $repo.md"
+          git push -u origin $branchName
+
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
