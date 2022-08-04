@@ -15,7 +15,7 @@ jobs:
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
           if [[ "$issue_label" = plugin-submission ]]; then exit 0; else exit 1; fi
   precheck:
-    runs-on: ubuntu-latestlatest
+    runs-on: ubuntu-latest
     env:
       Greeting: HelloXXXX
     steps:
