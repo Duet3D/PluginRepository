@@ -29,7 +29,8 @@ jobs:
 
       - name: precheck-steps
         run: |
-
+          ls -a
+          cat issue.json
           cp issue.json /nodescripts/src/
           cd nodescripts
           npm install
