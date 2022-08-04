@@ -3,6 +3,7 @@ const axios = require('axios');
 const wget = require('node-wget');
 
 const precheck = async () => {
+    process.argv.forEach(x=>console.log(x))
     // Initalize variables
     let checklog = '';
     const issue = await readFile('issue.json');
