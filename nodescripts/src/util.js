@@ -23,7 +23,7 @@ const git = {
         }
     },
     commentIssue : async (comment) => {
-        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, {"body":`"${comment}"`}, 
+        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`"${comment}"`}), 
         {
             headers: {
                 'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
