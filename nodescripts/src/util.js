@@ -22,9 +22,7 @@ const git = {
         }
     },
     commentIssue : async (comment) => {
-        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         console.log(comment)
-        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`${comment}`}), 
         {
             headers: {

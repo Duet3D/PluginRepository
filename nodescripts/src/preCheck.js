@@ -105,6 +105,9 @@ const precheck = async () => {
 
     //8. Sum up
     if(!isOK){
+        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
+        console.log(checklog)
+        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         await exitProcess('Prechecks failed. Cannot be approved', checklog)
     }
     else{
