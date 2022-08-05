@@ -7,7 +7,7 @@ const precheck = async () => {
     console.log(process.env.GITHUB_ISSUE)
     console.log(process.env.GITHUB_TOKEN)
     // Initalize variables
-    let checklog = '';
+    let checklog = "";
     const issue = await readFile('issue.json');
     const author = issue.PluginAuthor;
     const repo = issue.PluginRepo;
@@ -99,7 +99,7 @@ const precheck = async () => {
 
     //7. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
     res = isFirstCharNum(dwcVersion) || isFirstCharNum(sbcDSfVersion) || isFirstCharNum(rrfVersion);
-    checklog = insertLineToStr(`plugin.json platform version:  ${getStatus(res)}`);
+    checklog = insertLineToStr(`plugin.json platform version:  ${getStatus(res)}`, checklog);
     isOK = isOK && res;
 
 

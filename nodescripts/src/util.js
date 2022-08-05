@@ -1,6 +1,5 @@
 const axios = require('axios');
 const wget = require('node-wget');
-const { resolve } = require('path');
 
 const insertLineToStr = (text, host_str = "") => {
     console.log(text);
