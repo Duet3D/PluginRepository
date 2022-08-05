@@ -3,7 +3,9 @@ const wget = require('node-wget');
 const { resolve } = require('path');
 
 const insertLineToStr = (text, host_str = "") => {
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
     console.log(text);
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
     return host_str.concat('\n' , text);
 }
 
@@ -23,7 +25,8 @@ const git = {
         }
     },
     commentIssue : async (comment) => {
-        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`"${comment}"`}), 
+        console.log(comment)
+        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`${comment}`}), 
         {
             headers: {
                 'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
@@ -84,7 +87,7 @@ const checkFile = {
 }
 
 const exitProcess = async (message, host_str) => {
-    insertLineToStr(message);
+    host_str = insertLineToStr(message);
     const res_1 = await git.labelIssue('cannot-be-approved');
     const res_2 = await git.commentIssue(host_str);
     console.log(res_2)
