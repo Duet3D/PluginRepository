@@ -3,9 +3,7 @@ const wget = require('node-wget');
 const { resolve } = require('path');
 
 const insertLineToStr = (text, host_str = "") => {
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
     console.log(text);
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
     return host_str.concat('\n' , text);
 }
 
@@ -25,7 +23,9 @@ const git = {
         }
     },
     commentIssue : async (comment) => {
+        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         console.log(comment)
+        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`${comment}`}), 
         {
             headers: {
