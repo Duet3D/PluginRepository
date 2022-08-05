@@ -23,7 +23,7 @@ const git = {
         }
     },
     commentIssue : async (comment) => {
-        axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, {"body":comment}, 
+        return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, {"body":comment}, 
         {
             headers: {
                 'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
@@ -86,7 +86,6 @@ const checkFile = {
 const exitProcess = async (message, host_str) => {
     insertLineToStr(message);
     const res_1 = await git.labelIssue('cannot-be-approved');
-    console.log(res_1)
     const res_2 = await git.commentIssue(host_str);
     console.log(res_2)
     process.exit(1);
