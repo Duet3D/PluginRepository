@@ -108,7 +108,8 @@ const precheck = async () => {
         console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
         console.log(checklog)
         console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX')
-        await exitProcess('Prechecks failed. Cannot be approved', checklog)
+        checklog = insertLineToStr(`Prechecks failed. Cannot be approved'`, checklog);
+        await exitProcess(checklog)
     }
     else{
         await git.commentIssue(checklog);

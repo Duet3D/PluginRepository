@@ -83,10 +83,9 @@ const checkFile = {
     }
 }
 
-const exitProcess = async (message, host_str) => {
-    host_str = insertLineToStr(message. host_str);
+const exitProcess = async (checklog) => {
     const res_1 = await git.labelIssue('cannot-be-approved');
-    const res_2 = await git.commentIssue(host_str);
+    const res_2 = await git.commentIssue(checklog);
     console.log(res_2)
     process.exit(1);
 }
