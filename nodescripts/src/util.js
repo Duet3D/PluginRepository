@@ -3,7 +3,7 @@ const wget = require('node-wget');
 
 const insertLineToStr = (text, host_str = "") => {
     console.log(text);
-    return host_str.concat('\n' , text);
+    return host_str.concat(text, '\n');
 }
 
 const git = {
