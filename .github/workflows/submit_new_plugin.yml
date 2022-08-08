@@ -1,7 +1,8 @@
-name: submit-new-plugin
+name: submit-new-plugin2
 on:
   issues:
     types: [opened]
+    
 jobs:
   issue-label-check:
     runs-on: ubuntu-latest
@@ -12,12 +13,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-submission2 ]]; then exit 0; else exit 1; fi
+          if [[ "$issue_label" = plugin-submission ]]; then exit 0; else exit 1; fi
   precheck:
-    needs: issue-label-check
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_ISSUE: ${{github.event.issue.number}}
     steps:
       - uses: actions/checkout@v2
+        with:
+          node-version: 18.x
 
       - uses: stefanbuck/github-issue-praser@v2
         id: issue-parser 
@@ -28,167 +33,13 @@ jobs:
 
       - name: precheck-steps
         run: |
-
-          commentLog () {
-            txt="Log:"
-            while IFS= read -r line; do
-              echo $line
-              txt="$txt \n $line"
-            done < checklog.txt
-
-          response="{"\"body"\": "\"$txt"\"}"
-
-          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["cannot-be-approved"]}'
-
-          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
-              -d "$response"
-          }
-
+          ls -a
           cat issue.json
-
-          author=$(cat issue.json | jq -r ."PluginAuthor")
-          repo=$(cat issue.json | jq -r ."PluginRepo")
-          branch=$(cat issue.json | jq -r ."PluginBranch")
-
-          touch checklog.txt
-          isOK=1
-
-          # 0. Check if repo name exists already
-          res=$((ls src/plugins/$repo.md >> /dev/null 2>&1  && echo 0) || echo 1)
-          echo Plugin name available: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo Plugin name available: $res
-
-
-          # 1. Check for illegal characters (allow only alphanumeric GH user+repo+branch names)
-            # user
-          len=$(echo "$author" | tr -d '[:alnum:]._-' | awk '{print length}')
-          res=$(if [[ "$len" = 0 ]]; then echo 1; else echo 0; fi)
-          echo git user/author name: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo git user/author name: $res
-
-
-            # repo
-          len=$(echo "$repo" | tr -d '[:alnum:]._-' | awk '{print length}')
-          res=$(if [[ "$len" = 0 ]]; then echo 1; else echo 0; fi)
-          echo git repo name: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo git repo name: $res
-
-
-            # branch  
-          len=$(echo "$repo" | tr -d '[:alnum:]/._-' | awk '{print length}')
-          res=$(if [[ "$len" = 0 ]]; then echo 1; else echo 0; fi)
-          echo git branch name: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo git branch name: $res
-
-
-          # 2. Check if README.md or PLUGIN.md is present on the specified repo
-
-          status_code_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
-
-          status_code_2=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/README.md)
-
-          res_1=$(if [[ "$status_code_1" = 200 ]]; then echo 1; else echo 0; fi)
-          res_2=$(if [[ "$status_code_2" = 200 ]]; then echo 1; else echo 0; fi)
-          res=$((res_1||res_2))
-          echo PLUGIN.md: $res_1 >> checklog.txt
-          echo README.md: $res_2 >> checklog.txt
-          echo Plugin markdown: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-          echo PLUGIN.md: $res_1
-          echo README.md: $res_2
-          echo Plugin markdown: $res
-
-
-          # 3. Make sure there is at least one release with at least one ZIP file
-          url=$(curl https://api.github.com/repos/$author/$repo/releases | jq -r .[0]."assets"[0]."browser_download_url")
-          #if url exists, then at least one asset is there
-          if [[ "$url" = null ]]; then echo Release not available, Exiting >> checklog.txt && commentLog && exit 1; fi
-
-          ext=$(echo $url | rev | cut -d'.' -f 1 |rev)
-          #check if ext is zip to confirm it's a zip
-          res=$(if [[ "$ext" = zip ]]; then echo 1; else echo 0; fi)
-          echo Release: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo Release: $res
-
-
-          # 4. Download latest ZIP bundle
-          wget $url -O asset.zip
-          unzip asset.zip -d assetunzipped
-
-          # 5. Make sure plugin.json exists
-          res=$((ls assetunzipped/plugin.json >> /dev/null 2>&1  && echo 1) || echo 0)
-          echo plugin.json check 1: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo plugin.json check 1: $res
-
-
-          # 6. Ensure properties id, name, author are present. Validate them as specified in https://github.com/Duet3D/DuetWebControl/blob/master/src/plugins/manifest.js
-          plugin_id=$(cat assetunzipped/plugin.json | jq -r ."id") #Check if less than 32 characters
-          plugin_id_n=$(echo $plugin_id | awk '{print length}') #Check if less than 32 characters
-          res=$(if [[ "$plugin_id" != null ]]&&[[ "$plugin_id_n" < 32 ]]; then echo 1; else echo 0; fi)
-          echo plugin.json id: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-
-          echo plugin.json id: $res
-
-
-          plugin_name=$(cat assetunzipped/plugin.json | jq -r ."name") #Check if less than 64 characters
-          plugin_name_n=$(echo $plugin_name | awk '{print length}') #Check if less than 64 characters
-          res=$(if [[ "$plugin_name" != null ]]&&[[ "$plugin_name_n" < 64 ]]; then echo 1; else echo 0; fi)
-          echo plugin.json name: $res >> checklog.txt 
-          isOK=$(($isOK*$res))
-          echo plugin.json name: $res
-
-          plugin_author=$(cat assetunzipped/plugin.json | jq -r ."author") #Check if empty
-          plugin_author_n=$(echo $plugin_author | awk '{print length}') #Check if empty
-          res=$(if [[ "$plugin_author" != null ]]&&[[ "$plugin_author_n" > 0 ]]; then echo 1; else echo 0; fi)
-          echo plugin.json author: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-          echo plugin.json author: $res
-
-          # 7. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
-
-          dwcVersion=$(cat assetunzipped/plugin.json | jq -r ."dwcVersion") #Check if empty
-          sbcDSfVersion=$(cat assetunzipped/plugin.json | jq -r ."sbcDSfVersion") #Check if empty
-          rrfVersion=$(cat assetunzipped/plugin.json | jq -r ."rrfVersion") #Check if empty
-
-          dwcVersionOK=$(if [[ "${dwcVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
-          sbcDSfVersionOK=$(if [[ "${sbcDSfVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
-          rrfVersionOK=$(if [[ "${rrfVersion:0:1}" =~ ^[0-9]+$ ]]; then echo 1; else echo 0; fi)
-          res=$((dwcVersionOK||sbcDSfVersionOK||rrfVersionOK))
-
-
-          echo plugin.json platform version: $res >> checklog.txt
-          isOK=$(($isOK*$res))
-          echo plugin.json platform version: $res
-
-          txt="Log:"
-          while IFS= read -r line; do
-            echo $line
-            txt="$txt \n $line"
-          done < checklog.txt
-    
-          response="{"\"body"\": "\"$txt"\"}"
-
-          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
-            -d "$response"
-
-          echo $isOK
-
-          if [[ "$isOK" = 1 ]]; then exit 0; else curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["cannot-be-approved"]}' && exit 1; fi
-
-
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node preCheck.js
                       
   plugin-submission:
     needs: precheck
@@ -207,81 +58,32 @@ jobs:
       - name: Fetch and create PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ISSUE: ${{github.event.issue.number}}
+          GITHUB_USER: ${{ github.event.issue.user.login }}
         run: |
 
           set -e
-          
-          echo $(ls -a)
-
-          mv issue.json src/plugins/
-          cd src/plugins 
-
 
           author=$(cat issue.json | jq -r ."PluginAuthor")
           repo=$(cat issue.json | jq -r ."PluginRepo")
           branch=$(cat issue.json | jq -r ."PluginBranch")
 
-          plugin_title=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."name")
-          abstract=$(cat issue.json | jq ."PluginAbstract")
+          echo $(ls -a)
+
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node createPR.js
+
+          cd ../../
+          cp nodescripts/src/$repo.md src/plugins
+
+          cd src/plugins 
 
           branchName=submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
-
-
-          latest_version=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."tag_name")
-          release_page=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."html_url")
-          release_date=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[0]."published_at")
-          homepage=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."homepage")
-          license=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq -r ."license")
-          download_count=$(curl https://api.github.com/repos/$author/$repo/releases | jq .[]."assets"[0]."download_count" | paste -sd+ | bc)
-          oem=$(if [[ "$author" = Duet3D ]]; then echo true; else echo false; fi)
-
-          dwcVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."dwcVersion")
-          sbcDSfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."sbcDSfVersion")
-          rrfVersion=$(curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."rrfVersion")
-          
-
-          plugin_md_status=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md)
-          if [[ "$plugin_md_status" = 200 ]]; then wget https://raw.githubusercontent.com/$author/$repo/$branch/PLUGIN.md -O $repo.md; else wget https://raw.githubusercontent.com/$author/$repo/$branch/README.md -O $repo.md; fi
-
-
-          license_status_1=$(curl --write-out %{http_code} --silent --output /dev/null https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE)
-          license_status_2=$(curl --write-out %{http_code} --silent --output /dev/null https://spdx.org/licenses/$license)
-          if [[ "$license_status_1" = 200 ]]; then license_file=https://raw.githubusercontent.com/$author/$repo/$branch/LICENSE; elif [[ "$license_status_2" = 200 ]]; then license_file=https://spdx.org/licenses/$license; else license_file=https://github.com/$author/$repo; fi
-
-
-          touch frontmatter.txt
-          echo --- >> frontmatter.txt
-          echo plugin_submitted_by: ${{ github.event.issue.user.login }} >> frontmatter.txt
-          echo title: $plugin_title >> frontmatter.txt
-          echo abstract: $abstract >> frontmatter.txt
-          echo author: $author >> frontmatter.txt
-          echo repo: $repo >> frontmatter.txt
-          echo branch: $branch >> frontmatter.txt
-          echo homepage: $homepage >> frontmatter.txt
-          echo dwcVersion: $dwcVersion >> frontmatter.txt
-          echo sbcDSfVersion: $sbcDSfVersion >> frontmatter.txt
-          echo rrfVersion: $rrfVersion >> frontmatter.txt
-          echo oem: $oem >> frontmatter.txt
-          echo latest_version: $latest_version >> frontmatter.txt
-          echo release_date: $release_date >> frontmatter.txt
-          echo release_page: $release_page >> frontmatter.txt
-          echo license: $license >> frontmatter.txt
-          echo license_file: $license_file >> frontmatter.txt
-          echo download_count: $download_count >> frontmatter.txt
-          echo tags: >> frontmatter.txt
-          curl https://raw.githubusercontent.com/$author/$repo/$branch/plugin.json | jq ."tags"[] | awk '{print "\t - ",$0}' >> frontmatter.txt 
-          echo --- >> frontmatter.txt
-
-          i=1
-          j='i'
-          while IFS= read -r line; do
-            sed -i "$i$j$line" $repo.md
-            i=`expr $i + 1`
-          done < frontmatter.txt
-
-          rm frontmatter.txt
-          rm issue.json
           
           git config --global user.name "yasasw"
           git config --global user.email "yasas.wijetilake@gmail.com"
