@@ -1,4 +1,4 @@
-name: submit-new-plugin2
+name: submit-new-plugin
 on:
   issues:
     types: [opened]
@@ -15,6 +15,7 @@ jobs:
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
           if [[ "$issue_label" = plugin-submission ]]; then exit 0; else exit 1; fi
   precheck:
+    needs: issue-label-check
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
