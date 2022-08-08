@@ -120,6 +120,7 @@ const createPR = async () => {
     const author = issue.PluginAuthor;
     const repo = issue.PluginRepo;
     const branch = issue.PluginBranch;
+    let res;
 
     let checklog = "";
 
@@ -156,7 +157,7 @@ const createPR = async () => {
     
     const plugin_json = await readFile('unzipped/plugin.json');
 
-    const plugin_title = ((plugin_json||{}).data || {}).name;
+    const {name: plugin_title, homepage, license, dwcVersion, sbcDSfVersion, rrfVersion, tags = []} = plugin_json;
     const abstract= issue.PluginAbstract;
 
     const date = new Date().toISOString().slice(2, 10).replace(new RegExp("-",'g'), "");
@@ -164,14 +165,8 @@ const createPR = async () => {
     const latest_version =  ((gh_release_data||{}).data || [])[0].tag_name;
     const release_page =  ((gh_release_data||{}).data || [])[0].html_url;
     const release_date = ((gh_release_data||{}).data || [])[0].published_at;
-    const homepage = ((plugin_json||{}).data || {}).homepage;
-    const license = ((plugin_json||{}).data || {}).license;
     const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
     const oem = author == 'Duet3D'
-
-    const dwcVersion = ((plugin_json||{}).data || {}).dwcVersion;
-    const sbcDSfVersion = ((plugin_json||{}).data || {}).sbcDSfVersion;
-    const rrfVersion = ((plugin_json||{}).data || {}).rrfVersion;
 
     const plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
     if(plugin_md_status){
@@ -197,7 +192,7 @@ const createPR = async () => {
 
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
-    frontmatter = insertLineToStr("plugin_submitted_by: ${{ github.event.issue.user.login }}", frontmatter);
+    frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);
     frontmatter = insertLineToStr(`author: ${author}`, frontmatter);
@@ -215,7 +210,7 @@ const createPR = async () => {
     frontmatter = insertLineToStr(`license_file: ${license_file}`, frontmatter);
     frontmatter = insertLineToStr(`download_count: ${download_count}`, frontmatter);
     frontmatter = insertLineToStr(`tags:`, frontmatter);
-    (((plugin_json||{}).data || {}).tags || []).forEach(x => {
+    tags.forEach(x => {
         frontmatter = insertLineToStr(`- ${x}`, frontmatter);
     });
     frontmatter = insertLineToStr(`---`, frontmatter);

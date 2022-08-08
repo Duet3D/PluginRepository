@@ -59,6 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ISSUE: ${{github.event.issue.number}}
+          GITHUB_USER: ${{ github.event.issue.user.login }}
         run: |
 
           set -e
@@ -77,7 +78,7 @@ jobs:
           node createPR.js
 
           cd ../../
-          cp nodescripts/$repo.md src/plugins
+          cp nodescripts/src/$repo.md src/plugins
 
           cd src/plugins 
 
