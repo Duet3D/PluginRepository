@@ -40,10 +40,6 @@ jobs:
           npm install
           cd src
           node test.js
-          exit 1;
-
-        
-
                       
   plugin-submission:
     needs: precheck
