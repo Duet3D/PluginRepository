@@ -11,6 +11,7 @@ jobs:
 
           set -e
 
+          npm install
           npm run build
 
           cd src/.vuepress/dist
