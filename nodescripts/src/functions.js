@@ -185,6 +185,7 @@ const createPR = async () => {
 
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
+    frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);

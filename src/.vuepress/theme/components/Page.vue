@@ -2,13 +2,13 @@
   <main class="page">
     <slot name="top" />
 
-    <div class="lgstyling ">
+    <div class="lgstyling" v-if="this.$page.frontmatter.plugin">
       <SideSummary/>
     </div>
 
     <Content class="theme-default-content" />
 
-    <div class="mobilestyling theme-default-content">
+    <div class="mobilestyling theme-default-content"  v-if="this.$page.frontmatter.plugin">
       <SideSummary/>
     </div>
     <PageEdit />

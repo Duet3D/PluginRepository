@@ -1,5 +1,6 @@
 ---
 plugin_submitted_by: yasasw
+plugin: true
 title: Input Shaping
 abstract: Input shaping plugin lets you shape the input.
 author: Duet3D

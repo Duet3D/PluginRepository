@@ -1,5 +1,6 @@
 ---
 plugin_submitted_by: yasasw
+plugin: true
 title: Endstops Monitor
 abstract: Endstop monitoring
 author: Duet3D

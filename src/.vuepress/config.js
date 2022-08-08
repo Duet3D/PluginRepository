@@ -44,23 +44,18 @@ module.exports = {
       {
         text: 'GitHub',
         link: 'https://github.com/duet3D/'
-      }
+      },
+      {
+        text: 'Guide',
+        link: '/guide/'
+      },
       // {
       //   text: 'Plugins',
       //   link: '/plugins/'
       // }
     ],
     sidebar: {
-      '/guide/': [
-        {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'using-vue',
-          ]
-        }
-      ]
+
     }
   },
 
