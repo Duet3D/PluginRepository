@@ -1,4 +1,4 @@
-const {insertLineToStr, git, downloadFile, checkFile, exitProcess, readFile, writeLinetoFile, prepend} = require('./util');
+const { insertLineToStr, git, downloadFile, checkFile, exitProcess, readFile, writeLinetoFile, prepend, unzip, isFirstCharNum, getStatus} = require('./util');
 const axios = require('axios');
 const wget = require('node-wget');
 
