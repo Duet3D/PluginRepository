@@ -76,7 +76,7 @@ jobs:
           cd src
           node createPR.js
 
-          cd ../
+          cd ../../
           cp nodescripts/$repo.md src/plugins
 
           cd src/plugins 
