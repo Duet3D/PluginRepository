@@ -124,6 +124,11 @@ const createPR = async () => {
 
     let checklog = "";
 
+    res = checkFile.local(`../../src/plugins/${repo}.md`);
+    if(res){
+        await exitProcess('Duplicate name. Cannot be approved', checklog);
+    }
+
     //Download release and unzip-------------------------------------------------------------------------------------------------
     const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
 
