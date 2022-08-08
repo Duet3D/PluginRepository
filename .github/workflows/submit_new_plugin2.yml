@@ -64,10 +64,6 @@ jobs:
 
           set -e
 
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
-          git pull
-
           author=$(cat issue.json | jq -r ."PluginAuthor")
           repo=$(cat issue.json | jq -r ."PluginRepo")
           branch=$(cat issue.json | jq -r ."PluginBranch")
@@ -89,6 +85,8 @@ jobs:
           branchName=submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
           
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
           git checkout -b $branchName
           git add $repo.md
           git commit -m "Updating plugin $repo.md"
