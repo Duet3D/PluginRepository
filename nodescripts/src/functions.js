@@ -1,6 +1,5 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, readFile, writeLinetoFile, prepend, unzip, isFirstCharNum, getStatus} = require('./util');
 const axios = require('axios');
-const wget = require('node-wget');
 
 const precheck = async () => {
     process.argv.forEach(x=>console.log(x))
@@ -25,19 +24,8 @@ const precheck = async () => {
     if(!repo_status){
         await exitProcess('Errors with accessing repo. Check submitted username, repo, branch', checklog);
     }
-    //1. OK Check for illegal characters (allow only alphanumeric GH user+repo+branch names)
-    
 
-    //user
-
-
-    //repo
-
-    
-    //branch  
-
-
-    //2. Check if README.md or PLUGIN.md is present on the specified repo
+    //1. Check if README.md or PLUGIN.md is present on the specified repo
     let plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
     checklog = insertLineToStr(`PLUGIN.md: ${getStatus(plugin_md_status)}`, checklog);
 
@@ -48,7 +36,7 @@ const precheck = async () => {
     isOK = isOK && res;
 
 
-    // 3. Make sure there is at least one release with at least one ZIP file
+    //2. Make sure there is at least one release with at least one ZIP file
     const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
     let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     if((status != 200) || browser_download_url == undefined){
@@ -63,11 +51,11 @@ const precheck = async () => {
     checklog = insertLineToStr(`Release:  ${getStatus(res)}`, checklog);
     isOK = isOK && res;
 
-    //4. Download latest ZIP bundle
+    //3. Download latest ZIP bundle
     await downloadFile(browser_download_url, 'asset.zip')
 
 
-    //5. Make sure plugin.json exists
+    //4. Make sure plugin.json exists
     //unzip here
     try{
         await unzip();
@@ -81,7 +69,7 @@ const precheck = async () => {
         await exitProcess('plugin.json - manifest not available, Exiting', checklog);
     }
     
-    //6. Ensure properties id, name, author are present
+    //5. Ensure properties id, name, author are present
     const plugin_manifest = await readFile('unzipped/plugin.json');
     const {id:plugin_id, name:plugin_name, author:plugin_author, dwcVersion, sbcDSfVersion, rrfVersion} = plugin_manifest;
     
@@ -97,13 +85,13 @@ const precheck = async () => {
     checklog = insertLineToStr(`plugin.json author:  ${getStatus(res)}`, checklog);
     isOK = isOK && res;
 
-    //7. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
+    //6. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
     res = isFirstCharNum(dwcVersion) || isFirstCharNum(sbcDSfVersion) || isFirstCharNum(rrfVersion);
     checklog = insertLineToStr(`plugin.json platform version:  ${getStatus(res)}`, checklog);
     isOK = isOK && res;
 
 
-    //8. Sum up
+    //7. Sum up
     if(!isOK){
         console.log(checklog)
         await exitProcess('Prechecks failed. Cannot be approved', checklog)

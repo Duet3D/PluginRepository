@@ -30,7 +30,6 @@ const git = {
                 "Accept": "application/vnd.github+json"
             }
         })
-
     }
 }
 
@@ -90,7 +89,6 @@ const exitProcess = async (msg, checklog) => {
 
     const res_1 = await git.labelIssue('cannot-be-approved');
     const res_2 = await git.commentIssue(checklog_out);
-    console.log(res_2)
     process.exit(1);
 }
 
@@ -102,7 +100,6 @@ const readFile = (path) => {
             resolve(JSON.parse(data.toString()));
         });
     });
-
 }
 
 const writeLinetoFile = (str, path) => {
