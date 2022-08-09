@@ -32,7 +32,7 @@
                 </div>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`/search?q=tag:${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                        <a :href="`http://localhost:8080/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
                 <br>

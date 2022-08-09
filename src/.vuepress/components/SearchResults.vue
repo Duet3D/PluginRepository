@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="centered">All Plugins</h2>
+		<h2 class="centered">Search Results</h2>
         <div class="search_box_1">         
             <input type="text" v-model="input" placeholder="Search plugins..." />
         </div>
@@ -38,11 +38,12 @@
 export default {
 	data() {
 		return {
-            input: '',
+            input: this.$route.query.keyword,
 			items: [],
 		};
 	},
 	mounted() {
+        const query_params = this.$route.query.keyword
         this.$data.items = this.$site.pages.filter( x => x.regularPath.substring(0,9) === '/plugins/' && x.regularPath.length > 9)
 	},
     computed: {
