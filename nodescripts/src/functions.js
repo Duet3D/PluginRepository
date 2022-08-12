@@ -219,7 +219,7 @@ const submissionCreatePR = async () => {
 
 const removalPrecheck = async () => {
     const issue = await readJSON('issue.json');
-    const plugin_id = issue.plugin_id;
+    const plugin_id = issue.PluginID;
 
     let checklog = "";
     let res;
