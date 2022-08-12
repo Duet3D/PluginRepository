@@ -207,8 +207,12 @@ const submissionCreatePR = async () => {
     frontmatter = insertLineToStr(`download_count: ${download_count}`, frontmatter);
     frontmatter = insertLineToStr(`tags:`, frontmatter);
     tags.forEach(x => {
-        frontmatter = insertLineToStr(`- ${x}`, frontmatter);
+        frontmatter = insertLineToStr(`- ${x.toLowerCase()}`, frontmatter);
     });
+    if(dwcVersion) frontmatter = insertLineToStr(`- dwc`, frontmatter);
+    if(sbcDSfVersion) frontmatter = insertLineToStr(`- sbc`, frontmatter);
+    if(rrfVersion) frontmatter = insertLineToStr(`- rrf`, frontmatter);
+    if(oem) frontmatter = insertLineToStr(`- duet3d`, frontmatter);
     frontmatter = insertLineToStr(`---`, frontmatter);
     frontmatter = insertLineToStr("", frontmatter);
 
