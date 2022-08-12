@@ -22,7 +22,7 @@ jobs:
       - uses: stefanbuck/github-issue-praser@v2
         id: issue-parser
         with:
-          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+          template-path: .github/ISSUE_TEMPLATE/PluginRemoval.yml
 
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
 
@@ -78,6 +78,6 @@ jobs:
           git commit -m "Deleting plugin plugin_file"
           git push -u origin $branchName
 
-          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-removal --base $commituser:master --head $commituser:$branchName
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
