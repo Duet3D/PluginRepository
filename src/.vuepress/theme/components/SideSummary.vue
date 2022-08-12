@@ -6,7 +6,7 @@
                   <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview">
-                  <li >{{"Latest version: "}}<a target="_self" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
+                  <li >{{"Latest version: "}}<a target="_blank" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
                   <li >{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
                   <li >{{"First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
                   <li >{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
@@ -32,7 +32,7 @@
                 </div>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`http://localhost:8080/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                        <a target="_blank" :href="`http://localhost:8080/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
                 <br>
@@ -44,7 +44,7 @@
                   <h3 class="h3_class">Compatible Platforms</h3>
                 </div>
                 <ul class="overview">
-                  <li v-for="platform in getPlatforms" :key="platform.platform">{{`${platform.platform}: ${platform.version}`}}</li>
+                  <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`${platform.platform}: ${platform.version}`}}</a></li>
 				</ul>
                 <br>
             </div>
@@ -56,7 +56,7 @@
                 </div>
                 <ul class="overview">
                   <li >
-                    <a :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`${this.$page.frontmatter.license}`}}</a>
+                    <a target="_blank" :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`${this.$page.frontmatter.license}`}}</a>
                   </li>
 				</ul>
                 <br>
@@ -68,7 +68,7 @@
                   <h3 class="h3_class">Homepage</h3>
                 </div>
                 <ul class="overview">
-                  <li ><a target="_self" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`${this.$page.frontmatter.homepage}`}}</a></li>
+                  <li ><a target="_blank" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`${this.$page.frontmatter.homepage}`}}</a></li>
 				</ul>
                 <br>
             </div>
@@ -79,7 +79,7 @@
                   <h3 class="h3_class">Source Code</h3>
                 </div>
                 <ul class="overview">
-                  <li ><a target="_self" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`}}</a></li>
+                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`}}</a></li>
 				</ul>
                 <br>
             </div>
@@ -90,7 +90,7 @@
                   <h3 class="h3_class">Author</h3>
                 </div>
                 <ul class="overview">
-                  <li ><a target="_self" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`${this.$data.gituser}`}}</a></li>
+                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`${this.$data.gituser}`}}</a></li>
 				</ul>
                 <br>
             </div>
@@ -138,12 +138,13 @@ export default {
 	computed: {
 		getPlatforms() {
 			const platforms = []
-			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework'}, { key: 'rrfVersion',  name: 'Rep Rap Firmware'}]
-			predef.forEach(({key, name}) => {
+			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control', url: 'https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework', url: 'https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup'}, { key: 'rrfVersion',  name: 'Rep Rap Firmware', url: 'https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview'}]
+			predef.forEach(({key, name, url}) => {
 				if(this.$page.frontmatter[key] && this.$page.frontmatter[key] != 'undefined')
 					platforms.push({
 						platform: name,
-						version: this.$page.frontmatter[key]
+						version: this.$page.frontmatter[key],
+            url: url
 					})
 			})
 			return platforms
