@@ -1,0 +1,35 @@
+name: Plugin Report
+description: Reporting a plugin
+title: "[PluginReport]: "
+labels: [abuse-report]
+assignees:
+- yasasw
+body:
+- type: markdown
+  attributes:
+    value: |
+      ## Ensure that you are:
+      - clearly mentioning the issues/concerns you have
+
+- type: input
+  id: PluginID
+  attributes:
+    label: Plugin ID
+    description: Name of the plugin
+  validations:
+    required: true
+- type: input
+  id: Description
+  attributes:
+    label: Reason
+    description: Reason for reporting
+    placeholder: I want to report because...
+  validations:
+    required: true
+- type: input
+  id: AdditionalInfo
+  attributes:
+    label: Additional Information
+    description: Additional Information
+  validations:
+    required: false
