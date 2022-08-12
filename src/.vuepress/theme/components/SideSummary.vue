@@ -32,7 +32,7 @@
                 </div>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a :href="`https://duet3d.github.io/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                        <a :href="`http://localhost:8080/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
                 <br>
@@ -138,12 +138,12 @@ export default {
 	computed: {
 		getPlatforms() {
 			const platforms = []
-			const predef = ['dwcVersion', 'sbcDSfVersion', 'rrfVersion']
-			predef.forEach(platform => {
-				if(this.$page.frontmatter[platform] && this.$page.frontmatter[platform] != 'undefined')
+			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework'}, { key: 'rrfVersion',  name: 'Rep Rap Firmware'}]
+			predef.forEach(({key, name}) => {
+				if(this.$page.frontmatter[key] && this.$page.frontmatter[key] != 'undefined')
 					platforms.push({
-						platform,
-						version: this.$page.frontmatter[platform]
+						platform: name,
+						version: this.$page.frontmatter[key]
 					})
 			})
 			return platforms
