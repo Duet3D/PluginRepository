@@ -40,7 +40,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node preCheck.js
+          node submissionPrecheck.js
                       
   plugin-submission:
     needs: precheck
@@ -76,7 +76,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node createPR.js
+          node submissionCreatePR.js
 
           cd ../../
           cp nodescripts/src/$repo.md src/plugins

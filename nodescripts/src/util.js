@@ -92,14 +92,26 @@ const exitProcess = async (msg, checklog) => {
     process.exit(1);
 }
 
-const readFile = (path) => {
-    const fs = require('fs');
-    return new Promise((resolve, reject) => {
-        fs.readFile(path, (err, data) => {
-            if (err) reject(err);
-            resolve(JSON.parse(data.toString()));
+
+const readFile = (path) = {
+    JSON: async (path) => {
+        const fs = require('fs');
+        return new Promise((resolve, reject) => {
+            fs.readFile(path, (err, data) => {
+                if (err) reject(err);
+                resolve(JSON.parse(data.toString()));
+            });
+        });    
+    },
+    TEXT: async (path) => {
+        const fs = require('fs');
+        return new Promise((resolve, reject) => {
+            fs.readFile(path, (err, data) => {
+                if (err) reject(err);
+                resolve(data.toString());
+            });
         });
-    });
+    }
 }
 
 const writeLinetoFile = (str, path) => {
@@ -143,6 +155,10 @@ const getStatus = (status) => {
     return status? "OK" : "NOT OK"
 }
 
+const getFrontmatterObject = (key, plugin_md) => {
+    return (plugin_md.split('\n').find( x => x.includes(key)) || "").replace(`${key}:`, "").trim();
+}
+
 module.exports = {
     insertLineToStr,
     git,
@@ -154,5 +170,6 @@ module.exports = {
     prepend,
     unzip,
     isFirstCharNum,
-    getStatus
+    getStatus,
+    getFrontmatterObject
 }

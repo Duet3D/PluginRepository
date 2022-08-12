@@ -1,13 +1,15 @@
-const { insertLineToStr, git, downloadFile, checkFile, exitProcess, readFile, writeLinetoFile, prepend, unzip, isFirstCharNum, getStatus} = require('./util');
+const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
+        readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
+        getStatus, getFrontmatterObject} = require('./util');
 const axios = require('axios');
 
-const precheck = async () => {
+const submissionPrecheck = async () => {
     process.argv.forEach(x=>console.log(x))
     console.log(process.env.GITHUB_ISSUE)
     console.log(process.env.GITHUB_TOKEN)
     // Initalize variables
     let checklog = "";
-    const issue = await readFile('issue.json');
+    const issue = await readJSON('issue.json');
     const author = issue.PluginAuthor;
     const repo = issue.PluginRepo;
     const branch = issue.PluginBranch;
@@ -70,7 +72,7 @@ const precheck = async () => {
     }
     
     //5. Ensure properties id, name, author are present
-    const plugin_manifest = await readFile('unzipped/plugin.json');
+    const plugin_manifest = await readJSON('unzipped/plugin.json');
     const {id:plugin_id, name:plugin_name, author:plugin_author, dwcVersion, sbcDSfVersion, rrfVersion} = plugin_manifest;
     
     res = plugin_id && plugin_id.length < 32
@@ -103,8 +105,8 @@ const precheck = async () => {
 
 }
 
-const createPR = async () => {
-    const issue = await readFile('issue.json');
+const submissionCreatePR = async () => {
+    const issue = await readJSON('issue.json');
     const author = issue.PluginAuthor;
     const repo = issue.PluginRepo;
     const branch = issue.PluginBranch;
@@ -148,7 +150,7 @@ const createPR = async () => {
         await exitProcess('plugin.json - manifest not available, Exiting', checklog);
     }
     
-    const plugin_json = await readFile('unzipped/plugin.json');
+    const plugin_json = await readJSON('unzipped/plugin.json');
 
     const {name: plugin_title, homepage, license, dwcVersion, sbcDSfVersion, rrfVersion, tags = []} = plugin_json;
     const abstract= issue.PluginAbstract;
@@ -185,8 +187,8 @@ const createPR = async () => {
 
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
-    frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);
     frontmatter = insertLineToStr(`author: ${author}`, frontmatter);
@@ -215,7 +217,39 @@ const createPR = async () => {
 
 };
 
+const removalPrecheck = async () => {
+    const issue = await readJSON('issue.json');
+    const plugin_id = issue.plugin_id;
+
+    let checklog = "";
+    let res;
+
+    // 0. Checking if plugin.md exists
+
+    res = checkFile.local(`../../src/plugins/${plugin_id}.md`);
+    if(!res){
+        await exitProcess('Requested plugin is not available, Exiting', checklog);
+    }
+
+
+    // 1. Checking if the same user submitted the removal request
+
+    const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}.md`);
+    const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
+
+    if(user && (user == process.env.GITHUB_USER)){
+        checklog = insertLineToStr(`Removal using the same user :  ${user}`, checklog);
+        await git.commentIssue(checklog);
+        process.exit(0);
+    }
+
+
+    await exitProcess(`User mismatch. Please request removal using user: ${user}`, checklog);
+    
+}
+
 module.exports = {
-    createPR,
-    precheck
+    submissionCreatePR,
+    submissionPrecheck,
+    removalPrecheck
 }
