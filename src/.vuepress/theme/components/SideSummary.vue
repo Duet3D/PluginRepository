@@ -45,7 +45,7 @@
                 </div>
                 <ul class="overview">
                   <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`${platform.platform}: ${platform.version}`}}</a></li>
-				</ul>
+				        </ul>
                 <br>
             </div>
         </section>
@@ -58,7 +58,7 @@
                   <li >
                     <a target="_blank" :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`${this.$page.frontmatter.license}`}}</a>
                   </li>
-				</ul>
+				        </ul>
                 <br>
             </div>
         </section>
@@ -69,7 +69,7 @@
                 </div>
                 <ul class="overview">
                   <li ><a target="_blank" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`${this.$page.frontmatter.homepage}`}}</a></li>
-				</ul>
+				        </ul>
                 <br>
             </div>
         </section>
@@ -80,7 +80,7 @@
                 </div>
                 <ul class="overview">
                   <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`}}</a></li>
-				</ul>
+				        </ul>
                 <br>
             </div>
         </section>
@@ -91,7 +91,18 @@
                 </div>
                 <ul class="overview">
                   <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`${this.$data.gituser}`}}</a></li>
-				</ul>
+				        </ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">See a problem?</h3>
+                </div>
+                <ul class="overview">
+                  <a target="_blank" :href="`https://github.com/Duet3D/PluginRepository/issues/new?assignees=yasasw&labels=abuse-report&template=PluginReport.yml&title=%5BPluginReport%5D%3A+${this.$data.gitrepo}`" class="red">❗Report Abuse</a>
+				        </ul>
                 <br>
             </div>
         </section>
@@ -138,7 +149,7 @@ export default {
 	computed: {
 		getPlatforms() {
 			const platforms = []
-			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control', url: 'https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework', url: 'https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup'}, { key: 'rrfVersion',  name: 'Rep Rap Firmware', url: 'https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview'}]
+			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control', url: 'https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework', url: 'https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup'}, { key: 'rrfVersion',  name: 'RepRapFirmware', url: 'https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview'}]
 			predef.forEach(({key, name, url}) => {
 				if(this.$page.frontmatter[key] && this.$page.frontmatter[key] != 'undefined')
 					platforms.push({
