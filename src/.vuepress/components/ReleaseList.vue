@@ -1,9 +1,9 @@
 <template>
 	<div class="div_2">
-		<ul class="overview">
+		<ul class="overview" style="list-style-type: none">
 			<li v-for="item in items" :key="item.tagName">
 				<a :href="item.browser_download_url">
-					{{ item.tagName }}
+					{{ "⬇️ " + item.tagName }}
 				</a>
 			</li>
 		</ul>
