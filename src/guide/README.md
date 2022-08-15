@@ -42,7 +42,7 @@
   }
   ```
 - plugin has at least one release
-- plugin release(s) can be downloaded as a zip file
+- plugin release(s) can be downloaded as a zip file.
 Otherwise the checks will not pass.
 
 ## Important Information
