@@ -5,13 +5,13 @@
                 <div class="div_2">
                   <h3 class="h3_class">Overview</h3>
                 </div>
-                <ul class="overview">
-                  <li >{{"Latest version: "}}<a target="_blank" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
-                  <li >{{"Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
-                  <li >{{"First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
-                  <li >{{"Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
-                  <li >{{"Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
-                  <li >{{"Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
+                <ul class="overview" style="list-style-type: none">
+                  <li >{{"🔖 Latest version: "}}<a target="_blank" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
+                  <li >{{"📅 Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
+                  <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
+                  <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
+                  <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
+                  <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
                 </ul>
                 <br>
             </div>
@@ -43,8 +43,8 @@
                 <div class="div_2">
                   <h3 class="h3_class">Compatible Platforms</h3>
                 </div>
-                <ul class="overview">
-                  <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`${platform.platform}: ${platform.version}`}}</a></li>
+                <ul class="overview" style="list-style-type: none">
+                  <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`🛂 ${platform.platform}: ${platform.version}`}}</a></li>
 				        </ul>
                 <br>
             </div>
@@ -54,9 +54,9 @@
                 <div class="div_2">
                   <h3 class="h3_class">License</h3>
                 </div>
-                <ul class="overview">
+                <ul class="overview" style="list-style-type: none">
                   <li >
-                    <a target="_blank" :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`${this.$page.frontmatter.license}`}}</a>
+                    <a target="_blank" :href="`${this.$page.frontmatter.license_file}`" class="bold">{{`🧾 ${this.$page.frontmatter.license}`}}</a>
                   </li>
 				        </ul>
                 <br>
@@ -67,8 +67,8 @@
                 <div class="div_2">
                   <h3 class="h3_class">Homepage</h3>
                 </div>
-                <ul class="overview">
-                  <li ><a target="_blank" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`${this.$page.frontmatter.homepage}`}}</a></li>
+                <ul class="overview" style="list-style-type: none">
+                  <li ><a target="_blank" :href="`${this.$page.frontmatter.homepage}`" class="bold">{{`🏠 ${this.$page.frontmatter.homepage}`}}</a></li>
 				        </ul>
                 <br>
             </div>
@@ -78,8 +78,8 @@
                 <div class="div_2">
                   <h3 class="h3_class">Source Code</h3>
                 </div>
-                <ul class="overview">
-                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`}}</a></li>
+                <ul class="overview" style="list-style-type: none">
+                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}/${this.$data.gitrepo}/tree/${this.$data.gitbranch}/`" class="bold">{{`📝 GitHub`}}</a></li>
 				        </ul>
                 <br>
             </div>
@@ -89,8 +89,8 @@
                 <div class="div_2">
                   <h3 class="h3_class">Author</h3>
                 </div>
-                <ul class="overview">
-                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`${this.$data.gituser}`}}</a></li>
+                <ul class="overview" style="list-style-type: none">
+                  <li ><a target="_blank" :href="`https://github.com/${this.$data.gituser}`" class="bold">{{`👤 ${this.$data.gituser}`}}</a></li>
 				        </ul>
                 <br>
             </div>
