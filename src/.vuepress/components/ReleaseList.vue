@@ -27,13 +27,15 @@ export default {
 		fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
 			.then(res => res.json())
 			.then(data => {
+				let i = 0;
 				this.$data.items = data.map(item => {
-          const {browser_download_url, download_count} = item.assets[0]
-					return {
-						tagName: item.tag_name,
+					  i++;
+			          const {browser_download_url, download_count} = item.assets[0]
+					  return {
+						tagName: item.tag_name + `${i==1? " [Latest]":""}`,
 						browser_download_url,
-            download_count
-					}
+            			download_count
+					  }
 				})
 			});
 	}
