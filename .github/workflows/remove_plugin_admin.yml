@@ -6,7 +6,6 @@ on:
         required: true
 jobs:
   removal-precheck:
-    needs: issue-label-check
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
@@ -25,51 +24,7 @@ jobs:
           GITHUB_USER: ${{ github.event.issue.user.login }}
         run: |
 
-          set -e
-          cat issue.json
-
-          cp issue.json nodescripts/src/
           cd nodescripts
           npm install
           cd src
           node removalPrecheck2.js
-  plugin-removal:
-    needs: removal-precheck
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-
-      - uses: stefanbuck/github-issue-praser@v2
-        id: issue-parser
-        with:
-          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
-
-      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
-
-      - name: Remove plugin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ISSUE: ${{github.event.issue.number}}
-          GITHUB_USER: ${{ github.event.issue.user.login }}
-        run: |
-
-          set -e
-          plugin=$(cat issue.json | jq -r ."plugin_id")
-          plugin_file="$plugin".md
-          branchName=removal/$(date +"%y%m%d")$plugin
-          commituser=Duet3D
-
-          cd src/plugins 
-
-          rm $plugin_file
-
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
-          git checkout -b $branchName
-          git add $plugin_file
-          git commit -m "Deleting plugin plugin_file"
-          git push -u origin $branchName
-
-          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-removal --base $commituser:master --head $commituser:$branchName
-
-          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
