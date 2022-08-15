@@ -252,8 +252,27 @@ const removalPrecheck = async () => {
     
 }
 
+const removalPrecheck2 = async () => {
+    const axios = require('axios');
+    
+    try{
+        const res = await axios.get(`https://api.github.com/repos/Duet3D/RepRapFirmware/collaborators`, 
+        {
+            headers: {
+                'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
+                "Accept": "application/vnd.github+json"
+            }
+        })
+        console.log(res)
+    }
+    catch(e){
+        return e
+    }
+}
+
 module.exports = {
     submissionCreatePR,
     submissionPrecheck,
-    removalPrecheck
+    removalPrecheck,
+    removalPrecheck2
 }
