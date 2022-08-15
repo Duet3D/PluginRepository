@@ -256,14 +256,14 @@ const removalPrecheck2 = async () => {
     const axios = require('axios');
     
     try{
-        const res = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators`, 
+        const {data} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators`, 
         {
             headers: {
                 'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
                 "Accept": "application/vnd.github+json"
             }
         })
-        console.log(res)
+        console.log(data)
     }
     catch(e){
         return e
