@@ -33,6 +33,27 @@ const git = {
     }
 }
 
+const isUserCollaborator = async () => {    
+    try{
+        const {status} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators/${process.env.GITHUB_USER}`, 
+        {
+            headers: {
+                'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
+                "Accept": "application/vnd.github+json"
+            }
+        })
+        if(status == 204){
+            return true;
+        }
+        return false;
+    }
+    catch(e){
+        console.log(e)
+        return false;
+    }
+
+}
+
 const downloadFile = async (url, dest) => {
     return new Promise((resolve, reject) => {
         wget({
@@ -162,6 +183,7 @@ const getFrontmatterObject = (key, plugin_md) => {
 module.exports = {
     insertLineToStr,
     git,
+    isUserCollaborator,
     downloadFile,
     checkFile,
     exitProcess,

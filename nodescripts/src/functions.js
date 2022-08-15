@@ -236,8 +236,13 @@ const removalPrecheck = async () => {
     }
 
 
-    // 1. Checking if the same user submitted the removal request
+    // 1. Checking if user is a collaborator or the same user submitted the removal request
 
+    if(await isUserCollaborator()){
+        await git.commentIssue(`Removal requested by moderator: ${process.env.GITHUB_USER}`);
+        process.exit(0);
+    }
+        
     const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}.md`);
     const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
 
@@ -252,27 +257,8 @@ const removalPrecheck = async () => {
     
 }
 
-const removalPrecheck2 = async () => {
-    const axios = require('axios');
-    
-    try{
-        const {data} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators`, 
-        {
-            headers: {
-                'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
-                "Accept": "application/vnd.github+json"
-            }
-        })
-        console.log(data)
-    }
-    catch(e){
-        return e
-    }
-}
-
 module.exports = {
     submissionCreatePR,
     submissionPrecheck,
-    removalPrecheck,
-    removalPrecheck2
+    removalPrecheck
 }
