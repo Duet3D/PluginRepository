@@ -32,7 +32,7 @@
                 </div>
                 <ul class="keyword_1">
                     <li v-for="keyword in this.$page.frontmatter.tags" :key="keyword">
-                        <a target="_blank" :href="`http://localhost:8080/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                        <a target="_blank" :href="`https://duet3d.github.io/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
                 <br>
