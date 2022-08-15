@@ -256,7 +256,7 @@ const removalPrecheck2 = async () => {
     const axios = require('axios');
     
     try{
-        const res = await axios.get(`https://api.github.com/repos/Duet3D/RepRapFirmware/collaborators`, 
+        const res = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators`, 
         {
             headers: {
                 'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
