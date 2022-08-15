@@ -1,6 +1,6 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
-        getStatus, getFrontmatterObject} = require('./util');
+        getStatus, getFrontmatterObject, isUserCollaborator} = require('./util');
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
