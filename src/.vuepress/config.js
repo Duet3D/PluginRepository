@@ -35,14 +35,6 @@ module.exports = {
     nextLinks: false,
     prevLinks: false,
     nav: [
-      // {
-      //   text: 'Guide',
-      //   link: '/guide/',
-      // },
-      // {
-      //   text: 'Config',
-      //   link: '/config/'
-      // },
       {
         text: 'PRODUCTS',
         link: 'https://www.duet3d.com/products'
@@ -57,12 +49,19 @@ module.exports = {
       },
       {
         text: 'GUIDE',
-        link: '/guide/'
-      },
-      // {
-      //   text: 'Plugins',
-      //   link: '/plugins/'
-      // }
+        ariaLabel: 'GUIDE',
+        items: [
+          { text: 'SUBMIT PLUGINS', link: '/guide/' },
+          {
+            text: 'DEVELOP PLUGINS',
+            ariaLabel: 'DEVELOP PLUGINS',
+            items: [
+              { text: '-DWC', link: 'https://github.com/Duet3D/DuetWebControl/wiki/Third-Party-Plugins' },
+              { text: '-DSF', link: 'https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins' }
+            ]
+          }
+        ]
+      }
     ],
     sidebar: {
 

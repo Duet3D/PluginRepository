@@ -108,6 +108,21 @@ $navbar-horizontal-padding = 1.5rem
       font-size 0.9rem
       font-weight 400
 
+.mobile-dropdown-title
+  .title
+    color #0318d1
+    font-size 0.9rem
+    font-weight 600
+
+.dropdown-wrapper
+  .nav-dropdown
+    .dropdown-item
+      h4, .nav-link
+        color #0318d1
+        font-size 0.8rem
+        font-weight 400
+
+
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
@@ -117,6 +132,11 @@ $navbar-horizontal-padding = 1.5rem
   border-color #0318d1
   font-size 0.9rem
   
+  .dropdown-title
+      color #0318d1
+      font-size 0.8rem
+      font-weight 400
+
 
   .nav-links
     a
