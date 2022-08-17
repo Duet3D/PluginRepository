@@ -101,7 +101,7 @@
                   <h3 class="h3_class">See a problem?</h3>
                 </div>
                 <ul class="overview">
-                  <a target="_blank" :href="`https://github.com/Duet3D/PluginRepository/issues/new?assignees=yasasw&labels=abuse-report&template=PluginReport.yml&title=%5BPluginReport%5D%3A+${this.$data.gitrepo}`" class="red">❗Report Abuse</a>
+                  <a target="_blank" :href="`https://github.com/Duet3D/PluginRepository/issues/new?assignees=yasasw&labels=abuse-report&template=PluginReport.yml&title=%5BPluginReport%5D%3A+${this.$data.gitrepo}&PluginID=${this.$data.gitrepo}`" class="red">❗Report Abuse</a>
 				        </ul>
                 <br>
             </div>
