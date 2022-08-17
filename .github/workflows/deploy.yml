@@ -12,14 +12,14 @@ jobs:
         run: |
           set -e
 
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
+          # git config --global user.name "yasasw"
+          # git config --global user.email "yasas.wijetilake@gmail.com"
 
           npm install
           npm run build
 
           cp CNAME src/.vuepress/dist
-          cd src/.vuepress
+          # cd src/.vuepress
 
           # git init && git add -A && git commit -m "New Deployment"
 
@@ -29,6 +29,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PAT_YASASW }}
-          publish_dir: ./dist
+          publish_dir: ./src/.vuepress/dist
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
