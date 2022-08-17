@@ -22,6 +22,5 @@ jobs:
           cd src/.vuepress/dist
 
           git init && git add -A && git commit -m "New Deployment"
-          git remote add origin git@github.com:Duet3D/PluginRepository.git
-          git push -u origin gh-pages
-          # git push -f git@github.com:Duet3D/PluginRepository.git master:gh-pages
+
+          # git push -f https://yasasw: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@github.com@github.com:Duet3D/PluginRepository.git master:gh-pages
