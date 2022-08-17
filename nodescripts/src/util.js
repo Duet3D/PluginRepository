@@ -166,8 +166,7 @@ const unzip = () => {
     return new Promise((resolve, reject)=>{
         fs.createReadStream('asset.zip').pipe(unzipper.Extract({ path: 'unzipped/' }))
         .on('error', (err) => reject(err))
-        .on('end', () => resolve())
-        .on('finish', () => resolve());
+        .on('close', () => resolve());
     })
 
 }
