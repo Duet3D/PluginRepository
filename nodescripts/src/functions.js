@@ -1,6 +1,6 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
-        getStatus, getFrontmatterObject, isUserCollaborator} = require('./util');
+        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys} = require('./util');
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
@@ -72,8 +72,9 @@ const submissionPrecheck = async () => {
     }
     
     //5. Ensure properties id, name, author are present
-    const plugin_manifest = await readJSON('unzipped/plugin.json');
-    const {id:plugin_id, name:plugin_name, author:plugin_author, dwcVersion, sbcDSfVersion, rrfVersion} = plugin_manifest;
+    const plugin_manifest = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
+    
+    const {id:plugin_id, name:plugin_name, author:plugin_author, dwcversion : dwcVersion, sbcdsfversion : sbcDSfVersion, rrfversion : rrfVersion} = plugin_manifest;
     
     res = plugin_id && plugin_id.length < 32
     checklog = insertLineToStr(`plugin.json id:  ${getStatus(res)}`, checklog);
@@ -150,9 +151,9 @@ const submissionCreatePR = async () => {
         await exitProcess('plugin.json - manifest not available, Exiting', checklog);
     }
     
-    const plugin_json = await readJSON('unzipped/plugin.json');
+    const plugin_json = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
 
-    const {name: plugin_title, homepage, license, dwcVersion, sbcDSfVersion, rrfVersion, tags = []} = plugin_json;
+    const {name: plugin_title, homepage, license, dwcversion : dwcVersion, sbcdsfversion : sbcDSfVersion, rrfversion : rrfVersion, tags = []} = plugin_json;
     const abstract= issue.PluginAbstract;
 
     const date = new Date().toISOString().slice(2, 10).replace(new RegExp("-",'g'), "");
