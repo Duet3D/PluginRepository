@@ -10,7 +10,7 @@
         <section class="card2" v-for="item in filterPlugins" :key="item.key">
             <div class="div_1">
                 <div class="div_2">
-                    <a target="_self" :href="`/PluginRepository${item.path}`">
+                    <a target="_self" :href="`${item.path}`">
                         <h3 class="h3_class">{{item.title}}</h3>
                     </a>
                     <span class="highlight_1" v-if="item.frontmatter.oem">{{'Duet3D'}}</span>
@@ -24,7 +24,7 @@
                 </ul>
                 <ul class="keyword_1">
                     <li v-for="keyword in item.frontmatter.tags" :key="keyword">
-                        <a :href="`https://duet3d.github.io/PluginRepository/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
+                        <a :href="`https://plugins.duet3d.com/search/?keyword=${keyword}`" class="keyword_list_1">{{keyword}}</a>
                     </li>
                 </ul>
             </div>
