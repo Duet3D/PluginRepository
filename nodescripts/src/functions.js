@@ -29,7 +29,7 @@ const submissionPrecheck = async () => {
 
     //1. Check if README.md or PLUGIN.md is present on the specified repo
     let plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
-    checklog = insertLineToStr(`PLUGIN.md: ${plugin_md_status ? "OK" : "NOT FOUND. FALLING BACK TO README.md"}`, checklog);
+    checklog = insertLineToStr(`PLUGIN.md: ${plugin_md_status ? "OK" : "NOT FOUND. USING README.md as FALLBACK"}`, checklog);
 
     let readme_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/README.md`);
     checklog = insertLineToStr(`README.md: ${getStatus(readme_md_status)}`, checklog);
