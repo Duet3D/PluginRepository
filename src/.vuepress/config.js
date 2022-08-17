@@ -1,5 +1,7 @@
 const { description } = require('../../package')
 
+const webpack = require('webpack');
+
 module.exports = {
   title: 'Duet3D Plugin Repository',
   base: '/PluginRepository/',
@@ -10,7 +12,15 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel: 'icon', href: 'https://avatars.githubusercontent.com/u/59487011' }],
   ],
-
+  configureWebpack: {
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          VUE_APP_FE_SERVER_URL: JSON.stringify(process.env.VUE_APP_FE_SERVER_URL)
+        }
+      })
+    ]
+},
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *
