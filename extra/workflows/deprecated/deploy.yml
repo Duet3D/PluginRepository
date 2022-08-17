@@ -23,4 +23,4 @@ jobs:
 
           git init && git add -A && git commit -m "New Deployment"
 
-          git push -f https://yasasw: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@github.com:Duet3D/PluginRepository.git master:gh-pages
+          git push -f https://<USER>:<PERSONAL ACCESS TOKEN>@github.com:Duet3D/PluginRepository.git master:gh-pages
