@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: deploy-gh-pages
+      - name: build
         run: |
           set -e
 
@@ -19,8 +19,16 @@ jobs:
           npm run build
 
           cp CNAME src/.vuepress/dist
-          cd src/.vuepress/dist
+          cd src/.vuepress
 
-          git init && git add -A && git commit -m "New Deployment"
+          # git init && git add -A && git commit -m "New Deployment"
 
-          git push -f https://yasasw:${{secrets.PAT_YASASW}}@github.com:Duet3D/PluginRepository.git master:gh-pages
+          # git push -f https://yasasw:${{secrets.PAT_YASASW}}@github.com:Duet3D/PluginRepository.git master:gh-pages
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+        github_token: ${{ secrets.PAT_YASASW }}
+        publish_dir: ./dist
+        env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
