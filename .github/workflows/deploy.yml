@@ -1,9 +1,8 @@
 name: deploy
 on:
   pull_request:
-    branches: 
-      - master
-    types: [closed]
+    types:
+      - closed
 jobs:
   deploy:
     if: github.event.pull_request.merged
