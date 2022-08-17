@@ -7,6 +7,8 @@ set -e
 
 npm run build
 
+cp CNAME src/.vuepress/dist
+
 cd src/.vuepress/dist
 
 # cd .vuepress/dist
