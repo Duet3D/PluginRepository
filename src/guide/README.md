@@ -1,4 +1,4 @@
-# - Plugin Submission
+# Plugin Submission
 ## Instructions
 - Create a new GitHub issue: [Plugin Submission](https://github.com/Duet3D/PluginRepository/issues/new/choose)
 
@@ -50,7 +50,7 @@ Otherwise the checks will not pass.
 - If a `PLUGIN.md` file exists, it will be used as the homepage of your plugin; otherwise, `README.md` will be used
 - Tags, keywords will be fetched from the plugin manifest(`plugin.json`)
 
-# - Plugin Removal
+# Plugin Removal
 ## Instructions
 - Create a new issue: [Plugin Removal](https://github.com/Duet3D/PluginRepository/issues/new/choose)
 

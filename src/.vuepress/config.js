@@ -44,19 +44,19 @@ module.exports = {
       //   link: '/config/'
       // },
       {
-        text: 'Products',
+        text: 'PRODUCTS',
         link: 'https://www.duet3d.com/products'
       },
       {
-        text: 'Forum',
+        text: 'FORUM',
         link: 'https://forum.duet3d.com'
       },
       {
-        text: 'GitHub',
+        text: 'GITHUB',
         link: 'https://github.com/duet3D/'
       },
       {
-        text: 'Guide',
+        text: 'GUIDE',
         link: '/guide/'
       },
       // {

@@ -14,7 +14,7 @@
         v-if="data.heroText !== null"
         id="main-title"
       >
-        {{ data.heroText || $title || 'Hello' }}
+        {{ 'Plugin Repository' }}
       </h1>
 
       <p
