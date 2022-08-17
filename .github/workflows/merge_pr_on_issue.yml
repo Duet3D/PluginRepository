@@ -33,6 +33,8 @@ jobs:
           # git config --global user.name "yasasw"
           # git config --global user.email "yasas.wijetilake@gmail.com"
 
+          git pull
+
           npm install
           npm run build
 
