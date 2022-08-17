@@ -178,7 +178,7 @@ const getStatus = (status) => {
 const lowerCaseKeys = (plugin_manifest) => {
     const plugin_manifest_keys = Object.keys(plugin_manifest).map(x=> [x, x.toLowerCase()]);
     const plugin_manifest_new = {}
-    plugin_manifest_keys.forEach( key => {plugin_manifest_new[key[1]] = plugin[key[0]]})
+    plugin_manifest_keys.forEach( key => {plugin_manifest_new[key[1]] = plugin_manifest[key[0]]})
     return plugin_manifest_new
 }
 
