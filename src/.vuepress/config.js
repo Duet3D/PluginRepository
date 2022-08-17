@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   title: 'Duet3D Plugin Repository',
-  base: '/PluginRepository/',
+  base: '/',
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
