@@ -6,6 +6,7 @@
 - plugin is in a GitHub repository
 - repository name/plugin name is not already existing in [Duet3D Plugin Repository](https://github.com/Duet3D/PluginRepository/tree/master/src/plugins)
 - markdown files are renamed (case-sensitive) as `PLUGIN.md`, `README.md`
+- Check the content in markdown files against [an online md viewer](https://markdownlivepreview.com/) as sometimes, images might not be displayed correctly
 - plugin manifest file is renamed (case-sensitive) as `plugin.json` and keys are as follows (case-sensitive)
 ```
 {
