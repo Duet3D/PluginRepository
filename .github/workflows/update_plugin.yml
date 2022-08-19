@@ -21,6 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
   precheck:
+    if: ${{ steps.label_check.outputs.is_check_ok == 'success' }}
     needs: issue-label-check
     runs-on: ubuntu-latest
     env:
@@ -90,7 +91,7 @@ jobs:
 
           cd src/plugins 
 
-          branchName=submission/$(date +"%y%m%d")$repo
+          branchName=update/$(date +"%y%m%d")$repo
           commituser=Duet3D
           
           git config --global user.name "yasasw"
@@ -100,6 +101,6 @@ jobs:
           git commit -m "Updating plugin $repo.md"
           git push -u origin $branchName
 
-          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-update --base $commituser:master --head $commituser:$branchName
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
