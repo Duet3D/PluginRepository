@@ -136,7 +136,7 @@ const updatePrecheck = async () => {
         const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
     
         if(user && (user != process.env.GITHUB_USER)){
-            await exitProcess(`User mismatch. Please request removal using user: ${user}`, checklog);
+            await exitProcess(`User mismatch. Please request update using user: ${user}`, checklog);
         }
     
         checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
