@@ -16,7 +16,7 @@ release_date: 2022-06-14T08:35:28Z
 release_page: https://github.com/Duet3D/EndstopsMonitorPlugin/releases/tag/v3.4
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Duet3D/EndstopsMonitorPlugin/master/LICENSE
-download_count: 63
+download_count: 65
 tags:
 - endstops
 - dwc
