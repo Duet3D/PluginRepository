@@ -5,6 +5,7 @@ on:
     
 jobs:
   issue-label-check:
+    if: ${{ github.event.label.name == 'plugin-update' }}
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
