@@ -5,7 +5,7 @@ on:
     
 jobs:
   issue-label-check:
-    if: ${{ 'plugin-update' == $(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") }}
+    if: 'plugin-update' == $(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name")
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
