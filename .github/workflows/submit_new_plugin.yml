@@ -14,9 +14,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-submission ]];  then echo ::set-output name=is_check_ok::true; else exit  echo ::set-output name=is_check_ok::false; fi
+          if [[ "$issue_label" = plugin-submission ]];  then echo ::set-output name=is_check_ok::'success'; else exit  echo ::set-output name=is_check_ok::'failure'; fi
       - name: checkpoint
-        if: ${{ steps.label_check.outputs.is_check_ok }}
+        if: ${{ steps.label_check.outputs.is_check_ok == 'success' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
