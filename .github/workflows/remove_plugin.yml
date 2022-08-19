@@ -3,25 +3,23 @@ on:
   issues:
     types: [opened]
 jobs:
-  issue-label-check:
+  issue_label_check:
     runs-on: ubuntu-latest
+    outputs:
+      is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
     steps: 
       - uses: actions/checkout@v2
-      - name: Label-check
+      - name: label-check
         id: label_check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
           if [[ "$issue_label" = plugin-removal ]];  then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
-      - name: checkpoint
-        if: ${{ steps.label_check.outputs.is_check_ok == 'success' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+
   removal-precheck:
-    if: ${{ jobs.issue-label-check.steps.label_check.outputs.is_check_ok == 'success' }}
-    needs: issue-label-check
+    needs: issue_label_check
+    if: ${{ needs.issue_label_check.outputs.is_check_ok }}
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
