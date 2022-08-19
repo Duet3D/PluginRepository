@@ -15,7 +15,7 @@ jobs:
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
           if [[ "$issue_label" = plugin-submission ]];  then echo ::set-output name=is_check_ok::true; else exit  echo ::set-output name=is_check_ok::false; fi
   precheck:
-    if: ${{ steps.issue-label-check.outputs.is_check_ok }}
+    if: ${{ jobs.issue-label-check.outputs.is_check_ok }}
     needs: issue-label-check
     runs-on: ubuntu-latest
     env:
