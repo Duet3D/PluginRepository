@@ -9,13 +9,19 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: label-check
+        id: label_check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
           if [[ "$issue_label" = plugin-update ]]; then echo ::set-output name=is_check_ok::true; else exit  echo ::set-output name=is_check_ok::false; fi
+      - name: checkpoint
+        if: ${{ steps.label_check.outputs.is_check_ok }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
   precheck:
-    if: ${{ issue-label-check.outputs.is_check_ok }}
+    needs: issue-label-check
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
