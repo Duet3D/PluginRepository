@@ -132,7 +132,7 @@ const updatePrecheck = async () => {
             checklog = insertLineToStr(`Update requested by moderator: ${process.env.GITHUB_USER}`, checklog);
         }
             
-        const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}.md`);
+        const plugin_md = await readTEXT(`../../src/plugins/${repo}.md`);
         const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
     
         if(user && (user != process.env.GITHUB_USER)){
