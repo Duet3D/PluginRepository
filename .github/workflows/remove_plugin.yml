@@ -4,7 +4,6 @@ on:
     types: [opened]
 jobs:
   issue-label-check:
-    if: ${{ github.event.label.name == 'plugin-removal' }}
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
@@ -13,8 +12,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-removal ]]; then exit 0; else exit 1; fi
+          if [[ "$issue_label" = plugin-removal ]];  then echo ::set-output name=is_check_ok::true; else exit  echo ::set-output name=is_check_ok::false; fi
   removal-precheck:
+    if: {{ steps.vars.outputs.is_check_ok }}
     needs: issue-label-check
     runs-on: ubuntu-latest
     steps: 
