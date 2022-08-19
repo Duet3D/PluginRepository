@@ -19,8 +19,7 @@ jobs:
           if [[ "$issue_label" = plugin-update ]]; then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
   precheck:
     needs: issue_label_check
-    if: ${{ needs.issue_label_check.outputs.is_check_ok }}
-    needs: issue-label-check
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success' }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

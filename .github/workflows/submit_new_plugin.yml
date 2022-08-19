@@ -20,7 +20,7 @@ jobs:
 
   precheck:
     needs: issue_label_check
-    if: ${{ needs.issue_label_check.outputs.is_check_ok }}
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success'  }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

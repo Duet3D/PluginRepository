@@ -19,7 +19,7 @@ jobs:
 
   removal-precheck:
     needs: issue_label_check
-    if: ${{ needs.issue_label_check.outputs.is_check_ok }}
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success'  }}
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
