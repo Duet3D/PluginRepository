@@ -106,6 +106,134 @@ const submissionPrecheck = async () => {
 
 }
 
+const updatePrecheck = async () => {
+    process.argv.forEach(x=>console.log(x))
+    console.log(process.env.GITHUB_ISSUE)
+    console.log(process.env.GITHUB_TOKEN)
+    // Initalize variables
+    let checklog = "";
+    const issue = await readJSON('issue.json');
+    const author = issue.PluginAuthor;
+    const repo = issue.PluginRepo;
+    const branch = issue.PluginBranch;
+    let isOK = true;
+    let res;
+
+    //0. Check if repo name exists already
+    res = checkFile.local(`../../src/plugins/${repo}.md`);
+    checklog = insertLineToStr(`Plugin available: ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+    if(!res){
+        await exitProcess('Plugin unavailable. Update failed. Check and resubmit', checklog);
+    }
+
+    //0. Checking if user is a collaborator or the same user submitted the removal request
+
+        if(await isUserCollaborator()){
+            checklog = insertLineToStr(`Update requested by moderator: ${process.env.GITHUB_USER}`, checklog);
+        }
+            
+        const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}.md`);
+        const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
+    
+        if(user && (user != process.env.GITHUB_USER)){
+            await exitProcess(`User mismatch. Please request removal using user: ${user}`, checklog);
+        }
+    
+        checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
+    
+        const plugin_md_author = getFrontmatterObject('author', plugin_md);
+        if(plugin_md_author && (plugin_md_author != author)){
+            checklog = insertLineToStr(`Plugin author/owner mismatch. Original author/owner: ${plugin_md_author}`, checklog);
+            await exitProcess(`If you have changed the owner, request for removal and submit as a new plugin.`, checklog);
+        }
+
+
+    let repo_status = await checkFile.remote(`https://github.com/${author}/${repo}/tree/${branch}/`);
+
+    if(!repo_status){
+        await exitProcess('Errors with accessing repo. If the plugin has been moved, request for removal and submit as a new one', checklog);
+    }
+
+    //1. Check if README.md or PLUGIN.md is present on the specified repo
+    let plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
+    checklog = insertLineToStr(`PLUGIN.md: ${plugin_md_status ? "OK" : "NOT FOUND. USING README.md as FALLBACK"}`, checklog);
+
+    let readme_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/README.md`);
+    checklog = insertLineToStr(`README.md: ${getStatus(readme_md_status)}`, checklog);
+    
+    res = plugin_md_status || readme_md_status;
+    isOK = isOK && res;
+
+
+    //2. Make sure there is at least one release with at least one ZIP file
+    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
+    if((status != 200) || browser_download_url == undefined){
+        await exitProcess('Release not available, Exiting', checklog);
+    }
+    
+    let ext = browser_download_url.split('.');
+    res = ext[ext.length-1] == 'zip';
+    if(!res){
+        await exitProcess('Release available is not zip, Exiting', checklog);
+    }
+    checklog = insertLineToStr(`Release:  ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+
+    //3. Download latest ZIP bundle
+    await downloadFile(browser_download_url, 'asset.zip')
+
+
+    //4. Make sure plugin.json exists
+    //unzip here
+    try{
+        await unzip();
+    }
+    catch(err){
+        await exitProcess(err, checklog);
+    }
+
+    res = checkFile.local('unzipped/plugin.json');
+    if(!res){
+        await exitProcess('plugin.json - manifest not available, Exiting', checklog);
+    }
+    
+    //5. Ensure properties id, name, author are present
+    const plugin_manifest = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
+    
+    const {id:plugin_id, name:plugin_name, author:plugin_author, dwcversion : dwcVersion, sbcdsfversion : sbcDSfVersion, rrfversion : rrfVersion} = plugin_manifest;
+    
+    res = plugin_id && plugin_id.length < 32
+    checklog = insertLineToStr(`plugin.json id:  ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+
+    res = plugin_name && plugin_name.length < 64
+    checklog = insertLineToStr(`plugin.json name:  ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+
+    res = plugin_author? true: false;
+    checklog = insertLineToStr(`plugin.json author:  ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+
+    //6. Check if at least one "version" dependency is present [dwcVersion, sbcDSfVersion, rrfVersion] and that each value starts with a number
+    res = isFirstCharNum(dwcVersion) || isFirstCharNum(sbcDSfVersion) || isFirstCharNum(rrfVersion);
+    checklog = insertLineToStr(`plugin.json platform version:  ${getStatus(res)}`, checklog);
+    isOK = isOK && res;
+
+
+    //7. Sum up
+    if(!isOK){
+        console.log(checklog)
+        await exitProcess('Prechecks failed. Cannot be approved', checklog)
+    }
+    else{
+        await git.commentIssue(checklog);
+        process.exit(0);
+    }
+
+}
+
 const submissionCreatePR = async () => {
     const issue = await readJSON('issue.json');
     const author = issue.PluginAuthor;
@@ -261,5 +389,6 @@ const removalPrecheck = async () => {
 module.exports = {
     submissionCreatePR,
     submissionPrecheck,
+    updatePrecheck,
     removalPrecheck
 }

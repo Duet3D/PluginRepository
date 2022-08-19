@@ -1,4 +1,4 @@
-name: submit-new-plugin
+name: update-plugin
 on:
   issues:
     types: [opened]
@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
-      - name: New plugin
+      - name: Update plugin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-submission ]]; then exit 0; else exit 1; fi
+          if [[ "$issue_label" = plugin-update ]]; then exit 0; else exit 1; fi
   precheck:
     needs: issue-label-check
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
       - uses: stefanbuck/github-issue-praser@v2
         id: issue-parser 
         with:
-          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+          template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
 
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
 
@@ -38,9 +38,9 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node submissionPrecheck.js
+          node updatePrecheck.js
                       
-  plugin-submission:
+  plugin-update:
     needs: precheck
 
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
       - uses: stefanbuck/github-issue-praser@v2
         id: issue-parser
         with:
-          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+          template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
 
       - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
 
@@ -62,6 +62,8 @@ jobs:
         run: |
 
           set -e
+
+          rm src/plugins/$repo.md
 
           author=$(cat issue.json | jq -r ."PluginAuthor")
           repo=$(cat issue.json | jq -r ."PluginRepo")

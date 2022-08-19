@@ -1,7 +1,7 @@
-name: Plugin Submission
+name: Plugin Updating
 description: Submit a new plugin for approval
-title: "[PluginSubmission]: "
-labels: [plugin-submission]
+title: "[PluginUpdate]: "
+labels: [plugin-update]
 assignees:
 - yasasw
 body:
@@ -9,39 +9,17 @@ body:
   attributes:
     value: |
       ## Checklist
-      ### Ensure that your:
-      - plugin is in a GitHub repository
-      - repository name/plugin name is not already existing in [Duet3D Plugin Repository](https://github.com/Duet3D/PluginRepository/tree/master/src/plugins)
+      ### Ensure that:
+      - you are requesting using the same account that the plugin was submitted with
+      - plugin is existing in the same GitHub repository
+      - plugin is already existing in [Duet3D Plugin Repository](https://github.com/Duet3D/PluginRepository/tree/master/src/plugins)
       - markdown files are renamed (case-sensitive) as PLUGIN.md, README.md
       - Check the content in markdown files against [an online md viewer](https://markdownlivepreview.com/) as sometimes, images might not be displayed correctly
-      - plugin manifest file is renamed (case-sensitive) as plugin.json
-      - applicable platforms versions are exactly (case-sensitive) as dwcVersion, sbcDSfVersion, rrfVersion
-        ```
-        { ...
-          "dwcVersion": "3.4",
-          ...
-        }
-        ```
-        ```
-        { ...
-          "sbcDSfVersion": "3.4",
-          ...
-        }
-        ```
-        ```
-        { ...
-          "rrfVersion": "3.4",
-          ...
-        }
-        ```
-      - plugin has at least one release
-      - plugin release(s) can be downloaded as a zip file.
-      Otherwise the checks will not pass.
 
       ## Important Information
-      - Your repository name will be the same as plugin id
       - If a PLUGIN.md file exists, it will be used as the homepage of your plugin; otherwise, README.md will be used
       - Tags, keywords will be fetched from the plugin manifest(plugin.json)
+
 - type: input
   id: PluginAbstract
   attributes:
