@@ -20,6 +20,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       GITHUB_ISSUE: ${{github.event.issue.number}}
+      GITHUB_USER: ${{ github.event.issue.user.login }}
     steps:
       - uses: actions/checkout@v2
 
