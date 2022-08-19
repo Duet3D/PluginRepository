@@ -21,7 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
   precheck:
-    if: ${{ steps.label_check.outputs.is_check_ok == 'success' }}
+    if: ${{ jobs.issue-label-check.steps.label_check.outputs.is_check_ok == 'success' }}
     needs: issue-label-check
     runs-on: ubuntu-latest
     env:
