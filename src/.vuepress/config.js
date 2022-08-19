@@ -51,7 +51,9 @@ module.exports = {
         text: 'GUIDE',
         ariaLabel: 'GUIDE',
         items: [
-          { text: 'SUBMIT PLUGINS', link: '/guide/' },
+          { text: 'SUBMIT PLUGINS', link: '/guide/submission' },
+          { text: 'UPDATE PLUGINS', link: '/guide/update' },
+          { text: 'REMOVE PLUGINS', link: '/guide/removal' },
           {
             text: 'DEVELOP PLUGINS',
             ariaLabel: 'DEVELOP PLUGINS',
