@@ -8,13 +8,8 @@ jobs:
     if: ${{ github.event.label.name == 'approved' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: merge-pr
         run: |
-        
-          git pull
-
-
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
           | jq '.[] | select(.title | startswith("[${{ github.event.issue.number }}]"))' | jq ."url" | sed 's/"//g')/merge
@@ -26,8 +21,36 @@ jobs:
           merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
 
           if [[ "$merged" = true ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["merged"]}' && curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }} -d '{"state":"closed"}' && exit 0; else exit 1; fi 
-  deploy-gh-pages:
+  update-version:
     needs: merge-pr
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: update-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git pull
+          
+
+          cp package.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node updateVersion.js
+
+          cd ../../
+          rm package.json
+          cp nodescripts/src/package.json package.json
+
+          git add package.json
+          git commit -m "Update version"
+          git push -u origin master
+
+  deploy-gh-pages:
+    needs: update-version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

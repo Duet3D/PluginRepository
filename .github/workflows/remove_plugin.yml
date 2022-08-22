@@ -69,7 +69,7 @@ jobs:
           set -e
           plugin=$(cat issue.json | jq -r ."plugin_id")
           plugin_file="$plugin".md
-          branchName=${{ github.event.issue.number }}/removal/$(date +"%y%m%d")$plugin
+          branchName=removal/$(date +"%y%m%d")$plugin
           commituser=Duet3D
 
           cd src/plugins 
