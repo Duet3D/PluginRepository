@@ -213,7 +213,7 @@ const updateVersion = async (release_type = 'patch', file = 'package.json') => {
     ver_list[ver_block[release_type]] = parseInt(ver_list[ver_block[release_type]]) + 1;
     package_json['version'] =  ver_list.join('.');
 
-    return await writeFile.writeJSONSync(package_json, file);
+    return await writeFile.writeJSONSync(JSON.parse(package_json), file);
 }
 
 module.exports = {
