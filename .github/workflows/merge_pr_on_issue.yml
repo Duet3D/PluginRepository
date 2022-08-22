@@ -33,6 +33,9 @@ jobs:
           git pull
 
           npm install
+
+          node updateVersion.js
+
           npm run build
 
           cp CNAME src/.vuepress/dist

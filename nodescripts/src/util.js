@@ -135,6 +135,26 @@ const readFile = (path) = {
     }
 }
 
+
+const writeFile = {
+    writeJSON: (json, path) => {
+        const fs = require('fs');
+        return fs.writeFile(path, JSON.stringify(json), (err) => {
+            if (err) throw err;
+            return
+        });
+    },
+    writeJSONSync: (json, path) => {
+        const fs = require('fs');
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path, JSON.stringify(json), (err) => {
+                if (err) reject(err);
+                resolve();
+            });
+        })
+    }
+}
+
 const writeLinetoFile = (str, path) => {
     const fs = require('fs');
     return new Promise((resolve, reject) => {
@@ -186,6 +206,16 @@ const getFrontmatterObject = (key, plugin_md) => {
     return (plugin_md.split('\n').find( x => x.includes(key)) || "").replace(`${key}:`, "").trim();
 }
 
+const updateVersion = async (release_type = 'patch', file = 'package.json') => {
+    const ver_block = { major : 0, minor : 1, patch : 2 };
+    const package_json = await readFile.JSON('package.json');
+    const ver_list = (package_json['version']||[]).split('.');
+    ver_list[ver_block[release_type]] = parseInt(ver_list[ver_block[release_type]]) + 1;
+    package_json['version'] =  ver_list.join('.');
+
+    return await writeFile.writeJSONSync(package_json, file);
+}
+
 module.exports = {
     insertLineToStr,
     git,
@@ -194,6 +224,7 @@ module.exports = {
     checkFile,
     exitProcess,
     readFile,
+    updateVersion,
     writeLinetoFile,
     prepend,
     unzip,
