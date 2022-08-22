@@ -86,7 +86,7 @@ jobs:
 
           cd src/plugins 
 
-          branchName=submission/$(date +"%y%m%d")$repo
+          branchName=${{ github.event.issue.number }}/submission/$(date +"%y%m%d")$repo
           commituser=Duet3D
           
           git config --global user.name "yasasw"

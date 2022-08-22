@@ -8,8 +8,13 @@ jobs:
     if: ${{ github.event.label.name == 'approved' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: merge-pr
         run: |
+        
+          git pull
+
+
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
           | jq '.[] | select(.title | startswith("[${{ github.event.issue.number }}]"))' | jq ."url" | sed 's/"//g')/merge
@@ -33,9 +38,6 @@ jobs:
           git pull
 
           npm install
-
-          node updateVersion.js
-
           npm run build
 
           cp CNAME src/.vuepress/dist
