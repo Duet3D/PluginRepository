@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'patch', minor, major
+        description: 'patch, minor, major'
         required: true
         default: 'patch'
 jobs:
