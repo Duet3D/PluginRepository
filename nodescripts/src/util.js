@@ -167,8 +167,10 @@ const writeLinetoFile = (str, path) => {
 
 const extractRepoURLDetails = (url) => {
     const split = url.split('/');
-    return {PluginAuthor:split[3], PluginRepo: split[4]}
+    let index = split.indexOf('github.com') == -1 ? split.indexOf('www.github.com') : split.indexOf('github.com')
+    return {PluginAuthor:split[index+1], PluginRepo: split[index+2]}
 }
+
 
 const prepend = (text, file) => {
     const fs = require('fs');
