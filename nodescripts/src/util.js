@@ -165,6 +165,11 @@ const writeLinetoFile = (str, path) => {
     })
 }
 
+const extractRepoURLDetails = (url) => {
+    const split = url.split('/');
+    return {PluginAuthor:split[3], PluginRepo: split[4]}
+}
+
 const prepend = (text, file) => {
     const fs = require('fs');
     const data = fs.readFileSync(file)
@@ -231,5 +236,6 @@ module.exports = {
     isFirstCharNum,
     getStatus,
     getFrontmatterObject,
-    lowerCaseKeys
+    lowerCaseKeys,
+    extractRepoURLDetails
 }

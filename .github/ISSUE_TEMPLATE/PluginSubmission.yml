@@ -33,26 +33,18 @@ body:
   validations:
     required: true
 - type: input
-  id: PluginAuthor
+  id: PluginURL
   attributes:
-    label: GitHub username
-    description: Repo owner of the plugin (https://github.com/<user>/repo)
-    placeholder: user
-  validations:
-    required: true
-- type: input
-  id: PluginRepo
-  attributes:
-    label: GitHub repository name/Plugin ID
-    description: Repo name of the plugin (https://github.com/user/<repo>)
-    placeholder: repo
+    label: GitHub URL
+    description: URL of the GitHub repository (https://github.com/owner/repo)
+    placeholder: https://github.com/
   validations:
     required: true
 - type: input
   id: PluginBranch
   attributes:
     label: GitHub branch name
-    description: Name of the main/master branch
+    description: Name of the default (main/master) branch
     placeholder: main
   validations:
     required: true

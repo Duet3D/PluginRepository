@@ -1,6 +1,6 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
-        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys} = require('./util');
+        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails} = require('./util');
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
@@ -10,8 +10,8 @@ const submissionPrecheck = async () => {
     // Initalize variables
     let checklog = "";
     const issue = await readJSON('issue.json');
-    const author = issue.PluginAuthor;
-    const repo = issue.PluginRepo;
+
+    const {PluginAuthor: author, PluginRepo: repo} = extractRepoURLDetails(issue.PluginURL);
     const branch = issue.PluginBranch;
     let isOK = true;
     let res;
@@ -112,8 +112,7 @@ const updatePrecheck = async () => {
     // Initalize variables
     let checklog = "";
     const issue = await readJSON('issue.json');
-    const author = issue.PluginAuthor;
-    const repo = issue.PluginRepo;
+    const {PluginAuthor: author, PluginRepo: repo} = extractRepoURLDetails(issue.PluginURL);
     const branch = issue.PluginBranch;
     let isOK = true;
     let res;
@@ -235,8 +234,7 @@ const updatePrecheck = async () => {
 
 const submissionCreatePR = async () => {
     const issue = await readJSON('issue.json');
-    const author = issue.PluginAuthor;
-    const repo = issue.PluginRepo;
+    const {PluginAuthor: author, PluginRepo: repo} = extractRepoURLDetails(issue.PluginURL);
     const branch = issue.PluginBranch;
     let res;
 
