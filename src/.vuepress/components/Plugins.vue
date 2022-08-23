@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h2 class="centered">All Plugins</h2>
         <div class="search_box_1">         
             <input type="text" v-model="input" placeholder="Search plugins..." />
         </div>
