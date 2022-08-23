@@ -67,10 +67,11 @@ jobs:
         run: |
 
           set -e
-          
+
           PluginURL=$(cat issue.json | jq -r ."PluginURL")
 
           #---------------------------------------------------------------------
+          OLDIFS=$IFS
           IFS='/'
           read -a ar <<< "$PluginURL"
 
@@ -80,6 +81,7 @@ jobs:
             ((++cnt))
           done
 
+          IFS=$OLDIFS
           #---------------------------------------------------------------------
             
           author=${ar[$((cnt+1))]}
