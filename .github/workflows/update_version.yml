@@ -1,4 +1,4 @@
-name: update
+name: update-repository-version
 on: 
   workflow_dispatch:
     inputs:
