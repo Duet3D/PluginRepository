@@ -39,7 +39,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node updateVersion.js
+          node updateVersion.js patch
 
           cd ../../
           rm package.json

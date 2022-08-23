@@ -1,5 +1,5 @@
 const {updateVersion} =  require('./util');
 
-updateVersion().then(res => {
+updateVersion(process.argv[2]).then(res => {
 	console.log(res)
 })

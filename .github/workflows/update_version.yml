@@ -1,0 +1,59 @@
+name: update
+on: 
+  workflow_dispatch:
+      inputs:
+        release_type:
+          description: 'patch', minor, major
+          required: true
+          default: 'patch'
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: update-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git pull
+          
+
+          cp package.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node updateVersion.js ${{ github.event.inputs.release_type }}
+
+          cd ../../
+          rm package.json
+          cp nodescripts/src/package.json package.json
+
+          git add package.json
+          git commit -m "Update version"
+          git push -u origin master
+
+  deploy-gh-pages:
+    needs: update-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build
+        run: |
+          set -e
+
+          git pull
+
+          npm install
+          npm run build
+
+          cp CNAME src/.vuepress/dist
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAT_YASASW }}
+          publish_dir: ./src/.vuepress/dist
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
