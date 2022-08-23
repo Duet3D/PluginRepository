@@ -147,7 +147,7 @@ const writeFile = {
     writeJSONSync: (json, path) => {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
-            fs.writeFile(path, JSON.stringify(json), (err) => {
+            fs.writeFile(path, JSON.stringify(json, null, 4), (err) => {
                 if (err) reject(err);
                 resolve();
             });
