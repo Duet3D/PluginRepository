@@ -1,11 +1,11 @@
 name: update
 on: 
   workflow_dispatch:
-      inputs:
-        release_type:
-          description: 'patch', minor, major
-          required: true
-          default: 'patch'
+    inputs:
+      release_type:
+        description: 'patch', minor, major
+        required: true
+        default: 'patch'
 jobs:
   update-version:
     runs-on: ubuntu-latest
