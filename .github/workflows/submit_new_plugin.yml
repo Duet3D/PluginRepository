@@ -67,9 +67,24 @@ jobs:
         run: |
 
           set -e
+          
+          PluginURL=$(cat issue.json | jq -r ."PluginURL")
 
-          author=$(cat issue.json | jq -r ."PluginAuthor")
-          repo=$(cat issue.json | jq -r ."PluginRepo")
+          #---------------------------------------------------------------------
+          IFS='/'
+          read -a ar <<< "$PluginURL"
+
+          cnt=0; 
+          for el in "${ar[@]}"; do
+            [[ $el == "github.com" ]]||[[ $el == "www.github.com" ]] && break
+            ((++cnt))
+          done
+
+          #---------------------------------------------------------------------
+            
+          author=${ar[$((cnt+1))]}
+          repo=${ar[$((cnt+2))]}
+
           branch=$(cat issue.json | jq -r ."PluginBranch")
 
           echo $(ls -a)
