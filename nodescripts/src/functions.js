@@ -141,7 +141,7 @@ const updatePrecheck = async () => {
         const plugin_md = await readTEXT(`../../src/plugins/${repo}.md`);
         const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
     
-        if(!admin_req || (user && (user != process.env.GITHUB_USER))){
+        if(!admin_req && user && (user != process.env.GITHUB_USER)){
             await exitProcess(`User mismatch. Please request update using user: ${user}`, checklog);
         }
         
