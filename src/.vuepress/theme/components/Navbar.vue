@@ -98,7 +98,6 @@ $navbar-horizontal-padding = 1.5rem
 
 .custom_logo
   vertical-align middle
-  margin-left 50px
   width 100px
 
 .sidebar 
