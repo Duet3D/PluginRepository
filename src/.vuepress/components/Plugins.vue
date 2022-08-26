@@ -34,6 +34,17 @@
 
 <script>
 
+function compareFn( a, b ) {
+    let type = 'release_date'
+    if ( a.frontmatter[`${type}`] < b.frontmatter[`${type}`] ){
+        return 1;
+    }
+    if ( a.frontmatter[`${type}`] > b.frontmatter[`${type}`] ){
+        return -1;
+    }
+    return 0;
+}
+
 export default {
 	data() {
 		return {
@@ -43,6 +54,7 @@ export default {
 	},
 	mounted() {
         this.$data.items = this.$site.pages.filter( x => x.regularPath.substring(0,9) === '/plugins/' && x.regularPath.length > 9)
+        this.$data.items.sort(compareFn)
 	},
     computed: {
         filterPlugins() {
