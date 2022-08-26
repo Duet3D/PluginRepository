@@ -60,7 +60,7 @@ body:
   id: AgreeTerms
   attributes:
     label: Terms and Conditions
-    description: By submitting this plugin, I confirm that it contains no malicious code and ads. [Terms & Conditions](https://www.duet3d.com/page/terms-conditions)
+    description: By submitting this plugin, I confirm that it contains no malicious code and ads. [Policy](https://www.duet3d.com/page/terms-conditions)
     options:
-      - label: I agree
+      - label: I confirm that this plugin contains no malicious code and/nor ads.
         required: true
