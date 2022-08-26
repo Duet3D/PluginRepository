@@ -44,3 +44,11 @@ body:
     placeholder: main
   validations:
     required: true
+- type: checkboxes
+  id: AgreeTerms
+  attributes:
+    label: Terms and Conditions
+    description: By submitting, I confirm that it contains no malicious code and ads. [Policy](https://www.duet3d.com/page/terms-conditions)
+    options:
+      - label: I confirm that this plugin contains no malicious code and/nor ads.
+        required: true
