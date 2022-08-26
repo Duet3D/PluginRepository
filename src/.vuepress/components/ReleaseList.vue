@@ -1,12 +1,13 @@
 <template>
-	<div class="div_2">
+	<div class="div_2" :key="this.$data.downloadsVisible">
 		<ul class="overview" style="list-style-type: none">
-			<li v-for="item in items" :key="item.tagName">
+			<li v-for="item in visibleDownloads" :key="item.tagName">
 				<a :href="item.browser_download_url">
 					{{ "⬇️ " + item.tagName }}
 				</a>
 			</li>
 		</ul>
+		<button v-on:click="showMore" v-if="downloadsVisible < items.length">Load more...</button>
 	</div>
 </template>
 
@@ -17,6 +18,8 @@ export default {
 	data() {
 		return {
 			items: [],
+			downloadsVisible: 5,
+			step : 5
 		};
 	},
 	props: {
@@ -38,6 +41,17 @@ export default {
 					  }
 				})
 			});
+	},
+	methods: {
+		showMore() {
+			if(this.downloadsVisible < this.items.length)
+				this.downloadsVisible = this.downloadsVisible + this.$data.step
+		}
+	},
+	computed: {
+		visibleDownloads() {
+			return this.$data.items.slice(0, this.$data.downloadsVisible)
+		}
 	}
 };
 </script>
