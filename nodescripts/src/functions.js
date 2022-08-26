@@ -320,9 +320,18 @@ const submissionCreatePR = async () => {
         license_file = `https://github.com/${author}/${repo}`;
     }
 
+
+
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
-    frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
+    if(process.argv[2] && process.argv[2] == 'update'){
+        const plugin_md_old = await readTEXT(`../../src/plugins/asset_repo.txt`);
+        const original_submit_user = getFrontmatterObject('plugin_submitted_by', plugin_md_old);
+        frontmatter = insertLineToStr(`plugin_submitted_by: ${original_submit_user}`, frontmatter);
+    }
+    else{
+        frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
+    }
     frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);

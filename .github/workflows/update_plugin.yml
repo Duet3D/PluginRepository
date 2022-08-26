@@ -90,7 +90,7 @@ jobs:
 
           branch=$(cat issue.json | jq -r ."PluginBranch")
 
-          rm src/plugins/$repo.md
+          mv src/plugins/$repo.md src/plugins/asset_repo.txt
 
           echo $(ls -a)
 
@@ -99,7 +99,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node submissionCreatePR.js
+          node submissionCreatePR.js update
 
           cd ../../
           cp nodescripts/src/$repo.md src/plugins
