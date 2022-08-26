@@ -25,6 +25,7 @@ jobs:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       GITHUB_ISSUE: ${{github.event.issue.number}}
       GITHUB_USER: ${{ github.event.issue.user.login }}
+        PAT_DUET3D_ADMIN_ORG_READ: ${{ secrets.PAT_DUET3D_ADMIN_ORG_READ }}
     steps:
       - uses: actions/checkout@v2
 

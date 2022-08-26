@@ -54,6 +54,27 @@ const isUserCollaborator = async () => {
 
 }
 
+const isUserOrgMember = async () => {    
+    try{
+        const {status} = await axios.get(`https://api.github.com/orgs/Duet3D/members/${process.env.GITHUB_USER}`, 
+        {
+            headers: {
+                'Authorization' : `token ${process.env.PAT_DUET3D_ADMIN_ORG_READ}`,
+                "Accept": "application/vnd.github+json"
+            }
+        })
+        if(status == 204){
+            return true;
+        }
+        return false;
+    }
+    catch(e){
+        console.log(e)
+        return false;
+    }
+
+}
+
 const downloadFile = async (url, dest) => {
     return new Promise((resolve, reject) => {
         wget({
@@ -227,6 +248,7 @@ module.exports = {
     insertLineToStr,
     git,
     isUserCollaborator,
+    isUserOrgMember,
     downloadFile,
     checkFile,
     exitProcess,

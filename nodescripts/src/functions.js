@@ -1,6 +1,6 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
-        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails} = require('./util');
+        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember} = require('./util');
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
@@ -116,6 +116,7 @@ const updatePrecheck = async () => {
     const branch = issue.PluginBranch;
     let isOK = true;
     let res;
+    let admin_req = false;
 
     //0. Check if repo name exists already
     res = checkFile.local(`../../src/plugins/${repo}.md`);
@@ -129,16 +130,24 @@ const updatePrecheck = async () => {
 
         if(await isUserCollaborator()){
             checklog = insertLineToStr(`Update requested by moderator: ${process.env.GITHUB_USER}`, checklog);
+            admin_req = true;
+        }
+
+        else if(await isUserOrgMember()){
+            checklog = insertLineToStr(`Update requested by Duet3D member: ${process.env.GITHUB_USER}`, checklog);
+            admin_req = true;
         }
             
         const plugin_md = await readTEXT(`../../src/plugins/${repo}.md`);
         const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
     
-        if(user && (user != process.env.GITHUB_USER)){
+        if(admin_req || (user && (user != process.env.GITHUB_USER))){
             await exitProcess(`User mismatch. Please request update using user: ${user}`, checklog);
         }
-    
-        checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
+        
+        if(!admin_req){
+            checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
+        }
     
         const plugin_md_author = getFrontmatterObject('author', plugin_md);
         if(plugin_md_author && (plugin_md_author != author)){
@@ -366,6 +375,10 @@ const removalPrecheck = async () => {
 
     if(await isUserCollaborator()){
         await git.commentIssue(`Removal requested by moderator: ${process.env.GITHUB_USER}`);
+        process.exit(0);
+    }
+    else if(await isUserOrgMember()){
+        await git.commentIssue(`Removal requested by Duet3D member: ${process.env.GITHUB_USER}`);
         process.exit(0);
     }
         
