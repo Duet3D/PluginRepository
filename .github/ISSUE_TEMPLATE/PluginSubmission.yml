@@ -57,10 +57,10 @@ body:
   validations:
     required: false
 - type: checkboxes
-    id: AgreeTerms
-    attributes:
-      label: Terms and Conditions
-      description: By submitting this plugin, I confirm that it contains no malicious code and ads. [Terms & Conditions](https://www.duet3d.com/page/terms-conditions)
-      options:
-        - label: I agree
-          required: true
+  id: AgreeTerms
+  attributes:
+    label: Terms and Conditions
+    description: By submitting this plugin, I confirm that it contains no malicious code and ads. [Terms & Conditions](https://www.duet3d.com/page/terms-conditions)
+    options:
+      - label: I agree
+        required: true
