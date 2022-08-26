@@ -48,3 +48,11 @@ body:
     placeholder: main
   validations:
     required: true
+- type: input
+  id: PluginForumThread
+  attributes:
+    label: Duet3D Forum Link
+    description: Link to the forum thread/discussion of the plugin 
+    placeholder: https://forum.duet3d.com/topic/
+  validations:
+    required: false
