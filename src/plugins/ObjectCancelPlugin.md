@@ -2,7 +2,7 @@
 plugin_submitted_by: Sindarius
 plugin: true
 title: Object Cancel
-abstract: Cancel objects in your print with a 2D view
+abstract: Allows you to quickly cancel objects in your prints in a simple view.
 author: Sindarius
 repo: ObjectCancelPlugin
 branch: main
@@ -16,7 +16,7 @@ release_date: 2022-07-29T20:39:16Z
 release_page: https://github.com/Sindarius/ObjectCancelPlugin/releases/tag/1.2.0
 license: LGPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Sindarius/ObjectCancelPlugin/main/LICENSE
-download_count: 180
+download_count: 193
 tags:
 - dwc
 ---
