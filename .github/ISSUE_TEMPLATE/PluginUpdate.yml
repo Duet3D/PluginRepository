@@ -29,19 +29,11 @@ body:
   validations:
     required: true
 - type: input
-  id: PluginURL
+  id: PluginID
   attributes:
-    label: GitHub URL
-    description: URL of the GitHub repository (https://github.com/owner/repo)
-    placeholder: https://github.com/
-  validations:
-    required: true
-- type: input
-  id: PluginBranch
-  attributes:
-    label: GitHub branch name
-    description: Name of the main/master branch
-    placeholder: main
+    label: Plugin ID
+    description: ID of the plugin to be updated
+    placeholder: Plugin-id
   validations:
     required: true
 - type: checkboxes

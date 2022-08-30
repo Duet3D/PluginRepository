@@ -112,8 +112,7 @@ const updatePrecheck = async () => {
     // Initalize variables
     let checklog = "";
     const issue = await readJSON('issue.json');
-    const {PluginAuthor: author, PluginRepo: repo} = extractRepoURLDetails(issue.PluginURL);
-    const branch = issue.PluginBranch;
+    const repo = issue.PluginID;
     let isOK = true;
     let res;
     let admin_req = false;
@@ -122,51 +121,47 @@ const updatePrecheck = async () => {
     res = checkFile.local(`../../src/plugins/${repo}.md`);
     checklog = insertLineToStr(`Plugin available: ${getStatus(res)}`, checklog);
     isOK = isOK && res;
-    if(!res){
+    if (!res) {
         await exitProcess('Plugin unavailable. Update failed. Check and resubmit', checklog);
     }
 
-    //0. Checking if user is a collaborator or the same user submitted the removal request
+    //0. Checking if user is a collaborator/org-member or the same user submitted the removal request
 
-        if(await isUserCollaborator()){
-            checklog = insertLineToStr(`Update requested by moderator: ${process.env.GITHUB_USER}`, checklog);
-            admin_req = true;
-        }
+    if (await isUserCollaborator()) {
+        checklog = insertLineToStr(`Update requested by moderator: ${process.env.GITHUB_USER}`, checklog);
+        admin_req = true;
+    }
 
-        else if(await isUserOrgMember()){
-            checklog = insertLineToStr(`Update requested by Duet3D member: ${process.env.GITHUB_USER}`, checklog);
-            admin_req = true;
-        }
-            
-        const plugin_md = await readTEXT(`../../src/plugins/${repo}.md`);
-        const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
-    
-        if(!admin_req && user && (user != process.env.GITHUB_USER)){
-            await exitProcess(`User mismatch. Please request update using user: ${user}`, checklog);
-        }
-        
-        if(!admin_req){
-            checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
-        }
-    
-        const plugin_md_author = getFrontmatterObject('author', plugin_md);
-        if(plugin_md_author && (plugin_md_author != author)){
-            checklog = insertLineToStr(`Plugin author/owner mismatch. Original author/owner: ${plugin_md_author}`, checklog);
-            await exitProcess(`If you have changed the owner, request for removal and submit as a new plugin.`, checklog);
-        }
+    else if (await isUserOrgMember()) {
+        checklog = insertLineToStr(`Update requested by Duet3D member: ${process.env.GITHUB_USER}`, checklog);
+        admin_req = true;
+    }
 
+    const plugin_md = await readTEXT(`../../src/plugins/${repo}.md`);
+    const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
 
-    let repo_status = await checkFile.remote(`https://github.com/${author}/${repo}/tree/${branch}/`);
+    if (!admin_req && user && (user != process.env.GITHUB_USER)) {
+        await exitProcess(`User mismatch. Please request update using user: ${user}`, checklog);
+    }
 
-    if(!repo_status){
-        await exitProcess('Errors with accessing repo. If the plugin has been moved, request for removal and submit as a new one', checklog);
+    if (!admin_req) {
+        checklog = insertLineToStr(`Update requested by user: ${process.env.GITHUB_USER}`, checklog);
+    }
+
+    const plugin_md_author = getFrontmatterObject('author', plugin_md);
+    const plugin_md_branch = getFrontmatterObject('branch', plugin_md);
+
+    let repo_status = await checkFile.remote(`https://github.com/${plugin_md_author}/${repo}/tree/${plugin_md_branch}/`);
+
+    if (!repo_status) {
+        await exitProcess('Errors with accessing repo. If the plugin has been moved/branch has been changed, request for removal and submit as a new one', checklog);
     }
 
     //1. Check if README.md or PLUGIN.md is present on the specified repo
-    let plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
+    let plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${plugin_md_author}/${repo}/${plugin_md_branch}/PLUGIN.md`);
     checklog = insertLineToStr(`PLUGIN.md: ${plugin_md_status ? "OK" : "NOT FOUND. USING README.md as FALLBACK"}`, checklog);
 
-    let readme_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/README.md`);
+    let readme_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${plugin_md_author}/${repo}/${plugin_md_branch}/README.md`);
     checklog = insertLineToStr(`README.md: ${getStatus(readme_md_status)}`, checklog);
     
     res = plugin_md_status || readme_md_status;
@@ -174,7 +169,7 @@ const updatePrecheck = async () => {
 
 
     //2. Make sure there is at least one release with at least one ZIP file
-    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    const {status, data} = await axios.get(`https://api.github.com/repos/${plugin_md_author}/${repo}/releases`);
     let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     if((status != 200) || browser_download_url == undefined){
         await exitProcess('Release not available, Exiting', checklog);
@@ -240,6 +235,122 @@ const updatePrecheck = async () => {
     }
 
 }
+
+const updateCreatePR = async () => {
+    const issue = await readJSON('issue.json');
+
+    const plugin_md = await readTEXT(`../../src/plugins/asset_repo.txt`);
+    const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
+    const author = getFrontmatterObject('author', plugin_md);
+    const branch = getFrontmatterObject('branch', plugin_md);
+
+    let res;
+
+    let checklog = "";
+
+    //Download release and unzip-------------------------------------------------------------------------------------------------
+    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+
+    const gh_release_data = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+
+    let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
+    
+    if((status != 200) || browser_download_url == undefined){
+        await exitProcess('Release not available, Exiting', checklog);
+    }
+    
+    let ext = browser_download_url.split('.');
+    res = ext[ext.length-1] == 'zip';
+    if(!res){
+        await exitProcess('Release available is not zip, Exiting', checklog);
+    }
+
+    await downloadFile(browser_download_url, 'asset.zip')
+
+    try{
+        await unzip();
+    }
+    catch(err){
+        await exitProcess(err, checklog);
+    }
+
+    res = checkFile.local('unzipped/plugin.json');
+    if(!res){
+        await exitProcess('plugin.json - manifest not available, Exiting', checklog);
+    }
+    
+    const plugin_json = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
+
+    const {name: plugin_title, homepage, license, dwcversion : dwcVersion, sbcdsfversion : sbcDSfVersion, rrfversion : rrfVersion, tags = []} = plugin_json;
+    const abstract= issue.PluginAbstract;
+
+    const date = new Date().toISOString().slice(2, 10).replace(new RegExp("-",'g'), "");
+
+    const latest_version =  ((gh_release_data||{}).data || [])[0].tag_name;
+    const release_page =  ((gh_release_data||{}).data || [])[0].html_url;
+    const release_date = ((gh_release_data||{}).data || [])[0].published_at;
+    const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
+    const oem = author == 'Duet3D'
+
+    const plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
+    if(plugin_md_status){
+        await downloadFile(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`, `${repo}.md`)
+    }
+    else{
+        await downloadFile(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/README.md`, `${repo}.md`)
+    }
+
+    let license_file = ""
+    const license_status_1 = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/LICENSE`);
+    const license_status_2 = await checkFile.remote(`https://spdx.org/licenses/${license}`);
+
+    if(license_status_1){
+        license_file = `https://raw.githubusercontent.com/${author}/${repo}/${branch}/LICENSE`;
+    }
+    else if(license_status_2){
+        license_file = `https://spdx.org/licenses/${license}`;
+    }
+    else{
+        license_file = `https://github.com/${author}/${repo}`;
+    }
+
+
+
+    let frontmatter = "";
+    frontmatter = insertLineToStr("---", frontmatter);
+    frontmatter = insertLineToStr(`plugin_submitted_by: ${user}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin: true`, frontmatter);
+    frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
+    frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);
+    frontmatter = insertLineToStr(`author: ${author}`, frontmatter);
+    frontmatter = insertLineToStr(`repo: ${repo}`, frontmatter);
+    frontmatter = insertLineToStr(`branch: ${branch}`, frontmatter);
+    frontmatter = insertLineToStr(`homepage: ${homepage}`, frontmatter);
+    frontmatter = insertLineToStr(`dwcVersion: ${dwcVersion}`, frontmatter);
+    frontmatter = insertLineToStr(`sbcDSfVersion: ${sbcDSfVersion}`, frontmatter);
+    frontmatter = insertLineToStr(`rrfVersion: ${rrfVersion}`, frontmatter);
+    frontmatter = insertLineToStr(`oem: ${oem}`, frontmatter);
+    frontmatter = insertLineToStr(`latest_version: ${latest_version}`, frontmatter);
+    frontmatter = insertLineToStr(`release_date: ${release_date}`, frontmatter);
+    frontmatter = insertLineToStr(`release_page: ${release_page}`, frontmatter);
+    frontmatter = insertLineToStr(`license: ${license}`, frontmatter);
+    frontmatter = insertLineToStr(`license_file: ${license_file}`, frontmatter);
+    frontmatter = insertLineToStr(`download_count: ${download_count}`, frontmatter);
+    frontmatter = insertLineToStr(`tags:`, frontmatter);
+    tags.forEach(x => {
+        frontmatter = insertLineToStr(`- ${x.toLowerCase()}`, frontmatter);
+    });
+    if(dwcVersion) frontmatter = insertLineToStr(`- dwc`, frontmatter);
+    if(sbcDSfVersion) frontmatter = insertLineToStr(`- sbc`, frontmatter);
+    if(rrfVersion) frontmatter = insertLineToStr(`- rrf`, frontmatter);
+    if(oem) frontmatter = insertLineToStr(`- duet3d`, frontmatter);
+    frontmatter = insertLineToStr(`---`, frontmatter);
+    frontmatter = insertLineToStr("", frontmatter);
+
+    await prepend(frontmatter, `${repo}.md`);
+
+};
+
 
 const submissionCreatePR = async () => {
     const issue = await readJSON('issue.json');
@@ -321,17 +432,9 @@ const submissionCreatePR = async () => {
     }
 
 
-
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
-    if(process.argv[2] && process.argv[2] == 'update'){
-        const plugin_md_old = await readTEXT(`../../src/plugins/asset_repo.txt`);
-        const original_submit_user = getFrontmatterObject('plugin_submitted_by', plugin_md_old);
-        frontmatter = insertLineToStr(`plugin_submitted_by: ${original_submit_user}`, frontmatter);
-    }
-    else{
-        frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
-    }
+    frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
     frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);
@@ -409,5 +512,6 @@ module.exports = {
     submissionCreatePR,
     submissionPrecheck,
     updatePrecheck,
+    updateCreatePR,
     removalPrecheck
 }

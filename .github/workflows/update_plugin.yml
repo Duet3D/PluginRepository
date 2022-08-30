@@ -69,27 +69,8 @@ jobs:
 
           set -e
 
-          PluginURL=$(cat issue.json | jq -r ."PluginURL")
-
-          #---------------------------------------------------------------------
-          OLDIFS=$IFS
-          IFS='/'
-          read -a ar <<< "$PluginURL"
-
-          cnt=0; 
-          for el in "${ar[@]}"; do
-            [[ $el == "github.com" ]]||[[ $el == "www.github.com" ]] && break
-            ((++cnt))
-          done
-
-          IFS=$OLDIFS
-          #---------------------------------------------------------------------
+          repo=$(cat issue.json | jq -r ."PluginID")
           
-          author=${ar[$((cnt+1))]}
-          repo=${ar[$((cnt+2))]}
-
-          branch=$(cat issue.json | jq -r ."PluginBranch")
-
           mv src/plugins/$repo.md src/plugins/asset_repo.txt
 
           echo $(ls -a)
@@ -99,7 +80,7 @@ jobs:
           cd nodescripts
           npm install
           cd src
-          node submissionCreatePR.js update
+          node updateCreatePR.js
 
           cd ../../
           cp nodescripts/src/$repo.md src/plugins
