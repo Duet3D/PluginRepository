@@ -1,5 +1,4 @@
 name: update-repository-version
-concurrency: plugin_repo_update
 on: 
   workflow_dispatch:
     inputs:

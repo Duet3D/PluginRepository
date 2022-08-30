@@ -1,5 +1,4 @@
 name: update-plugin
-concurrency: plugin_repo_update
 on:
   issues:
     types: [opened]
