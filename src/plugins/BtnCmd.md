@@ -2,7 +2,7 @@
 plugin_submitted_by: MintyTrebor
 plugin: true
 title: BtnCmd
-abstract: You can customise DWC with your own design using layouts containing new panels and buttons
+abstract: Customise DWC with your own design using layouts containing new panels and buttons
 author: MintyTrebor
 repo: BtnCmd
 branch: main
@@ -16,7 +16,7 @@ release_date: 2022-07-11T13:16:18Z
 release_page: https://github.com/MintyTrebor/BtnCmd/releases/tag/Beta_0.10.13
 license: GPL-2.0-or-later
 license_file: https://raw.githubusercontent.com/MintyTrebor/BtnCmd/main/LICENSE
-download_count: 762
+download_count: 768
 tags:
 - dwc
 ---
