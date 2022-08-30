@@ -6,3 +6,8 @@
 
 ## Build and run locally
 - `npm run dev`
+
+## Increase version number
+- Run GitHub Action -> `update-repository-version`
+- `patch`, `minor`, `major` are options
+
