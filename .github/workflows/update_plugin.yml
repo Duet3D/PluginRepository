@@ -112,8 +112,9 @@ jobs:
 
           echo $url
 
+          comment="{"\"body"\": "Auto approving"}"
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/comments \
-              -d "Auto approving"
+              -d "$comment"
           }
 
           echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
