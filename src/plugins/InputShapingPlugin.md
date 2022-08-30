@@ -16,7 +16,7 @@ release_date: 2022-06-20T14:34:10Z
 release_page: https://github.com/Duet3D/InputShapingPlugin/releases/tag/v3.4.1-b1
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/LICENSE
-download_count: 225
+download_count: 234
 tags:
 - input shaping
 - tuning
