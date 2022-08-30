@@ -1,4 +1,5 @@
 name: merge-pr-on-issue-approval
+concurrency: plugin_repo_update
 on: 
   issues:
     types:
