@@ -238,7 +238,8 @@ const updatePrecheck = async () => {
 
 const updateCreatePR = async () => {
     const issue = await readJSON('issue.json');
-
+    const repo = issue.PluginID;
+    
     const plugin_md = await readTEXT(`../../src/plugins/asset_repo.txt`);
     const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
     const author = getFrontmatterObject('author', plugin_md);
