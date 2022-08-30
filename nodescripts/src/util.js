@@ -189,7 +189,11 @@ const writeLinetoFile = (str, path) => {
 const extractRepoURLDetails = (url) => {
     const split = url.split('/');
     let index = split.indexOf('github.com') == -1 ? split.indexOf('www.github.com') : split.indexOf('github.com')
-    return {PluginAuthor:split[index+1], PluginRepo: split[index+2]}
+    let repo = split[index+2]
+    if(repo.slice(-4) == '.git'){
+        repp = repo.slice(0, repo.length - 4)
+    }
+    return {PluginAuthor:split[index+1], PluginRepo: repo}
 } 
 
 

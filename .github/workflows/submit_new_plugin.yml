@@ -87,6 +87,9 @@ jobs:
             
           author=${ar[$((cnt+1))]}
           repo=${ar[$((cnt+2))]}
+          
+          suffix=".git"
+          repo=${repo/%$suffix}
 
           branch=$(cat issue.json | jq -r ."PluginBranch")
 
