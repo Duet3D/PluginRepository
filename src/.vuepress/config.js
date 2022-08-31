@@ -36,18 +36,6 @@ module.exports = {
     prevLinks: false,
     nav: [
       {
-        text: 'PRODUCTS',
-        link: 'https://www.duet3d.com/products'
-      },
-      {
-        text: 'FORUM',
-        link: 'https://forum.duet3d.com'
-      },
-      {
-        text: 'GITHUB',
-        link: 'https://github.com/duet3D/'
-      },
-      {
         text: 'GUIDE',
         ariaLabel: 'GUIDE',
         items: [
@@ -63,6 +51,18 @@ module.exports = {
             ]
           }
         ]
+      },
+      {
+        text: 'PRODUCTS',
+        link: 'https://www.duet3d.com/products'
+      },
+      {
+        text: 'FORUM',
+        link: 'https://forum.duet3d.com'
+      },
+      {
+        text: 'GITHUB',
+        link: 'https://github.com/duet3D/'
       }
     ],
     sidebar: {

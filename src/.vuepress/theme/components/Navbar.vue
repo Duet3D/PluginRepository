@@ -109,9 +109,19 @@ $navbar-horizontal-padding = 1.5rem
 
 .mobile-dropdown-title
   .title
-    color #0318d1
+    color #fff
     font-size 0.9rem
     font-weight 600
+
+    background-color #0318d1
+    border-radius 200px 
+    border none
+    color white
+    padding 2px 10px
+    text-align center
+    text-decoration none
+    display inline-block
+
 
 .dropdown-wrapper
   .nav-dropdown
@@ -132,9 +142,18 @@ $navbar-horizontal-padding = 1.5rem
   font-size 0.9rem
   
   .dropdown-title
-      color #0318d1
+      color #fff
       font-size 0.8rem
       font-weight 400
+      
+      background-color #0318d1
+      border-radius 200px 
+      border none
+      color white
+      padding 2px 10px
+      text-align center
+      text-decoration none
+      display inline-block
 
 
   .nav-links
