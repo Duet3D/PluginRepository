@@ -242,6 +242,7 @@ const updateCreatePR = async () => {
     
     const plugin_md = await readTEXT(`../../src/plugins/asset_repo.txt`);
     const user = getFrontmatterObject('plugin_submitted_by', plugin_md);
+    const plugin_submitted_on = getFrontmatterObject('plugin_submitted_on', plugin_md) || `${new Date().toISOString()}`;
     const author = getFrontmatterObject('author', plugin_md);
     const branch = getFrontmatterObject('branch', plugin_md);
 
@@ -320,6 +321,8 @@ const updateCreatePR = async () => {
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
     frontmatter = insertLineToStr(`plugin_submitted_by: ${user}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin_submitted_on: ${plugin_submitted_on}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin_updated_on: ${new Date().toISOString()}`, frontmatter);
     frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);
@@ -436,6 +439,8 @@ const submissionCreatePR = async () => {
     let frontmatter = "";
     frontmatter = insertLineToStr("---", frontmatter);
     frontmatter = insertLineToStr(`plugin_submitted_by: ${process.env.GITHUB_USER}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin_submitted_on: ${new Date().toISOString()}`, frontmatter);
+    frontmatter = insertLineToStr(`plugin_updated_on: ${new Date().toISOString()}`, frontmatter);
     frontmatter = insertLineToStr(`plugin: true`, frontmatter);
     frontmatter = insertLineToStr(`title: ${plugin_title}`, frontmatter);
     frontmatter = insertLineToStr(`abstract: ${abstract}`, frontmatter);

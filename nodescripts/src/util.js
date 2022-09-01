@@ -235,7 +235,8 @@ const lowerCaseKeys = (plugin_manifest) => {
 }
 
 const getFrontmatterObject = (key, plugin_md) => {
-    return (plugin_md.split('\n').find( x => x.includes(key)) || "").replace(`${key}:`, "").trim();
+    const fm_val = (plugin_md.split('\n').find( x => x.includes(key)) || "").replace(`${key}:`, "").trim();
+    return fm_val == "" ? undefined : fm_val;
 }
 
 const updateVersion = async (release_type = 'patch', file = 'package.json') => {
