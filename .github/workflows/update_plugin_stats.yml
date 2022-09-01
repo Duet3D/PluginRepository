@@ -1,0 +1,29 @@
+name: update-plugin-stats
+on: workflow_dispatch
+
+jobs:
+  update-plugin-stats:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: update-plugin-stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git pull
+          
+
+          cd nodescripts
+          npm install
+          cd src
+          node updatePluginStats.js
+
+          cd ../../
+          rm package.json
+          cp nodescripts/src/plugin_stats.json plugin_stats.json
+
+          git add plugin_stats.json
+          git commit -m "Update plugin_stats"
+          git push -u origin master
