@@ -1,2 +1,94 @@
 [
+    {
+        "plugin_id": "BtnCmd",
+        "author": "MintyTrebor",
+        "latest_release": "Beta_0.10.13",
+        "total_download_count": 771,
+        "latest_release_download_count": 133,
+        "weekly_total_downloads": 771,
+        "weekly_latest_release_download_count": 133,
+        "last_updated": "2022-09-01T14:05:17.820Z"
+    },
+    {
+        "plugin_id": "Closed-Loop-Plugin",
+        "author": "Duet3D",
+        "latest_release": "v3.4-b1",
+        "total_download_count": 50,
+        "latest_release_download_count": 21,
+        "weekly_total_downloads": 50,
+        "weekly_latest_release_download_count": 21,
+        "last_updated": "2022-09-01T14:05:18.148Z"
+    },
+    {
+        "plugin_id": "DWC-CAN-Manager",
+        "author": "Sindarius",
+        "latest_release": "V1.0.0",
+        "total_download_count": 30,
+        "latest_release_download_count": 30,
+        "weekly_total_downloads": 30,
+        "weekly_latest_release_download_count": 30,
+        "last_updated": "2022-09-01T14:05:18.478Z"
+    },
+    {
+        "plugin_id": "DWC_GamepadJogger_Plugin",
+        "author": "Sindarius",
+        "latest_release": "1.0.0",
+        "total_download_count": 168,
+        "latest_release_download_count": 36,
+        "weekly_total_downloads": 168,
+        "weekly_latest_release_download_count": 36,
+        "last_updated": "2022-09-01T14:05:18.873Z"
+    },
+    {
+        "plugin_id": "EndstopsMonitorPlugin",
+        "author": "Duet3D",
+        "latest_release": "v3.4",
+        "total_download_count": 88,
+        "latest_release_download_count": 85,
+        "weekly_total_downloads": 88,
+        "weekly_latest_release_download_count": 85,
+        "last_updated": "2022-09-01T14:05:19.219Z"
+    },
+    {
+        "plugin_id": "InputShapingPlugin",
+        "author": "Duet3D",
+        "plugin_submitted_on": "2022-09-01T10:53:37.289Z",
+        "plugin_updated_on": "2022-09-01T10:53:38.133Z",
+        "latest_release": "v3.4.1-b1",
+        "total_download_count": 250,
+        "latest_release_download_count": 243,
+        "weekly_total_downloads": 250,
+        "weekly_latest_release_download_count": 243,
+        "last_updated": "2022-09-01T14:05:19.495Z"
+    },
+    {
+        "plugin_id": "MotionWebcamServerPlugin",
+        "author": "Duet3D",
+        "latest_release": "v3.4",
+        "total_download_count": 22,
+        "latest_release_download_count": 22,
+        "weekly_total_downloads": 22,
+        "weekly_latest_release_download_count": 22,
+        "last_updated": "2022-09-01T14:05:19.775Z"
+    },
+    {
+        "plugin_id": "ObjectCancelPlugin",
+        "author": "Sindarius",
+        "latest_release": "1.2.0",
+        "total_download_count": 199,
+        "latest_release_download_count": 43,
+        "weekly_total_downloads": 199,
+        "weekly_latest_release_download_count": 43,
+        "last_updated": "2022-09-01T14:05:20.110Z"
+    },
+    {
+        "plugin_id": "ReleaseMgr",
+        "author": "MintyTrebor",
+        "latest_release": "0.01.14Beta",
+        "total_download_count": 74,
+        "latest_release_download_count": 39,
+        "weekly_total_downloads": 74,
+        "weekly_latest_release_download_count": 39,
+        "last_updated": "2022-09-01T14:05:20.633Z"
+    }
 ]
