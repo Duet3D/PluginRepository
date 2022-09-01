@@ -11,3 +11,10 @@
 - Run GitHub Action -> `update-repository-version`
 - `patch`, `minor`, `major` are options
 
+## GitHub Workflows
+- `submit_new_plugin`
+- `update_plugin`
+- `remove_plugin`
+- `merge_pr_on_issue`
+- `update_plugin_stats`
+- `update_version`
