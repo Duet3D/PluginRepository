@@ -258,6 +258,7 @@ module.exports = {
     checkFile,
     exitProcess,
     readFile,
+    writeFile,
     updateVersion,
     writeLinetoFile,
     prepend,

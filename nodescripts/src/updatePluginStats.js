@@ -1,5 +1,10 @@
 const {updatePluginStats} =  require('./statUtils');
 
-updatePluginStats().then(res => {
-	console.log(res)
-})
+try{
+	updatePluginStats().then(res => {
+		console.log(res);
+	})	
+}
+catch(e){
+	console.log(e);
+}
