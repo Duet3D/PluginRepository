@@ -1,5 +1,7 @@
 ---
 plugin_submitted_by: Sindarius
+plugin_submitted_on: 2022-09-02T12:26:31.796Z
+plugin_updated_on: 2022-09-02T12:26:32.637Z
 plugin: true
 title: Gamepad Jogger
 abstract: Control your Printer/CNC using a keyboard or gamepad
@@ -16,7 +18,7 @@ release_date: 2021-08-30T12:34:24Z
 release_page: https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/tag/1.0.0
 license: LGPL-3.0-or-later
 license_file: https://spdx.org/licenses/LGPL-3.0-or-later
-download_count: 160
+download_count: 169
 tags:
 - dwc
 ---
