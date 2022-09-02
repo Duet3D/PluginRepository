@@ -31,11 +31,9 @@ export default {
 		this.$data.gitbranch = this.$page.frontmatter.branch
 
     fetch('/assets/plugin_stats.json')
-        .then(res => {
-			console.log(res)
-			res.json()
-			})
+        .then(res => res.json())
         .then(data => {
+		  console.log(data)
           this.$data.plugin_count = (data || []).length;
         })
 	},
