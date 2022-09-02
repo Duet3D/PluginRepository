@@ -1,5 +1,7 @@
 ---
 plugin_submitted_by: MintyTrebor
+plugin_submitted_on: 2022-09-02T12:29:14.448Z
+plugin_updated_on: 2022-09-02T12:29:14.904Z
 plugin: true
 title: ReleaseMgr
 abstract: ReleaseMgr is a DWC plugin to help with your RRF/DWC/SBC updating experience
@@ -16,7 +18,7 @@ release_date: 2022-07-07T15:26:26Z
 release_page: https://github.com/MintyTrebor/ReleaseMgr/releases/tag/0.01.14Beta
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/MintyTrebor/ReleaseMgr/main/LICENSE
-download_count: 56
+download_count: 75
 tags:
 - dwc
 ---
