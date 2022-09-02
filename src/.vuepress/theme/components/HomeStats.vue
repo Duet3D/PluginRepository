@@ -9,16 +9,42 @@
                 <br>
             </div>
         </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Newly Added</h3>
+                </div>
+                <ul>
+                    <li v-for="plugin_id in this.$data.newly_added_plugins" :key="plugin_id">
+                        <a target="_blank" :href="`/plugins/${plugin_id}.html`">{{plugin_id}}</a>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </section>
 	</div>
 </template>
 
 <script>
+
+function compareBySubmittedOn( a, b ) {
+    let type = 'plugin_submitted_on'
+    if ( a[`${type}`] < b[`${type}`] ){
+        return 1;
+    }
+    if ( a[`${type}`] > b[`${type}`] ){
+        return -1;
+    }
+    return 0;
+}
+
 import fetch from 'cross-fetch';
 
 export default {
 	data() {
 		return {
 			items: {},
+			newly_added_plugins: [],
 			plugin_count: 0
 		};
 	},
@@ -30,27 +56,21 @@ export default {
 		this.$data.gitrepo = this.$page.frontmatter.repo;
 		this.$data.gitbranch = this.$page.frontmatter.branch
 
-    fetch('/assets/plugin_stats.json')
+    fetch('https://plugins.duet3d.com/assets/plugin_stats.json') // /assets/plugin_stats.json
         .then(res => res.json())
         .then(data => {
-		  console.log(data)
           this.$data.plugin_count = (data || []).length;
+
+		  let new_plugins = data.slice();
+		  new_plugins.sort(compareBySubmittedOn);
+		  const x = new_plugins.sort(compareBySubmittedOn).slice(0, 5).map(x=>x.plugin_id)
+		  console.log(x)
+		  this.$data.newly_added_plugins = x;
+
         })
 	},
 	computed: {
-		getPlatforms() {
-			const platforms = []
-			const predef = [{ key: 'dwcVersion', name: 'Duet Web Control', url: 'https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual'}, { key: 'sbcDSfVersion',  name: 'Duet Software Framework', url: 'https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup'}, { key: 'rrfVersion',  name: 'RepRapFirmware', url: 'https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview'}]
-			predef.forEach(({key, name, url}) => {
-				if(this.$page.frontmatter[key] && this.$page.frontmatter[key] != 'undefined')
-					platforms.push({
-						platform: name,
-						version: this.$page.frontmatter[key],
-            url: url
-					})
-			})
-			return platforms
-		}
+
 	}
 };
 </script>
