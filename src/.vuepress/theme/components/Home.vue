@@ -21,7 +21,7 @@
         v-if="data.tagline !== null"
         class="description"
       >
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+        {{ data.tagline || $description }}
       </p>
 
       <p
@@ -49,7 +49,16 @@
       </div>
     </div>
 
+    <div class="lgstyling">
+      <HomeStats/>
+    </div>
+
+    <div class="mobilestyling theme-default-content">
+      <HomeStats/>
+    </div>
+
     <Content class="theme-default-content custom" />
+
 
     <div
       v-if="data.footer"
@@ -68,11 +77,12 @@
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
+import HomeStats from './HomeStats.vue'
 
 export default {
   name: 'Home',
 
-  components: { NavLink },
+  components: { NavLink, HomeStats },
 
   computed: {
     data () {
@@ -90,6 +100,21 @@ export default {
 </script>
 
 <style lang="stylus">
+.lgstyling
+  font-size 16px
+  background-color #fff
+  width $sidebarWidth
+  position fixed
+  z-index 10
+  margin 0
+  top $navbarHeight*2
+  right 0
+  bottom 0
+  padding-top 2rem
+  box-sizing border-box
+  border-right 1px solid $borderColor
+  overflow-y auto
+
 .home
   padding $navbarHeight 2rem 0
   max-width $homePageWidth
@@ -178,4 +203,17 @@ export default {
     .feature
       h2
         font-size 1.25rem
+
+.mobilestyling
+  background-color #fff
+
+
+@media (min-width: (1400px))
+  .theme-container.no-sidebar
+    .mobilestyling
+      display none
+
+    .page
+      padding-left 0
+
 </style>
