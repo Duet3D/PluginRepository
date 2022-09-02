@@ -28,7 +28,7 @@
                   <h3 class="h3_class">Most Downloaded</h3>
                 </div>
                 <ul>
-                    <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
+                    <li v-for="plugin in this.$data.most_download_plugins" :key="plugin.plugin_id">
                         <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.plugin_id} - ${plugin.total_download_count}`}}</a>
                     </li>
                 </ul>
