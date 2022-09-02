@@ -15,8 +15,21 @@
                   <h3 class="h3_class">Newly Added</h3>
                 </div>
                 <ul>
-                    <li v-for="plugin_id in this.$data.newly_added_plugins" :key="plugin_id">
-                        <a target="_blank" :href="`/plugins/${plugin_id}.html`">{{plugin_id}}</a>
+                    <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
+                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{plugin.plugin_id}}</a>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">Most Downloaded</h3>
+                </div>
+                <ul>
+                    <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
+                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.plugin_id} - ${plugin.total_download_count}`}}</a>
                     </li>
                 </ul>
                 <br>
@@ -38,6 +51,17 @@ function compareBySubmittedOn( a, b ) {
     return 0;
 }
 
+function compareByDownloaded( a, b ) {
+    let type = 'total_download_count'
+    if ( a[`${type}`] < b[`${type}`] ){
+        return 1;
+    }
+    if ( a[`${type}`] > b[`${type}`] ){
+        return -1;
+    }
+    return 0;
+}
+
 import fetch from 'cross-fetch';
 
 export default {
@@ -45,6 +69,7 @@ export default {
 		return {
 			items: {},
 			newly_added_plugins: [],
+			most_download_plugins: [],
 			plugin_count: 0
 		};
 	},
@@ -61,12 +86,12 @@ export default {
         .then(data => {
           this.$data.plugin_count = (data || []).length;
 
-		  let new_plugins = data.slice();
-		  new_plugins.sort(compareBySubmittedOn);
-		  const x = new_plugins.sort(compareBySubmittedOn).slice(0, 5).map(x=>x.plugin_id)
-		  console.log(x)
-		  this.$data.newly_added_plugins = x;
+		  let data_copy = data.slice();
+		  this.$data.newly_added_plugins = data_copy.sort(compareBySubmittedOn).slice(0, 5).map(x=>{return {plugin_id: x.plugin_id, plugin_submitted_on: x.plugin_submitted_on}});
 
+
+		  data_copy = data.slice();
+		  this.$data.most_download_plugins = data_copy.sort(compareByDownloaded).slice(0, 5).map(x=>{return {plugin_id: x.plugin_id, total_download_count: x.total_download_count}});
         })
 	},
 	computed: {
