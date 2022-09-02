@@ -1,5 +1,7 @@
 ---
 plugin_submitted_by: Sindarius
+plugin_submitted_on: 2022-09-02T12:25:56.433Z
+plugin_updated_on: 2022-09-02T12:25:57.779Z
 plugin: true
 title: CAN Manager
 abstract: Provides an easy to use list of CAN connected devices.
@@ -16,7 +18,7 @@ release_date: 2022-07-29T19:32:53Z
 release_page: https://github.com/Sindarius/DWC-CAN-Manager/releases/tag/V1.0.0
 license: LGPL-3.0-or-later
 license_file: https://spdx.org/licenses/LGPL-3.0-or-later
-download_count: 25
+download_count: 31
 tags:
 - dwc
 ---
