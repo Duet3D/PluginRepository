@@ -30,10 +30,12 @@ export default {
 		this.$data.gitrepo = this.$page.frontmatter.repo;
 		this.$data.gitbranch = this.$page.frontmatter.branch
 
-    fetch('/PluginRepository/assets/plugin_stats.json')
-        .then(res => res.json())
+    fetch('/assets/plugin_stats.json')
+        .then(res => {
+			console.log(res)
+			res.json()
+			})
         .then(data => {
-			console.log(data)
           this.$data.plugin_count = (data || []).length;
         })
 	},
