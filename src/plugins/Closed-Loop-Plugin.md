@@ -1,5 +1,7 @@
 ---
 plugin_submitted_by: T3P3
+plugin_submitted_on: 2022-09-02T12:25:08.721Z
+plugin_updated_on: 2022-09-02T12:25:09.373Z
 plugin: true
 title: Closed Loop Tuning
 abstract: Visualise the PID parameters of a closed loop motor controlled by a Duet 3 1HCL board
@@ -16,7 +18,7 @@ release_date: 2022-03-16T16:15:09Z
 release_page: https://github.com/Duet3D/Closed-Loop-Plugin/releases/tag/v3.4-b1
 license: GPL-3.0
 license_file: https://raw.githubusercontent.com/Duet3D/Closed-Loop-Plugin/master/LICENSE
-download_count: 42
+download_count: 50
 tags:
 - closed loop
 - tuning
