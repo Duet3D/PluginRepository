@@ -1,5 +1,7 @@
 ---
 plugin_submitted_by: yasasw
+plugin_submitted_on: 2022-09-02T12:28:22.328Z
+plugin_updated_on: 2022-09-02T12:28:24.834Z
 plugin: true
 title: Motion Webcam Server
 abstract: Motion Webcam Server
@@ -16,7 +18,7 @@ release_date: 2022-06-14T08:40:25Z
 release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.4
 license: GPL-2.0-only
 license_file: https://raw.githubusercontent.com/Duet3D/MotionWebcamServerPlugin/master/LICENSE
-download_count: 19
+download_count: 23
 tags:
 - motion
 - webcam
