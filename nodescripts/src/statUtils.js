@@ -39,9 +39,15 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
     const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
     const latest_release_download_count = (((gh_release_data|| [])[0].assets[0]||[]).download_count||0)
 
-    let res = prev_plugin_stat_json.find( x=> x.id == plugin_id) || {}
-    console.log(res)
-    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, latest_release_download_count: prev_latest_release_download_count} = res;
+    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, latest_release_download_count: prev_latest_release_download_count, week_start_date: prev_week_start_date} = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id) || {};
+
+    const today = new Date().toISOString().substring(0,10);
+    let week_start_date = prev_week_start_date;
+
+    let days_since_last_update = (new Date(today) - new Date(prev_week_start_date||today))/(1000*60*60*24)
+    if(days_since_last_update >= 7){
+        week_start_date = today;
+    }
 
     let weekly_total_downloads = total_download_count - (prev_total_download_count || 0);
 
@@ -61,7 +67,8 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
         "latest_release_download_count": latest_release_download_count,
         "weekly_total_downloads": weekly_total_downloads,
         "weekly_latest_release_download_count": weekly_latest_release_download_count,
-        "last_updated": `${new Date().toISOString()}`
+        "week_start_date" : week_start_date,
+        "last_updated_date": today
     }
 }
 
