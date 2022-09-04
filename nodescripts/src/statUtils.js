@@ -39,23 +39,31 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
     const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
     const latest_release_download_count = (((gh_release_data|| [])[0].assets[0]||[]).download_count||0)
 
-    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, latest_release_download_count: prev_latest_release_download_count, week_start_date: prev_week_start_date} = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id) || {};
-
-    const today = new Date().toISOString().substring(0,10);
-    let week_start_date = prev_week_start_date;
-
-    let days_since_last_update = (new Date(today) - new Date(prev_week_start_date||today))/(1000*60*60*24)
-    if(days_since_last_update >= 7){
-        week_start_date = today;
-    }
-
-    let weekly_total_downloads = total_download_count - (prev_total_download_count || 0);
+    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, weekly_total_downloads: prev_weekly_total_downloads, latest_release_download_count: prev_latest_release_download_count, weekly_latest_release_download_count: prev_weekly_latest_release_download_count, week_start_date: prev_week_start_date} = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id) || {};
 
     if(latest_release != prev_latest_release){
         prev_latest_release_download_count = 0;
+        prev_weekly_latest_release_download_count = 0;
     }
 
-    let weekly_latest_release_download_count = latest_release_download_count - (prev_latest_release_download_count||0);
+    const today = new Date().toISOString().substring(0,10);
+    let week_start_date = today;
+    let weekly_total_downloads = 0;
+    let weekly_latest_release_download_count = 0;
+
+    const days_since_last_update = (new Date(today) - new Date(prev_week_start_date||today))/(1000*60*60*24);
+    if(days_since_last_update < 7){ //a week hasn't elapsed
+        week_start_date = prev_week_start_date||today;
+        weekly_total_downloads = (prev_weekly_total_downloads||0) + total_download_count - (prev_total_download_count || 0);
+
+        weekly_latest_release_download_count = (prev_weekly_latest_release_download_count||0) + latest_release_download_count - (prev_latest_release_download_count||0);
+    }
+
+    
+
+    
+
+    
 
     return {
         "plugin_id": plugin_id,
