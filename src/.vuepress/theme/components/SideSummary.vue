@@ -6,12 +6,13 @@
                   <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
-                  <li >{{"🔖 Latest version: "}}<a target="_blank" :href="`${(this.$data.items.latest_release||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.latest_release||{}).tag_name}`}}</a></li>
-                  <li >{{"📅 Release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).published_at||"").substring(0,10)}`}}</span></li>
-                  <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.latest_release||{}).first_release_date||"").substring(0,10)}`}}</span></li>
-                  <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_latest}`}}</span></li>
-                  <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).download_count_all_time}`}}</span></li>
-                  <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.latest_release||{}).release_count}`}}</span></li>
+                  <li >{{"🔖 Latest version: "}}<a target="_blank" :href="`${(this.$data.items.plugin_info||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.plugin_info||{}).tag_name}`}}</a></li>
+                  <li >{{"📅 Release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).published_at||"").substring(0,10)}`}}</span></li>
+                  <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).first_release_date||"").substring(0,10)}`}}</span></li>
+                  <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_latest}`}}</span></li>
+                  <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time}`}}</span></li>
+                  <li >{{"⏬ Weekly downloads: "}}<span class="bold">{{`${this.$data.items.weekly_downloads||0}`}}</span></li>
+                  <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).release_count}`}}</span></li>
                 </ul>
                 <br>
             </div>
@@ -116,6 +117,7 @@ export default {
 	data() {
 		return {
 			items: {},
+      weekly_downloads: 0
 		};
 	},
 	props: {
@@ -125,6 +127,15 @@ export default {
 		this.$data.gituser = this.$page.frontmatter.author;
 		this.$data.gitrepo = this.$page.frontmatter.repo;
 		this.$data.gitbranch = this.$page.frontmatter.branch
+
+    fetch('https://plugins.duet3d.com/assets/plugin_stats.json') // /assets/plugin_stats.json
+        .then(res => res.json())
+        .then(data => {
+          
+          const {weekly_total_downloads} = (data||[]).find( x=> x.plugin_id == this.$page.frontmatter.repo);
+
+        this.$data.items.weekly_downloads = weekly_total_downloads || 0;
+      });
 
 		fetch(`https://api.github.com/repos/${this.$data.gituser}/${this.$data.gitrepo}/releases`)
 			.then(res => res.json())
@@ -141,8 +152,7 @@ export default {
           		const {browser_download_url, download_count:download_count_latest} = item.assets[0]
 				const {tag_name, published_at} = item || {}
 
-				this.$data.items.latest_release = {browser_download_url, download_count_latest, tag_name, published_at, download_count_all_time, release_count, first_release_date}
-
+				this.$data.items.plugin_info = {browser_download_url, download_count_latest, tag_name, published_at, download_count_all_time, release_count, first_release_date}
 				this.$forceUpdate();
 			});
 	},
