@@ -1,7 +1,7 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-09-02T11:05:11.710Z
-plugin_updated_on: 2022-09-02T12:27:53.926Z
+plugin_updated_on: 2022-09-04T20:48:11.301Z
 plugin: true
 title: Endstops Monitor
 abstract: It lets users monitor the endstops interactively like in previous DWC versions
@@ -18,7 +18,7 @@ release_date: 2022-06-14T08:35:28Z
 release_page: https://github.com/Duet3D/EndstopsMonitorPlugin/releases/tag/v3.4
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Duet3D/EndstopsMonitorPlugin/master/LICENSE
-download_count: 90
+download_count: 102
 tags:
 - endstops
 - dwc
