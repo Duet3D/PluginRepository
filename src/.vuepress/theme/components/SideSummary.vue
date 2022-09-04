@@ -11,7 +11,7 @@
                   <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).first_release_date||"").substring(0,10)}`}}</span></li>
                   <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_latest}`}}</span></li>
                   <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time}`}}</span></li>
-                  <li >{{"⏬ Weekly downloads: "}}<span class="bold">{{`${this.$data.items.weekly_downloads||0}`}}</span></li>
+                  <li >{{"⏬ Weekly downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time - this.$data.items.total_downloads_on_week_start}`}}</span></li>
                   <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).release_count}`}}</span></li>
                 </ul>
                 <br>
@@ -117,7 +117,7 @@ export default {
 	data() {
 		return {
 			items: {},
-      weekly_downloads: 0
+      total_downloads_on_week_start: 0
 		};
 	},
 	props: {
@@ -132,9 +132,9 @@ export default {
         .then(res => res.json())
         .then(data => {
           
-          const {weekly_total_downloads} = (data||[]).find( x=> x.plugin_id == this.$page.frontmatter.repo);
+          const {total_downloads_on_week_start} = (data||[]).find( x=> x.plugin_id == this.$page.frontmatter.repo);
 
-        this.$data.items.weekly_downloads = weekly_total_downloads || 0;
+        this.$data.items.total_downloads_on_week_start = total_downloads_on_week_start || 0;
       });
 
 		fetch(`https://api.github.com/repos/${this.$data.gituser}/${this.$data.gitrepo}/releases`)
