@@ -39,7 +39,9 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
     const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
     const latest_release_download_count = (((gh_release_data|| [])[0].assets[0]||[]).download_count||0)
 
-    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, latest_release_download_count: prev_latest_release_download_count} = prev_plugin_stat_json.find( x=> x.id == plugin_id) || {}
+    let res = prev_plugin_stat_json.find( x=> x.id == plugin_id) || {}
+    console.log(res)
+    let {latest_release: prev_latest_release, total_download_count : prev_total_download_count, latest_release_download_count: prev_latest_release_download_count} = res;
 
     let weekly_total_downloads = total_download_count - (prev_total_download_count || 0);
 
