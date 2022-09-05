@@ -16,5 +16,5 @@
 - `update_plugin`
 - `remove_plugin`
 - `merge_pr_on_issue`
-- `update_plugin_stats`
-- `update_version`
+- `update_plugin_stats` - Scheduled to run/Workflow dispatch
+- `update_version` - Workflow dispatch
