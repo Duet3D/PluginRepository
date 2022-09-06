@@ -18,3 +18,8 @@
 - `merge_pr_on_issue`
 - `update_plugin_stats` - Scheduled to run/Workflow dispatch
 - `update_version` - Workflow dispatch
+
+## Stats
+- Stats are being saved in `plugin_stats.json` using a daily schedule (Can be run manually as well)
+- Weekly total and latest release download stats are recorded
+- Per-version stats are not available
