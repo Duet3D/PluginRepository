@@ -1,6 +1,13 @@
 # Plugin Update
-## Instructions
-- Create a new GitHub issue: [Plugin Update](https://github.com/Duet3D/PluginRepository/issues/new/choose)
+
+With Plugin Update, you can change: 
+- plugin description
+- plugin page (`PLUGIN.md` or `README.md`)
+<br>
+or the changes from plugin's manifest file(`plugin.json`) file such as:
+- license
+- homepage
+- tags
 
 ## Checklist
 ### Ensure that your:
@@ -18,3 +25,6 @@ Otherwise the checks will not pass.
 - Your repository name will be the same as plugin id
 - If a `PLUGIN.md` file exists, it will be used as the homepage of your plugin; otherwise, `README.md` will be used
 - Tags, keywords will be fetched from the plugin manifest(`plugin.json`)
+
+## If all of the above is okay:
+- Create a new GitHub issue: [Plugin Update](https://github.com/Duet3D/PluginRepository/issues/new/choose)
