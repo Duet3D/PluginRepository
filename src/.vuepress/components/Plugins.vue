@@ -2,7 +2,14 @@
 	<div>
         <div class="search_box_1">         
             <input type="text" v-model="input" placeholder="Search plugins..." />
+            <div class="search_filter_btn">
+                <button v-on:click="showDWC">DWC</button>
+                <button v-on:click="showSBC">SBC</button>
+                <button v-on:click="showRRF">RRF</button>
+            </div> 
+
         </div>
+
 
         <br>
             
@@ -55,6 +62,17 @@ export default {
 	mounted() {
         this.$data.items = this.$site.pages.filter( x => x.regularPath.substring(0,9) === '/plugins/' && x.regularPath.length > 9)
         this.$data.items.sort(compareFn)
+	},
+	methods: {
+		showDWC() {
+			this.input = "dwc";
+		},
+		showSBC() {
+			this.input = "sbc";
+		},
+		showRRF() {
+			this.input = "rrf";
+		},
 	},
     computed: {
         filterPlugins() {
