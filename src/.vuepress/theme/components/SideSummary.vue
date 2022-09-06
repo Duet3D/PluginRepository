@@ -6,13 +6,13 @@
                   <h3 class="h3_class">Overview</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
-                  <li >{{"🔖 Latest version: "}}<a target="_blank" :href="`${(this.$data.items.plugin_info||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.plugin_info||{}).tag_name}`}}</a></li>
-                  <li >{{"📅 Release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).published_at||"").substring(0,10)}`}}</span></li>
-                  <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).first_release_date||"").substring(0,10)}`}}</span></li>
-                  <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_latest}`}}</span></li>
-                  <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time}`}}</span></li>
-                  <li >{{"⏬ Weekly downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time - this.$data.items.total_downloads_on_week_start}`}}</span></li>
-                  <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).release_count}`}}</span></li>
+                  <li >{{"🔖 Latest version: "}}<a target="_blank" :href="`${(this.$data.items.plugin_info||{}).browser_download_url}`" class="bold">{{`${(this.$data.items.plugin_info||{}).tag_name || "⏳"}`}}</a></li>
+                  <li >{{"📅 Release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).published_at||"").substring(0,10) || "⏳"}`}}</span></li>
+                  <li >{{"📆 First release date: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).first_release_date||"").substring(0,10) || "⏳"}`}}</span></li>
+                  <li >{{"⬇️ Release downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_latest || "⏳"}`}}</span></li>
+                  <li >{{"⏬ Total downloads: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).download_count_all_time || "⏳"}`}}</span></li>
+                  <li >{{"⏬ Weekly downloads: "}}<span class="bold">{{`${((this.$data.items.plugin_info||{}).download_count_all_time - this.$data.items.total_downloads_on_week_start) || 0}`}}</span></li>
+                  <li >{{"📊 Release count: "}}<span class="bold">{{`${(this.$data.items.plugin_info||{}).release_count || "⏳"}`}}</span></li>
                 </ul>
                 <br>
             </div>

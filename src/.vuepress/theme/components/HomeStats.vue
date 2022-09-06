@@ -5,7 +5,11 @@
                 <div class="div_2">
                   <h3 class="h3_class">📈 Stats</h3>
                 </div>
-                <p>{{`There are ${this.$data.plugin_count} plugins available`}}</p>
+                <ul class="overview" style="list-style-type: none">
+                  <li >{{"Plugin Count: "}}<span class="bold">{{`${ this.$data.plugin_count|| "⏳"}`}}</span></li>
+                  <li >{{"Total Downloads: "}}<span class="bold">{{`${ this.$data.total_downloads || "⏳"}`}}</span></li>
+                  <li >{{"Weekly Downloads: "}}<span class="bold">{{`${ this.$data.weekly_downloads || "⏳"}`}}</span></li>
+                </ul>
                 <br>
             </div>
         </section>
@@ -14,7 +18,7 @@
                 <div class="div_2">
                   <h3 class="h3_class">Newly Added</h3>
                 </div>
-                <ul>
+                <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
                         <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{plugin.plugin_id}}</a>
                     </li>
@@ -27,9 +31,9 @@
                 <div class="div_2">
                   <h3 class="h3_class">Most Downloaded</h3>
                 </div>
-                <ul>
+                <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.most_download_plugins" :key="plugin.plugin_id">
-                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.plugin_id} - ${plugin.total_download_count}`}}</a>
+                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.total_download_count} - ${plugin.plugin_id}`}}</a>
                     </li>
                 </ul>
                 <br>
@@ -70,7 +74,9 @@ export default {
 			items: {},
 			newly_added_plugins: [],
 			most_download_plugins: [],
-			plugin_count: 0
+			plugin_count: 0,
+            total_downloads: 0,
+            weekly_downloads: 0
 		};
 	},
 	props: {
@@ -92,6 +98,16 @@ export default {
 
 		  data_copy = data.slice();
 		  this.$data.most_download_plugins = data_copy.sort(compareByDownloaded).slice(0, 5).map(x=>{return {plugin_id: x.plugin_id, total_download_count: x.total_download_count}});
+
+          let total_downloads_on_week_start = 0;
+          let total_downloads = 0;
+          (data||[]).forEach( x=> {
+              total_downloads += x.total_download_count;
+              total_downloads_on_week_start += x.total_downloads_on_week_start;
+          })
+
+          this.$data.total_downloads = total_downloads;
+          this.$data.weekly_downloads = total_downloads - total_downloads_on_week_start;
         })
 	},
 	computed: {
