@@ -26,8 +26,7 @@ const submissionPrecheck = async () => {
     const is_reported = (plugin_reported || []).filter( x=> x.plugin_id == repo && x.author == author )
     if(is_reported.length > 0){
         let abuse_report_comment = `Plugin has been reported ${is_reported.length} times`;
-        abuse_report_comment.concat(JSON.stringify(is_reported), `\n`);
-        await git.commentIssue(abuse_report_comment);
+        await git.commentIssue(abuse_report_comment.concat(`\n`, JSON.stringify(is_reported), `\n`));
     }
 
     let repo_status = await checkFile.remote(`https://github.com/${author}/${repo}/tree/${branch}/`);
