@@ -1,5 +1,5 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
-        readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, 
+        readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, writeFile: {writeJSONSync},
         getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember} = require('./util');
 const axios = require('axios');
 
