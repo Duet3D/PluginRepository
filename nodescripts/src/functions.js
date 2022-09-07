@@ -531,9 +531,9 @@ const reportPlugin = async () => {
             process.exit(1);    
         }
 
-        const prev_plugin_reported_json = await readJSON('prev_plugin_reported.json');
+        const {data: prev_plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
 
-        const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}`);
+        const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}.md`);
 
         let new_plugin_reported_json = (prev_plugin_reported_json || []).slice()
 

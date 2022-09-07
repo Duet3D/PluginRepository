@@ -42,9 +42,8 @@ jobs:
           cat issue.json
           cp issue.json nodescripts/src/
 
-          cp plugin_reported.json nodescripts/src/prev_plugin_reported.json
           rm plugin_reported.json
-          
+
           cd nodescripts
           npm install
           cd src
