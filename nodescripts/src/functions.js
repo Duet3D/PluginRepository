@@ -553,7 +553,9 @@ const reportPlugin = async () => {
         return new_plugin_reported_json
     }
     catch(e){
-        return e
+        console.log(e)
+        await git.commentIssue(`${e}`);
+        process.exit(1);
     }
 }
 
