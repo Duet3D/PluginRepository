@@ -52,6 +52,10 @@ jobs:
           cd ../../
           cp nodescripts/src/plugin_reported.json plugin_reported.json
 
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git pull
+
           git add plugin_reported.json
           git commit -m "Update plugin_reported"
           git push -u origin master
