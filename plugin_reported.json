@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "plugin_id": "EndstopsMonitorPlugin",
+        "author": "Duet3D",
+        "plugin_submitted_on": "2022-09-02T11:05:11.710Z",
+        "description": "Admin check",
+        "steps_reproduce": "",
+        "additional_description": "",
+        "timestamp": "2022-09-07T11:28:41.055Z"
+    }
+]
