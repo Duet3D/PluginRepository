@@ -514,7 +514,7 @@ const removalPrecheck = async () => {
     
 }
 
-const reportPlugin = () => {
+const reportPlugin = async () => {
 
     try{
 
