@@ -67,12 +67,12 @@
     {
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
-        "plugin_submitted_on": "2022-09-02T11:05:11.710Z",
-        "plugin_updated_on": "2022-09-04T20:48:11.301Z",
+        "plugin_submitted_on": "2022-09-07T12:01:00.761Z",
+        "plugin_updated_on": "2022-09-07T12:01:00.761Z",
         "latest_release": "v3.4",
-        "total_download_count": 103,
+        "total_download_count": 111,
         "total_downloads_on_week_start": 103,
-        "latest_release_download_count": 97,
+        "latest_release_download_count": 105,
         "latest_release_downloads_on_week_start": 97,
         "week_start_date": "2022-09-04",
         "last_updated_date": "2022-09-07"
