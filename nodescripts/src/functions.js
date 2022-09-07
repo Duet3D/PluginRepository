@@ -516,40 +516,45 @@ const removalPrecheck = async () => {
 
 const reportPlugin = () => {
 
-    const issue = await readJSON('issue.json');
-    const {PluginID: plugin_id, Description: description, StepsReprod: steps_reproduce, AdditionalInfo: additional_description} = issue;
+    try{
 
-    let res;
+        const issue = await readJSON('issue.json');
+        const {PluginID: plugin_id, Description: description, StepsReprod: steps_reproduce, AdditionalInfo: additional_description} = issue;
 
-    let checklog = "";
+        let res;
 
-    res = checkFile.local(`../../src/plugins/${plugin_id}.md`);
-    if(!res){
-        await git.commentIssue("Plugin does not exist. Please check and submit again".concat('\n'));
-        process.exit(1);    
+        let checklog = "";
+
+        res = checkFile.local(`../../src/plugins/${plugin_id}.md`);
+        if(!res){
+            await git.commentIssue("Plugin does not exist. Please check and submit again".concat('\n'));
+            process.exit(1);    
+        }
+
+        const {data: prev_plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
+
+        const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}`);
+
+        let new_plugin_reported_json = (prev_plugin_reported_json || []).slice()
+
+        const entry = {
+            "plugin_id": plugin_id,
+            "author": getFrontmatterObject('author', plugin_md),
+            "plugin_submitted_on": getFrontmatterObject('plugin_submitted_on', plugin_md),
+            "description": description,
+            "steps_reproduce": steps_reproduce || "",
+            "additional_description": additional_description || "",
+            "timestamp": new Date().toISOString()
+        }
+
+        new_plugin_reported_json.push(entry);
+
+        await writeJSONSync(new_plugin_reported_json, 'plugin_reported.json')
+        return new_plugin_reported_json
     }
-
-    const {data: prev_plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
-
-    const plugin_md = await readTEXT(`../../src/plugins/${plugin_id}`);
-
-    let new_plugin_reported_json = (prev_plugin_reported_json || []).slice()
-
-    const entry = {
-        "plugin_id": plugin_id,
-        "author": getFrontmatterObject('author', plugin_md),
-        "plugin_submitted_on": getFrontmatterObject('plugin_submitted_on', plugin_md),
-        "description": description,
-        "steps_reproduce": steps_reproduce || "",
-        "additional_description": additional_description || "",
-        "timestamp": new Date().toISOString()
+    catch(e){
+        return e
     }
-
-    new_plugin_reported_json.push(entry);
-
-    await writeJSONSync(new_plugin_reported_json, 'plugin_reported.json')
-    return new_plugin_reported_json
-
 }
 
 module.exports = {
