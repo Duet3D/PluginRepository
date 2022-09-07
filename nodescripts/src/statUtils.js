@@ -39,7 +39,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
     const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
     const latest_release_download_count = (((gh_release_data|| [])[0].assets[0]||[]).download_count||0)
 
-    const prev_plugin_data = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id); //if undefined, considered new plugin
+    const prev_plugin_data = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id && x.author == author); //if undefined, considered new plugin
     let {latest_release: prev_latest_release, total_downloads_on_week_start, latest_release_downloads_on_week_start, week_start_date: prev_week_start_date} = prev_plugin_data  || {};
 
     if(latest_release != prev_latest_release){  //If a new release
