@@ -27,9 +27,16 @@ body:
   validations:
     required: true
 - type: input
+  id: StepsReprod
+  attributes:
+    label: Steps to reproduce
+    description: Steps to reproduce
+  validations:
+    required: false
+- type: input
   id: AdditionalInfo
   attributes:
-    label: Additional Information
+    label: Additional Information like specific release/version
     description: Additional Information
   validations:
     required: false

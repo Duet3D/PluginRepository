@@ -1,0 +1,54 @@
+name: report-plugin
+on:
+  issues:
+    types: [opened]
+    
+jobs:
+  issue_label_check:
+    runs-on: ubuntu-latest
+    outputs:
+      is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: label-check
+        id: label_check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
+          if [[ "$issue_label" = abuse-report ]]; then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
+  report_plugin:
+    needs: issue_label_check
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_ISSUE: ${{github.event.issue.number}}
+      GITHUB_USER: ${{ github.event.issue.user.login }}
+      PAT_DUET3D_ADMIN_ORG_READ: ${{ secrets.PAT_DUET3D_ADMIN_ORG_READ }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser 
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginReport.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: precheck-steps
+        run: |
+          ls -a
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node reportPlugin.js
+
+          cd ../../
+          cp nodescripts/src/plugin_reported.json plugin_reported.json
+
+          git add plugin_reported.json
+          git commit -m "Update plugin_reported"
+          git push -u origin master
