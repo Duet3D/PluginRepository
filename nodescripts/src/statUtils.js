@@ -5,11 +5,12 @@ const updatePluginStats = async () => {
     try{
         const {data:plugins_dir} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins`, { 'headers': { 'Authorization' : `token ${process.env.GITHUB_TOKEN}` } });
         const {data:prev_plugin_stat_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_stats.json`);
+        const {data:plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
 
         const plugin_list = plugins_dir.map( x => x.name);
         let new_plugin_stat_json = []
         for(let i = 0; i<plugin_list.length ; i++){
-            const entry = await createPluginEntry(plugin_list[i], prev_plugin_stat_json)
+            const entry = await createPluginEntry(plugin_list[i], prev_plugin_stat_json, plugin_reported_json)
             new_plugin_stat_json.push(entry)
         }
 
@@ -22,7 +23,7 @@ const updatePluginStats = async () => {
     }
 }
 
-const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
+const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_reported_json) => {
     // const {status, data: plugin_md} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/src/plugins/${plugin_md_name}`);
     const plugin_md = await readTEXT(`../../src/plugins/${plugin_md_name}`);
 
@@ -65,18 +66,13 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json) => {
         latest_release_downloads_on_week_start = latest_release_download_count;
     }
 
-    
-
-    
-
-    
-
     return {
         "plugin_id": plugin_id,
         "author": author,
         "plugin_submitted_on": plugin_submitted_on,
         "plugin_updated_on": plugin_updated_on,
         "latest_release": latest_release,
+        "is_reported": plugin_reported_json.find(x=> x.plugin_id == plugin_id && x.author == author) ? true: false,
 
         "total_download_count": total_download_count,   //used in Home > Most Downloaded
         "total_downloads_on_week_start": total_downloads_on_week_start, //used to calculate the weekly downloads
