@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {getFrontmatterObject, writeFile: {writeJSONSync}, readFile: {TEXT: readTEXT}} = require('./util');
+const {getFrontmatterObject, writeFile: {writeJSONSync}, readFile} = require('./util');
 
 const updatePluginStats = async () => {
     try{
@@ -25,8 +25,7 @@ const updatePluginStats = async () => {
 
 const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_reported_json) => {
     // const {status, data: plugin_md} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/src/plugins/${plugin_md_name}`);
-    const plugin_md = await readTEXT(`../../src/plugins/${plugin_md_name}`);
-
+    const plugin_md = await readFile.TEXT(`../../src/plugins/${plugin_md_name}`);
     const plugin_id = plugin_md_name.substring(0, plugin_md_name.length-3);
 
     const author = getFrontmatterObject('author', plugin_md);
@@ -86,5 +85,6 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
 }
 
 module.exports = {
-    updatePluginStats
+    updatePluginStats,
+    createPluginEntry
 }
