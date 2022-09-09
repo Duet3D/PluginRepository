@@ -1,4 +1,4 @@
-name: node-scripts-ci-test
+name: nodescript_ci_test
 on:
   push:
     branches:

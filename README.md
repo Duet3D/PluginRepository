@@ -12,6 +12,7 @@
 - `patch`, `minor`, `major` are options
 
 ## GitHub Workflows
+- `nodescript_ci_test` - CI tests for nodescripts
 - `submit_new_plugin`
 - `update_plugin`
 - `remove_plugin`
