@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {getFrontmatterObject, writeFile: {writeJSONSync}, readFile} = require('./util');
+const {getFrontmatterObject, writeFile, readFile} = require('./util');
 
 const updatePluginStats = async () => {
     try{
@@ -14,7 +14,7 @@ const updatePluginStats = async () => {
             new_plugin_stat_json.push(entry)
         }
 
-        await writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
+        await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
         return new_plugin_stat_json
     }
     catch(e){
