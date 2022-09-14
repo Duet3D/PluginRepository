@@ -97,9 +97,9 @@ describe('Update Plugin Stats', ()=>{
 
     afterEach(()=>sinon.restore());
 
-    it('Should return updated plugin stats', async ()=>{
+    it.only('Should return updated plugin stats', async ()=>{
         const res = await updatePluginStats();
-        console.log(res)
+        expect(res[0].plugin_id).to.be.eq("InputShapingPlugin");
     });
 });
 
