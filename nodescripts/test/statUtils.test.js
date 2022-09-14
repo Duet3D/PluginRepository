@@ -4,7 +4,7 @@ const {expect} = require('chai');
 const {createPluginEntry, updatePluginStats} = require('../src/statUtils');
 const {readFile, writeFile} = require('../src/util');
 
-describe('Update Plugin Stats', ()=>{
+describe.only('Update Plugin Stats', ()=>{
     beforeEach(()=>{
         process.env.GITHUB_TOKEN = "abc";
 
@@ -86,20 +86,27 @@ describe('Update Plugin Stats', ()=>{
 
         stub_readfile.resolves(plugin_md);
 
-        stub_axios.withArgs(sinon.match.has('https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins',{ 'headers': { 'Authorization' : `token abc` } })).resolves({data : gh_content_data});
-        stub_axios.withArgs(sinon.match.has('https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_stats.json')).resolves({data : prev_plugin_stat_json});
-        stub_axios.withArgs(sinon.match.has('https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json')).resolves({data : plugin_reported_json});
+        stub_axios.withArgs('https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins', sinon.match.any).resolves({data : gh_content_data});
+        stub_axios.withArgs('https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_stats.json').resolves({data : prev_plugin_stat_json});
+        stub_axios.withArgs('https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json').resolves({data : plugin_reported_json});
 
-        stub_axios.resolves({data : gh_release_data});
+        stub_axios.withArgs('https://api.github.com/repos/Duet3D/InputShapingPlugin/releases', sinon.match.any).resolves({data : gh_release_data});
 
 
     });
 
     afterEach(()=>sinon.restore());
 
-    it.only('Should return updated plugin stats', async ()=>{
+    it('Should return updated plugin stats', async ()=>{
         const res = await updatePluginStats();
         expect(res[0].plugin_id).to.be.eq("InputShapingPlugin");
+        expect(res[0].author).to.be.eq("Duet3D");
+        expect(res[0].plugin_submitted_on).to.be.eq("2022-09-01T10:53:37.289Z");
+        expect(res[0].plugin_updated_on).to.be.eq("2022-09-04T20:47:36.757Z");
+        expect(res[0].latest_release).to.be.eq("v3.4.1-b1");
+        expect(res[0].is_reported).to.be.eq(false);
+        expect(res[0].total_download_count).to.be.eq(286);
+        expect(res[0].latest_release_download_count).to.be.eq(266);
     });
 });
 
