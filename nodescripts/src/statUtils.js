@@ -15,6 +15,8 @@ const updatePluginStats = async () => {
         }
 
         await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
+
+        await authorStats();
         return new_plugin_stat_json
     }
     catch(e){
@@ -85,7 +87,38 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
     }
 }
 
+const authorStats = async () => {
+    try{
+
+        const plugin_stats = await readFile.JSON(`../../src/plugins/plugin_stats.json`);
+
+        const author_set = new Set();
+        (plugin_stats||[]).forEach(plugin => authors.add(plugin.author))
+
+        const author_stats = [];
+
+        author_set.forEach(author => {
+            author_stats.push({
+                author: author,
+                num_of_plugins: 0
+            })
+        })
+
+        (plugin_stats||[]).forEach(plugin => {
+            author_stats[author_stats.findIndex(i=>i.author==plugin.author)].num_of_plugins += 1;
+        })
+
+        await writeFile.writeJSONSync(author_stats, 'author_stats.json')
+        return author_stats
+    }
+    catch(e){
+        console.log(e)
+        return
+    }
+}
+
 module.exports = {
     updatePluginStats,
-    createPluginEntry
+    createPluginEntry,
+    authorStats
 }
