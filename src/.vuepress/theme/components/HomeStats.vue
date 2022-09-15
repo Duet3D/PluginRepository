@@ -97,6 +97,7 @@ export default {
 			items: {},
 			newly_added_plugins: [],
 			most_download_plugins: [],
+            weekly_trending_plugins: [],
 			plugin_count: 0,
             total_downloads: 0,
             weekly_downloads: 0
