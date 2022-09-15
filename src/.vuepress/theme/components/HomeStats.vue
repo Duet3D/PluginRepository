@@ -42,7 +42,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">This week's Trending</h3>
+                  <h3 class="h3_class">This Week's Trending</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.weekly_trending_plugins" :key="plugin.plugin_id">
