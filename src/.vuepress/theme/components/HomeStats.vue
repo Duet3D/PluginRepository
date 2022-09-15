@@ -39,6 +39,19 @@
                 <br>
             </div>
         </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">This week's Trending</h3>
+                </div>
+                <ul class="overview" style="list-style-type: none">
+                    <li v-for="plugin in this.$data.weekly_trending_plugins" :key="plugin.plugin_id">
+                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.plugin_id}`}}</a>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </section>
 	</div>
 </template>
 
@@ -57,6 +70,16 @@ function compareBySubmittedOn( a, b ) {
 
 function compareByDownloaded( a, b ) {
     let type = 'total_download_count'
+    if ( a[`${type}`] < b[`${type}`] ){
+        return 1;
+    }
+    if ( a[`${type}`] > b[`${type}`] ){
+        return -1;
+    }
+    return 0;
+}
+function compareByWeeklyTrending( a, b ) {
+    let type = 'ongoing_total_weeky_downloads'
     if ( a[`${type}`] < b[`${type}`] ){
         return 1;
     }
@@ -98,6 +121,9 @@ export default {
 
 		  data_copy = data.slice();
 		  this.$data.most_download_plugins = data_copy.sort(compareByDownloaded).slice(0, 5).map(x=>{return {plugin_id: x.plugin_id, total_download_count: x.total_download_count}});
+
+		  data_copy = data.slice();
+		  this.$data.weekly_trending_plugins = data_copy.sort(compareByWeeklyTrending).slice(0, 5).map(x=>{return {plugin_id: x.plugin_id, total_download_count: x.ongoing_total_weeky_downloads}});
 
           let total_downloads_on_week_start = 0;
           let total_downloads = 0;
