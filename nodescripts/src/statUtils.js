@@ -75,6 +75,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
 
         "total_download_count": total_download_count,   //used in Home > Most Downloaded
         "total_downloads_on_week_start": total_downloads_on_week_start, //used to calculate the weekly downloads
+        "ongoing_total_weeky_downloads": total_download_count - total_downloads_on_week_start,
 
         "latest_release_download_count": latest_release_download_count, // Not used yet
         "latest_release_downloads_on_week_start": latest_release_downloads_on_week_start, //Not used yet
