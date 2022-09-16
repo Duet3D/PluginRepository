@@ -16,7 +16,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Newly Added</h3>
+                  <h3 class="h3_class">Recently Added</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
@@ -29,11 +29,11 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Mostly Downloaded</h3>
+                  <h3 class="h3_class">Most Downloaded</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.most_download_plugins" :key="plugin.plugin_id">
-                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.total_download_count} - ${plugin.plugin_id}`}}</a>
+                        <a target="_blank" :href="`/plugins/${plugin.plugin_id}.html`">{{`${plugin.plugin_id} (${plugin.total_download_count} downloads)`}}</a>
                     </li>
                 </ul>
                 <br>
