@@ -103,7 +103,7 @@ export default {
 
 <style lang="stylus">
 .title_main
-  padding-top 23px
+  padding-top 20px
 
 .teardrop
   width 4rem
