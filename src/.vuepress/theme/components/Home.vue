@@ -9,15 +9,13 @@
         :src="$withBase(data.heroImage)"
         :alt="data.heroAlt || 'hero'"
       >
-      <div class="headerRow">
-        <div class="headerRow_1">
-          <img src="https://forum.duet3d.com/assets/uploads/system/site-logo.png" class="teardrop">
-        </div>
-        <div class="headerRow_2">
-          <h1 class="title_main">Plugin Repository</h1>
-        </div>
-      </div>
 
+      <h1
+        v-if="data.heroText !== null"
+        id="main-title"
+      >
+        {{ 'Plugin Repository' }}
+      </h1>
 
       <p
         v-if="data.tagline !== null"
@@ -102,28 +100,6 @@ export default {
 </script>
 
 <style lang="stylus">
-.title_main
-  padding-top 20px
-
-.teardrop
-  width 4rem
-
-.headerRow
-  display grid
-  grid-template-columns auto auto
-  width 500px
-  align-content center
-  text-align center
-  max-width 35rem
-  line-height 1.3
-  margin 1.8rem auto
-
-.headerRow_1
-  padding-bottom 10px
-
-.headerRow_2
-  align-content right
-
 .lgstyling
   font-size 16px
   background-color #fff
