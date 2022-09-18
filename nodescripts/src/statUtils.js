@@ -16,7 +16,7 @@ const updatePluginStats = async () => {
 
         await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
 
-        // await authorStats();
+        await authorStats();
         return new_plugin_stat_json
     }
     catch(e){
@@ -93,16 +93,20 @@ const authorStats = async () => {
         const plugin_stats = await readFile.JSON(`../../src/plugins/plugin_stats.json`);
 
         const author_set = new Set();
-        (plugin_stats||[]).forEach(plugin => authors.add(plugin.author))
+        (plugin_stats||[]).forEach(plugin => {
+            author_set.add(plugin.author)
+        })
 
         const author_stats = [];
 
         author_set.forEach(author => {
-            author_stats.push({
+            console.log(author);
+            const entry = {
                 author: author,
                 num_of_plugins: 0
-            })
-        })
+            }
+            author_stats.push(entry)
+        });
 
         (plugin_stats||[]).forEach(plugin => {
             author_stats[author_stats.findIndex(i=>i.author==plugin.author)].num_of_plugins += 1;
