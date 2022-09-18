@@ -16,7 +16,6 @@ const updatePluginStats = async () => {
 
         await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
 
-        await authorStats();
         return new_plugin_stat_json
     }
     catch(e){
