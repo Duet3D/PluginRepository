@@ -4,7 +4,9 @@ try{
 	updatePluginStats().then(res => {
 		console.log(res);
 
-        await authorStats();
+        authorStats().then(res2 => {
+			console.log(res2);
+		});
 	})	
 }
 catch(e){
