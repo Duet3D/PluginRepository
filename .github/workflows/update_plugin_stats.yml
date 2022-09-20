@@ -27,7 +27,7 @@ jobs:
 
           cd ../../
           cp nodescripts/src/plugin_stats.json plugin_stats.json
-          cp nodescripts/src/plugin_stats.json plugin_versions.json
+          cp nodescripts/src/plugin_versions.json plugin_versions.json
           cp nodescripts/src/author_stats.json author_stats.json
 
           git add plugin_stats.json plugin_versions.json author_stats.json
