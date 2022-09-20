@@ -52,6 +52,19 @@
                 <br>
             </div>
         </section>
+        <section class="card3">
+            <div class="div_1">
+                <div class="div_2">
+                  <h3 class="h3_class">{{this.$data.author_count}}</h3>
+                </div>
+                <ul class="overview" style="list-style-type: none">
+                    <li v-for="author in this.$data.authors" :key="author.author">
+                        <a target="_blank" :href="`github.com/${plugin.author}`">{{`${author.author}`}}</a>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </section>
 	</div>
 </template>
 
@@ -100,7 +113,10 @@ export default {
             weekly_trending_plugins: [],
 			plugin_count: 0,
             total_downloads: 0,
-            weekly_downloads: 0
+            weekly_downloads: 0,
+
+            author_count: 0,
+            authors: []
 		};
 	},
 	props: {
@@ -111,7 +127,7 @@ export default {
 		this.$data.gitrepo = this.$page.frontmatter.repo;
 		this.$data.gitbranch = this.$page.frontmatter.branch
 
-    fetch('https://plugins.duet3d.com/assets/plugin_stats.json') // /assets/plugin_stats.json
+    fetch('https://plugins.duet3d.com/assets/plugin_stats.json')
         .then(res => res.json())
         .then(data => {
           this.$data.plugin_count = (data || []).length;
@@ -135,6 +151,14 @@ export default {
 
           this.$data.total_downloads = total_downloads;
           this.$data.weekly_downloads = total_downloads - total_downloads_on_week_start;
+        })
+
+
+    fetch('https://plugins.duet3d.com/assets/author_stats.json')
+        .then(res => res.json())
+        .then(data => {
+          this.$data.author_count = (data || []).length;
+          this.$data.authors = (data||[]);
         })
 	},
 	computed: {
