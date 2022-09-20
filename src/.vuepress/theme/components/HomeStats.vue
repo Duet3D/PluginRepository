@@ -55,7 +55,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">{{this.$data.author_count}}</h3>
+                  <h3 class="h3_class">{{"Authors"}}</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="author in this.$data.authors" :key="author.author">
@@ -151,7 +151,6 @@ export default {
 
           this.$data.total_downloads = total_downloads;
           this.$data.weekly_downloads = total_downloads - total_downloads_on_week_start;
-        })
 
 
     fetch('https://plugins.duet3d.com/assets/author_stats.json')
@@ -160,6 +159,9 @@ export default {
           this.$data.author_count = (data || []).length;
           this.$data.authors = (data||[]);
         })
+        })
+
+
 	},
 	computed: {
 
