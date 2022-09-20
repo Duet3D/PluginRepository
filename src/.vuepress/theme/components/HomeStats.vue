@@ -59,7 +59,7 @@
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="author in this.$data.authors" :key="author.author">
-                        <a target="_blank" :href="`github.com/${plugin.author}`">{{`${author.author}`}}</a>
+                        <a target="_blank" :href="`/author/?author=${author.author}`">{{`${author.author}`}}</a>
                     </li>
                 </ul>
                 <br>
@@ -153,13 +153,16 @@ export default {
           this.$data.weekly_downloads = total_downloads - total_downloads_on_week_start;
 
 
-    fetch('https://plugins.duet3d.com/assets/author_stats.json')
+        })
+
+            fetch('https://plugins.duet3d.com/assets/author_stats.json')
         .then(res => res.json())
         .then(data => {
           this.$data.author_count = (data || []).length;
-          this.$data.authors = (data||[]);
+          this.$data.authors = data.slice();
+          console.log(this.$data.authors)
         })
-        })
+
 
 
 	},
