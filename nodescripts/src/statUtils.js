@@ -86,7 +86,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
     }
 }
 
-const authorStats = async () => {
+const updateAuthorStats = async () => {
     try{
 
         const plugin_stats = await readFile.JSON(`../../src/plugins/plugin_stats.json`);
@@ -123,5 +123,5 @@ const authorStats = async () => {
 module.exports = {
     updatePluginStats,
     createPluginEntry,
-    authorStats
+    updateAuthorStats
 }

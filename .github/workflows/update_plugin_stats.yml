@@ -23,6 +23,8 @@ jobs:
           cd src
           node updatePluginStats.js
 
+          node updateAuthorStats.js
+
           cd ../../
           cp nodescripts/src/plugin_stats.json plugin_stats.json
           cp nodescripts/src/author_stats.json author_stats.json
