@@ -89,7 +89,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
 const updateAuthorStats = async () => {
     try{
 
-        const plugin_stats = await readFile.JSON(`../../src/plugins/plugin_stats.json`);
+        const plugin_stats = await readFile.JSON(`../plugin_stats.json`);
 
         const author_set = new Set();
         (plugin_stats||[]).forEach(plugin => {
