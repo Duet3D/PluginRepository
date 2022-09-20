@@ -7,151 +7,181 @@
             {
                 "tag_name": "Beta_0.10.13",
                 "name": "Beta 0.10.13",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.13/BtnCmd_DWC3.4_Beta.0.10.13.zip",
                 "published_at": "2022-07-11T13:16:18Z"
             },
             {
                 "tag_name": "Beta_0.10.12",
                 "name": "Beta 0.10.12",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.12/BtnCmd_DWC3.4_Beta.0.10.12.zip",
                 "published_at": "2022-06-18T08:34:44Z"
             },
             {
                 "tag_name": "Beta_0.10.11",
                 "name": "Beta 0.10.11",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.11/BtnCmd_DWC3.4_Beta.0.10.11.zip",
                 "published_at": "2022-06-11T06:51:51Z"
             },
             {
                 "tag_name": "Beta_0.10.10",
                 "name": "Beta 0.10.10",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.10/BtnCmd_DWC3.4_Beta.0.10.10.zip",
                 "published_at": "2022-06-08T14:26:15Z"
             },
             {
                 "tag_name": "Beta_0.10.09",
                 "name": "Beta 0.10.09",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.09/BtnCmd_DWC3.4_Beta.0.10.09.zip",
                 "published_at": "2022-05-05T10:21:22Z"
             },
             {
                 "tag_name": "Beta_0.10.08",
                 "name": "Beta 0.10.08",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.08/BtnCmd_DWC3.4_Beta.0.10.08.zip",
                 "published_at": "2022-03-24T16:37:32Z"
             },
             {
                 "tag_name": "Beta_0.10.07",
                 "name": "Beta 0.10.07",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.07/BtnCmd_DWC3.4_Beta.0.10.07.zip",
                 "published_at": "2022-03-04T14:49:15Z"
             },
             {
                 "tag_name": "Beta_0.10.06",
                 "name": "Beta 0.10.06",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.06/BtnCmd_DWC3.4RC1_Beta.0.10.06.zip",
                 "published_at": "2022-02-11T17:08:43Z"
             },
             {
                 "tag_name": "Beta_0.10.03",
                 "name": "Beta 0.10.03 Input Panel Changes and bug fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.03/BtnCmd_DWC3.4b7_Beta.0.10.03.zip",
                 "published_at": "2021-12-28T13:24:32Z"
             },
             {
                 "tag_name": "Beta_0.10.02",
                 "name": "Beta 0.10.02 - Move to 3.4b7",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.02/BtnCmd_DWC3.4b7_Beta.0.10.02.zip",
                 "published_at": "2021-12-21T16:23:50Z"
             },
             {
                 "tag_name": "Beta_0.9.06",
                 "name": "Beta 0.9.06",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.06/BtnCmd_DWC3.3_Beta.0.9.06.zip",
                 "published_at": "2021-11-05T14:04:20Z"
             },
             {
                 "tag_name": "Beta_0.9.04",
                 "name": "Beta 0.9.04",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.04/BtnCmd_DWC3.3_Beta.0.9.04.zip",
                 "published_at": "2021-10-20T14:57:19Z"
             },
             {
                 "tag_name": "Beta_0.9.03",
                 "name": "Beta 0.9.03",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.03/BtnCmd_DWC3.3_Beta.0.9.03.zip",
                 "published_at": "2021-10-19T13:06:31Z"
             },
             {
                 "tag_name": "Beta_0.9.02",
                 "name": "Beta 0.9.02",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.02/BtnCmd_DWC3.3_Beta.0.9.02.zip",
                 "published_at": "2021-10-16T12:34:55Z"
             },
             {
                 "tag_name": "Beta_0.9.01",
                 "name": "Beta 0.9.01",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.01/BtnCmd_DWC3.3_Beta.0.9.01.zip",
                 "published_at": "2021-10-06T11:20:39Z"
             },
             {
                 "tag_name": "Alpha_0.8.21",
                 "name": "Alpha 0.8.21",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.21/BtnCmd_DWC3.3_Alpha.0.8.21.zip",
                 "published_at": "2021-10-01T09:27:41Z"
             },
             {
                 "tag_name": "Alpha_0.8.20",
                 "name": "Alpha 0.8.20 Tweaks & Bug Fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.20/BtnCmd_DWC3.3_Alpha.0.8.20.zip",
                 "published_at": "2021-06-20T14:13:57Z"
             },
             {
                 "tag_name": "Alpha_0.8.19",
                 "name": "Alpha 0.8.19 DWC 3.3",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.19/BtnCmd_DWC3.3_Alpha.0.8.19.zip",
                 "published_at": "2021-06-17T11:30:42Z"
             },
             {
                 "tag_name": "Alpha_0.8.18",
                 "name": "Alpha 0.8.18 New Custom Panels",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.18/BtnCmd_DWC3.2_Alpha.0.8.18.zip",
                 "published_at": "2021-05-08T08:04:30Z"
             },
             {
                 "tag_name": "Alpha_0.8.17",
                 "name": "Alpha 0.8.17",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.17/BtnCmd_DWC3.3b3_Alpha.0.8.17.zip",
                 "published_at": "2021-04-24T19:17:33Z"
             },
             {
                 "tag_name": "Alpha_0.8.16",
                 "name": "Alpha 0.8.16 - Experimental New Machine Model Value Panel",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.16/BtnCmd_DWC3.3b3_Alpha.0.8.16.zip",
                 "published_at": "2021-04-24T09:54:11Z"
             },
             {
                 "tag_name": "Alpha_0.8.15",
                 "name": "Alpha 0.8.15 - New Button Action & Mobile bug fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.15/BtnCmd_DWC3.2_Alpha.0.8.15.zip",
                 "published_at": "2021-04-21T12:35:07Z"
             },
             {
                 "tag_name": "Alpha_0.8.14",
                 "name": "Alpha 0.8.14 - New Panel & Bug Fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.14/BtnCmd_DWC3.2_Alpha.0.8.14.zip",
                 "published_at": "2021-04-17T12:06:13Z"
             },
             {
                 "tag_name": "Alpha_0.8.13",
                 "name": "Alpha 0.8.13 - Small UI Changes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.13/BtnCmd_DWC3.2_Alpha.0.8.13.zip",
                 "published_at": "2021-04-15T10:41:09Z"
             },
             {
                 "tag_name": "Alpha_0.8.12",
                 "name": "Alpha 0.8.12 - Mobile compatability, UI changes, bug fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.12/BtnCmd_DWC3.2_Alpha.0.8.12.zip",
                 "published_at": "2021-04-14T12:25:21Z"
             },
             {
                 "tag_name": "Alpha_0.8.8",
                 "name": "Alpha 0.8.8 - New Panels Feature",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.8/BtnCmd_DWC3.2_Alpha.0.8.8.zip",
                 "published_at": "2021-04-09T13:44:59Z"
             },
             {
                 "tag_name": "Alpha_0.8.6",
                 "name": "Alpha 0.8.6 - Snap to Grid options + http improvements",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.6/BtnCmd_DWC3.2_Alpha.0.8.6.zip",
                 "published_at": "2021-04-06T15:24:55Z"
             },
             {
                 "tag_name": "Alpha_0.8.5",
                 "name": "Alpha 0.8.5 Draggable Buttons Implemented",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.5/BtnCmd_DWC3.2_Alpha.0.8.5.zip",
                 "published_at": "2021-04-05T16:01:41Z"
             },
             {
                 "tag_name": "Alpha_0.8.1",
                 "name": "Alpha 0.8.1 New Status Change Events",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.1/BtnCmd_DWC3.2_Alpha.0.8.1.zip",
                 "published_at": "2021-04-02T13:54:43Z"
             },
             {
                 "tag_name": "Alpha_0.7.1",
                 "name": "Alpha 0.7.1 Minor bug fixes",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.7.1/BtnCmd_DWC3.2_Alpha.0.7.1.zip",
                 "published_at": "2021-03-28T13:19:54Z"
             }
         ]
@@ -164,16 +194,19 @@
             {
                 "tag_name": "v3.4-b1",
                 "name": "Version 3.4-b1",
+                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.4-b1/ClosedLoopTuning-3.4-b1.zip",
                 "published_at": "2022-03-16T16:15:09Z"
             },
             {
                 "tag_name": "0.2-alpha",
                 "name": "Release 0.2 alpha",
+                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.2-alpha/closed-loop-plugin.zip",
                 "published_at": "2021-08-18T13:26:12Z"
             },
             {
                 "tag_name": "0.1-alpha",
                 "name": "Release 0.1 alpha",
+                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.1-alpha/closed-loop-plugin.zip",
                 "published_at": "2021-08-18T10:00:04Z"
             }
         ]
@@ -186,6 +219,7 @@
             {
                 "tag_name": "v0.1",
                 "name": "ExecOnMcode v0.1",
+                "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.1/ExecOnMcode-0.1.zip",
                 "published_at": "2022-09-04T19:15:54Z"
             }
         ]
@@ -198,6 +232,7 @@
             {
                 "tag_name": "V1.0.0",
                 "name": "Version 1.0 Release",
+                "download_url": "https://github.com/Sindarius/DWC-CAN-Manager/releases/download/V1.0.0/CANManager-1.0.0.zip",
                 "published_at": "2022-07-29T19:32:53Z"
             }
         ]
@@ -210,26 +245,31 @@
             {
                 "tag_name": "1.0.0",
                 "name": "3.3 and 3.4 support",
+                "download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/1.0.0/GamepadJoggerPlugin_3_3.zip",
                 "published_at": "2021-08-30T12:34:24Z"
             },
             {
                 "tag_name": "0.2.0",
                 "name": "Keyboard Control",
+                "download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.2.0/GamepadJogger.zip",
                 "published_at": "2020-12-23T13:24:58Z"
             },
             {
                 "tag_name": "0.1.2",
                 "name": "Update for 3.2 RC1",
+                "download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.2/GamepadJogger.zip",
                 "published_at": "2020-12-21T22:19:53Z"
             },
             {
                 "tag_name": "0.1.1",
                 "name": "Beta4 ",
+                "download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.1/GamepadJogger.zip",
                 "published_at": "2020-11-27T14:13:51Z"
             },
             {
                 "tag_name": "0.1.0",
                 "name": "First release of gamepad jogger",
+                "download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.0/GamepadJogger.zip",
                 "published_at": "2020-11-26T12:30:34Z"
             }
         ]
@@ -242,21 +282,25 @@
             {
                 "tag_name": "v3.4",
                 "name": "Version 3.4",
+                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4/EndstopsMonitor-3.4.0.zip",
                 "published_at": "2022-06-14T08:35:28Z"
             },
             {
                 "tag_name": "v3.3",
                 "name": "Version 3.3",
+                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.3/EndstopsMonitor-3.3.0.zip",
                 "published_at": "2022-06-14T08:33:51Z"
             },
             {
                 "tag_name": "v3.4-rc2",
                 "name": "Version 3.4-rc2",
+                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4-rc2/EndstopsMonitor-3.4.0-rc2.zip",
                 "published_at": "2022-06-14T08:35:01Z"
             },
             {
                 "tag_name": "v3.4-rc1",
                 "name": "Version 3.4-rc1",
+                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4-rc1/EndstopsMonitor-3.4.0-rc1.zip",
                 "published_at": "2022-06-14T08:34:30Z"
             }
         ]
@@ -269,11 +313,13 @@
             {
                 "tag_name": "v3.4.1-b1",
                 "name": "Version 3.4.1-b1",
+                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.1-b1/InputShaping-3.4.1-b1.zip",
                 "published_at": "2022-06-20T14:34:10Z"
             },
             {
                 "tag_name": "v3.4.0",
                 "name": "Version 3.4.0-b1",
+                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.0/InputShaping-3.4.0-b1.zip",
                 "published_at": "2022-06-14T08:51:39Z"
             }
         ]
@@ -286,6 +332,7 @@
             {
                 "tag_name": "v3.4",
                 "name": "Version 3.4",
+                "download_url": "https://github.com/Duet3D/MotionWebcamServerPlugin/releases/download/v3.4/MotionWebcamServer-3.4.0.zip",
                 "published_at": "2022-06-14T08:40:25Z"
             }
         ]
@@ -298,16 +345,19 @@
             {
                 "tag_name": "1.2.0",
                 "name": "1.2.0",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.2.0/ObjectCancel-1.2.0.zip",
                 "published_at": "2022-07-29T20:39:16Z"
             },
             {
                 "tag_name": "1.1.0",
                 "name": "Version 1.1 for DWC 3.4.1",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.1.0/ObjectCancel-1.1.0.zip",
                 "published_at": "2022-06-05T22:29:53Z"
             },
             {
                 "tag_name": "1.0.0",
                 "name": "Initial Release",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.0.0/ObjectCancelPlugin-3.3.zip",
                 "published_at": "2021-08-22T12:36:15Z"
             }
         ]
@@ -320,26 +370,31 @@
             {
                 "tag_name": "0.01.14Beta",
                 "name": " ReleaseMgr v0.01.14 Beta  ",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.14Beta/ReleaseMgr_Beta_V0.01.14_DWC_3.3.zip",
                 "published_at": "2022-07-07T15:26:26Z"
             },
             {
                 "tag_name": "0.01.13Beta",
                 "name": "v0.01.13",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.13Beta/ReleaseMgr_Beta_V0.01.13_DWC_3.3.zip",
                 "published_at": "2022-03-17T16:14:36Z"
             },
             {
                 "tag_name": "0.01.12Beta",
                 "name": "ReleaseMgr v0.01.12 Beta ",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.12Beta/ReleaseMgr_Beta_V0.01.12_DWC_3.3.zip",
                 "published_at": "2022-03-07T16:31:41Z"
             },
             {
                 "tag_name": "0.01.11Beta",
                 "name": "Beta 0.01.11",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.11Beta/ReleaseMgr_Beta_V0.01.11_DWC_3.3.zip",
                 "published_at": "2022-03-05T16:45:54Z"
             },
             {
                 "tag_name": "0.01.10Beta",
                 "name": "First Release - v0.01.10Beta",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.10Beta/ReleaseMgr_Beta_V0.01.10_DWC_3.3.zip",
                 "published_at": "2022-03-01T18:06:57Z"
             }
         ]
