@@ -102,7 +102,7 @@ const createPluginVersionEntry = (plugin_id, author, gh_release_data) => {
         return {
             tag_name: x.tag_name,
             name: x.name,
-            download_url: x.assets.browser_download_url,
+            download_url: x.assets[0].browser_download_url,
             published_at: x.published_at
         }
     })
