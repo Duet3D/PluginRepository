@@ -50,6 +50,7 @@ jobs:
 
           cp CNAME src/.vuepress/dist
           cp plugin_stats.json src/.vuepress/dist/assets
+          cp author_stats.json src/.vuepress/dist/assets
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
