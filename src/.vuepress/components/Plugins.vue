@@ -1,8 +1,8 @@
 <template>
 	<div>
         <div class="search_box_1">         
-            <input type="text" v-model="input" placeholder="Search plugins..." />
             <div class="search_filter_btn">
+            <input type="text" v-model="input" placeholder="Search plugins..." />
                 <button v-on:click="showDWC">DWC</button>
                 <button v-on:click="showSBC">SBC</button>
                 <button v-on:click="showRRF">RRF</button>
