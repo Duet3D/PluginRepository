@@ -3,7 +3,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">📈 Stats</h3>
+                  <h3 class="h3_class">📊 Stats</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                   <li >{{"Plugin Count: "}}<span class="bold">{{`${ this.$data.plugin_count|| "⏳"}`}}</span></li>
@@ -16,7 +16,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Recently Added</h3>
+                  <h3 class="h3_class">🆕 Recently Added</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.newly_added_plugins" :key="plugin.plugin_id">
@@ -29,7 +29,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">Most Downloaded</h3>
+                  <h3 class="h3_class">⬇️ Most Downloaded</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.most_download_plugins" :key="plugin.plugin_id">
@@ -42,7 +42,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">This Week's Trending</h3>
+                  <h3 class="h3_class">📈 This Week's Trending</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="plugin in this.$data.weekly_trending_plugins" :key="plugin.plugin_id">
@@ -55,7 +55,7 @@
         <section class="card3">
             <div class="div_1">
                 <div class="div_2">
-                  <h3 class="h3_class">{{"Authors"}}</h3>
+                  <h3 class="h3_class">👤 Authors</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
                     <li v-for="author in this.$data.authors" :key="author.author">
