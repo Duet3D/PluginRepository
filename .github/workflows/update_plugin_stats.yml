@@ -27,8 +27,9 @@ jobs:
 
           cd ../../
           cp nodescripts/src/plugin_stats.json plugin_stats.json
+          cp nodescripts/src/plugin_stats.json plugin_version.json
           cp nodescripts/src/author_stats.json author_stats.json
 
-          git add plugin_stats.json author_stats.json
+          git add plugin_stats.json plugin_version.json author_stats.json
           git commit -m "Update plugin_stats"
           git push -u origin master

@@ -100,7 +100,7 @@ describe('Update Plugin Stats', ()=>{
     afterEach(()=>sinon.restore());
 
     it('Should return updated plugin stats', async ()=>{
-        const res = await updatePluginStats();
+        const {new_plugin_stat_json:res} = await updatePluginStats();
         expect(res[0].plugin_id).to.be.eq("InputShapingPlugin");
         expect(res[0].author).to.be.eq("Duet3D");
         expect(res[0].plugin_submitted_on).to.be.eq("2022-09-01T10:53:37.289Z");
@@ -159,7 +159,7 @@ describe('Create Plugin Entry' , ()=> {
         const plugin_md_name = "InputShapingPlugin.md";
         const prev_plugin_stat_json = []
         const plugin_reported_json = [{ "plugin_id": "InputShapingPlugin", "author": "Duet3D", "plugin_submitted_on": "2022-09-01T10:53:37.289Z", "description": "Admin check", "steps_reproduce": "step 1", "additional_description": "additional", "timestamp": "2022-09-08T21:39:46.070Z" }]
-        const res = await createPluginEntry(plugin_md_name, prev_plugin_stat_json, plugin_reported_json);
+        const {plugin_entry:res} = await createPluginEntry(plugin_md_name, prev_plugin_stat_json, plugin_reported_json);
 
         expect(res.plugin_id).to.be.eq("InputShapingPlugin")
         expect(res.author).to.be.eq("Duet3D")

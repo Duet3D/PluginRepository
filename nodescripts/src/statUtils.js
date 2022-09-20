@@ -8,15 +8,20 @@ const updatePluginStats = async () => {
         const {data:plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
 
         const plugin_list = plugins_dir.map( x => x.name);
-        let new_plugin_stat_json = []
+
+        let new_plugin_stat_json = [];
+        let new_plugin_versions_json = [];
+
         for(let i = 0; i<plugin_list.length ; i++){
-            const entry = await createPluginEntry(plugin_list[i], prev_plugin_stat_json, plugin_reported_json)
-            new_plugin_stat_json.push(entry)
+            const {plugin_entry, plugin_version_entry} = await createPluginEntry(plugin_list[i], prev_plugin_stat_json, plugin_reported_json)
+            new_plugin_stat_json.push(plugin_entry);
+            new_plugin_versions_json.push(plugin_version_entry);
         }
 
         await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
+        await writeFile.writeJSONSync(new_plugin_versions_json, 'plugin_versions.json')
 
-        return new_plugin_stat_json
+        return {new_plugin_stat_json, new_plugin_versions_json}
     }
     catch(e){
         console.log(e)
@@ -25,7 +30,6 @@ const updatePluginStats = async () => {
 }
 
 const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_reported_json) => {
-    // const {status, data: plugin_md} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/src/plugins/${plugin_md_name}`);
     const plugin_md = await readFile.TEXT(`../../src/plugins/${plugin_md_name}`);
     const plugin_id = plugin_md_name.substring(0, plugin_md_name.length-3);
 
@@ -66,7 +70,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
         latest_release_downloads_on_week_start = latest_release_download_count;
     }
 
-    return {
+    const plugin_entry = {
         "plugin_id": plugin_id,
         "author": author,
         "plugin_submitted_on": plugin_submitted_on,
@@ -83,6 +87,31 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
 
         "week_start_date" : week_start_date,
         "last_updated_date": today
+    }
+
+    const plugin_version_entry = createPluginVersionEntry(plugin_id, author, gh_release_data);
+
+    return {plugin_entry, plugin_version_entry}
+}
+
+const createPluginVersionEntry = (plugin_id, author, gh_release_data) => {
+
+    const latest_release = (gh_release_data|| [])[0].tag_name;
+
+    let releases = gh_release_data.map( x=> {
+        return {
+            tag_name: x.tag_name,
+            name: x.name,
+            download_url: x.assets.browser_download_url,
+            published_at: x.published_at
+        }
+    })
+
+    return {
+        "plugin_id": plugin_id,
+        "author": author,
+        "latest_release": latest_release,
+        "releases" : releases
     }
 }
 
