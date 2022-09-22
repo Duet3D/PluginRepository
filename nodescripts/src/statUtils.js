@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {getFrontmatterObject, writeFile, readFile} = require('./util');
+const {getFrontmatterObject, writeFile, readFile, downloadFile, unzip, checkFile} = require('./util');
 
 const updatePluginStats = async () => {
     try{
@@ -98,6 +98,27 @@ const createPluginVersionEntry = (plugin_id, author, gh_release_data) => {
 
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
+    let browser_download_url = ((((gh_release_data|| [])[0]||{}).assets||[])[0]||{}).browser_download_url
+    await downloadFile(browser_download_url, 'asset.zip');
+
+    try{
+        await unzip();
+    }
+    catch(err){
+        console.log(err);
+        return;
+    }
+
+    res = checkFile.local('unzipped/plugin.json');
+    if(!res){
+        console.log('plugin.json not available');
+        return;
+    }
+    
+    const plugin_json = lowerCaseKeys(await readFile.JSON('unzipped/plugin.json') || {});
+
+
+
     let releases = gh_release_data.map( x=> {
         return {
             tag_name: x.tag_name,
@@ -110,6 +131,7 @@ const createPluginVersionEntry = (plugin_id, author, gh_release_data) => {
     return {
         "plugin_id": plugin_id,
         "author": author,
+        "plugin_manifest": plugin_json,
         "latest_release": latest_release,
         "releases" : releases
     }
