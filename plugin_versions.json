@@ -2,6 +2,24 @@
     {
         "plugin_id": "BtnCmd",
         "author": "MintyTrebor",
+        "plugin_manifest": {
+            "dwcWebpackChunk": "BtnCmd",
+            "id": "BtnCmd",
+            "name": "BtnCmd",
+            "author": "Minty Trebor",
+            "version": "0.10.13",
+            "license": "GPL-2.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
+            "dwcVersion": "3.4",
+            "dependencies": {
+                "mqtt": "^4.3.7",
+                "deepmerge": "^4.2.2",
+                "axios": "^0.27.2",
+                "vue-draggable-resizable": "^2.3.0",
+                "jsonpath": "^1.1.1",
+                "vuedraggable": "^2.24.3"
+            }
+        },
         "latest_release": "Beta_0.10.13",
         "releases": [
             {
@@ -189,6 +207,19 @@
     {
         "plugin_id": "Closed-Loop-Plugin",
         "author": "Duet3D",
+        "plugin_manifest": {
+            "id": "ClosedLoopTuning",
+            "name": "Closed Loop Tuning",
+            "author": "Louis Irwin",
+            "version": "3.4-b1",
+            "dwcVersion": "3.4",
+            "license": "GPL-3.0",
+            "homepage": "https://duet3d.com",
+            "tags": [
+                "closed loop",
+                "tuning"
+            ]
+        },
         "latest_release": "v3.4-b1",
         "releases": [
             {
@@ -214,6 +245,29 @@
     {
         "plugin_id": "DSF_ExecOnMcode_Plugin",
         "author": "LoicGRENON",
+        "plugin_manifest": {
+            "id": "ExecOnMcode",
+            "name": "ExecOnMcode",
+            "author": "Loïc GRENON",
+            "version": "0.1",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
+            "dwcVersion": "3.4",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.4",
+            "sbcExecutable": "execOnMcode.py",
+            "sbcOutputRedirected": true,
+            "sbcPermissions": [
+                "codeInterceptionRead",
+                "commandExecution",
+                "fileSystemAccess",
+                "launchProcesses",
+                "registerHttpEndpoints"
+            ],
+            "sbcPythonDependencies": [
+                "dsf-python"
+            ]
+        },
         "latest_release": "v0.1",
         "releases": [
             {
@@ -227,6 +281,15 @@
     {
         "plugin_id": "DWC-CAN-Manager",
         "author": "Sindarius",
+        "plugin_manifest": {
+            "id": "CANManager",
+            "name": "CAN Manager",
+            "author": "Juan Rosario",
+            "version": "1.0.0",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/CANManager",
+            "dwcVersion": "3.4"
+        },
         "latest_release": "V1.0.0",
         "releases": [
             {
@@ -240,6 +303,15 @@
     {
         "plugin_id": "DWC_GamepadJogger_Plugin",
         "author": "Sindarius",
+        "plugin_manifest": {
+            "id": "GamepadJogger",
+            "name": "Gamepad Jogger",
+            "author": "Juan Rosario (Sindarius)",
+            "version": "1.0.0",
+            "dwcVersion": "3.3",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
+        },
         "latest_release": "1.0.0",
         "releases": [
             {
@@ -277,6 +349,18 @@
     {
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
+        "plugin_manifest": {
+            "id": "EndstopsMonitor",
+            "name": "Endstops Monitor",
+            "author": "Duet3D Ltd",
+            "version": "3.4.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/Duet3D/DSF-Plugins",
+            "dwcVersion": "3.4",
+            "tags": [
+                "endstops"
+            ]
+        },
         "latest_release": "v3.4",
         "releases": [
             {
@@ -308,6 +392,19 @@
     {
         "plugin_id": "InputShapingPlugin",
         "author": "Duet3D",
+        "plugin_manifest": {
+            "id": "InputShaping",
+            "name": "Input Shaping",
+            "author": "Duet3D Ltd",
+            "version": "3.4.1-b1",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/Duet3D/DSF-Plugins",
+            "dwcVersion": "3.4",
+            "tags": [
+                "input shaping",
+                "tuning"
+            ]
+        },
         "latest_release": "v3.4.1-b1",
         "releases": [
             {
@@ -327,6 +424,46 @@
     {
         "plugin_id": "MotionWebcamServerPlugin",
         "author": "Duet3D",
+        "plugin_manifest": {
+            "id": "MotionWebcamServer",
+            "name": "Motion Webcam Server",
+            "author": "Duet3D Ltd",
+            "version": "3.4.0",
+            "license": "GPL-2.0-only",
+            "homepage": "https://github.com/Duet3D/DSF-Plugins",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.4",
+            "sbcExecutable": "motion",
+            "sbcExecutableArguments": "-c /opt/dsf/sd/sys/motion.conf",
+            "sbcOutputRedirected": false,
+            "sbcPackageDependencies": [
+                "libavcodec58",
+                "libavdevice58",
+                "libavformat58",
+                "libavutil56",
+                "libc6",
+                "libgnutls30",
+                "libjpeg62-turbo",
+                "libmariadb3",
+                "libmicrohttpd12",
+                "libpq5",
+                "libsqlite3-0",
+                "libswscale5",
+                "libwebp6",
+                "libwebpmux3",
+                "zlib1g"
+            ],
+            "sbcPermissions": [
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
+            "tags": [
+                "motion",
+                "webcam",
+                "server"
+            ]
+        },
         "latest_release": "v3.4",
         "releases": [
             {
@@ -337,34 +474,24 @@
             }
         ]
     },
-    {
-        "plugin_id": "ObjectCancelPlugin",
-        "author": "Sindarius",
-        "latest_release": "1.2.0",
-        "releases": [
-            {
-                "tag_name": "1.2.0",
-                "name": "1.2.0",
-                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.2.0/ObjectCancel-1.2.0.zip",
-                "published_at": "2022-07-29T20:39:16Z"
-            },
-            {
-                "tag_name": "1.1.0",
-                "name": "Version 1.1 for DWC 3.4.1",
-                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.1.0/ObjectCancel-1.1.0.zip",
-                "published_at": "2022-06-05T22:29:53Z"
-            },
-            {
-                "tag_name": "1.0.0",
-                "name": "Initial Release",
-                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.0.0/ObjectCancelPlugin-3.3.zip",
-                "published_at": "2021-08-22T12:36:15Z"
-            }
-        ]
-    },
+    null,
     {
         "plugin_id": "ReleaseMgr",
         "author": "MintyTrebor",
+        "plugin_manifest": {
+            "dwcWebpackChunk": "ReleaseMgr",
+            "id": "ReleaseMgr",
+            "name": "ReleaseMgr",
+            "author": "Minty Trebor",
+            "version": "0.01.14",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
+            "dwcVersion": "3.3",
+            "dependencies": {
+                "axios": "^0.21.1",
+                "marked": "^4.0.12"
+            }
+        },
         "latest_release": "0.01.14Beta",
         "releases": [
             {
