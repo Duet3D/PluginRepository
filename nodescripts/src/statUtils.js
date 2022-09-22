@@ -89,19 +89,19 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
         "last_updated_date": today
     }
 
-    const plugin_version_entry = createPluginVersionEntry(plugin_id, author, gh_release_data);
+    const plugin_version_entry = await createPluginVersionEntry(plugin_id, author, gh_release_data);
 
     return {plugin_entry, plugin_version_entry}
 }
 
-const createPluginVersionEntry = (plugin_id, author, gh_release_data) => {
+const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
 
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
     let browser_download_url = ((((gh_release_data|| [])[0]||{}).assets||[])[0]||{}).browser_download_url
-    await downloadFile(browser_download_url, 'asset.zip');
 
     try{
+        await downloadFile(browser_download_url, 'asset.zip');
         await unzip();
     }
     catch(err){
