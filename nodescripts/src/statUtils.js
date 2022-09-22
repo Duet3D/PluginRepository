@@ -115,7 +115,7 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
         return;
     }
     
-    const plugin_json = lowerCaseKeys(await readFile.JSON('unzipped/plugin.json') || {});
+    const plugin_json = await readFile.JSON('unzipped/plugin.json');
 
 
 
