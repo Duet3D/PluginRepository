@@ -137,7 +137,7 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
     }
 }
 
-const updateOld = (old_plugin_ver, new_plugin_ver) => {
+const updateOldVersionEntry = (old_plugin_ver, new_plugin_ver) => {
     const releases_new = new_plugin_ver.releases.map(x=>x.tag_name);
     const releases_old = old_plugin_ver.releases.map(x=>x.tag_name);
     const updates_releases = releases_new.filter(x=>!releases_old.includes(x));
