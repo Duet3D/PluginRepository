@@ -137,6 +137,10 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
     }
 }
 
+const updateOld = (old_plugin_ver, new_plugin_ver) => {
+    
+}
+
 const updateAuthorStats = async () => {
     try{
 
