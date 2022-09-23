@@ -474,7 +474,40 @@
             }
         ]
     },
-    null,
+    {
+        "plugin_id": "ObjectCancelPlugin",
+        "author": "Sindarius",
+        "plugin_manifest": {
+            "id": "ObjectCancel",
+            "name": "Object Cancel",
+            "author": "Juan Rosario",
+            "version": "1.2.0",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/ObjectCancelPlugin",
+            "dwcVersion": "3.4"
+        },
+        "latest_release": "1.2.0",
+        "releases": [
+            {
+                "tag_name": "1.2.0",
+                "name": "1.2.0",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.2.0/ObjectCancel-1.2.0.zip",
+                "published_at": "2022-07-29T20:39:16Z"
+            },
+            {
+                "tag_name": "1.1.0",
+                "name": "Version 1.1 for DWC 3.4.1",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.1.0/ObjectCancel-1.1.0.zip",
+                "published_at": "2022-06-05T22:29:53Z"
+            },
+            {
+                "tag_name": "1.0.0",
+                "name": "Initial Release",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.0.0/ObjectCancelPlugin-3.3.zip",
+                "published_at": "2021-08-22T12:36:15Z"
+            }
+        ]
+    },
     {
         "plugin_id": "ReleaseMgr",
         "author": "MintyTrebor",
