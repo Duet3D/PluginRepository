@@ -31,7 +31,7 @@ jobs:
           cp nodescripts/src/author_stats.json author_stats.json
 
 
-          branchName=statUpdate
+          branchName=stat-update
           commituser=Duet3D
           
 
@@ -40,16 +40,15 @@ jobs:
           git commit -m "Stat update.md"
           git push -u origin $branchName
 
-          hub pull-request -m "[$branchName]" --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[StatsUpdate]/$(date +"%y%m%d")$repo" --base $commituser:master --head $commituser:$branchName
   merge-pr:
     runs-on: ubuntu-latest
     steps:
       - name: merge-pr
         run: |
-          branchName=statUpdate
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[statUpdate]"))' | jq ."url" | sed 's/"//g')/merge
+          | jq '.[] | select(.title | startswith("[StatsUpdate]"))' | jq ."url" | sed 's/"//g')/merge
 
           echo $url
 
