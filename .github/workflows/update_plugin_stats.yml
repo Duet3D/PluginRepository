@@ -40,7 +40,7 @@ jobs:
           git commit -m "Stat update.md"
           git push -u origin $branchName
 
-          hub pull-request -m "[StatsUpdate]/$(date +"%y%m%d")$repo" --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[StatsUpdate]/$(date +"%Y-%m-%d")$repo" --base $commituser:master --head $commituser:$branchName
   merge-pr:
     needs: update-plugin-stats
     runs-on: ubuntu-latest
