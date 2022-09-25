@@ -10,7 +10,7 @@
             "version": "0.10.13",
             "license": "GPL-2.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.2",
+            "dwcVersion": "3.4",
             "dependencies": {
                 "mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -290,7 +290,7 @@
             "homepage": "https://github.com/Sindarius/CANManager",
             "dwcVersion": "3.4"
         },
-        "latest_release": "V0.0.1",
+        "latest_release": "V1.0.0",
         "releases": [
             {
                 "tag_name": "V1.0.0",
@@ -428,7 +428,7 @@
             "id": "MotionWebcamServer",
             "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.3.0",
+            "version": "3.4.0",
             "license": "GPL-2.0-only",
             "homepage": "https://github.com/Duet3D/DSF-Plugins",
             "sbcRequired": true,
@@ -460,7 +460,8 @@
             ],
             "tags": [
                 "motion",
-                "webcam"
+                "webcam",
+                "server"
             ]
         },
         "latest_release": "v3.4",
