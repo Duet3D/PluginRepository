@@ -7,10 +7,10 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "0.10.12",
+            "version": "0.10.13",
             "license": "GPL-2.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.3",
+            "dwcVersion": "3.4",
             "dependencies": {
                 "mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -252,9 +252,9 @@
             "version": "0.1",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
-            "dwcVersion": "3.3",
+            "dwcVersion": "3.4",
             "sbcRequired": true,
-            "sbcDsfVersion": "3.3",
+            "sbcDsfVersion": "3.4",
             "sbcExecutable": "execOnMcode.py",
             "sbcOutputRedirected": true,
             "sbcPermissions": [
@@ -278,28 +278,7 @@
             }
         ]
     },
-    {
-        "plugin_id": "DWC-CAN-Manager",
-        "author": "Sindarius",
-        "plugin_manifest": {
-            "id": "CANManager",
-            "name": "CAN Manager",
-            "author": "Juan Rosario",
-            "version": "1.0.0",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.4"
-        },
-        "latest_release": "V1.0.0",
-        "releases": [
-            {
-                "tag_name": "V1.0.0",
-                "name": "Version 1.0 Release",
-                "download_url": "https://github.com/Sindarius/DWC-CAN-Manager/releases/download/V1.0.0/CANManager-1.0.0.zip",
-                "published_at": "2022-07-29T19:32:53Z"
-            }
-        ]
-    },
+    null,
     {
         "plugin_id": "DWC_GamepadJogger_Plugin",
         "author": "Sindarius",
