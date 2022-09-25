@@ -30,6 +30,54 @@ jobs:
           cp nodescripts/src/plugin_versions.json plugin_versions.json
           cp nodescripts/src/author_stats.json author_stats.json
 
+
+          branchName=statUpdate
+          commituser=Duet3D
+          
+
+          git checkout -b $branchName
           git add plugin_stats.json plugin_versions.json author_stats.json
-          git commit -m "Update plugin_stats"
-          git push -u origin master
+          git commit -m "Stat update.md"
+          git push -u origin $branchName
+
+          hub pull-request -m "[$branchName]" --base $commituser:master --head $commituser:$branchName
+  merge-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: merge-pr
+        run: |
+          branchName=statUpdate
+          url=$(curl \
+          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
+          | jq '.[] | select(.title | startswith("[$branchName]"))' | jq ."url" | sed 's/"//g')/merge
+
+          echo $url
+
+          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
+          cat merge_response.json | jq
+          
+  deploy-gh-pages:
+    needs: update-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build
+        run: |
+          set -e
+
+          git pull
+
+          npm install
+          npm run build
+
+          cp CNAME src/.vuepress/dist
+          cp plugin_stats.json src/.vuepress/dist/assets
+          cp author_stats.json src/.vuepress/dist/assets
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAT_YASASW }}
+          publish_dir: ./src/.vuepress/dist
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
