@@ -37,10 +37,10 @@ jobs:
 
           git checkout -b $branchName
           git add plugin_stats.json plugin_versions.json author_stats.json
-          git commit -m "Stat update.md"
+          git commit -m "Stat update - $(date +"%Y-%m-%d")"
           git push -u origin $branchName
 
-          hub pull-request -m "[StatsUpdate]/$(date +"%Y-%m-%d")$repo" --base $commituser:master --head $commituser:$branchName
+          hub pull-request -m "[StatsUpdate]/$(date +"%Y-%m-%d")" --base $commituser:master --head $commituser:$branchName
   merge-pr:
     needs: update-plugin-stats
     runs-on: ubuntu-latest
