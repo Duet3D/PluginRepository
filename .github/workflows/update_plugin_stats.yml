@@ -49,7 +49,7 @@ jobs:
           branchName=statUpdate
           url=$(curl \
           -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[$branchName]"))' | jq ."url" | sed 's/"//g')/merge
+          | jq '.[] | select(.title | startswith("[statUpdate]"))' | jq ."url" | sed 's/"//g')/merge
 
           echo $url
 
