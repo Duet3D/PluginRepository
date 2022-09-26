@@ -137,24 +137,6 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
     }
 }
 
-//---------------------------------------------------------------------------------------------------------------------
-const multi = (ol) => {
-    const n = []
-    ol.forEach(x)
-}
-
-const updateOldVersionEntry = (old_plugin_ver, new_plugin_ver) => {
-    const releases_new = new_plugin_ver.releases.map(x=>x.tag_name);
-    const releases_old = old_plugin_ver.releases.map(x=>x.tag_name);
-    const updates_releases = releases_new.filter(x=>!releases_old.includes(x));
-    const new_entries = new_plugin_ver.releases.filter(x=>updates_releases.includes(x.tag_name));
-    new_entries.forEach(x=> old_plugin_ver.releases.push(x))
-    return old_plugin_ver
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------
-
 const updateAuthorStats = async () => {
     try{
 
