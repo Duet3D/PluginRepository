@@ -15,6 +15,7 @@ body:
       - plugin is already existing in [Duet3D Plugin Repository](https://github.com/Duet3D/PluginRepository/tree/master/src/plugins)
       - markdown files are renamed (case-sensitive) as PLUGIN.md, README.md
       - Check the content in markdown files against [an online md viewer](https://markdownlivepreview.com/) as sometimes, images might not be displayed correctly
+      - plugin manifest file size is below 16KB
 
       ## Important Information
       - If a PLUGIN.md file exists, it will be used as the homepage of your plugin; otherwise, README.md will be used

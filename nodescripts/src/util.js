@@ -249,6 +249,12 @@ const updateVersion = async (release_type = 'patch', file = 'package.json') => {
     return await writeFile.writeJSONSync(package_json, file);
 }
 
+const getFileSizeKiB = async (file) => {
+	const fs = require('fs');
+	const stat = await fs.promises.stat(file)
+	return stat.size/1024;
+}
+
 module.exports = {
     insertLineToStr,
     git,
@@ -267,5 +273,6 @@ module.exports = {
     getStatus,
     getFrontmatterObject,
     lowerCaseKeys,
-    extractRepoURLDetails
+    extractRepoURLDetails,
+    getFileSizeKiB
 }

@@ -1,6 +1,6 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, writeFile: {writeJSONSync},
-        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember} = require('./util');
+        getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember, getFileSizeKiB} = require('./util');
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
@@ -65,7 +65,7 @@ const submissionPrecheck = async () => {
     await downloadFile(browser_download_url, 'asset.zip')
 
 
-    //4. Make sure plugin.json exists
+    //4. Make sure plugin.json exists and is below 16KiB
     //unzip here
     try{
         await unzip();
@@ -77,6 +77,11 @@ const submissionPrecheck = async () => {
     res = checkFile.local('unzipped/plugin.json');
     if(!res){
         await exitProcess('plugin.json - manifest not available, Exiting', checklog);
+    }
+
+    const plugin_json_size = await getFileSizeKiB('unzipped/plugin.json');
+    if(16 < plugin_json_size){
+        await exitProcess('plugin.json - file size above 16KB limit. Exiting', checklog);
     }
     
     //5. Ensure properties id, name, author are present
@@ -195,7 +200,7 @@ const updatePrecheck = async () => {
     await downloadFile(browser_download_url, 'asset.zip')
 
 
-    //4. Make sure plugin.json exists
+    //4. Make sure plugin.json exists and below 16KiB
     //unzip here
     try{
         await unzip();
@@ -207,6 +212,11 @@ const updatePrecheck = async () => {
     res = checkFile.local('unzipped/plugin.json');
     if(!res){
         await exitProcess('plugin.json - manifest not available, Exiting', checklog);
+    }
+
+    const plugin_json_size = await getFileSizeKiB('unzipped/plugin.json');
+    if(16 < plugin_json_size){
+        await exitProcess('plugin.json - file size above 16KB limit. Exiting', checklog);
     }
     
     //5. Ensure properties id, name, author are present

@@ -16,6 +16,7 @@ body:
       - Check the content in markdown files against [an online md viewer](https://markdownlivepreview.com/) as sometimes, images might not be displayed correctly
       - If the images are not shown, use the url format `https://raw.githubusercontent.com/<username>/<repo name>/<branch>/<path>/<img name> `
       - plugin manifest file is renamed (case-sensitive) as plugin.json
+      - plugin manifest file size is below 16KB
       - plugin has at least one release
       - plugin release(s) can be downloaded as a zip file.
       Otherwise the checks will not pass.
