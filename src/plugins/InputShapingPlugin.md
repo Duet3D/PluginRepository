@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-09-26T23:13:10.719Z
-plugin_updated_on: 2022-09-26T23:13:10.719Z
+plugin_updated_on: 2022-09-26T23:17:11.506Z
 plugin: true
 title: Input Shaping
-abstract: Lets you fine-tune input shaping and try out different shaper types
+abstract: This plugin lets you fine-tune input shaping and try out different shaper types
 author: Duet3D
 repo: InputShapingPlugin
 branch: master
@@ -18,7 +18,7 @@ release_date: 2022-06-20T14:34:10Z
 release_page: https://github.com/Duet3D/InputShapingPlugin/releases/tag/v3.4.1-b1
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/LICENSE
-download_count: 332
+download_count: 335
 tags:
 - input shaping
 - tuning
