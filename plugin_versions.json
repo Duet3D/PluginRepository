@@ -516,17 +516,23 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "0.01.14",
+            "version": "0.01.15",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.3",
+            "dwcVersion": "3.4",
             "dependencies": {
                 "axios": "^0.21.1",
                 "marked": "^4.0.12"
             }
         },
-        "latest_release": "0.01.14Beta",
+        "latest_release": "0.01.15Beta",
         "releases": [
+            {
+                "tag_name": "0.01.15Beta",
+                "name": "ReleaseMgr v0.01.15 Beta",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.15Beta/ReleaseMgr_Beta_V0.01.15_DWC_3.4.zip",
+                "published_at": "2022-09-28T12:59:33Z"
+            },
             {
                 "tag_name": "0.01.14Beta",
                 "name": " ReleaseMgr v0.01.14 Beta  ",
