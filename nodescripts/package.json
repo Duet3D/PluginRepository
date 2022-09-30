@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "node-wget": "^0.4.3",
+    "@types/unzipper": "^0.10.5",
     "unzipper": "^0.10.11"
   },
   "devDependencies": {
