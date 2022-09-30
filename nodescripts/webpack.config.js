@@ -1,11 +1,21 @@
-module: {
-    loaders: [
-        // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-        { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
-    ],
+const path = require('path');
 
-    preLoaders: [
-        // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-        { test: /\.js$/, loader: "source-map-loader" }
-    ]
-}
+module.exports = {
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
