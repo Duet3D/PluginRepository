@@ -1,5 +1,5 @@
-const axios = require('axios');
-const wget = require('node-wget');
+import axios from 'axios';
+import wget from 'node-wget';
 
 const insertLineToStr = (text, host_str = "") => {
     console.log(text);
@@ -86,7 +86,7 @@ const downloadFile = async (url, dest) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve();
+                    resolve(response);
                 }
             }
         );
@@ -135,7 +135,7 @@ const exitProcess = async (msg, checklog) => {
 }
 
 
-const readFile = (path) = {
+const readFile = {
     JSON: async (path) => {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
@@ -170,7 +170,7 @@ const writeFile = {
         return new Promise((resolve, reject) => {
             fs.writeFile(path, JSON.stringify(json, null, 4), (err) => {
                 if (err) reject(err);
-                resolve();
+                resolve(true);
             });
         })
     }
@@ -200,8 +200,8 @@ const extractRepoURLDetails = (url) => {
 const prepend = (text, file) => {
     const fs = require('fs');
     const data = fs.readFileSync(file)
-    fd = fs.openSync(file, 'w+')
-    buf = new Buffer(text)
+    const fd = fs.openSync(file, 'w+')
+    const buf = new Buffer(text)
     return new Promise((resolve, reject) => {
         fs.writeSync(fd, buf, 0, buf.length, 0);
         fs.write(fd, data, 0, data.length, buf.length, (err)=>{
@@ -218,7 +218,7 @@ const unzip = () => {
     return new Promise((resolve, reject)=>{
         fs.createReadStream('asset.zip').pipe(unzipper.Extract({ path: 'unzipped/' }))
         .on('error', (err) => reject(err))
-        .on('close', () => resolve());
+        .on('close', () => resolve(true));
     })
 
 }

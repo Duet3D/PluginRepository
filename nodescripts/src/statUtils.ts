@@ -1,5 +1,5 @@
-const axios = require('axios');
-const {getFrontmatterObject, writeFile, readFile, downloadFile, unzip, checkFile} = require('./util');
+import axios from 'axios';
+const {getFrontmatterObject, writeFile:writeLocalFile, readFile:readLocalFile, downloadFile, unzip, checkFile} = require('./util');
 
 const updatePluginStats = async () => {
     try{
@@ -18,8 +18,8 @@ const updatePluginStats = async () => {
             new_plugin_versions_json.push(plugin_version_entry);
         }
 
-        await writeFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
-        await writeFile.writeJSONSync(new_plugin_versions_json, 'plugin_versions.json')
+        await writeLocalFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
+        await writeLocalFile.writeJSONSync(new_plugin_versions_json, 'plugin_versions.json')
 
         return {new_plugin_stat_json, new_plugin_versions_json}
     }
@@ -30,7 +30,7 @@ const updatePluginStats = async () => {
 }
 
 const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_reported_json) => {
-    const plugin_md = await readFile.TEXT(`../../src/plugins/${plugin_md_name}`);
+    const plugin_md = await readLocalFile.TEXT(`../../src/plugins/${plugin_md_name}`);
     const plugin_id = plugin_md_name.substring(0, plugin_md_name.length-3);
 
     const author = getFrontmatterObject('author', plugin_md);
@@ -53,7 +53,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
 
     const today = new Date().toISOString().substring(0,10);
     let week_start_date = today;
-    const days_since_last_update = (new Date(today) - new Date(prev_week_start_date||today))/(1000*60*60*24);
+    const days_since_last_update = (+new Date(today) - +new Date(prev_week_start_date||today))/(1000*60*60*24);
 
     if(!prev_plugin_data){  //If a newly submitted plugin
         total_downloads_on_week_start = total_download_count;
@@ -109,13 +109,13 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
         return;
     }
 
-    res = checkFile.local('unzipped/plugin.json');
+    let res = checkFile.local('unzipped/plugin.json');
     if(!res){
         console.log('plugin.json not available');
         return;
     }
     
-    const plugin_json = await readFile.JSON('unzipped/plugin.json');
+    const plugin_json = await readLocalFile.JSON('unzipped/plugin.json');
 
 
 
@@ -140,7 +140,7 @@ const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
 const updateAuthorStats = async () => {
     try{
 
-        const plugin_stats = await readFile.JSON(`plugin_stats.json`);
+        const plugin_stats = await readLocalFile.JSON(`plugin_stats.json`);
 
         const author_set = new Set();
         (plugin_stats||[]).forEach(plugin => {
@@ -162,7 +162,7 @@ const updateAuthorStats = async () => {
             author_stats[author_stats.findIndex(i=>i.author==plugin.author)].num_of_plugins += 1;
         })
 
-        await writeFile.writeJSONSync(author_stats, 'author_stats.json')
+        await writeLocalFile.writeJSONSync(author_stats, 'author_stats.json')
         return author_stats
     }
     catch(e){
