@@ -1,13 +1,13 @@
 import axios from 'axios';
 import wget from 'node-wget';
 
-const insertLineToStr = (text, host_str = "") => {
+const insertLineToStr = (text:string, host_str:string = "") => {
     console.log(text);
     return host_str.concat(text, '\n');
 }
 
 const git = {
-    labelIssue : async (label) => {
+    labelIssue : async (label:string) => {
         try{
             return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/labels`, {"labels":[label]}, 
             {
@@ -21,7 +21,7 @@ const git = {
             return e
         }
     },
-    commentIssue : async (comment) => {
+    commentIssue : async (comment:string) => {
         console.log(comment)
         return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`${comment}`}), 
         {
@@ -75,7 +75,7 @@ const isUserOrgMember = async () => {
 
 }
 
-const downloadFile = async (url, dest) => {
+const downloadFile = async (url:string, dest:string) => {
     return new Promise((resolve, reject) => {
         wget({
             url: url,
@@ -93,12 +93,12 @@ const downloadFile = async (url, dest) => {
     })
 }
 
-const isFirstCharNum = (str) => {
+const isFirstCharNum = (str:string) => {
 	return (str && str.match(/^\d+/) || [])[0] != undefined
 }
 
 const checkFile = {
-    local: (path) => {
+    local: (path:string) => {
         const fs = require('fs')
         try {
             if (fs.existsSync(path)) {
@@ -111,7 +111,7 @@ const checkFile = {
             return false
         }
     },
-    remote: async (url) => {
+    remote: async (url:string) => {
         try{
             const {status} = await axios.get(url);
             return status == 200
@@ -124,7 +124,7 @@ const checkFile = {
     }
 }
 
-const exitProcess = async (msg, checklog) => {
+const exitProcess = async (msg:string, checklog:string) => {
     console.log(msg);
 
     let checklog_out = insertLineToStr(msg, checklog);
@@ -136,7 +136,7 @@ const exitProcess = async (msg, checklog) => {
 
 
 const readFile = {
-    JSON: async (path) => {
+    JSON: async (path:string) => {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
             fs.readFile(path, (err, data) => {
@@ -145,7 +145,7 @@ const readFile = {
             });
         });    
     },
-    TEXT: async (path) => {
+    TEXT: async (path:string) => {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
             fs.readFile(path, (err, data) => {
@@ -158,14 +158,14 @@ const readFile = {
 
 
 const writeFile = {
-    writeJSON: (json, path) => {
+    writeJSON: (json, path:string) => {
         const fs = require('fs');
         return fs.writeFile(path, JSON.stringify(json), (err) => {
             if (err) throw err;
             return
         });
     },
-    writeJSONSync: (json, path) => {
+    writeJSONSync: (json, path:string) => {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
             fs.writeFile(path, JSON.stringify(json, null, 4), (err) => {
@@ -176,7 +176,7 @@ const writeFile = {
     }
 }
 
-const writeLinetoFile = (str, path) => {
+const writeLinetoFile = (str:string, path:string) => {
     const fs = require('fs');
     return new Promise((resolve, reject) => {
         fs.writeFile(path, str, (err) => {
@@ -186,7 +186,7 @@ const writeLinetoFile = (str, path) => {
     })
 }
 
-const extractRepoURLDetails = (url) => {
+const extractRepoURLDetails = (url:string) => {
     const split = url.split('/');
     let index = split.indexOf('github.com') == -1 ? split.indexOf('www.github.com') : split.indexOf('github.com')
     let repo = split[index+2]
@@ -197,7 +197,7 @@ const extractRepoURLDetails = (url) => {
 } 
 
 
-const prepend = (text, file) => {
+const prepend = (text:string, file:string) => {
     const fs = require('fs');
     const data = fs.readFileSync(file)
     const fd = fs.openSync(file, 'w+')
@@ -223,7 +223,7 @@ const unzip = () => {
 
 }
 
-const getStatus = (status) => {
+const getStatus = (status:boolean) => {
     return status? "OK" : "NOT OK"
 }
 
@@ -234,12 +234,12 @@ const lowerCaseKeys = (plugin_manifest) => {
     return plugin_manifest_new
 }
 
-const getFrontmatterObject = (key, plugin_md) => {
+const getFrontmatterObject = (key:string, plugin_md:string) => {
     const fm_val = (plugin_md.split('\n').find( x => x.includes(key)) || "").replace(`${key}:`, "").trim();
     return fm_val == "" ? undefined : fm_val;
 }
 
-const updateVersion = async (release_type = 'patch', file = 'package.json') => {
+const updateVersion = async (release_type:string = 'patch', file:string = 'package.json') => {
     const ver_block = { major : 0, minor : 1, patch : 2 };
     const package_json = await readFile.JSON('package.json');
     const ver_list = (package_json['version']||[]).split('.');
@@ -249,7 +249,7 @@ const updateVersion = async (release_type = 'patch', file = 'package.json') => {
     return await writeFile.writeJSONSync(package_json, file);
 }
 
-const getFileSizeKiB = async (file) => {
+const getFileSizeKiB = async (file:string) => {
 	const fs = require('fs');
 	const stat = await fs.promises.stat(file)
 	return stat.size/1024;
