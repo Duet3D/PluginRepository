@@ -29,7 +29,7 @@ const updatePluginStats = async () => {
     }
 }
 
-const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_reported_json) => {
+const createPluginEntry = async (plugin_md_name:string, prev_plugin_stat_json, plugin_reported_json) => {
     const plugin_md = await readLocalFile.TEXT(`../../src/plugins/${plugin_md_name}`);
     const plugin_id = plugin_md_name.substring(0, plugin_md_name.length-3);
 
@@ -94,7 +94,7 @@ const createPluginEntry = async (plugin_md_name, prev_plugin_stat_json, plugin_r
     return {plugin_entry, plugin_version_entry}
 }
 
-const createPluginVersionEntry = async (plugin_id, author, gh_release_data) => {
+const createPluginVersionEntry = async (plugin_id:string, author:string, gh_release_data) => {
 
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
