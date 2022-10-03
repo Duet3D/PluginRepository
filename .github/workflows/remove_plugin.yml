@@ -42,11 +42,11 @@ jobs:
           set -e
           cat issue.json
 
-          cp issue.json nodescripts/src/
-          cd nodescripts
+          cp issue.json nodescriptsTS/src/
+          cd nodescriptsTS
           npm install
           cd src
-          node removalPrecheck.js
+          npx ts-node removalPrecheck.ts
   plugin-removal:
     needs: removal-precheck
     runs-on: ubuntu-latest
