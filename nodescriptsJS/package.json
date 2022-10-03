@@ -1,0 +1,29 @@
+{
+  "name": "nodescripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.10"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "node-wget": "^0.4.3",
+    "unzipper": "^0.10.11"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^8.0.1",
+    "nock": "^13.0.4",
+    "sinon": "^9.0.3"
+  }
+}
