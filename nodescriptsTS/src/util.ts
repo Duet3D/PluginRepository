@@ -1,5 +1,6 @@
 import axios from 'axios';
 import wget from 'node-wget';
+import { resolve } from 'path';
 
 const insertLineToStr = (text:string, host_str:string = "") => {
     console.log(text);
@@ -75,7 +76,7 @@ const isUserOrgMember = async () => {
 
 }
 
-const downloadFile = async (url:string, dest:string) => {
+const downloadFile2 = async (url:string, dest:string) => {
     return new Promise((resolve, reject) => {
         wget({
             url: url,
@@ -91,6 +92,28 @@ const downloadFile = async (url:string, dest:string) => {
             }
         );
     })
+}
+
+const downloadFile = async (url:string, dest:string) => {
+    return new Promise((resolve, reject) => {
+        const http = require('https');
+        const fs = require('fs');
+        
+        const file = fs.createWriteStream(dest);
+        http.get(url, (response) => {
+           response.pipe(file);
+        
+           file.on("finish", () => {
+               file.close();
+               console.log(`${url} : download completed`);
+           })
+           .on('close', () => resolve(true))
+           .on('error', (err) => {
+            reject(err);
+           });
+        });
+    
+    })    
 }
 
 const isFirstCharNum = (str:string) => {
@@ -240,6 +263,7 @@ const getFrontmatterObject = (key:string, plugin_md:string) => {
 }
 
 const updateVersion = async (release_type:string = 'patch', file:string = 'package.json') => {
+    process.argv.forEach(x=>console.log(x))
     const ver_block = { major : 0, minor : 1, patch : 2 };
     const package_json = await readFile.JSON('package.json');
     const ver_list = (package_json['version']||[]).split('.');
