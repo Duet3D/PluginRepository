@@ -4,9 +4,7 @@ const { insertLineToStr, git, downloadFile, checkFile, exitProcess,
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
-    process.argv.forEach(x=>console.log(x))
     console.log(process.env.GITHUB_ISSUE)
-    console.log(process.env.GITHUB_TOKEN)
     // Initalize variables
     let checklog = "";
     const issue = await readJSON('issue.json');
