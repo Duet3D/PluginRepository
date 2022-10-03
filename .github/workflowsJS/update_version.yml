@@ -20,15 +20,15 @@ jobs:
           git pull
           
 
-          cp package.json nodescriptsTS/src/
-          cd nodescriptsTS
+          cp package.json nodescripts/src/
+          cd nodescripts
           npm install
           cd src
-          npx ts-node updateVersion.ts ${{ github.event.inputs.release_type }}
+          node updateVersion.js ${{ github.event.inputs.release_type }}
 
           cd ../../
           rm package.json
-          cp nodescriptsTS/src/package.json package.json
+          cp nodescripts/src/package.json package.json
 
           git add package.json
           git commit -m "Update version"

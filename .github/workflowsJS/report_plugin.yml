@@ -40,17 +40,17 @@ jobs:
         run: |
           ls -a
           cat issue.json
-          cp issue.json nodescriptsTS/src/
+          cp issue.json nodescripts/src/
 
           rm plugin_reported.json
 
-          cd nodescriptsTS
+          cd nodescripts
           npm install
           cd src
-          npx ts-node reportPlugin.ts
+          node reportPlugin.js
 
           cd ../../
-          cp nodescriptsTS/src/plugin_reported.json plugin_reported.json
+          cp nodescripts/src/plugin_reported.json plugin_reported.json
 
           git config --global user.name "yasasw"
           git config --global user.email "yasas.wijetilake@gmail.com"

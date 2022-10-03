@@ -18,17 +18,17 @@ jobs:
           git pull
           
 
-          cd nodescriptsTS
+          cd nodescripts
           npm install
           cd src
-          npx ts-node updatePluginStats.ts
+          node updatePluginStats.js
 
-          npx ts-node updateAuthorStats.ts
+          node updateAuthorStats.js
 
           cd ../../
-          cp nodescriptsTS/src/plugin_stats.json plugin_stats.json
-          cp nodescriptsTS/src/plugin_versions.json plugin_versions.json
-          cp nodescriptsTS/src/author_stats.json author_stats.json
+          cp nodescripts/src/plugin_stats.json plugin_stats.json
+          cp nodescripts/src/plugin_versions.json plugin_versions.json
+          cp nodescripts/src/author_stats.json author_stats.json
 
 
           branchName=stat-update

@@ -40,11 +40,11 @@ jobs:
         run: |
           ls -a
           cat issue.json
-          cp issue.json nodescriptsTS/src/
-          cd nodescriptsTS
+          cp issue.json nodescripts/src/
+          cd nodescripts
           npm install
           cd src
-          npx ts-node submissionPrecheck.ts
+          node submissionPrecheck.js
                       
   plugin-submission:
     needs: precheck
@@ -96,14 +96,14 @@ jobs:
           echo $(ls -a)
 
           cat issue.json
-          cp issue.json nodescriptsTS/src/
-          cd nodescriptsTS
+          cp issue.json nodescripts/src/
+          cd nodescripts
           npm install
           cd src
-          npx ts-node submissionCreatePR.ts
+          node submissionCreatePR.js
 
           cd ../../
-          cp nodescriptsTS/src/$repo.md src/plugins
+          cp nodescripts/src/$repo.md src/plugins
 
           cd src/plugins 
 
