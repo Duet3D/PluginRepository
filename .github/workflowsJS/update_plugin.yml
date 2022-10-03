@@ -1,0 +1,174 @@
+name: update-plugin
+on:
+  issues:
+    types: [opened]
+    
+jobs:
+  issue_label_check:
+    runs-on: ubuntu-latest
+    outputs:
+      is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: label-check
+        id: label_check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
+          if [[ "$issue_label" = plugin-update ]]; then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
+  precheck:
+    needs: issue_label_check
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_ISSUE: ${{github.event.issue.number}}
+      GITHUB_USER: ${{ github.event.issue.user.login }}
+      PAT_DUET3D_ADMIN_ORG_READ: ${{ secrets.PAT_DUET3D_ADMIN_ORG_READ }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser 
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: precheck-steps
+        run: |
+          ls -a
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node updatePrecheck.js
+                      
+  plugin-update:
+    needs: precheck
+
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: Fetch and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ISSUE: ${{github.event.issue.number}}
+          GITHUB_USER: ${{ github.event.issue.user.login }}
+        run: |
+
+          set -e
+
+          repo=$(cat issue.json | jq -r ."PluginID")
+          
+          mv src/plugins/$repo.md src/plugins/asset_repo.txt
+
+          echo $(ls -a)
+
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node updateCreatePR.js
+
+          cd ../../
+          cp nodescripts/src/$repo.md src/plugins
+
+          cd src/plugins 
+
+          branchName=update/$(date +"%y%m%d")$repo
+          commituser=Duet3D
+          
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add $repo.md
+          git commit -m "Updating plugin $repo.md"
+          git push -u origin $branchName
+
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-update --base $commituser:master --head $commituser:$branchName
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
+  merge-pr:
+    needs: plugin-update
+    runs-on: ubuntu-latest
+    steps:
+      - name: merge-pr
+        run: |
+          url=$(curl \
+          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
+          | jq '.[] | select(.title | startswith("[${{ github.event.issue.number }}]"))' | jq ."url" | sed 's/"//g')/merge
+
+          echo $url
+
+          echo "auto approving"
+          
+          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
+          cat merge_response.json | jq
+          merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
+
+          if [[ "$merged" = true ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["merged"]}' && curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }} -d '{"state":"closed"}' && exit 0; else exit 1; fi 
+  update-version:
+    needs: merge-pr
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: update-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git pull
+          
+
+          cp package.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node updateVersion.js patch
+
+          cd ../../
+          rm package.json
+          cp nodescripts/src/package.json package.json
+
+          git add package.json
+          git commit -m "Update version"
+          git push -u origin master
+
+  deploy-gh-pages:
+    needs: update-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build
+        run: |
+          set -e
+
+          git pull
+
+          npm install
+          npm run build
+
+          cp CNAME src/.vuepress/dist
+          cp plugin_stats.json src/.vuepress/dist/assets
+          cp author_stats.json src/.vuepress/dist/assets
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAT_YASASW }}
+          publish_dir: ./src/.vuepress/dist
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'

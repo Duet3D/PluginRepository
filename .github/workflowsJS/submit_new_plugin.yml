@@ -1,0 +1,122 @@
+name: submit-new-plugin
+on:
+  issues:
+    types: [opened]
+    
+jobs:
+  issue_label_check:
+    runs-on: ubuntu-latest
+    outputs:
+      is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
+    steps: 
+      - uses: actions/checkout@v2
+      - name: label-check
+        id: label_check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
+          if [[ "$issue_label" = plugin-submission ]];  then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
+
+  precheck:
+    needs: issue_label_check
+    if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success'  }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_ISSUE: ${{github.event.issue.number}}
+      PAT_DUET3D_ADMIN_ORG_READ: ${{ secrets.PAT_DUET3D_ADMIN_ORG_READ }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser 
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: precheck-steps
+        run: |
+          ls -a
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node submissionPrecheck.js
+                      
+  plugin-submission:
+    needs: precheck
+
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > issue.json
+
+      - name: Fetch and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ISSUE: ${{github.event.issue.number}}
+          GITHUB_USER: ${{ github.event.issue.user.login }}
+        run: |
+
+          set -e
+
+          PluginURL=$(cat issue.json | jq -r ."PluginURL")
+
+          #---------------------------------------------------------------------
+          OLDIFS=$IFS
+          IFS='/'
+          read -a ar <<< "$PluginURL"
+
+          cnt=0; 
+          for el in "${ar[@]}"; do
+            [[ $el == "github.com" ]]||[[ $el == "www.github.com" ]] && break
+            ((++cnt))
+          done
+
+          IFS=$OLDIFS
+          #---------------------------------------------------------------------
+            
+          author=${ar[$((cnt+1))]}
+          repo=${ar[$((cnt+2))]}
+          
+          suffix=".git"
+          repo=${repo/%$suffix}
+
+          branch=$(cat issue.json | jq -r ."PluginBranch")
+
+          echo $(ls -a)
+
+          cat issue.json
+          cp issue.json nodescripts/src/
+          cd nodescripts
+          npm install
+          cd src
+          node submissionCreatePR.js
+
+          cd ../../
+          cp nodescripts/src/$repo.md src/plugins
+
+          cd src/plugins 
+
+          branchName=submission/$(date +"%y%m%d")$repo
+          commituser=Duet3D
+          
+          git config --global user.name "yasasw"
+          git config --global user.email "yasas.wijetilake@gmail.com"
+          git checkout -b $branchName
+          git add $repo.md
+          git commit -m "Updating plugin $repo.md"
+          git push -u origin $branchName
+
+          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
