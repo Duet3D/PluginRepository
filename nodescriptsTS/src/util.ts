@@ -1,6 +1,5 @@
 import axios from 'axios';
 import wget from 'node-wget';
-import { resolve } from 'path';
 
 const insertLineToStr = (text:string, host_str:string = "") => {
     console.log(text);
@@ -76,44 +75,8 @@ const isUserOrgMember = async () => {
 
 }
 
-const downloadFile2 = async (url:string, dest:string) => {
-    return new Promise((resolve, reject) => {
-        wget({
-            url: url,
-            dest: dest,
-            timeout: 2000
-        },
-            function (error, response, body) {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(response);
-                }
-            }
-        );
-    })
-}
-
 const downloadFile = async (url:string, dest:string) => {
-    return new Promise((resolve, reject) => {
-        const http = require('https');
-        const fs = require('fs');
-        
-        const file = fs.createWriteStream(dest);
-        http.get(url, (response) => {
-           response.pipe(file);
-        
-           file.on("finish", () => {
-               file.close();
-               console.log(`${url} : download completed`);
-           })
-           .on('close', () => resolve(true))
-           .on('error', (err) => {
-            reject(err);
-           });
-        });
-    
-    })    
+    return await wget(url, {output: dest})
 }
 
 const isFirstCharNum = (str:string) => {

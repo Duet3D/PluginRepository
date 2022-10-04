@@ -16,8 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "@types/unzipper": "^0.10.5",
+    "@types/node-wget-promise": "^0.1.1",
     "axios": "^0.27.2",
-    "node-wget": "^0.4.3",
+    "node-wget-promise": "^0.1.6",
     "source-map-loader": "^4.0.0",
     "unzipper": "^0.10.11"
   },
