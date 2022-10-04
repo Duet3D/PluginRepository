@@ -1,5 +1,5 @@
 import axios from 'axios';
-import wget from 'node-wget';
+import wget from 'node-wget-promise';
 
 const insertLineToStr = (text:string, host_str:string = "") => {
     console.log(text);
