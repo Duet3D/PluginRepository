@@ -1,5 +1,4 @@
 import axios from 'axios';
-import wget from 'node-wget-promise';
 
 const insertLineToStr = (text:string, host_str:string = "") => {
     console.log(text);
@@ -76,6 +75,7 @@ const isUserOrgMember = async () => {
 }
 
 const downloadFile = async (url:string, dest:string) => {
+    const wget = require('node-wget-promise');
     return await wget(url, {output: dest})
 }
 
