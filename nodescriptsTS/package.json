@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -r ts-node/register test/*.test.ts"
   },
   "overrides": {
     "graceful-fs": "^4.2.10"
@@ -15,8 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/unzipper": "^0.10.5",
     "@types/node-wget-promise": "^0.1.1",
+    "@types/unzipper": "^0.10.5",
     "axios": "^0.27.2",
     "node-wget-promise": "^0.1.6",
     "source-map-loader": "^4.0.0",
