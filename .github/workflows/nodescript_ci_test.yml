@@ -13,6 +13,6 @@ jobs:
           node-version: 18.x
       - name: run test
         run: |
-          cd nodescripts
+          cd nodescriptsTS
           npm install
-          npm test test/
+          npm test
