@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "0.10.14",
+            "version": "0.10.15",
             "license": "GPL-2.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.4",
@@ -20,8 +20,14 @@
                 "vuedraggable": "^2.24.3"
             }
         },
-        "latest_release": "Beta_0.10.14",
+        "latest_release": "Beta_0.10.15",
         "releases": [
+            {
+                "tag_name": "Beta_0.10.15",
+                "name": "Beta 0.10.15",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.15/BtnCmd_DWC3.4_Beta.0.10.15.zip",
+                "published_at": "2022-11-06T19:52:38Z"
+            },
             {
                 "tag_name": "Beta_0.10.14",
                 "name": "Beta 0.10.14",
@@ -195,12 +201,6 @@
                 "name": "Alpha 0.8.5 Draggable Buttons Implemented",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.5/BtnCmd_DWC3.2_Alpha.0.8.5.zip",
                 "published_at": "2021-04-05T16:01:41Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.1",
-                "name": "Alpha 0.8.1 New Status Change Events",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.1/BtnCmd_DWC3.2_Alpha.0.8.1.zip",
-                "published_at": "2021-04-02T13:54:43Z"
             }
         ]
     },
