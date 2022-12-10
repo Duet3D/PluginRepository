@@ -564,5 +564,31 @@
                 "published_at": "2022-03-01T18:06:57Z"
             }
         ]
+    },
+    {
+        "plugin_id": "RevoConfigPlugin",
+        "author": "chrishamm",
+        "plugin_manifest": {
+            "id": "RevoPluginConfig",
+            "name": "E3D Revo Config Plugin",
+            "author": "Christian Hammacher",
+            "version": "1.0.0",
+            "license": "MIT",
+            "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
+            "tags": [
+                "config",
+                "revo"
+            ],
+            "rrfVersion": "3.4"
+        },
+        "latest_release": "v1.0.0",
+        "releases": [
+            {
+                "tag_name": "v1.0.0",
+                "name": "Version 1.0.0",
+                "download_url": "https://github.com/chrishamm/RevoConfigPlugin/releases/download/v1.0.0/RevoConfigPlugin-1.0.0.zip",
+                "published_at": "2022-12-09T16:25:54Z"
+            }
+        ]
     }
 ]
