@@ -1,7 +1,7 @@
 ---
 plugin_submitted_by: chrishamm
 plugin_submitted_on: 2022-12-09T17:09:37.861Z
-plugin_updated_on: 2022-12-09T17:09:37.862Z
+plugin_updated_on: 2022-12-14T16:41:45.603Z
 plugin: true
 title: E3D Revo Config Plugin
 abstract: RepRapFirmware configuration macros for the E3D Revo hotend
@@ -13,12 +13,12 @@ dwcVersion: undefined
 sbcDSfVersion: undefined
 rrfVersion: 3.4
 oem: false
-latest_version: v1.0.0
-release_date: 2022-12-09T16:25:54Z
-release_page: https://github.com/chrishamm/RevoConfigPlugin/releases/tag/v1.0.0
+latest_version: v1.1.0
+release_date: 2022-12-14T16:39:40Z
+release_page: https://github.com/chrishamm/RevoConfigPlugin/releases/tag/v1.1.0
 license: MIT
 license_file: https://raw.githubusercontent.com/chrishamm/RevoConfigPlugin/master/LICENSE
-download_count: 1
+download_count: 8
 tags:
 - config
 - revo
@@ -67,11 +67,6 @@ Changes are saved permantently on the SD card for your convenience and the last 
 
 In order to fine-tune filament instances, you can reference `global.nozzleDiameter` in your filament configuration macros to set up the right PA and firmware retraction parameters.
 
-
-### Caveats
-
-This script set assumes you do not have a filament loaded at the time you actually change the nozzle insert.
-If you rely on filament configuration macros and change the nozzle insert while it's still loaded, you may need to rerun `M703` yourself.
 
 ## Demo configuration for custom filaments
 
