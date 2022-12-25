@@ -7,21 +7,27 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "0.10.15",
-            "license": "GPL-2.0-or-later",
+            "version": "01.01.01",
+            "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.4",
+            "dwcVersion": "3.5.0-b1",
             "dependencies": {
-                "mqtt": "^4.3.7",
+                "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
-                "axios": "^0.27.2",
+                "axios": "^1.2.1",
                 "vue-draggable-resizable": "^2.3.0",
                 "jsonpath": "^1.1.1",
                 "vuedraggable": "^2.24.3"
             }
         },
-        "latest_release": "Beta_0.10.15",
+        "latest_release": "01.01.01",
         "releases": [
+            {
+                "tag_name": "01.01.01",
+                "name": "BtnCmd v01.01.01 for DWC 3.5+",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.01.01/BtnCmd_DWC3.5_v01.01.01.zip",
+                "published_at": "2022-12-24T15:03:35Z"
+            },
             {
                 "tag_name": "Beta_0.10.15",
                 "name": "Beta 0.10.15",
@@ -195,12 +201,6 @@
                 "name": "Alpha 0.8.6 - Snap to Grid options + http improvements",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.6/BtnCmd_DWC3.2_Alpha.0.8.6.zip",
                 "published_at": "2021-04-06T15:24:55Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.5",
-                "name": "Alpha 0.8.5 Draggable Buttons Implemented",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.5/BtnCmd_DWC3.2_Alpha.0.8.5.zip",
-                "published_at": "2021-04-05T16:01:41Z"
             }
         ]
     },
@@ -487,13 +487,19 @@
             "id": "ObjectCancel",
             "name": "Object Cancel",
             "author": "Juan Rosario",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "license": "LGPL-3.0-or-later",
             "homepage": "https://github.com/Sindarius/ObjectCancelPlugin",
-            "dwcVersion": "3.4"
+            "dwcVersion": "3.5"
         },
-        "latest_release": "1.2.0",
+        "latest_release": "1.3",
         "releases": [
+            {
+                "tag_name": "1.3",
+                "name": "Support for 3.5",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.3/ObjectCancel-1.3.0.zip",
+                "published_at": "2022-12-24T15:27:21Z"
+            },
             {
                 "tag_name": "1.2.0",
                 "name": "1.2.0",
@@ -522,17 +528,23 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "0.01.15",
+            "version": "0.01.16",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.4",
+            "dwcVersion": "3.5.0-b1",
             "dependencies": {
-                "axios": "^0.21.1",
-                "marked": "^4.0.12"
+                "axios": "^1.2.1",
+                "marked": "^4.2.4"
             }
         },
-        "latest_release": "0.01.15Beta",
+        "latest_release": "0.01.16Beta",
         "releases": [
+            {
+                "tag_name": "0.01.16Beta",
+                "name": "ReleaseMgr v0.01.16 Beta",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.16Beta/ReleaseMgr_Beta_V0.01.16_DWC_3.5.zip",
+                "published_at": "2022-12-24T14:06:19Z"
+            },
             {
                 "tag_name": "0.01.15Beta",
                 "name": "ReleaseMgr v0.01.15 Beta",
