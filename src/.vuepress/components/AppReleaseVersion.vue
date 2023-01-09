@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h6 style="text-align: center">{{"Duet3D Limited 2022 | Plugin Repository Version: " + this.$data.version}}</h6>
+		<h6 style="text-align: center">{{"Duet3D Limited 2023 | Plugin Repository Version: " + this.$data.version}}</h6>
 	</div>
 </template>
 
