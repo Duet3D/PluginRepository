@@ -1,12 +1,15 @@
 <template>
 	<div class="div_2" :key="this.$data.downloadsVisible">
-		<ul class="overview" style="list-style-type: none">
-			<li v-for="item in visibleDownloads" :key="item.tagName">
-				<a :href="item.browser_download_url">
-					{{ "⬇️ " + item.tagName }}
-				</a>
-			</li>
-		</ul>
+			<table class="sidebar_downloads">
+				<tr>
+					<th>⬇️ Tag</th>
+					<th>🔖 Platform</th>
+				</tr>
+				<tr v-for="item in visibleDownloads" :key="item.tagName">
+					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
+					<td>{{item.platform + "-" + item.version}}</td>
+				</tr>
+			</table>
 		<button v-on:click="showMore" v-if="downloadsVisible < items.length">Load more...</button>
 	</div>
 </template>
@@ -27,17 +30,20 @@ export default {
 		gitrepo: String
 	},
 	mounted() {
-		fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
+		// fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
+		fetch(`https://plugins.duet3d.com/assets/plugin_versions/${this.gitrepo}.json`)
 			.then(res => res.json())
 			.then(data => {
 				let i = 0;
 				this.$data.items = data.map(item => {
 					  i++;
-			          const {browser_download_url, download_count} = item.assets[0]
+			          const {tagName, browser_download_url, version, platform, download_count} = item;
 					  return {
-						tagName: item.tag_name + `${i==1? " [Latest]":""}`,
+						tagName: tagName + `${i==1? " [Latest]":""}`,
 						browser_download_url,
-            			download_count
+						version, 
+						platform,
+            			download_count : 0
 					  }
 				})
 			});

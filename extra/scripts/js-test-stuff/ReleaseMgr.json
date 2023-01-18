@@ -1,0 +1,58 @@
+[
+    {
+        "tagName": "1.1.17",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.17/ReleaseMgr_v1.1.17_DWC_3.5.zip",
+        "published_at": "2023-01-15T12:51:25Z",
+        "version": "3.5.0-b1",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.16Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.16Beta/ReleaseMgr_Beta_V0.01.16_DWC_3.5.zip",
+        "published_at": "2022-12-24T14:06:19Z",
+        "version": "3.5.0-b1",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.15Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.15Beta/ReleaseMgr_Beta_V0.01.15_DWC_3.4.zip",
+        "published_at": "2022-09-28T12:59:33Z",
+        "version": "3.4",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.14Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.14Beta/ReleaseMgr_Beta_V0.01.14_DWC_3.3.zip",
+        "published_at": "2022-07-07T15:26:26Z",
+        "version": "3.3",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.13Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.13Beta/ReleaseMgr_Beta_V0.01.13_DWC_3.3.zip",
+        "published_at": "2022-03-17T16:14:36Z",
+        "version": "3.3",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.12Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.12Beta/ReleaseMgr_Beta_V0.01.12_DWC_3.3.zip",
+        "published_at": "2022-03-07T16:31:41Z",
+        "version": "3.3",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.11Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.11Beta/ReleaseMgr_Beta_V0.01.11_DWC_3.3.zip",
+        "published_at": "2022-03-05T16:45:54Z",
+        "version": "3.3",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.01.10Beta",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/0.01.10Beta/ReleaseMgr_Beta_V0.01.10_DWC_3.3.zip",
+        "published_at": "2022-03-01T18:06:57Z",
+        "version": "3.3",
+        "platform": "dwc"
+    }
+]
