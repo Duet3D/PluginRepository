@@ -64,6 +64,7 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
         releases[i].platform = platform;
       }
       await writeJSONSync(releases, `${gitrepo}.json`)
+      console.log(gitrepo, " : Done");
     return releases
 }
 
@@ -711,6 +712,10 @@ const list = [
     }
 ]
 
-for(x=0;x < list.length ; x ++){
-    getPluginPlatformVersionList(list[x]['author'], list[x]['plugin_id'])
+const run_all = async (list) => {
+    for(x=0;x < list.length ; x ++){
+        await getPluginPlatformVersionList(list[x]['author'], list[x]['plugin_id'])
+    }
+    return true
 }
+run_all(list).then(res=>console.log(true))

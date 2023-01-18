@@ -1,0 +1,10 @@
+{
+  "id": "RevoPluginConfig",
+  "name": "E3D Revo Config Plugin",
+  "author": "Christian Hammacher",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
+  "tags": ["config", "revo"],
+  "rrfVersion": "3.4"
+}
