@@ -1,0 +1,30 @@
+[
+    {
+        "tagName": "v3.5.0-b1",
+        "browser_download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.0-b1/ClosedLoopTuning-3.5-b1.zip",
+        "published_at": "2022-12-27T13:11:42Z",
+        "version": "3.4",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "v3.4-b1",
+        "browser_download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.4-b1/ClosedLoopTuning-3.4-b1.zip",
+        "published_at": "2022-03-16T16:15:09Z",
+        "version": "3.4",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.2-alpha",
+        "browser_download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.2-alpha/closed-loop-plugin.zip",
+        "published_at": "2021-08-18T13:26:12Z",
+        "version": "3.4",
+        "platform": "dwc"
+    },
+    {
+        "tagName": "0.1-alpha",
+        "browser_download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.1-alpha/closed-loop-plugin.zip",
+        "published_at": "2021-08-18T10:00:04Z",
+        "version": "3.4",
+        "platform": "dwc"
+    }
+]
