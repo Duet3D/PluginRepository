@@ -3,28 +3,60 @@
         "tagName": "V0.4",
         "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/V0.4/ExecOnMcode-0.4.zip",
         "published_at": "2023-01-15T17:19:44Z",
-        "version": "3.5",
-        "platform": "dwc"
+        "version_list": [
+            {
+                "version": "3.4.5",
+                "platform": "dwc"
+            },
+            {
+                "version": "3.4.5",
+                "platform": "sbcdsf"
+            }
+        ]
     },
     {
         "tagName": "v0.3",
         "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.3/ExecOnMcode-0.3.zip",
         "published_at": "2023-01-05T18:59:49Z",
-        "version": "3.4.5",
-        "platform": "dwc"
+        "version_list": [
+            {
+                "version": "3.4.5",
+                "platform": "dwc"
+            },
+            {
+                "version": "3.4.5",
+                "platform": "sbcdsf"
+            }
+        ]
     },
     {
         "tagName": "v0.2",
         "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.2/ExecOnMcode-0.2.zip",
         "published_at": "2022-12-15T19:16:22Z",
-        "version": "3.4",
-        "platform": "dwc"
+        "version_list": [
+            {
+                "version": "3.4.5",
+                "platform": "dwc"
+            },
+            {
+                "version": "3.4.5",
+                "platform": "sbcdsf"
+            }
+        ]
     },
     {
         "tagName": "v0.1",
         "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.1/ExecOnMcode-0.1.zip",
         "published_at": "2022-09-04T19:15:54Z",
-        "version": "3.4",
-        "platform": "dwc"
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "dwc"
+            },
+            {
+                "version": "3.4",
+                "platform": "sbcdsf"
+            }
+        ]
     }
 ]
