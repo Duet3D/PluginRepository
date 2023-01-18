@@ -9,6 +9,7 @@ npm run build
 
 cp CNAME src/.vuepress/dist
 cp plugin_stats.json src/.vuepress/dist/assets
+cp -r plugin_versions src/.vuepress/dist/assets
 
 cd src/.vuepress/dist
 
