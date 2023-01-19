@@ -2,8 +2,8 @@
 	<div class="div_2" :key="this.$data.downloadsVisible">
 			<table class="sidebar_downloads">
 				<tr>
-					<th>⬇️ Tag</th>
-					<th>🔖 Platform</th>
+					<th>⬇️ Version</th>
+					<th>🔖 Platform(s)</th>
 				</tr>
 				<tr v-for="item in visibleDownloads" :key="item.tagName">
 					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
