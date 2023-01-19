@@ -216,11 +216,6 @@
             {
                 "version": "3.3",
                 "platform": "dwc"
-            },
-            
-            {
-                "version": "3.3",
-                "platform": "rrf"
             }
         ]
     },
