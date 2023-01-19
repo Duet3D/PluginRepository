@@ -7,7 +7,11 @@
 				</tr>
 				<tr v-for="item in visibleDownloads" :key="item.tagName">
 					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
-					<td>{{item.platform + "-" + item.version}}</td>
+					<td>
+						<p>{{item.version_list[0].platform + "-" + item.version_list[0].version}}</p>
+						<p v-if="item.version_list[1]">{{item.version_list[1].platform + "-" + item.version_list[1].version}}</p>
+						<p v-if="item.version_list[2]">{{item.version_list[2].platform + "-" + item.version_list[2].version}}</p>
+					</td>
 				</tr>
 			</table>
 		<button v-on:click="showMore" v-if="downloadsVisible < items.length">Load more...</button>
@@ -30,19 +34,17 @@ export default {
 		gitrepo: String
 	},
 	mounted() {
-		// fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
 		fetch(`https://plugins.duet3d.com/assets/plugin_versions/${this.gitrepo}.json`)
 			.then(res => res.json())
 			.then(data => {
 				let i = 0;
 				this.$data.items = data.map(item => {
 					  i++;
-			          const {tagName, browser_download_url, version, platform, download_count} = item;
+			          const {tagName, browser_download_url, version_list, download_count} = item;
 					  return {
 						tagName: tagName + `${i==1? " [Latest]":""}`,
 						browser_download_url,
-						version, 
-						platform,
+						version_list,
             			download_count : 0
 					  }
 				})
