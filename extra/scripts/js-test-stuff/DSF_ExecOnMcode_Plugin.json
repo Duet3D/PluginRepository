@@ -6,11 +6,11 @@
         "version_list": [
             {
                 "version": "3.4.5",
-                "platform": "dwc"
+                "platform": "DWC"
             },
             {
                 "version": "3.4.5",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     },
@@ -21,11 +21,11 @@
         "version_list": [
             {
                 "version": "3.4.5",
-                "platform": "dwc"
+                "platform": "DWC"
             },
             {
                 "version": "3.4.5",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     },
@@ -36,11 +36,11 @@
         "version_list": [
             {
                 "version": "3.4.5",
-                "platform": "dwc"
+                "platform": "DWC"
             },
             {
                 "version": "3.4.5",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     },
@@ -51,11 +51,11 @@
         "version_list": [
             {
                 "version": "3.4",
-                "platform": "dwc"
+                "platform": "DWC"
             },
             {
                 "version": "3.4",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     }
