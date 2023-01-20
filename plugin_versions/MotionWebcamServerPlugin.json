@@ -6,7 +6,7 @@
         "version_list": [
             {
                 "version": "3.5.0-b1",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     },
@@ -17,7 +17,7 @@
         "version_list": [
             {
                 "version": "3.4",
-                "platform": "sbcdsf"
+                "platform": "DSF"
             }
         ]
     }
