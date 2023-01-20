@@ -48,7 +48,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
         version_list.push(
             {
                 version: dwcVersion,
-                platform: "dwc"
+                platform: "DWC"
             }
         )
     }
@@ -56,7 +56,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
         version_list.push(
             {
                 version: sbcDSfVersion,
-                platform: "sbcdsf"
+                platform: "DSF"
             }
         )
     }
@@ -64,7 +64,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
         version_list.push(
             {
                 version: rrfVersion,
-                platform: "rrf"
+                platform: "RRF"
             }
         )
     }

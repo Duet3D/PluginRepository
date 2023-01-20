@@ -8,9 +8,9 @@
 				<tr v-for="item in visibleDownloads" :key="item.tagName">
 					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
 					<td>
-						<p>{{item.version_list[0].platform + "-" + item.version_list[0].version}}</p>
-						<p v-if="item.version_list[1]">{{item.version_list[1].platform + "-" + item.version_list[1].version}}</p>
-						<p v-if="item.version_list[2]">{{item.version_list[2].platform + "-" + item.version_list[2].version}}</p>
+						<div>{{item.version_list[0].platform + "-" + item.version_list[0].version}}</div>
+						<div v-if="item.version_list[1]">{{item.version_list[1].platform + "-" + item.version_list[1].version}}</div>
+						<div v-if="item.version_list[2]">{{item.version_list[2].platform + "-" + item.version_list[2].version}}</div>
 					</td>
 				</tr>
 			</table>
