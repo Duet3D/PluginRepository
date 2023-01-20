@@ -8,9 +8,10 @@
 				<tr v-for="item in visibleDownloads" :key="item.tagName">
 					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
 					<td>
-						<div>{{item.version_list[0].platform + "-" + item.version_list[0].version}}</div>
-						<div v-if="item.version_list[1]">{{item.version_list[1].platform + "-" + item.version_list[1].version}}</div>
-						<div v-if="item.version_list[2]">{{item.version_list[2].platform + "-" + item.version_list[2].version}}</div>
+
+						<div><a target="_blank" :href="`${url_list[item.version_list[0].platform]}`">{{item.version_list[0].platform + ": " + item.version_list[0].version}}</a></div>
+						<div v-if="item.version_list[1]"><a target="_blank" :href="`${url_list[item.version_list[1].platform]}`">{{item.version_list[1].platform + ": " + item.version_list[1].version}}</a></div>
+						<div v-if="item.version_list[2]"><a target="_blank" :href="`${url_list[item.version_list[2].platform]}`">{{item.version_list[2].platform + ": " + item.version_list[2].version}}</a></div>
 					</td>
 				</tr>
 			</table>
@@ -26,7 +27,12 @@ export default {
 		return {
 			items: [],
 			downloadsVisible: 5,
-			step : 5
+			step : 5,
+			url_list : 	{
+				"DWC" : "https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual",
+				"DSF" : "https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup",
+				"RRF" : "https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview"
+			}
 		};
 	},
 	props: {

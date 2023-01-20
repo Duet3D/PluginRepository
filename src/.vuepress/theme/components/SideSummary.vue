@@ -45,7 +45,7 @@
                   <h3 class="h3_class">Compatible Platforms</h3>
                 </div>
                 <ul class="overview" style="list-style-type: none">
-                  <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`🛂 ${platform.platform}: ${platform.version}`}}</a></li>
+                  <li v-for="platform in getPlatforms" :key="platform.platform"><a target="_blank" :href="platform.url">{{`🛂 ${platform.platform}`}}</a></li>
 				        </ul>
                 <br>
             </div>
