@@ -1,0 +1,13 @@
+[
+    {
+        "tagName": "V1.0.0",
+        "browser_download_url": "https://github.com/Sindarius/DWC-CAN-Manager/releases/download/V1.0.0/CANManager-1.0.0.zip",
+        "published_at": "2022-07-29T19:32:53Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    }
+]

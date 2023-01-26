@@ -23,8 +23,7 @@ const getReleases = async (gituser, gitrepo) => {
 const getPlatformVersionPerRelease = async (browser_download_url) => {
     await downloadFile(browser_download_url, 'asset.zip');
 
-    let version = undefined;
-    let platform = undefined;
+    let version_list = [];
 
     try{
         await unzip();
@@ -35,22 +34,52 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
 
     res = checkFile.local('unzipped/plugin.json');
     if(!res){
-        return {version, platform}
+        return [{
+            version: "not_found",
+            platform: "not_found"
+        }]
     }
 
     const plugin_manifest = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
     
     const {dwcversion : dwcVersion, sbcdsfversion : sbcDSfVersion, rrfversion : rrfVersion} = plugin_manifest;
 
-    platform = isFirstCharNum(dwcVersion) ? "dwc" : isFirstCharNum(sbcDSfVersion) ? "sbcdsf" : isFirstCharNum(rrfVersion) ? "rrf" : undefined;
-
-    if(!platform){
-        return {version, platform}
+    if(isFirstCharNum(dwcVersion)) {
+        version_list.push(
+            {
+                version: dwcVersion,
+                platform: "DWC"
+            }
+        )
+    }
+    if(isFirstCharNum(sbcDSfVersion)) {
+        version_list.push(
+            {
+                version: sbcDSfVersion,
+                platform: "DSF"
+            }
+        )
+    }
+    if(isFirstCharNum(rrfVersion)) {
+        version_list.push(
+            {
+                version: rrfVersion,
+                platform: "RRF"
+            }
+        )
     }
 
-    version = plugin_manifest[`${platform}version`];
 
-    return {version, platform}
+    if(version_list.length == 0) {
+        version_list.push(
+            {
+                version: "not_found",
+                platform: "not_found"
+            }
+        )
+    }
+
+    return version_list;
 
 }
 
@@ -59,11 +88,11 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
     for (let i = 0; i < releases.length; i++) {
         const release = releases[i];
         const {browser_download_url} = release;
-        const {version, platform} = await getPlatformVersionPerRelease(browser_download_url);
-        releases[i].version = version;
-        releases[i].platform = platform;
+        const version_list = await getPlatformVersionPerRelease(browser_download_url);
+        releases[i].version_list = version_list;
       }
       await writeJSONSync(releases, `${gitrepo}.json`)
+      console.log(gitrepo, " : Done");
     return releases
 }
 
@@ -711,6 +740,10 @@ const list = [
     }
 ]
 
-for(x=0;x < list.length ; x ++){
-    getPluginPlatformVersionList(list[x]['author'], list[x]['plugin_id'])
+const run_all = async (list) => {
+    for(x=0;x < list.length ; x ++){
+        await getPluginPlatformVersionList(list[x]['author'], list[x]['plugin_id'])
+    }
+    return true
 }
+run_all(list).then(res=>console.log(true))

@@ -1,12 +1,20 @@
 <template>
 	<div class="div_2" :key="this.$data.downloadsVisible">
-		<ul class="overview" style="list-style-type: none">
-			<li v-for="item in visibleDownloads" :key="item.tagName">
-				<a :href="item.browser_download_url">
-					{{ "⬇️ " + item.tagName }}
-				</a>
-			</li>
-		</ul>
+			<table class="sidebar_downloads">
+				<tr>
+					<th>⬇️ Version</th>
+					<th>🔖 Platform(s)</th>
+				</tr>
+				<tr v-for="item in visibleDownloads" :key="item.tagName">
+					<td><a :href="item.browser_download_url">{{ item.tagName }}</a></td>
+					<td>
+
+						<div><a target="_blank" :href="`${url_list[item.version_list[0].platform]}`">{{item.version_list[0].platform + ": " + item.version_list[0].version}}</a></div>
+						<div v-if="item.version_list[1]"><a target="_blank" :href="`${url_list[item.version_list[1].platform]}`">{{item.version_list[1].platform + ": " + item.version_list[1].version}}</a></div>
+						<div v-if="item.version_list[2]"><a target="_blank" :href="`${url_list[item.version_list[2].platform]}`">{{item.version_list[2].platform + ": " + item.version_list[2].version}}</a></div>
+					</td>
+				</tr>
+			</table>
 		<button v-on:click="showMore" v-if="downloadsVisible < items.length">Load more...</button>
 	</div>
 </template>
@@ -19,7 +27,12 @@ export default {
 		return {
 			items: [],
 			downloadsVisible: 5,
-			step : 5
+			step : 5,
+			url_list : 	{
+				"DWC" : "https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual",
+				"DSF" : "https://docs.duet3d.com/User_manual/Machine_configuration/SBC_setup",
+				"RRF" : "https://docs.duet3d.com/User_manual/RepRapFirmware/RepRapFirmware_overview"
+			}
 		};
 	},
 	props: {
@@ -27,17 +40,18 @@ export default {
 		gitrepo: String
 	},
 	mounted() {
-		fetch(`https://api.github.com/repos/${this.gituser}/${this.gitrepo}/releases`)
+		fetch(`https://plugins.duet3d.com/assets/plugin_versions/${this.gitrepo}.json`)
 			.then(res => res.json())
 			.then(data => {
 				let i = 0;
 				this.$data.items = data.map(item => {
 					  i++;
-			          const {browser_download_url, download_count} = item.assets[0]
+			          const {tagName, browser_download_url, version_list, download_count} = item;
 					  return {
-						tagName: item.tag_name + `${i==1? " [Latest]":""}`,
+						tagName: tagName + `${i==1? " [Latest]":""}`,
 						browser_download_url,
-            			download_count
+						version_list,
+            			download_count : 0
 					  }
 				})
 			});

@@ -1,0 +1,332 @@
+[
+    {
+        "tagName": "01.01.02",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.01.02/BtnCmd_DWC3.5_v01.01.02.zip",
+        "published_at": "2023-01-13T15:19:20Z",
+        "version_list": [
+            {
+                "version": "3.5.0-b1",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "01.01.01",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.01.01/BtnCmd_DWC3.5_v01.01.01.zip",
+        "published_at": "2022-12-24T15:03:35Z",
+        "version_list": [
+            {
+                "version": "3.5.0-b1",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.15",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.15/BtnCmd_DWC3.4_Beta.0.10.15.zip",
+        "published_at": "2022-11-06T19:52:38Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.14",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.14/BtnCmd_DWC3.4_Beta.0.10.14.zip",
+        "published_at": "2022-10-03T12:56:22Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.13",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.13/BtnCmd_DWC3.4_Beta.0.10.13.zip",
+        "published_at": "2022-07-11T13:16:18Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.12",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.12/BtnCmd_DWC3.4_Beta.0.10.12.zip",
+        "published_at": "2022-06-18T08:34:44Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.11",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.11/BtnCmd_DWC3.4_Beta.0.10.11.zip",
+        "published_at": "2022-06-11T06:51:51Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.10",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.10/BtnCmd_DWC3.4_Beta.0.10.10.zip",
+        "published_at": "2022-06-08T14:26:15Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.09",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.09/BtnCmd_DWC3.4_Beta.0.10.09.zip",
+        "published_at": "2022-05-05T10:21:22Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.08",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.08/BtnCmd_DWC3.4_Beta.0.10.08.zip",
+        "published_at": "2022-03-24T16:37:32Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.07",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.07/BtnCmd_DWC3.4_Beta.0.10.07.zip",
+        "published_at": "2022-03-04T14:49:15Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.06",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.06/BtnCmd_DWC3.4RC1_Beta.0.10.06.zip",
+        "published_at": "2022-02-11T17:08:43Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.03",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.03/BtnCmd_DWC3.4b7_Beta.0.10.03.zip",
+        "published_at": "2021-12-28T13:24:32Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.10.02",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.02/BtnCmd_DWC3.4b7_Beta.0.10.02.zip",
+        "published_at": "2021-12-21T16:23:50Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.9.06",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.06/BtnCmd_DWC3.3_Beta.0.9.06.zip",
+        "published_at": "2021-11-05T14:04:20Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.9.04",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.04/BtnCmd_DWC3.3_Beta.0.9.04.zip",
+        "published_at": "2021-10-20T14:57:19Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.9.03",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.03/BtnCmd_DWC3.3_Beta.0.9.03.zip",
+        "published_at": "2021-10-19T13:06:31Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.9.02",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.02/BtnCmd_DWC3.3_Beta.0.9.02.zip",
+        "published_at": "2021-10-16T12:34:55Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Beta_0.9.01",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.01/BtnCmd_DWC3.3_Beta.0.9.01.zip",
+        "published_at": "2021-10-06T11:20:39Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.21",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.21/BtnCmd_DWC3.3_Alpha.0.8.21.zip",
+        "published_at": "2021-10-01T09:27:41Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.20",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.20/BtnCmd_DWC3.3_Alpha.0.8.20.zip",
+        "published_at": "2021-06-20T14:13:57Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.19",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.19/BtnCmd_DWC3.3_Alpha.0.8.19.zip",
+        "published_at": "2021-06-17T11:30:42Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.18",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.18/BtnCmd_DWC3.2_Alpha.0.8.18.zip",
+        "published_at": "2021-05-08T08:04:30Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.17",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.17/BtnCmd_DWC3.3b3_Alpha.0.8.17.zip",
+        "published_at": "2021-04-24T19:17:33Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.16",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.16/BtnCmd_DWC3.3b3_Alpha.0.8.16.zip",
+        "published_at": "2021-04-24T09:54:11Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.15",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.15/BtnCmd_DWC3.2_Alpha.0.8.15.zip",
+        "published_at": "2021-04-21T12:35:07Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.14",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.14/BtnCmd_DWC3.2_Alpha.0.8.14.zip",
+        "published_at": "2021-04-17T12:06:13Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.13",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.13/BtnCmd_DWC3.2_Alpha.0.8.13.zip",
+        "published_at": "2021-04-15T10:41:09Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.12",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.12/BtnCmd_DWC3.2_Alpha.0.8.12.zip",
+        "published_at": "2021-04-14T12:25:21Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "Alpha_0.8.8",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.8/BtnCmd_DWC3.2_Alpha.0.8.8.zip",
+        "published_at": "2021-04-09T13:44:59Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
