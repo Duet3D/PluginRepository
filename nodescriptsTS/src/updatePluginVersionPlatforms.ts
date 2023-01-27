@@ -103,9 +103,6 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
 }
 
 const updatePluginReleasesFiles = async () => {
-    var fs = require('fs');
-    var files = fs.readdirSync('./');
-    console.log(files)
     const plugin_stats_file = await readFile.JSON('./plugin_stats.json') || [];
     let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
