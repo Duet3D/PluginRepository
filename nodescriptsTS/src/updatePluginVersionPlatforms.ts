@@ -106,7 +106,7 @@ const updatePluginReleasesFiles = async () => {
     var fs = require('fs');
     var files = fs.readdirSync('./');
     console.log(files)
-    const plugin_stats_file = await readFile.JSON('plugin_stats.json') || [];
+    const plugin_stats_file = await readFile.JSON('./plugin_stats.json') || [];
     let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
         await getPluginPlatformVersionList(plugin_stats_file[x]['author'], plugin_stats_file[x]['plugin_id'])
