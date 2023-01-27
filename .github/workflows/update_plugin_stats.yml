@@ -22,6 +22,7 @@ jobs:
           npm install
           cd src
 
+          cp ../../plugin_stats.json plugin_stats.json
           cp -r ../../plugin_versions plugin_versions
 
           npx ts-node updatePluginStats.ts
