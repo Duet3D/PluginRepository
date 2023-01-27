@@ -69,7 +69,7 @@ jobs:
 
           set -e
           plugin=$(cat issue.json | jq -r ."plugin_id")
-          plugin_file=src/plugins"$plugin".md
+          plugin_file=src/plugins/"$plugin".md
           plugin_version_file=plugin_versions/"$plugin".json
           branchName=removal/$(date +"%y%m%d")$plugin
           commituser=Duet3D
