@@ -84,6 +84,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
 }
 
 const getPluginPlatformVersionList = async (gituser, gitrepo) => {
+    console.log('LINE 87')
     const current_file = await readFile.JSON(`plugin_versions/${gitrepo}.json`) || [];
     const latest_tagName = ((current_file || [])[0] || {})['tagName'];
     const releases = await getReleases(gituser, gitrepo, latest_tagName) || [];
@@ -104,6 +105,7 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
 
 const updatePluginReleasesFiles = async () => {
     const plugin_stats_file = await readFile.TEXT('plugin_stats.json') || [];
+    console.log(plugin_stats_file.map(x=>{return {a:x.author, b:x.plugin_id}}));
     let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
         await getPluginPlatformVersionList(plugin_stats_file[x]['author'], plugin_stats_file[x]['plugin_id'])
