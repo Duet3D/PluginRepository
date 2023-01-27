@@ -46,7 +46,7 @@ jobs:
           
 
           git checkout -b $branchName
-          git add plugin_stats.json plugin_versions.json author_stats.json
+          git add plugin_stats.json plugin_versions.json author_stats.json plugin_versions
           git commit -m "Stat update - $(date +"%Y-%m-%d")"
           git push -u origin $branchName
 
