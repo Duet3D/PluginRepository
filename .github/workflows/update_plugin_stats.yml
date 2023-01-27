@@ -25,7 +25,7 @@ jobs:
           cp ../../plugin_stats.json plugin_stats.json
           cp -r ../../plugin_versions plugin_versions
 
-          cat plugin_stats.json
+
 
           npx ts-node updatePluginVersionPlatforms.ts
 

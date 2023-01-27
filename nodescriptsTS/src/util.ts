@@ -131,8 +131,6 @@ const readFile = {
         const fs = require('fs');
         return new Promise((resolve, reject) => {
             fs.readFile(path, (err, data) => {
-                console.log(data)
-                resolve(data);return;
                 if (err) reject(err);
                 resolve(JSON.parse((data).toString()));
             });
