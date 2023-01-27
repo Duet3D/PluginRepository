@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.01.01",
+            "version": "01.01.02",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5.0-b1",
@@ -20,8 +20,14 @@
                 "vuedraggable": "^2.24.3"
             }
         },
-        "latest_release": "01.01.01",
+        "latest_release": "01.01.02",
         "releases": [
+            {
+                "tag_name": "01.01.02",
+                "name": "BtnCmd 01.01.02 for DWC 3.5",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.01.02/BtnCmd_DWC3.5_v01.01.02.zip",
+                "published_at": "2023-01-13T15:19:20Z"
+            },
             {
                 "tag_name": "01.01.01",
                 "name": "BtnCmd v01.01.01 for DWC 3.5+",
@@ -195,12 +201,6 @@
                 "name": "Alpha 0.8.8 - New Panels Feature",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.8/BtnCmd_DWC3.2_Alpha.0.8.8.zip",
                 "published_at": "2021-04-09T13:44:59Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.6",
-                "name": "Alpha 0.8.6 - Snap to Grid options + http improvements",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.6/BtnCmd_DWC3.2_Alpha.0.8.6.zip",
-                "published_at": "2021-04-06T15:24:55Z"
             }
         ]
     },
@@ -253,9 +253,9 @@
         "author": "LoicGRENON",
         "plugin_manifest": {
             "id": "ExecOnMcode",
-            "name": "ExecOnMcode",
+            "name": "Exec On M-Code",
             "author": "Loïc GRENON",
-            "version": "0.2",
+            "version": "0.4",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
             "dwcVersion": "3.4.5",
@@ -264,18 +264,34 @@
             "sbcExecutable": "execOnMcode.py",
             "sbcOutputRedirected": true,
             "sbcPermissions": [
-                "codeInterceptionRead",
                 "commandExecution",
+                "codeInterceptionReadWrite",
+                "objectModelReadWrite",
+                "registerHttpEndpoints",
                 "fileSystemAccess",
                 "launchProcesses",
-                "registerHttpEndpoints"
+                "networkAccess",
+                "webcamAccess",
+                "gpioAccess"
             ],
             "sbcPythonDependencies": [
                 "dsf-python>=3.4.5"
             ]
         },
-        "latest_release": "v0.2",
+        "latest_release": "V0.4",
         "releases": [
+            {
+                "tag_name": "V0.4",
+                "name": "ExecOnMcode v0.4",
+                "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/V0.4/ExecOnMcode-0.4.zip",
+                "published_at": "2023-01-15T17:19:44Z"
+            },
+            {
+                "tag_name": "v0.3",
+                "name": "ExecOnMcode v0.3",
+                "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.3/ExecOnMcode-0.3.zip",
+                "published_at": "2023-01-05T18:59:49Z"
+            },
             {
                 "tag_name": "v0.2",
                 "name": "ExecOnMcode v0.2",
@@ -552,7 +568,7 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "0.01.16",
+            "version": "1.1.17",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5.0-b1",
@@ -561,8 +577,14 @@
                 "marked": "^4.2.4"
             }
         },
-        "latest_release": "0.01.16Beta",
+        "latest_release": "1.1.17",
         "releases": [
+            {
+                "tag_name": "1.1.17",
+                "name": "ReleaseMgr 1.1.17",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.17/ReleaseMgr_v1.1.17_DWC_3.5.zip",
+                "published_at": "2023-01-15T12:51:25Z"
+            },
             {
                 "tag_name": "0.01.16Beta",
                 "name": "ReleaseMgr v0.01.16 Beta",
