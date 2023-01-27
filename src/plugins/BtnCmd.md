@@ -1,7 +1,7 @@
 ---
 plugin_submitted_by: MintyTrebor
 plugin_submitted_on: 2022-09-01T14:09:10.113Z
-plugin_updated_on: 2023-01-13T16:01:47.480Z
+plugin_updated_on: 2023-01-27T12:28:16.746Z
 plugin: true
 title: BtnCmd
 abstract: Customise DWC with your own design with layouts containing new panels, custom charts, and buttons
@@ -18,7 +18,7 @@ release_date: 2023-01-13T15:19:20Z
 release_page: https://github.com/MintyTrebor/BtnCmd/releases/tag/01.01.02
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/MintyTrebor/BtnCmd/main/LICENSE
-download_count: 1108
+download_count: 1296
 tags:
 - dwc
 ---
@@ -39,7 +39,8 @@ In BtnCmd you can create Tabs, with custom buttons in a freeform layout. You may
 * Object Model Values  
 * Text/Label Panel  
 * User Created Custom Panels  
-* Global Variable Input Panels (Change/update the value of global variables)  
+* Global Variable Input Panels (Change/update the value of global variables) 
+* Custom Charts (Create your own charts from the Object Model) 
 
 ![BtnCmd Edit Mode](https://raw.githubusercontent.com/MintyTrebor/BtnCmd/main/wikires/v0.8.13_BtnCmd_MainWindow_EditMode_1.png)  
 
