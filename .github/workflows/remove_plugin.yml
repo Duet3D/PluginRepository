@@ -70,18 +70,20 @@ jobs:
           set -e
           plugin=$(cat issue.json | jq -r ."plugin_id")
           plugin_file="$plugin".md
+          plugin_version_file=plugin_versions/"$plugin".json
           branchName=removal/$(date +"%y%m%d")$plugin
           commituser=Duet3D
 
           cd src/plugins 
 
           rm $plugin_file
+          rm $plugin_version_file
 
           git config --global user.name "yasasw"
           git config --global user.email "yasas.wijetilake@gmail.com"
           git checkout -b $branchName
-          git add $plugin_file
-          git commit -m "Deleting plugin plugin_file"
+          git add $plugin_file $plugin_version_file
+          git commit -m "Deleting plugin plugin_file and plugin_version_file"
           git push -u origin $branchName
 
           hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-removal --base $commituser:master --head $commituser:$branchName
