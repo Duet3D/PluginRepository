@@ -110,6 +110,11 @@ const checkFile = {
     }
 }
 
+const fetchURL = async (url) => {
+    const {data} = await axios.get(url);
+    return data;
+}
+
 const exitProcess = async (msg:string, checklog:string) => {
     console.log(msg);
 
@@ -249,6 +254,7 @@ module.exports = {
     isUserOrgMember,
     downloadFile,
     checkFile,
+    fetchURL,
     exitProcess,
     readFile,
     writeFile,

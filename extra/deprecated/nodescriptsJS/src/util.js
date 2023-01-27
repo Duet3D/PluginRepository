@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { url } = require('inspector');
 const wget = require('node-wget');
 
 const insertLineToStr = (text, host_str = "") => {
@@ -255,6 +256,11 @@ const getFileSizeKiB = async (file) => {
 	return stat.size/1024;
 }
 
+const fetchURL = async (url) => {
+    const {data} = await axios.get(url);
+    return data;
+}
+
 module.exports = {
     insertLineToStr,
     git,
@@ -262,6 +268,7 @@ module.exports = {
     isUserOrgMember,
     downloadFile,
     checkFile,
+    fetchURL,
     exitProcess,
     readFile,
     writeFile,

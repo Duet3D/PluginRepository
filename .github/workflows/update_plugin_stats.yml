@@ -21,14 +21,24 @@ jobs:
           cd nodescriptsTS
           npm install
           cd src
+
+          cp -r ../../plugin_versions plugin_versions
+
           npx ts-node updatePluginStats.ts
 
           npx ts-node updateAuthorStats.ts
+
+          npx ts-node updatePluginVersionPlatforms.ts
+
+          rm -r plugin_versions/unzipped
+          rm plugin_versions/asset.zip
 
           cd ../../
           cp nodescriptsTS/src/plugin_stats.json plugin_stats.json
           cp nodescriptsTS/src/plugin_versions.json plugin_versions.json
           cp nodescriptsTS/src/author_stats.json author_stats.json
+          rm -r plugin_versions
+          cp -r nodescriptsTS/src/plugin_versions plugin_versions
 
 
           branchName=stat-update

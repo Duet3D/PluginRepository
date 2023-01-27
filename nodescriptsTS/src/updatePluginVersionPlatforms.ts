@@ -1,8 +1,5 @@
-const { downloadFile, checkFile, fetchURL,
-    readFile: { JSON: readJSON }, unzip, isFirstCharNum, writeFile: { writeJSONSync },
-    lowerCaseKeys } = require('../../deprecated/nodescriptsJS/src/util');;
-const axios = require('axios');
-
+const { downloadFile:downloadRemoteFile, checkFile:checkLocalFile, fetchURL,
+    readFile, unzip:unzipFile, isFirstCharNum:firstCharNumCheck, writeFile, lowerCaseKeys:lowerCaseObjKeys } = require('/util');
 
 const getReleases = async (gituser, gitrepo, latest_tagName) => {
     let items = [];
@@ -24,18 +21,18 @@ const getReleases = async (gituser, gitrepo, latest_tagName) => {
 }
 
 const getPlatformVersionPerRelease = async (browser_download_url) => {
-    await downloadFile(browser_download_url, 'asset.zip');
+    await downloadRemoteFile(browser_download_url, 'asset.zip');
 
     let version_list = [];
 
     try {
-        await unzip();
+        await unzipFile();
     }
     catch (err) {
         console.log(err);
     }
 
-    res = checkFile.local('unzipped/plugin.json');
+    const res = checkLocalFile.local('unzipped/plugin.json');
     if (!res) {
         return [{
             version: "not_found",
@@ -43,11 +40,11 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
         }]
     }
 
-    const plugin_manifest = lowerCaseKeys(await readJSON('unzipped/plugin.json') || {});
+    const plugin_manifest = lowerCaseObjKeys(await readFile.JSON('unzipped/plugin.json') || {});
 
     const { dwcversion: dwcVersion, sbcdsfversion: sbcDSfVersion, rrfversion: rrfVersion } = plugin_manifest;
 
-    if (isFirstCharNum(dwcVersion)) {
+    if (firstCharNumCheck(dwcVersion)) {
         version_list.push(
             {
                 version: dwcVersion,
@@ -55,7 +52,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
             }
         )
     }
-    if (isFirstCharNum(sbcDSfVersion)) {
+    if (firstCharNumCheck(sbcDSfVersion)) {
         version_list.push(
             {
                 version: sbcDSfVersion,
@@ -63,7 +60,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
             }
         )
     }
-    if (isFirstCharNum(rrfVersion)) {
+    if (firstCharNumCheck(rrfVersion)) {
         version_list.push(
             {
                 version: rrfVersion,
@@ -87,7 +84,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
 }
 
 const getPluginPlatformVersionList = async (gituser, gitrepo) => {
-    const current_file = await readJSON(`${gitrepo}.json`) || [];
+    const current_file = await readFile.JSON(`${gitrepo}.json`) || [];
     const latest_tagName = ((current_file || [])[0] || {})['tagName'];
     const releases = await getReleases(gituser, gitrepo, latest_tagName) || [];
 
@@ -98,19 +95,25 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
         releases[i].version_list = version_list;
     }
     const output_file = releases.concat(current_file)
-    await writeJSONSync(output_file, `plugin_versions/${gitrepo}.json`)
+    await writeFile.writeJSONSync(output_file, `plugin_versions/${gitrepo}.json`)
     console.log(gitrepo, " : Done");
     return output_file
 }
 
 const updatePluginReleasesFiles = async () => {
-    const plugin_stats_file = await readJSON('plugin_stats.json') || [];
+    const plugin_stats_file = await readFile.JSON('plugin_stats.json') || [];
+    let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
-        await getPluginPlatformVersionList(list[x]['author'], list[x]['plugin_id'])
+        await getPluginPlatformVersionList(plugin_stats_file[x]['author'], plugin_stats_file[x]['plugin_id'])
     }
     return true
 }
 
-module.exports = {
-    updatePluginReleasesFiles
+try{
+	updatePluginReleasesFiles().then(res => {
+		console.log(res);
+	})	
+}
+catch(e){
+	console.log(e);
 }
