@@ -1,5 +1,5 @@
 const { downloadFile:downloadRemoteFile, checkFile:checkLocalFile, fetchURL,
-    readFile, unzip:unzipFile, isFirstCharNum:firstCharNumCheck, writeFile, lowerCaseKeys:lowerCaseObjKeys } = require('/util');
+    readFile, unzip:unzipFile, isFirstCharNum:firstCharNumCheck, writeFile, lowerCaseKeys:lowerCaseObjKeys } = require('./util');
 
 const getReleases = async (gituser, gitrepo, latest_tagName) => {
     let items = [];
