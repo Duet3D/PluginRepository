@@ -104,6 +104,7 @@ jobs:
 
           cd ../../
           cp nodescriptsTS/src/$repo.md src/plugins
+          cp nodescriptsTS/src/$repo.json plugin_versions
 
           cd src/plugins 
 
@@ -113,7 +114,7 @@ jobs:
           git config --global user.name "yasasw"
           git config --global user.email "yasas.wijetilake@gmail.com"
           git checkout -b $branchName
-          git add $repo.md
+          git add $repo.md plugin_versions/$repo.json
           git commit -m "Updating plugin $repo.md"
           git push -u origin $branchName
 

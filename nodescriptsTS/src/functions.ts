@@ -1,6 +1,9 @@
 const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, writeFile: {writeJSONSync},
         getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember, getFileSizeKiB} = require('./util');
+
+const { getPlatformVersionPerRelease:getReleasePlatformVersion } = require('./functions_platform_stats');
+
 const axios = require('axios');
 
 const submissionPrecheck = async () => {
@@ -487,6 +490,8 @@ const submissionCreatePR = async () => {
 
 
     await prepend(frontmatter, `${repo}.md`);
+
+    await getReleasePlatformVersion(author, repo, './');
 
 };
 
