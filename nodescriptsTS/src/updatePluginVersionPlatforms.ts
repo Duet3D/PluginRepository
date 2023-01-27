@@ -87,6 +87,8 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
     const current_file = await readFile.JSON(`${gitrepo}.json`) || [];
     const latest_tagName = ((current_file || [])[0] || {})['tagName'];
     const releases = await getReleases(gituser, gitrepo, latest_tagName) || [];
+    console.log(gitrepo, ': New Releases');
+    console.log(releases);
 
     for (let i = 0; i < releases.length; i++) {
         const release = releases[i];
