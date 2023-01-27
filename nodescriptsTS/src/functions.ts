@@ -48,7 +48,17 @@ const submissionPrecheck = async () => {
 
 
     //2. Make sure there is at least one release with at least one ZIP file
-    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    let status;
+    let data;
+    try{
+        const resget = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+        status = resget.status;
+        data = resget.data;
+    } 
+    catch(e){
+        console.log(e);
+        await exitProcess(e, checklog);
+    }
     let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     if((status != 200) || browser_download_url == undefined){
         await exitProcess('Release not available, Exiting', checklog);
