@@ -25,8 +25,11 @@ jobs:
           cp ../../plugin_stats.json plugin_stats.json
           cp -r ../../plugin_versions plugin_versions
 
+          npx ts-node updatePluginStats.ts
 
-          npx ts-node updatePluginVersionPlatforms.ts "$(<plugin_stats.json)"
+          npx ts-node updateAuthorStats.ts
+
+          npx ts-node updatePluginVersionPlatforms.ts
 
           rm -r plugin_versions/unzipped
           rm plugin_versions/asset.zip
