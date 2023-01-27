@@ -104,7 +104,7 @@ const getPluginPlatformVersionList = async (gituser, gitrepo) => {
 }
 
 const updatePluginReleasesFiles = async () => {
-    const plugin_stats_file = await readFile.TEXT('plugin_stats.json') || [];
+    const plugin_stats_file = await readFile.JSON('plugin_stats.json') || [];
     console.log(plugin_stats_file.map(x=>{return {a:x.author, b:x.plugin_id}}));
     let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
