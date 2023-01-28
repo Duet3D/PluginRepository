@@ -375,55 +375,6 @@
         ]
     },
     {
-        "plugin_id": "EndstopsMonitorPlugin",
-        "author": "Duet3D",
-        "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
-            "author": "Duet3D Ltd",
-            "version": "3.5.0-b1",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/DSF-Plugins",
-            "dwcVersion": "3.5.0-b1",
-            "tags": [
-                "endstops"
-            ]
-        },
-        "latest_release": "v3.5.0-b1",
-        "releases": [
-            {
-                "tag_name": "v3.5.0-b1",
-                "name": "Version 3.5.0-b1",
-                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.5.0-b1/EndstopsMonitor-3.5.0-b1.zip",
-                "published_at": "2022-12-27T13:10:03Z"
-            },
-            {
-                "tag_name": "v3.4",
-                "name": "Version 3.4",
-                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4/EndstopsMonitor-3.4.0.zip",
-                "published_at": "2022-06-14T08:35:28Z"
-            },
-            {
-                "tag_name": "v3.3",
-                "name": "Version 3.3",
-                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.3/EndstopsMonitor-3.3.0.zip",
-                "published_at": "2022-06-14T08:33:51Z"
-            },
-            {
-                "tag_name": "v3.4-rc2",
-                "name": "Version 3.4-rc2",
-                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4-rc2/EndstopsMonitor-3.4.0-rc2.zip",
-                "published_at": "2022-06-14T08:35:01Z"
-            },
-            {
-                "tag_name": "v3.4-rc1",
-                "name": "Version 3.4-rc1",
-                "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4-rc1/EndstopsMonitor-3.4.0-rc1.zip",
-                "published_at": "2022-06-14T08:34:30Z"
-            }
-        ]
-    },
-    {
         "plugin_id": "InputShapingPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
