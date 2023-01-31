@@ -10,7 +10,7 @@
             "version": "01.01.02",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-b1",
+            "dwcVersion": "3.5",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -522,7 +522,7 @@
             "version": "1.1.17",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-b1",
+            "dwcVersion": "3.5",
             "dependencies": {
                 "axios": "^1.2.1",
                 "marked": "^4.2.4"
