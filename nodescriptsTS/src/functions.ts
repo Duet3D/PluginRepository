@@ -441,6 +441,8 @@ const submissionCreatePR = async () => {
     });
 
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
+    console.log("browser_download_url for latest release: ");
+    console.log(browser_download_url);
     
     if((status != 200) || browser_download_url == undefined){
         await exitProcess('Release not available, Exiting', checklog);
