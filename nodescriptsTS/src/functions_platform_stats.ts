@@ -89,8 +89,11 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
 
 }
 
-const getPluginPlatformVersionList = async (gituser, gitrepo, parent_folder = 'plugin_versions') => {
-    const current_file = await readFile.TEXT(`${parent_folder}/${gitrepo}.json`) || [];
+const getPluginPlatformVersionList = async (gituser, gitrepo, parent_folder = 'plugin_versions', is_new_plugin = false) => {
+    let file_path = `${parent_folder}/${gitrepo}.json`;
+    console.log("getPluginPlatformVersionList for", gituser, gitrepo, file_path, is_new_plugin)
+
+    const current_file = is_new_plugin ? [] : await readFile.JSON(file_path);
     const latest_tagName = ((current_file || [])[0] || {})['tagName'];
     const releases = await getReleases(gituser, gitrepo, latest_tagName) || [];
     console.log(gitrepo, ': New Releases');
@@ -103,7 +106,7 @@ const getPluginPlatformVersionList = async (gituser, gitrepo, parent_folder = 'p
         releases[i].version_list = version_list;
     }
     const output_file = releases.concat(current_file)
-    await writeFile.writeJSONSync(output_file, `${parent_folder}/${gitrepo}.json`)
+    await writeFile.writeJSONSync(output_file, file_path)
     console.log(gitrepo, " : Done");
     return output_file
 }
