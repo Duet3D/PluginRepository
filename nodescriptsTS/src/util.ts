@@ -75,6 +75,8 @@ const isUserOrgMember = async () => {
 }
 
 const downloadFile = async (url:string, dest:string) => {
+    console.log("Downloading file from URL: ")
+    console.log(url);
     const wget = require('node-wget-promise');
     return await wget(url, {output: dest})
 }
