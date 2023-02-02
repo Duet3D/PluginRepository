@@ -90,7 +90,7 @@ const getPlatformVersionPerRelease = async (browser_download_url) => {
 }
 
 const getPluginPlatformVersionList = async (gituser, gitrepo, parent_folder = 'plugin_versions') => {
-    const current_file = await readFile.JSON(`${parent_folder}/${gitrepo}.json`) || [];
+    const current_file = await readFile.TEXT(`${parent_folder}/${gitrepo}.json`) || [];
     const latest_tagName = ((current_file || [])[0] || {})['tagName'];
     const releases = await getReleases(gituser, gitrepo, latest_tagName) || [];
     console.log(gitrepo, ': New Releases');
