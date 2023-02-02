@@ -440,8 +440,8 @@ const submissionCreatePR = async () => {
         }
     });
 
-    console.log("Received release data:")
-    console.log(JSON.stringify((gh_release_data||{}).data || {}))
+    console.log(JSON.stringify(( ((gh_release_data||{}).data||[])[0]) || {}))
+    console.log("Received latest release data:")
 
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     console.log("browser_download_url for latest release: ");
