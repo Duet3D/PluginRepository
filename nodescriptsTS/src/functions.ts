@@ -51,7 +51,14 @@ const submissionPrecheck = async () => {
     let status;
     let data;
     try{
-        const resget = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+        const resget = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`,
+        {
+            headers: {
+                'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+                "content-type": "application/json"
+            }
+        }
+        );
         status = resget.status;
         data = resget.data;
     } 
@@ -193,7 +200,13 @@ const updatePrecheck = async () => {
 
 
     //2. Make sure there is at least one release with at least one ZIP file
-    const {status, data} = await axios.get(`https://api.github.com/repos/${plugin_md_author}/${repo}/releases`);
+    const {status, data} = await axios.get(`https://api.github.com/repos/${plugin_md_author}/${repo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
     let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     if((status != 200) || browser_download_url == undefined){
         await exitProcess('Release not available, Exiting', checklog);
@@ -280,9 +293,21 @@ const updateCreatePR = async () => {
     let checklog = "";
 
     //Download release and unzip-------------------------------------------------------------------------------------------------
-    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
 
-    const gh_release_data = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    const gh_release_data = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
 
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     
@@ -399,9 +424,21 @@ const submissionCreatePR = async () => {
     }
 
     //Download release and unzip-------------------------------------------------------------------------------------------------
-    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
 
-    const gh_release_data = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
+    const gh_release_data = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
 
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     

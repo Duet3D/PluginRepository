@@ -3,7 +3,7 @@ const {getFrontmatterObject, writeFile:writeLocalFile, readFile:readLocalFile, d
 
 const updatePluginStats = async () => {
     try{
-        const {data:plugins_dir} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins`, { 'headers': { 'Authorization' : `token ${process.env.GITHUB_TOKEN}` } });
+        const {data:plugins_dir} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/contents/src/plugins`, { 'headers': { 'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}` } });
         const {data:prev_plugin_stat_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_stats.json`);
         const {data:plugin_reported_json} = await axios.get(`https://raw.githubusercontent.com/Duet3D/PluginRepository/master/plugin_reported.json`);
 
@@ -38,7 +38,7 @@ const createPluginEntry = async (plugin_md_name:string, prev_plugin_stat_json, p
     const plugin_updated_on = getFrontmatterObject('plugin_updated_on', plugin_md);
 
 
-    const {data: gh_release_data} = await axios.get(`https://api.github.com/repos/${author}/${plugin_id}/releases`, { 'headers': { 'Authorization' : `token ${process.env.GITHUB_TOKEN}` } });
+    const {data: gh_release_data} = await axios.get(`https://api.github.com/repos/${author}/${plugin_id}/releases`, { 'headers': { 'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}` } });
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
     const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);

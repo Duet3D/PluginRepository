@@ -11,7 +11,7 @@ const git = {
             return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/labels`, {"labels":[label]}, 
             {
                 headers: {
-                    'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
+                    'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
                     "Accept": "application/vnd.github+json"
                 }
             })
@@ -25,7 +25,7 @@ const git = {
         return await axios.post(`https://api.github.com/repos/Duet3D/PluginRepository/issues/${process.env.GITHUB_ISSUE}/comments`, JSON.stringify({"body":`${comment}`}), 
         {
             headers: {
-                'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
+                'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
                 "Accept": "application/vnd.github+json"
             }
         })
@@ -37,7 +37,7 @@ const isUserCollaborator = async () => {
         const {status} = await axios.get(`https://api.github.com/repos/Duet3D/PluginRepository/collaborators/${process.env.GITHUB_USER}`, 
         {
             headers: {
-                'Authorization' : `token ${process.env.GITHUB_TOKEN}`,
+                'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
                 "Accept": "application/vnd.github+json"
             }
         })
@@ -58,7 +58,7 @@ const isUserOrgMember = async () => {
         const {status} = await axios.get(`https://api.github.com/orgs/Duet3D/members/${process.env.GITHUB_USER}`, 
         {
             headers: {
-                'Authorization' : `token ${process.env.PAT_DUET3D_ADMIN_ORG_READ}`,
+                'Authorization' : `Bearer ${process.env.PAT_DUET3D_ADMIN_ORG_READ}`,
                 "Accept": "application/vnd.github+json"
             }
         })

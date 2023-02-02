@@ -3,7 +3,13 @@ const { downloadFile:downloadRemoteFile, checkFile:checkLocalFile, fetchURL,
 
 const getReleases = async (gituser, gitrepo, latest_tagName) => {
     let items = [];
-    let data = await fetchURL(`https://api.github.com/repos/${gituser}/${gitrepo}/releases`);
+    let data = await fetchURL(`https://api.github.com/repos/${gituser}/${gitrepo}/releases`,
+    {
+        headers: {
+            'authorization' : `Bearer ${process.env.GITHUB_TOKEN}`,
+            "content-type": "application/json"
+        }
+    });
     for (let i = 0; i < (data || []).length; i++) {
         const item = data[i];
         let tag_name = (item || {}).tag_name;
