@@ -2,7 +2,7 @@ const { insertLineToStr, git, downloadFile, checkFile, exitProcess,
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, writeFile: {writeJSONSync},
         getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember, getFileSizeKiB} = require('./util');
 
-const { getPlatformVersionPerRelease:getReleasePlatformVersion } = require('./functions_platform_stats');
+const { getPluginPlatformVersionList:getReleasePlatformVersion } = require('./functions_platform_stats');
 
 const axios = require('axios');
 
@@ -442,7 +442,7 @@ const submissionCreatePR = async () => {
 
     console.log("Received latest release with status: ", (gh_release_data||{}).status, ". data: ")
     console.log(JSON.stringify(( ((gh_release_data||{}).data||[])[0]) || {}))
-    
+
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     console.log("browser_download_url for latest release: ");
     console.log(browser_download_url);
