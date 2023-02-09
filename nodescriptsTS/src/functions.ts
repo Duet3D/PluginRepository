@@ -543,7 +543,7 @@ const submissionCreatePR = async () => {
 
     await prepend(frontmatter, `${repo}.md`);
 
-    await getReleasePlatformVersion(author, repo, '.');
+    await getReleasePlatformVersion(author, repo, '.', true);
 
 };
 
