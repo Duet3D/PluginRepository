@@ -7,10 +7,10 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.01.01",
+            "version": "01.01.02",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-b1",
+            "dwcVersion": "3.5",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -20,8 +20,14 @@
                 "vuedraggable": "^2.24.3"
             }
         },
-        "latest_release": "01.01.01",
+        "latest_release": "01.01.02",
         "releases": [
+            {
+                "tag_name": "01.01.02",
+                "name": "BtnCmd 01.01.02 for DWC 3.5",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.01.02/BtnCmd_DWC3.5_v01.01.02.zip",
+                "published_at": "2023-01-13T15:19:20Z"
+            },
             {
                 "tag_name": "01.01.01",
                 "name": "BtnCmd v01.01.01 for DWC 3.5+",
@@ -195,12 +201,6 @@
                 "name": "Alpha 0.8.8 - New Panels Feature",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.8/BtnCmd_DWC3.2_Alpha.0.8.8.zip",
                 "published_at": "2021-04-09T13:44:59Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.6",
-                "name": "Alpha 0.8.6 - Snap to Grid options + http improvements",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.6/BtnCmd_DWC3.2_Alpha.0.8.6.zip",
-                "published_at": "2021-04-06T15:24:55Z"
             }
         ]
     },
