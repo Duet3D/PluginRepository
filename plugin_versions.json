@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.02.01",
+            "version": "01.02.02",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.02.01",
+        "latest_release": "01.02.02",
         "releases": [
+            {
+                "tag_name": "01.02.02",
+                "name": "BtnCmd 01.02.02 for DWC 3.5",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.02/BtnCmd_DWC3.5_v01.02.02.zip",
+                "published_at": "2023-03-10T07:16:04Z"
+            },
             {
                 "tag_name": "01.02.01",
                 "name": "BtnCmd 01.02.01 for DWC 3.5",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.13 - Small UI Changes",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.13/BtnCmd_DWC3.2_Alpha.0.8.13.zip",
                 "published_at": "2021-04-15T10:41:09Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.12",
-                "name": "Alpha 0.8.12 - Mobile compatability, UI changes, bug fixes",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.12/BtnCmd_DWC3.2_Alpha.0.8.12.zip",
-                "published_at": "2021-04-14T12:25:21Z"
             }
         ]
     },
