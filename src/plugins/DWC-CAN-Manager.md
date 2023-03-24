@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: Sindarius
 plugin_submitted_on: 2022-09-02T12:25:56.433Z
-plugin_updated_on: 2022-09-02T12:25:57.779Z
+plugin_updated_on: 2023-03-24T14:29:35.138Z
 plugin: true
 title: CAN Manager
-abstract: Provides an easy to use list of CAN connected devices.
+abstract: Update for 3.5
 author: Sindarius
 repo: DWC-CAN-Manager
 branch: main
 homepage: https://github.com/Sindarius/CANManager
-dwcVersion: 3.4
+dwcVersion: 3.5
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: false
-latest_version: V1.0.0
-release_date: 2022-07-29T19:32:53Z
-release_page: https://github.com/Sindarius/DWC-CAN-Manager/releases/tag/V1.0.0
+latest_version: V1.1.0
+release_date: 2023-03-24T14:25:37Z
+release_page: https://github.com/Sindarius/DWC-CAN-Manager/releases/tag/V1.1.0
 license: LGPL-3.0-or-later
 license_file: https://spdx.org/licenses/LGPL-3.0-or-later
-download_count: 31
+download_count: 300
 tags:
 - dwc
 ---
