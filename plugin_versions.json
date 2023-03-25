@@ -314,13 +314,19 @@
             "id": "CANManager",
             "name": "CAN Manager",
             "author": "Juan Rosario",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "license": "LGPL-3.0-or-later",
             "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.4"
+            "dwcVersion": "3.5"
         },
-        "latest_release": "V1.0.0",
+        "latest_release": "V1.1.0",
         "releases": [
+            {
+                "tag_name": "V1.1.0",
+                "name": "1.1.0",
+                "download_url": "https://github.com/Sindarius/DWC-CAN-Manager/releases/download/V1.1.0/CANManager-1.1.0.zip",
+                "published_at": "2023-03-24T14:25:37Z"
+            },
             {
                 "tag_name": "V1.0.0",
                 "name": "Version 1.0 Release",
