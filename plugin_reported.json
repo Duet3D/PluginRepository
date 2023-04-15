@@ -1,3 +1,11 @@
 [
-    
+    {
+        "plugin_id": "DWC-CAN-Manager",
+        "author": "Sindarius",
+        "plugin_submitted_on": "2022-09-02T12:25:56.433Z",
+        "description": "\"Homepage link broken\"",
+        "steps_reproduce": "Clicking link take one to a 404 page",
+        "additional_description": "",
+        "timestamp": "2023-04-15T23:02:28.002Z"
+    }
 ]
