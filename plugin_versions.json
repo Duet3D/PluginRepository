@@ -7,10 +7,10 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.02.04",
+            "version": "01.02.05",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5",
+            "dwcVersion": "3.5.0-beta.4",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.02.04",
+        "latest_release": "01.02.05",
         "releases": [
+            {
+                "tag_name": "01.02.05",
+                "name": "BtnCmd 01.02.05 for DWC 3.5.0-beta4",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.05/BtnCmd_DWC3.5.0-beta.4_v01.02.05.zip",
+                "published_at": "2023-06-09T16:10:19Z"
+            },
             {
                 "tag_name": "01.02.04",
                 "name": "BtnCmd 01.02.04 for DWC 3.5",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.15 - New Button Action & Mobile bug fixes",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.15/BtnCmd_DWC3.2_Alpha.0.8.15.zip",
                 "published_at": "2021-04-21T12:35:07Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.14",
-                "name": "Alpha 0.8.14 - New Panel & Bug Fixes",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.14/BtnCmd_DWC3.2_Alpha.0.8.14.zip",
-                "published_at": "2021-04-17T12:06:13Z"
             }
         ]
     },
@@ -212,7 +212,7 @@
             "id": "ClosedLoopTuning",
             "name": "Closed Loop Tuning",
             "author": "Louis Irwin, Juan Rosario",
-            "version": "3.5-b1",
+            "version": "3.5-b4",
             "dwcVersion": "3.5",
             "license": "GPL-3.0",
             "homepage": "https://duet3d.com",
@@ -221,8 +221,14 @@
                 "tuning"
             ]
         },
-        "latest_release": "v3.5.0-b1",
+        "latest_release": "v3.5.0-beta.4",
         "releases": [
+            {
+                "tag_name": "v3.5.0-beta.4",
+                "name": "V3.5.0-beta.4",
+                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.0-beta.4/ClosedLoopTuning-3.5-b4.zip",
+                "published_at": "2023-06-09T14:04:11Z"
+            },
             {
                 "tag_name": "v3.5.0-b1",
                 "name": "Version 3.5.0-b1",
@@ -581,17 +587,23 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "1.1.18",
+            "version": "1.1.19",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5",
+            "dwcVersion": "3.5.0-beta.4",
             "dependencies": {
                 "axios": "^1.2.1",
                 "marked": "^4.2.4"
             }
         },
-        "latest_release": "1.1.18",
+        "latest_release": "1.1.19",
         "releases": [
+            {
+                "tag_name": "1.1.19",
+                "name": "ReleaseMgr v1.1.19",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.19/ReleaseMgr_v1.1.19_DWC_3.5.0-beta.4.zip",
+                "published_at": "2023-06-09T15:27:10Z"
+            },
             {
                 "tag_name": "1.1.18",
                 "name": "ReleaseMgr v1.1.18",
