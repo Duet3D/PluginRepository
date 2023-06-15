@@ -1,6 +1,6 @@
 {
     "name": "PluginRepository",
-    "version": "0.0.100",
+    "version": "0.0.101",
     "description": "Repository for RRF/DSF/DWC plugins",
     "main": "index.js",
     "scripts": {
