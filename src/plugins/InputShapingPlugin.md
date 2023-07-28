@@ -1,7 +1,7 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-10-04T11:37:43.575Z
-plugin_updated_on: 2023-07-28T08:52:39.254Z
+plugin_updated_on: 2023-07-28T09:00:02.974Z
 plugin: true
 title: Input Shaping
 abstract: Input Shaping Plugin for DWC
@@ -9,16 +9,16 @@ author: Duet3D
 repo: InputShapingPlugin
 branch: master
 homepage: https://github.com/Duet3D/DSF-Plugins
-dwcVersion: 3.5
+dwcVersion: 3.4
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: true
-latest_version: v3.5.0-b1
-release_date: 2022-12-27T13:07:55Z
-release_page: https://github.com/Duet3D/InputShapingPlugin/releases/tag/v3.5.0-b1
+latest_version: v3.4.6
+release_date: 2023-07-28T08:44:29Z
+release_page: https://github.com/Duet3D/InputShapingPlugin/releases/tag/v3.4.6
 license: GPL-3.0-or-later
 license_file: https://raw.githubusercontent.com/Duet3D/InputShapingPlugin/master/LICENSE
-download_count: 1162
+download_count: 1165
 tags:
 - input shaping
 - tuning
