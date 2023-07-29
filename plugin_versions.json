@@ -443,17 +443,23 @@
             "id": "InputShaping",
             "name": "Input Shaping",
             "author": "Duet3D Ltd",
-            "version": "3.5.0-b1",
+            "version": "3.4.6",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/Duet3D/DSF-Plugins",
-            "dwcVersion": "3.5",
+            "dwcVersion": "3.4",
             "tags": [
                 "input shaping",
                 "tuning"
             ]
         },
-        "latest_release": "v3.5.0-b1",
+        "latest_release": "v3.4.6",
         "releases": [
+            {
+                "tag_name": "v3.4.6",
+                "name": "Version 3.4.6",
+                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.6/InputShaping-3.4.6.zip",
+                "published_at": "2023-07-28T08:44:29Z"
+            },
             {
                 "tag_name": "v3.5.0-b1",
                 "name": "Version 3.5.0-b1",
