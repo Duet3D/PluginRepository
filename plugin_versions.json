@@ -7,10 +7,10 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.02.05",
+            "version": "01.02.06",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-beta.4",
+            "dwcVersion": "3.5.0-rc.1",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.02.05",
+        "latest_release": "01.02.06",
         "releases": [
+            {
+                "tag_name": "01.02.06",
+                "name": "BtnCmd 01.02.06 for DWC 3.5.0-rc.1",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.06/BtnCmd_DWC3.5.0-rc.1_v01.02.06.zip",
+                "published_at": "2023-09-02T08:42:34Z"
+            },
             {
                 "tag_name": "01.02.05",
                 "name": "BtnCmd 01.02.05 for DWC 3.5.0-beta4",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.16 - Experimental New Machine Model Value Panel",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.16/BtnCmd_DWC3.3b3_Alpha.0.8.16.zip",
                 "published_at": "2021-04-24T09:54:11Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.15",
-                "name": "Alpha 0.8.15 - New Button Action & Mobile bug fixes",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.15/BtnCmd_DWC3.2_Alpha.0.8.15.zip",
-                "published_at": "2021-04-21T12:35:07Z"
             }
         ]
     },
@@ -599,17 +599,23 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "1.1.19",
+            "version": "1.1.20",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-beta.4",
+            "dwcVersion": "3.5.0-rc.1",
             "dependencies": {
                 "axios": "^1.2.1",
                 "marked": "^4.2.4"
             }
         },
-        "latest_release": "1.1.19",
+        "latest_release": "1.1.20",
         "releases": [
+            {
+                "tag_name": "1.1.20",
+                "name": "ReleaseMgr v1.1.20",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.20/ReleaseMgr_v1.1.20_DWC_3.5.0-rc.1.zip",
+                "published_at": "2023-09-02T09:17:14Z"
+            },
             {
                 "tag_name": "1.1.19",
                 "name": "ReleaseMgr v1.1.19",
