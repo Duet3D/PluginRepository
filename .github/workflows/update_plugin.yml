@@ -153,12 +153,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+
         run: |
           set -e
 
           git pull
-
-          export NODE_OPTIONS=--openssl-legacy-provider
 
           npm install
           npm run build
