@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.02.06",
+            "version": "01.02.07",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5.0-rc.1",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.02.06",
+        "latest_release": "01.02.07",
         "releases": [
+            {
+                "tag_name": "01.02.07",
+                "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.1",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.1_v01.02.07.zip",
+                "published_at": "2023-09-17T16:45:41Z"
+            },
             {
                 "tag_name": "01.02.06",
                 "name": "BtnCmd 01.02.06 for DWC 3.5.0-rc.1",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.17",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.17/BtnCmd_DWC3.3b3_Alpha.0.8.17.zip",
                 "published_at": "2021-04-24T19:17:33Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.16",
-                "name": "Alpha 0.8.16 - Experimental New Machine Model Value Panel",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.16/BtnCmd_DWC3.3b3_Alpha.0.8.16.zip",
-                "published_at": "2021-04-24T09:54:11Z"
             }
         ]
     },
