@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v3.4.6",
+        "browser_download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.6/InputShaping-3.4.6.zip",
+        "published_at": "2023-07-28T08:44:29Z",
+        "version_list": [
+            {
+                "version": "3.4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "v3.5.0-b1",
         "browser_download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.5.0-b1/InputShaping-3.5.0-b1.zip",
         "published_at": "2022-12-27T13:07:55Z",
