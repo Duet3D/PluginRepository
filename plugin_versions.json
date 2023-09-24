@@ -300,6 +300,12 @@
                 "published_at": "2023-01-15T17:19:44Z"
             },
             {
+                "tag_name": "v0.3",
+                "name": "ExecOnMcode v0.3",
+                "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.3/ExecOnMcode-0.3.zip",
+                "published_at": "2023-01-05T18:59:49Z"
+            },
+            {
                 "tag_name": "v0.2",
                 "name": "ExecOnMcode v0.2",
                 "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.2/ExecOnMcode-0.2.zip",
