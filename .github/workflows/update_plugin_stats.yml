@@ -52,6 +52,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{secrets.GITHUB_TOKEN}}
           commit-message: StatsUpdate/$(date +"%Y-%m-%d")
           branch: $BRANCH_NAME
           title: StatsUpdate/$(date +"%Y-%m-%d")
