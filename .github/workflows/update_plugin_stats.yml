@@ -41,6 +41,8 @@ jobs:
 
           branchName=stat-update
           commituser=Duet3D
+
+          git pull
           
 
           git checkout -b $branchName
