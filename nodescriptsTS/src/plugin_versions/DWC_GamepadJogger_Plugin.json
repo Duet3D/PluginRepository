@@ -1,0 +1,68 @@
+[
+    {
+        "tagName": "1.1",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/1.1/GamepadJogger-1.1.0.zip",
+        "published_at": "2023-10-07T19:24:34Z",
+        "version_list": [
+            {
+                "version": "3.5",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "1.0.0",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/1.0.0/GamepadJoggerPlugin_3_3.zip",
+        "published_at": "2021-08-30T12:34:24Z",
+        "version_list": [
+            {
+                "version": "3.3",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "0.2.0",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.2.0/GamepadJogger.zip",
+        "published_at": "2020-12-23T13:24:58Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "0.1.2",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.2/GamepadJogger.zip",
+        "published_at": "2020-12-21T22:19:53Z",
+        "version_list": [
+            {
+                "version": "3.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "0.1.1",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.1/GamepadJogger.zip",
+        "published_at": "2020-11-27T14:13:51Z",
+        "version_list": [
+            {
+                "version": "3.2.0-beta4",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "0.1.0",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/0.1.0/GamepadJogger.zip",
+        "published_at": "2020-11-26T12:30:34Z",
+        "version_list": [
+            {
+                "version": "3.2.0-beta3",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
