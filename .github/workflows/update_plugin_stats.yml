@@ -54,7 +54,7 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: /[StatsUpdate]/$(date +"%Y-%m-%d")
-          branch: $BRANCH_NAME
+          branch: stat-update
           title: StatsUpdate/$(date +"%Y-%m-%d")
 
   merge-pr:
