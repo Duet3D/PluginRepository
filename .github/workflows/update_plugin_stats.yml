@@ -40,10 +40,7 @@ jobs:
 
 
           branchName=stat-update
-          commituser=Duet3D
-
-          git pull
-          
+          commituser=Duet3D          
 
           git checkout -b $branchName
           git add plugin_stats.json plugin_versions.json author_stats.json plugin_versions
