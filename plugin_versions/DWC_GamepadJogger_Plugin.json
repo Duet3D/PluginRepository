@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "1.1",
+        "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/1.1/GamepadJogger-1.1.0.zip",
+        "published_at": "2023-10-07T19:24:34Z",
+        "version_list": [
+            {
+                "version": "3.5",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "1.0.0",
         "browser_download_url": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin/releases/download/1.0.0/GamepadJoggerPlugin_3_3.zip",
         "published_at": "2021-08-30T12:34:24Z",
