@@ -7,5 +7,14 @@
         "steps_reproduce": "Clicking link take one to a 404 page",
         "additional_description": "",
         "timestamp": "2023-04-15T23:02:28.002Z"
+    },
+    {
+        "plugin_id": "EndstopsMonitorPlugin",
+        "author": "Duet3D",
+        "plugin_submitted_on": "2023-02-09T13:25:03.137Z",
+        "description": "Incorrect Homepage link",
+        "steps_reproduce": "Note that the homepage link exists under DSF-Plugins, but the other Github links are under EndstopsMonitorPlugin (which is correct/up to date)",
+        "additional_description": "",
+        "timestamp": "2023-12-02T12:10:49.673Z"
     }
 ]
