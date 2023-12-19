@@ -25,7 +25,7 @@ body:
       `plugin.json` : This file holds general information about the plugin. See the [DSF Wiki](https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins#plugin-manifest) for further details. Some elements will need to be changed accordingly depending on whether it is for `DWC`, `SBC`, `RRF`.
 
       ### Zip file structure:
-      Zip file structure can be found from  [DSF Wiki](https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins#zip-file-structure] and is meant to provide a general idea. Some elements will need to be changed accordingly depending on whether it is for `DWC`, `SBC`, `RRF`.
+      Zip file structure can be found from [DSF Wiki](https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins#zip-file-structure) and is meant to provide a general idea. Some elements will need to be changed accordingly depending on whether it is for `DWC`, `SBC`, `RRF`.
       
       ## Important Information
       - Your repository name will be the same as plugin id
