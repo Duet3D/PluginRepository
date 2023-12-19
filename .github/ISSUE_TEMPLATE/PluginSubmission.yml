@@ -15,12 +15,18 @@ body:
       - markdown files are renamed (case-sensitive) as PLUGIN.md, README.md
       - Check the content in markdown files against [an online md viewer](https://markdownlivepreview.com/) as sometimes, images might not be displayed correctly
       - If the images are not shown, use the url format `https://raw.githubusercontent.com/<username>/<repo name>/<branch>/<path>/<img name> `
-      - plugin manifest file is renamed (case-sensitive) as plugin.json
+      - plugin manifest file is renamed (case-sensitive) as `plugin.json` 
       - plugin manifest file size is below 16KB
       - plugin has at least one release
-      - plugin release(s) can be downloaded as a zip file.
+      - plugin zip can be downloaded as a zip file via [GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
       Otherwise the checks will not pass.
 
+      ### Plugin Manifest (`plugin.json`)
+      `plugin.json` : This file holds general information about the plugin. See the [DSF Wiki](https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins#plugin-manifest) for further details. Some elements will need to be changed accordingly depending on whether it is for `DWC`, `SBC`, `RRF`.
+
+      ### Zip file structure:
+      Zip file structure can be found from  [DSF Wiki](https://github.com/Duet3D/DuetSoftwareFramework/wiki/Third-Party-Plugins#zip-file-structure] and is meant to provide a general idea. Some elements will need to be changed accordingly depending on whether it is for `DWC`, `SBC`, `RRF`.
+      
       ## Important Information
       - Your repository name will be the same as plugin id
       - If a `PLUGIN.md` file exists, it will be used as the homepage of your plugin; otherwise, `README.md` will be used
