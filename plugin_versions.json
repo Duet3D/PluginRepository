@@ -721,5 +721,53 @@
                 "published_at": "2022-12-09T16:25:54Z"
             }
         ]
+    },
+    {
+        "plugin_id": "duetBackup",
+        "author": "stuartofmt",
+        "plugin_manifest": {
+            "id": "duetBackup",
+            "name": "duetBackup",
+            "author": "Stuartofmt",
+            "version": "1.4.0",
+            "license": "GPL-2.0-or-later",
+            "homepage": "https://github.com/stuartofmt",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.5.0-rc.1",
+            "sbcExecutable": "duetBackup.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
+            "sbcOutputRedirected": false,
+            "sbcPermissions": [
+                "networkAccess",
+                "readSystem",
+                "writeSystem",
+                "fileSystemAccess"
+            ],
+            "sbcPythonDependencies": [
+                "argparse",
+                "shlex",
+                "sys",
+                "os",
+                "re",
+                "datetime",
+                "pyOpenSSL",
+                "PyGithub",
+                "time",
+                "requests",
+                "json",
+                "signal",
+                "hashlib",
+                "fnmatch"
+            ]
+        },
+        "latest_release": "3.5.0-rc.1",
+        "releases": [
+            {
+                "tag_name": "3.5.0-rc.1",
+                "name": "V1.3 for R3.5.0-rc.1",
+                "download_url": "https://github.com/stuartofmt/duetBackup/releases/download/3.5.0-rc.1/duetBackup.-V1.3.-.3.5.0-rc.1.zip",
+                "published_at": "2023-12-13T15:29:51Z"
+            }
+        ]
     }
 ]
