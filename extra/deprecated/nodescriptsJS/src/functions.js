@@ -50,7 +50,8 @@ const submissionPrecheck = async () => {
     const {status, data} = await axios.get(`https://api.github.com/repos/${author}/${repo}/releases`);
     let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     if((status != 200) || browser_download_url == undefined){
-        await exitProcess('Release not available, Exiting', checklog);
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+        await exitProcess('Exiting', checklog);
     }
     
     let ext = browser_download_url.split('.');
@@ -276,7 +277,8 @@ const updateCreatePR = async () => {
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     
     if((status != 200) || browser_download_url == undefined){
-        await exitProcess('Release not available, Exiting', checklog);
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+        await exitProcess('Exiting', checklog);
     }
     
     let ext = browser_download_url.split('.');
@@ -395,7 +397,8 @@ const submissionCreatePR = async () => {
     let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
     
     if((status != 200) || browser_download_url == undefined){
-        await exitProcess('Release not available, Exiting', checklog);
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+        await exitProcess('Exiting', checklog);
     }
     
     let ext = browser_download_url.split('.');
