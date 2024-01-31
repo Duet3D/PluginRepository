@@ -262,12 +262,12 @@
             "id": "ExecOnMcode",
             "name": "Exec On M-Code",
             "author": "Loïc GRENON",
-            "version": "0.5",
+            "version": "0.6",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
-            "dwcVersion": "3.4",
+            "dwcVersion": "3.5",
             "sbcRequired": true,
-            "sbcDsfVersion": "3.4",
+            "sbcDsfVersion": "3.5",
             "sbcExecutable": "execOnMcode.py",
             "sbcOutputRedirected": true,
             "sbcPermissions": [
@@ -285,8 +285,14 @@
                 "dsf-python>=3.4.5"
             ]
         },
-        "latest_release": "v0.5",
+        "latest_release": "v0.6",
         "releases": [
+            {
+                "tag_name": "v0.6",
+                "name": "ExecOnMcode v0.6",
+                "download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.6/ExecOnMcode-0.6.zip",
+                "published_at": "2024-01-30T20:49:47Z"
+            },
             {
                 "tag_name": "v0.5",
                 "name": "ExecOnMcode v0.5",
