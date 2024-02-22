@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v3.5.0",
+        "browser_download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.5.0/EndstopsMonitor-3.5.0.zip",
+        "published_at": "2024-02-21T13:03:52Z",
+        "version_list": [
+            {
+                "version": "3.5",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "v3.5.0-b1",
         "browser_download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.5.0-b1/EndstopsMonitor-3.5.0-b1.zip",
         "published_at": "2022-12-27T13:10:03Z",
