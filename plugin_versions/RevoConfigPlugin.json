@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v1.2.0",
+        "browser_download_url": "https://github.com/chrishamm/RevoConfigPlugin/releases/download/v1.2.0/RevoConfigPlugin-1.2.0.zip",
+        "published_at": "2024-02-28T16:09:42Z",
+        "version_list": [
+            {
+                "version": "3.5",
+                "platform": "RRF"
+            }
+        ]
+    },
+    {
         "tagName": "v1.1.0",
         "browser_download_url": "https://github.com/chrishamm/RevoConfigPlugin/releases/download/v1.1.0/RevoConfigPlugin-1.1.0.zip",
         "published_at": "2022-12-14T16:39:40Z",
