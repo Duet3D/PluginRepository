@@ -10,7 +10,7 @@
             "version": "01.02.07",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-rc.1",
+            "dwcVersion": "3.5.0-rc.4",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -25,8 +25,8 @@
         "releases": [
             {
                 "tag_name": "01.02.07",
-                "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.1 or rc.2",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.1_v01.02.07.zip",
+                "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.4",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.4_v01.02.07.zip",
                 "published_at": "2023-09-17T16:45:41Z"
             },
             {
@@ -636,7 +636,7 @@
             "version": "1.1.20",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-rc.1",
+            "dwcVersion": "3.5.0-rc.4",
             "dependencies": {
                 "axios": "^1.2.1",
                 "marked": "^4.2.4"
@@ -647,7 +647,7 @@
             {
                 "tag_name": "1.1.20",
                 "name": "ReleaseMgr v1.1.20",
-                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.20/ReleaseMgr_v1.1.20_DWC_3.5.0-rc.1.zip",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.1.20/ReleaseMgr_v1.1.20_DWC_3.5.0-rc.4.zip",
                 "published_at": "2023-09-02T09:17:14Z"
             },
             {
