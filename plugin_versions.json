@@ -10,7 +10,7 @@
             "version": "01.02.07",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-rc.4",
+            "dwcVersion": "3.5.0-rc.4+1",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -26,7 +26,7 @@
             {
                 "tag_name": "01.02.07",
                 "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.4",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.4_v01.02.07.zip",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.4%2B1_v01.02.07.zip",
                 "published_at": "2023-09-17T16:45:41Z"
             },
             {
