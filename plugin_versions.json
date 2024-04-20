@@ -7,10 +7,10 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.02.07",
+            "version": "01.03.0",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-rc.4+1",
+            "dwcVersion": "3.5.1",
             "dependencies": {
                 "precompiled-mqtt": "^4.3.7",
                 "deepmerge": "^4.2.2",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.02.07",
+        "latest_release": "01.03.0",
         "releases": [
+            {
+                "tag_name": "01.03.0",
+                "name": "BtnCmd 01.03.0 for DWC 3.5.1",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.03.0/BtnCmd_DWC3.5.1_v01.03.0.zip",
+                "published_at": "2024-04-19T10:20:28Z"
+            },
             {
                 "tag_name": "01.02.07",
                 "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.4",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.18 New Custom Panels",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.18/BtnCmd_DWC3.2_Alpha.0.8.18.zip",
                 "published_at": "2021-05-08T08:04:30Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.17",
-                "name": "Alpha 0.8.17",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.17/BtnCmd_DWC3.3b3_Alpha.0.8.17.zip",
-                "published_at": "2021-04-24T19:17:33Z"
             }
         ]
     },
@@ -633,17 +633,23 @@
             "id": "ReleaseMgr",
             "name": "ReleaseMgr",
             "author": "Minty Trebor",
-            "version": "1.1.20",
+            "version": "1.2.0",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.5.0-rc.4",
+            "dwcVersion": "3.5.1",
             "dependencies": {
-                "axios": "^1.2.1",
-                "marked": "^4.2.4"
+                "axios": "^1.6.3",
+                "marked": "^11.1.4"
             }
         },
-        "latest_release": "1.1.20",
+        "latest_release": "1.2.0",
         "releases": [
+            {
+                "tag_name": "1.2.0",
+                "name": "ReleaseMgr v1.2.0",
+                "download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.2.0/ReleaseMgr_v1.2.0_DWC3.5.1.zip",
+                "published_at": "2024-04-19T10:49:24Z"
+            },
             {
                 "tag_name": "1.1.20",
                 "name": "ReleaseMgr v1.1.20",
