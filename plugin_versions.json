@@ -212,7 +212,7 @@
             "id": "ClosedLoopTuning",
             "name": "Closed Loop Tuning",
             "author": "Louis Irwin, Juan Rosario",
-            "version": "3.5-b4",
+            "version": "3.5.1",
             "dwcVersion": "3.5",
             "license": "GPL-3.0",
             "homepage": "https://duet3d.com",
@@ -221,8 +221,14 @@
                 "tuning"
             ]
         },
-        "latest_release": "v3.5.0-beta.4",
+        "latest_release": "v3.5.1",
         "releases": [
+            {
+                "tag_name": "v3.5.1",
+                "name": "v3.5.1",
+                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.1/ClosedLoopTuning-3.5.1.zip",
+                "published_at": "2024-05-02T14:20:59Z"
+            },
             {
                 "tag_name": "v3.5.0-beta.4",
                 "name": "V3.5.0-beta.4",
@@ -517,33 +523,18 @@
             "id": "MotionWebcamServer",
             "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "license": "GPL-2.0-only",
             "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
             "sbcRequired": true,
             "sbcDsfVersion": "3.5",
             "sbcExecutable": "motion",
-            "sbcExecutableArguments": "-c /opt/dsf/sd/sys/motion.conf",
             "sbcOutputRedirected": false,
             "sbcConfigFiles": [
                 "motion.conf"
             ],
             "sbcPackageDependencies": [
-                "libavcodec58",
-                "libavdevice58",
-                "libavformat58",
-                "libavutil56",
-                "libc6",
-                "libgnutls30",
-                "libjpeg62-turbo",
-                "libmariadb3",
-                "libmicrohttpd12",
-                "libpq5",
-                "libsqlite3-0",
-                "libswscale5",
-                "libwebp6",
-                "libwebpmux3",
-                "zlib1g"
+                "motion"
             ],
             "sbcPermissions": [
                 "launchProcesses",
@@ -557,8 +548,14 @@
                 "server"
             ]
         },
-        "latest_release": "v3.5.0",
+        "latest_release": "v3.5.1",
         "releases": [
+            {
+                "tag_name": "v3.5.1",
+                "name": "Version 3.5.1",
+                "download_url": "https://github.com/Duet3D/MotionWebcamServerPlugin/releases/download/v3.5.1/MotionWebcamServerPlugin-3.5.1.zip",
+                "published_at": "2024-05-02T14:21:14Z"
+            },
             {
                 "tag_name": "v3.5.0",
                 "name": "Version 3.5.0",
