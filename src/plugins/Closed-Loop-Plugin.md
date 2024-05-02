@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: T3P3
 plugin_submitted_on: 2022-09-02T12:25:08.721Z
-plugin_updated_on: 2024-05-02T07:16:10.757Z
+plugin_updated_on: 2024-05-02T14:23:49.461Z
 plugin: true
 title: Closed Loop Tuning
-abstract: Visualise the performance of your closed loop controllers and motorsr board
+abstract: Closed Loop Plugin
 author: Duet3D
 repo: Closed-Loop-Plugin
 branch: master
@@ -13,12 +13,12 @@ dwcVersion: 3.5
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: true
-latest_version: v3.5.0-beta.4
-release_date: 2023-06-09T14:04:11Z
-release_page: https://github.com/Duet3D/Closed-Loop-Plugin/releases/tag/v3.5.0-beta.4
+latest_version: v3.5.1
+release_date: 2024-05-02T14:20:59Z
+release_page: https://github.com/Duet3D/Closed-Loop-Plugin/releases/tag/v3.5.1
 license: GPL-3.0
 license_file: https://raw.githubusercontent.com/Duet3D/Closed-Loop-Plugin/master/LICENSE
-download_count: 1094
+download_count: 1095
 tags:
 - closed loop
 - tuning
@@ -57,7 +57,7 @@ Copy the following object into the `export default` array in DWC's `/src/plugins
 new DwcPlugin({
   id: 'ClosedLoopTuning',
   name: 'Closed Loop Tuning',
-  author: 'Louis Irwin',
+  author: 'Louis Irwin, Juan Rosario',
   version,
   loadDwcResources: () => import(
     /* webpackChunkName: "ClosedLoopTuning" */
