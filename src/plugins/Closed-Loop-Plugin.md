@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: T3P3
 plugin_submitted_on: 2022-09-02T12:25:08.721Z
-plugin_updated_on: 2024-05-02T02:08:35.346Z
+plugin_updated_on: 2024-05-02T07:16:10.757Z
 plugin: true
 title: Closed Loop Tuning
-abstract: Closed Loop Tuning Plugin
+abstract: Visualise the performance of your closed loop controllers and motorsr board
 author: Duet3D
 repo: Closed-Loop-Plugin
 branch: master
@@ -18,7 +18,7 @@ release_date: 2023-06-09T14:04:11Z
 release_page: https://github.com/Duet3D/Closed-Loop-Plugin/releases/tag/v3.5.0-beta.4
 license: GPL-3.0
 license_file: https://raw.githubusercontent.com/Duet3D/Closed-Loop-Plugin/master/LICENSE
-download_count: 1091
+download_count: 1094
 tags:
 - closed loop
 - tuning
