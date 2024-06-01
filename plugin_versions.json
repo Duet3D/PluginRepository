@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.03.0",
+            "version": "01.03.01",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5.1",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.03.0",
+        "latest_release": "01.03.01",
         "releases": [
+            {
+                "tag_name": "01.03.01",
+                "name": "BtnCmd 01.03.01 for DWC 3.5.1",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.03.01/BtnCmd_DWC3.5.1_v01.03.01.zip",
+                "published_at": "2024-05-30T13:56:42Z"
+            },
             {
                 "tag_name": "01.03.0",
                 "name": "BtnCmd 01.03.0 for DWC 3.5.1",
@@ -196,12 +202,6 @@
                 "name": "Alpha 0.8.19 DWC 3.3",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.19/BtnCmd_DWC3.3_Alpha.0.8.19.zip",
                 "published_at": "2021-06-17T11:30:42Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.18",
-                "name": "Alpha 0.8.18 New Custom Panels",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.18/BtnCmd_DWC3.2_Alpha.0.8.18.zip",
-                "published_at": "2021-05-08T08:04:30Z"
             }
         ]
     },
