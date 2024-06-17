@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "01.03.04",
+        "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.03.04/BtnCmd_DWC3.5.2_v01.03.04.zip",
+        "published_at": "2024-06-16T13:29:00Z",
+        "version_list": [
+            {
+                "version": "3.5.2",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "01.03.03",
         "browser_download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.03.03/BtnCmd_DWC3.5.2_v01.03.03.zip",
         "published_at": "2024-06-12T11:05:48Z",
