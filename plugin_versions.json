@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.03.03",
+            "version": "01.03.04",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.5.2",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.03.03",
+        "latest_release": "01.03.04",
         "releases": [
+            {
+                "tag_name": "01.03.04",
+                "name": "BtnCmd 01.03.04 for DWC 3.5.2",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.03.04/BtnCmd_DWC3.5.2_v01.03.04.zip",
+                "published_at": "2024-06-16T13:29:00Z"
+            },
             {
                 "tag_name": "01.03.03",
                 "name": "BtnCmd 01.03.03 for DWC 3.5.2",
@@ -196,12 +202,6 @@
                 "name": "Beta 0.9.01",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.9.01/BtnCmd_DWC3.3_Beta.0.9.01.zip",
                 "published_at": "2021-10-06T11:20:39Z"
-            },
-            {
-                "tag_name": "Alpha_0.8.21",
-                "name": "Alpha 0.8.21",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Alpha_0.8.21/BtnCmd_DWC3.3_Alpha.0.8.21.zip",
-                "published_at": "2021-10-01T09:27:41Z"
             }
         ]
     },
