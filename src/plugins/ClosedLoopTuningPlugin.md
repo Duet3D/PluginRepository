@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: T3P3
 plugin_submitted_on: 2022-09-02T12:25:08.721Z
-plugin_updated_on: 2024-05-02T14:23:49.461Z
+plugin_updated_on: 2024-09-25T06:39:37.569Z
 plugin: true
 title: Closed Loop Tuning
-abstract: Closed Loop Plugin
+abstract: ClosedLoopTuningPlugin
 author: Duet3D
-repo: Closed-Loop-Plugin
+repo: ClosedLoopTuningPlugin
 branch: master
 homepage: https://duet3d.com
-dwcVersion: 3.5
+dwcVersion: 3.6
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: true
-latest_version: v3.5.1
-release_date: 2024-05-02T14:20:59Z
-release_page: https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/tag/v3.5.1
+latest_version: v3.6.0-beta.1
+release_date: 2024-09-25T06:25:10Z
+release_page: https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/tag/v3.6.0-beta.1
 license: GPL-3.0
 license_file: https://raw.githubusercontent.com/Duet3D/ClosedLoopTuningPlugin/master/LICENSE
-download_count: 1095
+download_count: 1338
 tags:
 - closed loop
 - tuning
@@ -28,7 +28,7 @@ tags:
 
 # Closed Loop Tuning Plugin
 
-*Visualise the performance of your [1HCL closed loop controller board](https://docs.duet3d.com/Duet3D_hardware/Duet_3_family/Duet_3_Expansion_1HCL).*
+*Visualise the performance of your [1HCL closed loop controller board](https://docs.duet3d.com/Duet3D_hardware/Duet_3_family/Duet_3_Expansion_1HCL) or [Motor23CL closed loop motor](https://docs.duet3d.com/en/Duet3D_hardware/Duet_3_family/Duet_3_Motor_23CL).*
 
 
 ![Image of the plugin UI](https://repository-images.githubusercontent.com/392753893/06488b0a-3573-45ae-a2c7-0017f91d7f48)
@@ -37,7 +37,7 @@ tags:
 
 To install the plugin into Duet Web Control (DWC):
 
-1. Navigate to the [latest release](https://github.com/Duet3D/Closed-Loop-Plugin/releases) and download the `closed-loop-plugin.zip` asset
+1. Navigate to the [latest release](https://github.com/Duet3D/ClosedLoopTuningPlugin/releases) and download the `closed-loop-plugin.zip` asset
 2. Upload the zip folder to DWC by using the 'upload system files' button in the 'system' area
 3. Follow the on-screen instructions for installing the plugin
 4. Navigate to Setting > Machine Specific > Machine Specific Plugins and click the 'Start' button
@@ -55,7 +55,7 @@ Copy the following object into the `export default` array in DWC's `/src/plugins
 
 ```js
 new DwcPlugin({
-  id: 'ClosedLoopTuningPlugin',
+  id: 'ClosedLoopTuning',
   name: 'Closed Loop Tuning',
   author: 'Louis Irwin, Juan Rosario',
   version,
@@ -70,5 +70,5 @@ If you wish to develop on the plugin, run `npm run serve` in the DWC directory a
 
 ## Building as an external plugin
 
-Once you have finished developing, or if you just wish to compile from source, run `npm run build-plugin ../Closed-Loop-Plugin` in the DWC directory where `../Closed-Loo-Plugin` points to this directory.
+Once you have finished developing, or if you just wish to compile from source, run `npm run build-plugin ../ClosedLoopTuningPlugin` in the DWC directory where `../ClosedLoopTuningPlugin` points to this directory.
 This will generate a ZIP file in the `dist` directory within DWC that can be uploaded as a plugin.
