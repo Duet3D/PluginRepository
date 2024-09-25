@@ -15,9 +15,9 @@ rrfVersion: undefined
 oem: true
 latest_version: v3.5.1
 release_date: 2024-05-02T14:20:59Z
-release_page: https://github.com/Duet3D/Closed-Loop-Plugin/releases/tag/v3.5.1
+release_page: https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/tag/v3.5.1
 license: GPL-3.0
-license_file: https://raw.githubusercontent.com/Duet3D/Closed-Loop-Plugin/master/LICENSE
+license_file: https://raw.githubusercontent.com/Duet3D/ClosedLoopTuningPlugin/master/LICENSE
 download_count: 1095
 tags:
 - closed loop
@@ -55,7 +55,7 @@ Copy the following object into the `export default` array in DWC's `/src/plugins
 
 ```js
 new DwcPlugin({
-  id: 'ClosedLoopTuning',
+  id: 'ClosedLoopTuningPlugin',
   name: 'Closed Loop Tuning',
   author: 'Louis Irwin, Juan Rosario',
   version,
