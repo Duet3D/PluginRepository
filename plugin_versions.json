@@ -206,7 +206,7 @@
         ]
     },
     {
-        "plugin_id": "Closed-Loop-Plugin",
+        "plugin_id": "ClosedLoopTuningPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
             "id": "ClosedLoopTuning",
@@ -226,37 +226,37 @@
             {
                 "tag_name": "v3.5.1",
                 "name": "v3.5.1",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.1/ClosedLoopTuning-3.5.1.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.5.1/ClosedLoopTuning-3.5.1.zip",
                 "published_at": "2024-05-02T14:20:59Z"
             },
             {
                 "tag_name": "v3.5.0-beta.4",
                 "name": "V3.5.0-beta.4",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.0-beta.4/ClosedLoopTuning-3.5-b4.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.5.0-beta.4/ClosedLoopTuning-3.5-b4.zip",
                 "published_at": "2023-06-09T14:04:11Z"
             },
             {
                 "tag_name": "v3.5.0-b1",
                 "name": "Version 3.5.0-b1",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.5.0-b1/ClosedLoopTuning-3.5-b1.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.5.0-b1/ClosedLoopTuning-3.5-b1.zip",
                 "published_at": "2022-12-27T13:11:42Z"
             },
             {
                 "tag_name": "v3.4-b1",
                 "name": "Version 3.4-b1",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/v3.4-b1/ClosedLoopTuning-3.4-b1.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.4-b1/ClosedLoopTuning-3.4-b1.zip",
                 "published_at": "2022-03-16T16:15:09Z"
             },
             {
                 "tag_name": "0.2-alpha",
                 "name": "Release 0.2 alpha",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.2-alpha/closed-loop-plugin.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/0.2-alpha/closed-loop-plugin.zip",
                 "published_at": "2021-08-18T13:26:12Z"
             },
             {
                 "tag_name": "0.1-alpha",
                 "name": "Release 0.1 alpha",
-                "download_url": "https://github.com/Duet3D/Closed-Loop-Plugin/releases/download/0.1-alpha/closed-loop-plugin.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/0.1-alpha/closed-loop-plugin.zip",
                 "published_at": "2021-08-18T10:00:04Z"
             }
         ]
