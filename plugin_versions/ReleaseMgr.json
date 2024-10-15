@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "1.3.4",
+        "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.3.4/ReleaseMgr-v1.3.4_DWC3.6.zip",
+        "published_at": "2024-10-14T07:18:34Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "1.3.3",
         "browser_download_url": "https://github.com/MintyTrebor/ReleaseMgr/releases/download/1.3.3/ReleaseMgr-v1.3.3_DWC3.5.3.zip",
         "published_at": "2024-09-20T09:21:20Z",
