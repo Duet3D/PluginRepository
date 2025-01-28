@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: chrishamm
 plugin_submitted_on: 2024-02-21T15:11:27.167Z
-plugin_updated_on: 2024-02-21T15:11:27.167Z
+plugin_updated_on: 2025-01-28T11:43:53.496Z
 plugin: true
 title: Spyglass Webcam Server
-abstract: Spyglass Webcam Server Plugin
+abstract: SpyglassWebcamServerPlugin
 author: Duet3D
 repo: SpyglassWebcamServerPlugin
 branch: master
-homepage: https://github.com/Duet3D/SpyglassWebcamServer
+homepage: https://github.com/Duet3D/SpyglassWebcamServerPlugin
 dwcVersion: undefined
-sbcDSfVersion: 3.5
+sbcDSfVersion: 3
 rrfVersion: undefined
 oem: true
-latest_version: v3.5.0
-release_date: 2024-02-21T15:06:57Z
-release_page: https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/tag/v3.5.0
+latest_version: v0.15
+release_date: 2025-01-28T11:31:20Z
+release_page: https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/tag/v0.15
 license: GPL-3.0-only
-license_file: https://raw.githubusercontent.com/Duet3D/SpyglassWebcamServerPlugin/master/LICENSE
-download_count: 0
+license_file: https://spdx.org/licenses/GPL-3.0-only
+download_count: 449
 tags:
 - spyglass
 - webcam
