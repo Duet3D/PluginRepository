@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-09-02T12:28:22.328Z
-plugin_updated_on: 2022-09-02T12:28:24.834Z
+plugin_updated_on: 2025-01-28T11:43:33.540Z
 plugin: true
 title: Motion Webcam Server
-abstract: Motion Webcam Server
+abstract: MotionWebcamServerPlugin
 author: Duet3D
 repo: MotionWebcamServerPlugin
 branch: master
-homepage: https://github.com/Duet3D/DSF-Plugins
+homepage: https://github.com/Duet3D/MotionWebcamServerPlugin
 dwcVersion: undefined
-sbcDSfVersion: 3.4
+sbcDSfVersion: 3.6
 rrfVersion: undefined
 oem: true
-latest_version: v3.4
-release_date: 2022-06-14T08:40:25Z
-release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.4
+latest_version: v3.5.2
+release_date: 2025-01-28T11:41:30Z
+release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.5.2
 license: GPL-2.0-only
-license_file: https://raw.githubusercontent.com/Duet3D/MotionWebcamServerPlugin/master/LICENSE
-download_count: 23
+license_file: https://spdx.org/licenses/GPL-2.0-only
+download_count: 1526
 tags:
 - motion
 - webcam
@@ -45,7 +45,8 @@ To configure this service in DWC, go to the `Settings` -> `General` page and mak
 
 ## Build instructions
 
-Create a ZIP file of every file but `README.md` in this directory and make sure `plugin.json` is at the root level. Once created, the ZIP can be installed as a third-party plugin.
+Create a ZIP file of every file in the `src` directory and make sure `plugin.json` is at the root level. Once created, the ZIP can be installed as a third-party plugin.
+If a Debian package is supposed to be generated, check out to the `pkg/build.sh` script.
 
 ## Logging
 
