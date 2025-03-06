@@ -78,7 +78,14 @@ const downloadFile = async (url:string, dest:string) => {
     console.log("Downloading file from URL: ")
     console.log(url);
     const wget = require('node-wget-promise');
-    return await wget(url, {output: dest})
+    try{
+        return await wget(url, {output: dest})
+    }
+    catch(e){
+        console.log("Error downloading File:")
+        console.log(e)
+    }
+
 }
 
 const isFirstCharNum = (str:string) => {
