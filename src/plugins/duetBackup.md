@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: stuartofmt
 plugin_submitted_on: 2023-12-13T15:33:39.578Z
-plugin_updated_on: 2023-12-13T15:33:39.578Z
+plugin_updated_on: 2025-03-21T10:04:15.359Z
 plugin: true
 title: duetBackup
-abstract: SBC Plugin to backup Duet3d Files
+abstract: This plugin provides periodic or instant backups of duet3d SBC files.  Backups are made to a Github repository, thereby facilitating the ability to roll back to earlier file versions.
 author: stuartofmt
 repo: duetBackup
 branch: main
 homepage: https://github.com/stuartofmt
 dwcVersion: undefined
-sbcDSfVersion: 3.5.0-rc.1
+sbcDSfVersion: 3.5
 rrfVersion: undefined
 oem: false
-latest_version: 3.5.0-rc.1
-release_date: 2023-12-13T15:29:51Z
-release_page: https://github.com/stuartofmt/duetBackup/releases/tag/3.5.0-rc.1
+latest_version: 21/03/2025
+release_date: 2025-03-21T09:34:03Z
+release_page: https://github.com/stuartofmt/duetBackup/releases/tag/21/03/2025
 license: GPL-2.0-or-later
 license_file: https://spdx.org/licenses/GPL-2.0-or-later
-download_count: 0
+download_count: 538
 tags:
 - sbc
 ---
@@ -41,26 +41,10 @@ There are two modes of operation, depending on whether the archive option is use
     The behavior is the same as above, except that files which are deleted from the source are NOT  deleted from the main branch.  This makes recovery a little more involved.
 
 **Prerequisites:**
-SBC
+Duet3d SBC V3.x
+Python >= 3.8
 
-V3.5.0-rc.1
-
-Tested with Debian Bullseye
-
-Python3
-
-**To use the plugin:**
-
-1- Create a new repository (Private is recomended) on Github.  Include a Readme.md file.  Take note of the name of the repository (including case) as well as the branch, which will usually be main.
-
-2- Create a personal access token token.  A **classic** token with "repo" authorization is sufficient.  Instructions for creating a token can be found here:
-https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
-
-3- Create(using DWC) a file `System/duetBackup/duetBackup.config` details are in the file Config Notes.
-
-4- Install the plugin using the zip file from the DSF / DWC version folder.
-
-5- To create an initial backup, set `-days 0` and `-hours 0`. This will run duetBackup once.  After that, set `-days` and `-hrs` to your prefered backup interval.  Note that if there are no changes to any files, backup does nothing.
+Tested with Debian Bullseye and Bookwork on V3.5.4 and V3.6
 
 **Versions**
 
@@ -83,3 +67,12 @@ https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/m
 - README.md file shows date and time of last backup
 -README.md prevented from being deleted
 - Added `-ignore`. Can specify files that are not to be backed up. This also causes these files to be deleted unless `-noDelete` is set.
+
+***V1.4***
+- Added logging to logfile
+- updated deprecated python calls
+- added file change summary info to README.md
+''' 
+
+### Setup
+Instructions for setup / installation are in the file `Documents/setup.md`
