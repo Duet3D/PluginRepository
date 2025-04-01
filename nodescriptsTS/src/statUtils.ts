@@ -18,7 +18,14 @@ const updatePluginStats = async () => {
             new_plugin_versions_json.push(plugin_version_entry);
         }
 
+        console.log("Writing plugin_stats.json")
+        console.log(new_plugin_stat_json)
+
         await writeLocalFile.writeJSONSync(new_plugin_stat_json, 'plugin_stats.json')
+
+
+        console.log("Writing plugin_versions.json")
+        console.log(new_plugin_versions_json)
         await writeLocalFile.writeJSONSync(new_plugin_versions_json, 'plugin_versions.json')
 
         return {new_plugin_stat_json, new_plugin_versions_json}
