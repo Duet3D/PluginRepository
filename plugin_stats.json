@@ -90,21 +90,6 @@
         "last_updated_date": "2025-01-28"
     },
     {
-        "plugin_id": "InputShapingPlugin",
-        "author": "Duet3D",
-        "plugin_submitted_on": "2022-10-04T11:37:43.575Z",
-        "plugin_updated_on": "2023-07-28T09:00:02.974Z",
-        "latest_release": "v3.4.7",
-        "is_reported": false,
-        "total_download_count": 2973,
-        "total_downloads_on_week_start": 2955,
-        "ongoing_total_weeky_downloads": 18,
-        "latest_release_download_count": 769,
-        "latest_release_downloads_on_week_start": 752,
-        "week_start_date": "2025-01-22",
-        "last_updated_date": "2025-01-28"
-    },
-    {
         "plugin_id": "MotionWebcamServerPlugin",
         "author": "Duet3D",
         "plugin_submitted_on": "2022-09-02T12:28:22.328Z",

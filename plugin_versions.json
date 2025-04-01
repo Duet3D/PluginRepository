@@ -337,57 +337,6 @@
     },
     null,
     {
-        "plugin_id": "InputShapingPlugin",
-        "author": "Duet3D",
-        "plugin_manifest": {
-            "id": "InputShaping",
-            "name": "Input Shaping",
-            "author": "Duet3D Ltd",
-            "version": "3.4.7",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/DSF-Plugins",
-            "dwcVersion": "3.4",
-            "tags": [
-                "input shaping",
-                "tuning"
-            ]
-        },
-        "latest_release": "v3.4.7",
-        "releases": [
-            {
-                "tag_name": "v3.4.7",
-                "name": "Version 3.4.7",
-                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.7/InputShaping-3.4.7.zip",
-                "published_at": "2024-02-21T16:12:23Z"
-            },
-            {
-                "tag_name": "v3.4.6",
-                "name": "Version 3.4.6",
-                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.6/InputShaping-3.4.6.zip",
-                "published_at": "2023-07-28T08:44:29Z"
-            },
-            {
-                "tag_name": "v3.5.0-b1",
-                "name": "Version 3.5.0-b1",
-                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.5.0-b1/InputShaping-3.5.0-b1.zip",
-                "published_at": "2022-12-27T13:07:55Z"
-            },
-            {
-                "tag_name": "v3.4.1-b1",
-                "name": "Version 3.4.1-b1",
-                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.1-b1/InputShaping-3.4.1-b1.zip",
-                "published_at": "2022-06-20T14:34:10Z"
-            },
-            {
-                "tag_name": "v3.4.0",
-                "name": "Version 3.4.0-b1",
-                "download_url": "https://github.com/Duet3D/InputShapingPlugin/releases/download/v3.4.0/InputShaping-3.4.0-b1.zip",
-                "published_at": "2022-06-14T08:51:39Z"
-            }
-        ]
-    },
-    null,
-    {
         "plugin_id": "ObjectCancelPlugin",
         "author": "Sindarius",
         "plugin_manifest": {
