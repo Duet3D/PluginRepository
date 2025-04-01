@@ -141,7 +141,15 @@ const readFile = {
         return new Promise((resolve, reject) => {
             fs.readFile(path, (err, data) => {
                 if (err) reject(err);
-                resolve(JSON.parse((data||"{}").toString()));
+                try{
+                    resolve(JSON.parse((data).toString()));
+                }
+                catch(e){
+                    console.log("Error readFile");
+                    console.log(e);
+                    resolve(false);
+                }
+
             });
         });    
     },
