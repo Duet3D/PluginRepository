@@ -142,10 +142,10 @@ const readFile = {
             fs.readFile(path, (err, data) => {
                 if (err) reject(err);
                 try{
-                    resolve(JSON.parse((data).toString()));
+                    resolve(JSON.parse((data||"").toString()));
                 }
                 catch(e){
-                    console.log("Error readFile");
+                    console.log("Error readFile for path - ", path);
                     console.log(e);
                     resolve(false);
                 }
