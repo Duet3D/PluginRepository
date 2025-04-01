@@ -113,13 +113,13 @@ const createPluginVersionEntry = async (plugin_id:string, author:string, gh_rele
     }
     catch(err){
         console.log(err);
-        return;
+        return {};
     }
 
     let res = checkFile.local('unzipped/plugin.json');
     if(!res){
         console.log('plugin.json not available');
-        return;
+        return {};
     }
     
     const plugin_json = await readLocalFile.JSON('unzipped/plugin.json');
