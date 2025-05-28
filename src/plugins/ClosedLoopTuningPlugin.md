@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: T3P3
 plugin_submitted_on: 2022-09-02T12:25:08.721Z
-plugin_updated_on: 2024-09-25T06:39:37.569Z
+plugin_updated_on: 2025-05-28T17:04:36.237Z
 plugin: true
 title: Closed Loop Tuning
-abstract: ClosedLoopTuningPlugin
+abstract: ClosedLoopTuningPlugin v3.6.0
 author: Duet3D
 repo: ClosedLoopTuningPlugin
 branch: master
@@ -13,12 +13,12 @@ dwcVersion: 3.6
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: true
-latest_version: v3.6.0-beta.1
-release_date: 2024-09-25T06:25:10Z
-release_page: https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/tag/v3.6.0-beta.1
+latest_version: v3.6.0
+release_date: 2025-05-28T16:59:58Z
+release_page: https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/tag/v3.6.0
 license: GPL-3.0
-license_file: https://raw.githubusercontent.com/Duet3D/ClosedLoopTuningPlugin/master/LICENSE
-download_count: 1338
+license_file: https://spdx.org/licenses/GPL-3.0
+download_count: 1729
 tags:
 - closed loop
 - tuning
