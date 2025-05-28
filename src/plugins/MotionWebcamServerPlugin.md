@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-09-02T12:28:22.328Z
-plugin_updated_on: 2025-01-28T11:43:33.540Z
+plugin_updated_on: 2025-05-28T17:03:54.069Z
 plugin: true
 title: Motion Webcam Server
-abstract: MotionWebcamServerPlugin
+abstract: MotionWebcamServerPlugin v3.6.0
 author: Duet3D
 repo: MotionWebcamServerPlugin
 branch: master
@@ -13,12 +13,12 @@ dwcVersion: undefined
 sbcDSfVersion: 3.6
 rrfVersion: undefined
 oem: true
-latest_version: v3.5.2
-release_date: 2025-01-28T11:41:30Z
-release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.5.2
+latest_version: v3.6.0
+release_date: 2025-05-28T16:52:27Z
+release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.6.0
 license: GPL-2.0-only
 license_file: https://spdx.org/licenses/GPL-2.0-only
-download_count: 1526
+download_count: 1755
 tags:
 - motion
 - webcam
