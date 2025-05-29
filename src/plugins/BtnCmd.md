@@ -1,7 +1,7 @@
 ---
 plugin_submitted_by: MintyTrebor
 plugin_submitted_on: 2022-09-01T14:09:10.113Z
-plugin_updated_on: 2024-06-16T13:31:51.214Z
+plugin_updated_on: 2025-05-29T11:21:58.195Z
 plugin: true
 title: BtnCmd
 abstract: Customize DWC with your own design with layouts containing new panels, custom charts, and buttons
@@ -9,16 +9,16 @@ author: MintyTrebor
 repo: BtnCmd
 branch: main
 homepage: https://github.com/MintyTrebor
-dwcVersion: 3.5.2
+dwcVersion: 3.6
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: false
-latest_version: 01.03.04
-release_date: 2024-06-16T13:29:00Z
-release_page: https://github.com/MintyTrebor/BtnCmd/releases/tag/01.03.04
+latest_version: 01.04.00
+release_date: 2025-05-29T10:52:21Z
+release_page: https://github.com/MintyTrebor/BtnCmd/releases/tag/01.04.00
 license: GPL-3.0-or-later
-license_file: https://raw.githubusercontent.com/MintyTrebor/BtnCmd/main/LICENSE
-download_count: 2243
+license_file: https://spdx.org/licenses/GPL-3.0-or-later
+download_count: 2916
 tags:
 - dwc
 ---
