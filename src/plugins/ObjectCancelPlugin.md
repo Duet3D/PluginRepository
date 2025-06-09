@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: Sindarius
 plugin_submitted_on: 2022-09-02T12:28:47.523Z
-plugin_updated_on: 2023-03-09T12:06:28.836Z
+plugin_updated_on: 2025-06-09T17:16:17.746Z
 plugin: true
 title: Object Cancel
-abstract: Fixes an issue with clicking on objects in visual.
+abstract: Update Object Cancel Plugin to 3.6
 author: Sindarius
 repo: ObjectCancelPlugin
 branch: main
 homepage: https://github.com/Sindarius/ObjectCancelPlugin
-dwcVersion: 3.5
+dwcVersion: 3.6
 sbcDSfVersion: undefined
 rrfVersion: undefined
 oem: false
-latest_version: 1.3.1
-release_date: 2023-03-09T12:02:12Z
-release_page: https://github.com/Sindarius/ObjectCancelPlugin/releases/tag/1.3.1
+latest_version: 1.3.2
+release_date: 2025-06-09T17:10:44Z
+release_page: https://github.com/Sindarius/ObjectCancelPlugin/releases/tag/1.3.2
 license: LGPL-3.0-or-later
-license_file: https://raw.githubusercontent.com/Sindarius/ObjectCancelPlugin/main/LICENSE
-download_count: 602
+license_file: https://spdx.org/licenses/LGPL-3.0-or-later
+download_count: 2362
 tags:
 - dwc
 ---
