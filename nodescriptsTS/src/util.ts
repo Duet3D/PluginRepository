@@ -84,6 +84,7 @@ const downloadFile = async (url:string, dest:string) => {
     catch(e){
         console.log("Error downloading File:")
         console.log(e)
+        return false;
     }
 
 }

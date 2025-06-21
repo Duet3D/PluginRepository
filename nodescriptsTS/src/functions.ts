@@ -81,8 +81,10 @@ const submissionPrecheck = async () => {
     isOK = isOK && res;
 
     //3. Download latest ZIP bundle
-    await downloadFile(browser_download_url, 'asset.zip')
-
+    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    if(res1 == false){
+        await exitProcess("Error downloading file, Exiting", checklog);        
+    }
 
     //4. Make sure plugin.json exists and is below 16KiB
     //unzip here
@@ -223,8 +225,10 @@ const updatePrecheck = async () => {
     isOK = isOK && res;
 
     //3. Download latest ZIP bundle
-    await downloadFile(browser_download_url, 'asset.zip')
-
+    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    if(res1 == false){
+        await exitProcess("Error downloading file, Exiting", checklog);        
+    }
 
     //4. Make sure plugin.json exists and below 16KiB
     //unzip here
@@ -324,8 +328,10 @@ const updateCreatePR = async () => {
         await exitProcess('Release available is not zip, Exiting', checklog);
     }
 
-    await downloadFile(browser_download_url, 'asset.zip')
-
+    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    if(res1 == false){
+        await exitProcess("Error downloading file, Exiting", checklog);        
+    }
     try{
         await unzip();
     }
@@ -461,7 +467,10 @@ const submissionCreatePR = async () => {
         await exitProcess('Release available is not zip, Exiting', checklog);
     }
 
-    await downloadFile(browser_download_url, 'asset.zip')
+    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    if(res1 == false){
+        await exitProcess("Error downloading file, Exiting", checklog);        
+    }
 
     try{
         await unzip();
