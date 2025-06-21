@@ -5,7 +5,7 @@
     },
     {
         "author": "Duet3D",
-        "num_of_plugins": 5
+        "num_of_plugins": 4
     },
     {
         "author": "LoicGRENON",
@@ -21,6 +21,6 @@
     },
     {
         "author": "stuartofmt",
-        "num_of_plugins": 1
+        "num_of_plugins": 2
     }
 ]

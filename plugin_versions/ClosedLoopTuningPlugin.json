@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v3.6.0",
+        "browser_download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.6.0/ClosedLoopTuning-3.6.0.zip",
+        "published_at": "2025-05-28T16:59:58Z",
+        "version_list": [
+            {
+                "version": "not_found",
+                "platform": "not_found"
+            }
+        ]
+    },
+    {
         "tagName": "v3.6.0-beta.1",
         "browser_download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.6.0-beta.1/ClosedLoopTuning-3.6.0-beta.1.zip",
         "published_at": "2024-09-25T06:25:10Z",
