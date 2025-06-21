@@ -27,7 +27,21 @@ const getReleases = async (gituser, gitrepo, latest_tagName) => {
 }
 
 const getPlatformVersionPerRelease = async (browser_download_url) => {
-    await downloadRemoteFile(browser_download_url, 'asset.zip');
+    if(!browser_download_url){
+        console.log("browser_download_url not found")
+        return [{
+            version: "not_found",
+            platform: "not_found"
+        }]
+    }
+    const res1 = await downloadRemoteFile(browser_download_url, 'asset.zip');
+    if(res1 == false){
+        console.log("Unable to download file")
+        return [{
+            version: "not_found",
+            platform: "not_found"
+        }]
+    }
 
     let version_list = [];
 
