@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "21/03/2025",
+        "browser_download_url": "https://github.com/stuartofmt/usbStream/releases/download/21/03/2025/3.5.x.usbStream.1.2.zip",
+        "published_at": "2025-03-21T09:49:20Z",
+        "version_list": [
+            {
+                "version": "3.5",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
         "tagName": "01.03.2025",
         "browser_download_url": "https://github.com/stuartofmt/usbStream/releases/download/01.03.2025/usbStream3.5.-.1.0.1.zip",
         "published_at": "2025-03-04T17:23:20Z",
