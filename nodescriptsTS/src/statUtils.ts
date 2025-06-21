@@ -127,10 +127,11 @@ const createPluginVersionEntry = async (plugin_id:string, author:string, gh_rele
 
 
     let releases = gh_release_data.map( x=> {
+        console.log("Releases x", x)
         return {
             tag_name: x.tag_name,
             name: x.name,
-            download_url: x.assets[0].browser_download_url,
+            download_url: (((x||{}).assets||[{}])[0]||{}).browser_download_url,
             published_at: x.published_at
         }
     })
