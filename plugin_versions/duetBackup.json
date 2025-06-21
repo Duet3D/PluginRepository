@@ -1,5 +1,26 @@
 [
     {
+        "tagName": "21/03/2025",
+        "browser_download_url": "https://github.com/stuartofmt/duetBackup/releases/download/21/03/2025/3.5.x.duetBackup.1.4.zip",
+        "published_at": "2025-03-21T09:34:03Z",
+        "version_list": [
+            {
+                "version": "not_found",
+                "platform": "not_found"
+            }
+        ]
+    },
+    {
+        "tagName": "V1.3",
+        "published_at": "2025-02-19T11:45:38Z",
+        "version_list": [
+            {
+                "version": "not_found",
+                "platform": "not_found"
+            }
+        ]
+    },
+    {
         "tagName": "3.5.0-rc.1",
         "browser_download_url": "https://github.com/stuartofmt/duetBackup/releases/download/3.5.0-rc.1/duetBackup.-V1.3.-.3.5.0-rc.1.zip",
         "published_at": "2023-12-13T15:29:51Z",
