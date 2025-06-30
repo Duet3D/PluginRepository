@@ -1,5 +1,20 @@
 [
     {
+        "tagName": "v0.7",
+        "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.7/ExecOnMcode-0.7-v3.6.0.zip",
+        "published_at": "2025-06-29T15:36:01Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
         "tagName": "v0.6",
         "browser_download_url": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin/releases/download/v0.6/ExecOnMcode-0.6.zip",
         "published_at": "2024-05-23T18:16:54Z",
