@@ -359,13 +359,31 @@
         "plugin_id": "DWC-CAN-Manager",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "CANManager",
-            "name": "CAN Manager",
-            "author": "Juan Rosario",
-            "version": "1.1.0",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.5"
+            "id": "ExecOnMcode",
+            "name": "Exec On M-Code",
+            "author": "Loïc GRENON",
+            "version": "0.7",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
+            "dwcVersion": "3.6",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "execOnMcode.py",
+            "sbcOutputRedirected": true,
+            "sbcPermissions": [
+                "commandExecution",
+                "codeInterceptionReadWrite",
+                "objectModelReadWrite",
+                "registerHttpEndpoints",
+                "fileSystemAccess",
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "gpioAccess"
+            ],
+            "sbcPackageDependencies": [
+                "python3-dsf-python"
+            ]
         },
         "latest_release": "V1.1.0",
         "releases": [
@@ -387,13 +405,13 @@
         "plugin_id": "DWC_GamepadJogger_Plugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "CANManager",
-            "name": "CAN Manager",
-            "author": "Juan Rosario",
+            "id": "GamepadJogger",
+            "name": "Gamepad Jogger",
+            "author": "Juan Rosario (Sindarius)",
             "version": "1.1.0",
+            "dwcVersion": "3.5",
             "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.5"
+            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
         },
         "latest_release": "1.1",
         "releases": [
@@ -445,16 +463,13 @@
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
-            "author": "Duet3D Ltd",
-            "version": "3.5.0",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
+            "id": "GamepadJogger",
+            "name": "Gamepad Jogger",
+            "author": "Juan Rosario (Sindarius)",
+            "version": "1.1.0",
             "dwcVersion": "3.5",
-            "tags": [
-                "endstops"
-            ]
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
         },
         "latest_release": "v3.5.0",
         "releases": [
@@ -500,15 +515,32 @@
         "plugin_id": "MotionWebcamServerPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
+            "id": "MotionWebcamServer",
+            "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.5.0",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
-            "dwcVersion": "3.5",
+            "version": "3.6.0",
+            "license": "GPL-2.0-only",
+            "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "motion",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "motion.conf"
+            ],
+            "sbcPackageDependencies": [
+                "motion"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
             "tags": [
-                "endstops"
+                "motion",
+                "webcam",
+                "server"
             ]
         },
         "latest_release": "v3.6.0",
@@ -555,15 +587,32 @@
         "plugin_id": "ObjectCancelPlugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
+            "id": "MotionWebcamServer",
+            "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.5.0",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
-            "dwcVersion": "3.5",
+            "version": "3.6.0",
+            "license": "GPL-2.0-only",
+            "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "motion",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "motion.conf"
+            ],
+            "sbcPackageDependencies": [
+                "motion"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
             "tags": [
-                "endstops"
+                "motion",
+                "webcam",
+                "server"
             ]
         },
         "latest_release": "1.3.2",
