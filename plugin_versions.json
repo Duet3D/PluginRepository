@@ -858,38 +858,17 @@
         "plugin_id": "duetBackup",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "duetBackup",
-            "name": "duetBackup",
-            "author": "Stuartofmt",
-            "version": "1.4",
-            "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt",
-            "sbcRequired": true,
-            "sbcDsfVersion": "3.5",
-            "sbcExecutable": "duetBackup.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
-            "sbcOutputRedirected": false,
-            "sbcPermissions": [
-                "networkAccess",
-                "readSystem",
-                "writeSystem",
-                "fileSystemAccess"
+            "id": "RevoPluginConfig",
+            "name": "E3D Revo Config Plugin",
+            "author": "Christian Hammacher",
+            "version": "1.2.0",
+            "license": "MIT",
+            "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
+            "tags": [
+                "config",
+                "revo"
             ],
-            "sbcPythonDependencies": [
-                "argparse",
-                "shlex",
-                "sys",
-                "os",
-                "re",
-                "datetime",
-                "cryptography==41.0.5",
-                "pyOpenSSL==20.0.1",
-                "PyGithub==2.1.1",
-                "time",
-                "requests",
-                "json",
-                "signal"
-            ]
+            "rrfVersion": "3.5"
         },
         "latest_release": "21/03/2025",
         "releases": [
@@ -916,16 +895,16 @@
         "plugin_id": "usbStream",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "duetBackup",
-            "name": "duetBackup",
+            "id": "usbStream",
+            "name": "usbStream",
             "author": "Stuartofmt",
-            "version": "1.4",
+            "version": "1.2",
             "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt",
+            "homepage": "https://github.com/stuartofmt/usbStream",
             "sbcRequired": true,
             "sbcDsfVersion": "3.5",
-            "sbcExecutable": "duetBackup.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
+            "sbcExecutable": "usbStream.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/usbStream/usbStream.config",
             "sbcOutputRedirected": false,
             "sbcPermissions": [
                 "networkAccess",
@@ -934,19 +913,8 @@
                 "fileSystemAccess"
             ],
             "sbcPythonDependencies": [
-                "argparse",
-                "shlex",
-                "sys",
-                "os",
-                "re",
-                "datetime",
-                "cryptography==41.0.5",
-                "pyOpenSSL==20.0.1",
-                "PyGithub==2.1.1",
-                "time",
-                "requests",
-                "json",
-                "signal"
+                "opencv-python",
+                "imutils"
             ]
         },
         "latest_release": "21/03/2025",
