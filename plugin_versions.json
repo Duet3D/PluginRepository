@@ -359,31 +359,13 @@
         "plugin_id": "DWC-CAN-Manager",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "ExecOnMcode",
-            "name": "Exec On M-Code",
-            "author": "Loïc GRENON",
-            "version": "0.7",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
-            "dwcVersion": "3.6",
-            "sbcRequired": true,
-            "sbcDsfVersion": "3.6",
-            "sbcExecutable": "execOnMcode.py",
-            "sbcOutputRedirected": true,
-            "sbcPermissions": [
-                "commandExecution",
-                "codeInterceptionReadWrite",
-                "objectModelReadWrite",
-                "registerHttpEndpoints",
-                "fileSystemAccess",
-                "launchProcesses",
-                "networkAccess",
-                "webcamAccess",
-                "gpioAccess"
-            ],
-            "sbcPackageDependencies": [
-                "python3-dsf-python"
-            ]
+            "id": "CANManager",
+            "name": "CAN Manager",
+            "author": "Juan Rosario",
+            "version": "1.1.0",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/CANManager",
+            "dwcVersion": "3.5"
         },
         "latest_release": "V1.1.0",
         "releases": [
@@ -405,13 +387,13 @@
         "plugin_id": "DWC_GamepadJogger_Plugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "GamepadJogger",
-            "name": "Gamepad Jogger",
-            "author": "Juan Rosario (Sindarius)",
+            "id": "CANManager",
+            "name": "CAN Manager",
+            "author": "Juan Rosario",
             "version": "1.1.0",
-            "dwcVersion": "3.5",
             "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
+            "homepage": "https://github.com/Sindarius/CANManager",
+            "dwcVersion": "3.5"
         },
         "latest_release": "1.1",
         "releases": [
@@ -463,13 +445,13 @@
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "GamepadJogger",
-            "name": "Gamepad Jogger",
-            "author": "Juan Rosario (Sindarius)",
+            "id": "CANManager",
+            "name": "CAN Manager",
+            "author": "Juan Rosario",
             "version": "1.1.0",
-            "dwcVersion": "3.5",
             "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
+            "homepage": "https://github.com/Sindarius/CANManager",
+            "dwcVersion": "3.5"
         },
         "latest_release": "v3.5.0",
         "releases": [
@@ -877,34 +859,37 @@
         "plugin_id": "duetBackup",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "SpyglassWebcamServer",
-            "name": "Spyglass Webcam Server",
-            "author": "Duet3D Ltd",
-            "version": "0.15",
-            "license": "GPL-3.0-only",
-            "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
+            "id": "duetBackup",
+            "name": "duetBackup",
+            "author": "Stuartofmt",
+            "version": "1.4",
+            "license": "GPL-2.0-or-later",
+            "homepage": "https://github.com/stuartofmt",
             "sbcRequired": true,
-            "sbcDsfVersion": "3",
-            "sbcExecutable": "scripts/spyglass",
+            "sbcDsfVersion": "3.5",
+            "sbcExecutable": "duetBackup.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
             "sbcOutputRedirected": false,
-            "sbcConfigFiles": [
-                "spyglass.conf"
-            ],
-            "sbcPackageDependencies": [
-                "python3",
-                "python3-libcamera",
-                "python3-picamera2"
-            ],
             "sbcPermissions": [
-                "launchProcesses",
                 "networkAccess",
-                "webcamAccess",
-                "readSystem"
+                "readSystem",
+                "writeSystem",
+                "fileSystemAccess"
             ],
-            "tags": [
-                "spyglass",
-                "webcam",
-                "server"
+            "sbcPythonDependencies": [
+                "argparse",
+                "shlex",
+                "sys",
+                "os",
+                "re",
+                "datetime",
+                "cryptography==41.0.5",
+                "pyOpenSSL==20.0.1",
+                "PyGithub==2.1.1",
+                "time",
+                "requests",
+                "json",
+                "signal"
             ]
         },
         "latest_release": "21/03/2025",
@@ -932,16 +917,16 @@
         "plugin_id": "usbStream",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "usbStream",
-            "name": "usbStream",
+            "id": "duetBackup",
+            "name": "duetBackup",
             "author": "Stuartofmt",
-            "version": "1.2",
+            "version": "1.4",
             "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt/usbStream",
+            "homepage": "https://github.com/stuartofmt",
             "sbcRequired": true,
             "sbcDsfVersion": "3.5",
-            "sbcExecutable": "usbStream.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/usbStream/usbStream.config",
+            "sbcExecutable": "duetBackup.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
             "sbcOutputRedirected": false,
             "sbcPermissions": [
                 "networkAccess",
@@ -950,8 +935,19 @@
                 "fileSystemAccess"
             ],
             "sbcPythonDependencies": [
-                "opencv-python",
-                "imutils"
+                "argparse",
+                "shlex",
+                "sys",
+                "os",
+                "re",
+                "datetime",
+                "cryptography==41.0.5",
+                "pyOpenSSL==20.0.1",
+                "PyGithub==2.1.1",
+                "time",
+                "requests",
+                "json",
+                "signal"
             ]
         },
         "latest_release": "21/03/2025",
