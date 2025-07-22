@@ -209,17 +209,23 @@
         "plugin_id": "ClosedLoopTuningPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "ClosedLoopTuning",
-            "name": "Closed Loop Tuning",
-            "author": "Louis Irwin, Juan Rosario",
-            "version": "3.6.0",
+            "dwcWebpackChunk": "BtnCmd",
+            "id": "BtnCmd",
+            "name": "BtnCmd",
+            "author": "Minty Trebor",
+            "version": "01.04.00",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.6",
-            "license": "GPL-3.0",
-            "homepage": "https://duet3d.com",
-            "tags": [
-                "closed loop",
-                "tuning"
-            ]
+            "dependencies": {
+                "precompiled-mqtt": "^4.3.7",
+                "deepmerge": "^4.2.2",
+                "axios": "^1.2.1",
+                "vue-draggable-resizable": "^2.3.0",
+                "jsonpath": "^1.1.1",
+                "vuedraggable": "^2.24.3",
+                "mathjs": "^11.6.0"
+            }
         },
         "latest_release": "v3.6.0",
         "releases": [
@@ -277,16 +283,30 @@
         "plugin_id": "DSF_ExecOnMcode_Plugin",
         "author": "LoicGRENON",
         "plugin_manifest": {
-            "id": "ClosedLoopTuning",
-            "name": "Closed Loop Tuning",
-            "author": "Louis Irwin, Juan Rosario",
-            "version": "3.6.0",
+            "id": "ExecOnMcode",
+            "name": "Exec On M-Code",
+            "author": "Loïc GRENON",
+            "version": "0.7",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
             "dwcVersion": "3.6",
-            "license": "GPL-3.0",
-            "homepage": "https://duet3d.com",
-            "tags": [
-                "closed loop",
-                "tuning"
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "execOnMcode.py",
+            "sbcOutputRedirected": true,
+            "sbcPermissions": [
+                "commandExecution",
+                "codeInterceptionReadWrite",
+                "objectModelReadWrite",
+                "registerHttpEndpoints",
+                "fileSystemAccess",
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "gpioAccess"
+            ],
+            "sbcPackageDependencies": [
+                "python3-dsf-python"
             ]
         },
         "latest_release": "v0.7",
@@ -339,13 +359,31 @@
         "plugin_id": "DWC-CAN-Manager",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "CANManager",
-            "name": "CAN Manager",
-            "author": "Juan Rosario",
-            "version": "1.1.0",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.5"
+            "id": "ExecOnMcode",
+            "name": "Exec On M-Code",
+            "author": "Loïc GRENON",
+            "version": "0.7",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
+            "dwcVersion": "3.6",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "execOnMcode.py",
+            "sbcOutputRedirected": true,
+            "sbcPermissions": [
+                "commandExecution",
+                "codeInterceptionReadWrite",
+                "objectModelReadWrite",
+                "registerHttpEndpoints",
+                "fileSystemAccess",
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "gpioAccess"
+            ],
+            "sbcPackageDependencies": [
+                "python3-dsf-python"
+            ]
         },
         "latest_release": "V1.1.0",
         "releases": [
@@ -367,13 +405,13 @@
         "plugin_id": "DWC_GamepadJogger_Plugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "CANManager",
-            "name": "CAN Manager",
-            "author": "Juan Rosario",
+            "id": "GamepadJogger",
+            "name": "Gamepad Jogger",
+            "author": "Juan Rosario (Sindarius)",
             "version": "1.1.0",
+            "dwcVersion": "3.5",
             "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/CANManager",
-            "dwcVersion": "3.5"
+            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
         },
         "latest_release": "1.1",
         "releases": [
@@ -425,16 +463,13 @@
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
-            "author": "Duet3D Ltd",
-            "version": "3.5.0",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
+            "id": "GamepadJogger",
+            "name": "Gamepad Jogger",
+            "author": "Juan Rosario (Sindarius)",
+            "version": "1.1.0",
             "dwcVersion": "3.5",
-            "tags": [
-                "endstops"
-            ]
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
         },
         "latest_release": "v3.5.0",
         "releases": [
@@ -480,15 +515,32 @@
         "plugin_id": "MotionWebcamServerPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "EndstopsMonitor",
-            "name": "Endstops Monitor",
+            "id": "MotionWebcamServer",
+            "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.5.0",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
-            "dwcVersion": "3.5",
+            "version": "3.6.0",
+            "license": "GPL-2.0-only",
+            "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "motion",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "motion.conf"
+            ],
+            "sbcPackageDependencies": [
+                "motion"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
             "tags": [
-                "endstops"
+                "motion",
+                "webcam",
+                "server"
             ]
         },
         "latest_release": "v3.6.0",
@@ -535,13 +587,33 @@
         "plugin_id": "ObjectCancelPlugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "ObjectCancel",
-            "name": "Object Cancel",
-            "author": "Juan Rosario",
-            "version": "1.3.2",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/ObjectCancelPlugin",
-            "dwcVersion": "3.6"
+            "id": "MotionWebcamServer",
+            "name": "Motion Webcam Server",
+            "author": "Duet3D Ltd",
+            "version": "3.6.0",
+            "license": "GPL-2.0-only",
+            "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3.6",
+            "sbcExecutable": "motion",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "motion.conf"
+            ],
+            "sbcPackageDependencies": [
+                "motion"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
+            "tags": [
+                "motion",
+                "webcam",
+                "server"
+            ]
         },
         "latest_release": "1.3.2",
         "releases": [
@@ -587,13 +659,18 @@
         "plugin_id": "ReleaseMgr",
         "author": "MintyTrebor",
         "plugin_manifest": {
-            "id": "ObjectCancel",
-            "name": "Object Cancel",
-            "author": "Juan Rosario",
-            "version": "1.3.2",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/ObjectCancelPlugin",
-            "dwcVersion": "3.6"
+            "dwcWebpackChunk": "ReleaseMgr",
+            "id": "ReleaseMgr",
+            "name": "ReleaseMgr",
+            "author": "Minty Trebor",
+            "version": "1.3.5",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
+            "dwcVersion": "3.6",
+            "dependencies": {
+                "axios": "^1.7.7",
+                "marked": "^14.1.2"
+            }
         },
         "latest_release": "1.3.5",
         "releases": [
@@ -711,17 +788,18 @@
         "plugin_id": "RevoConfigPlugin",
         "author": "chrishamm",
         "plugin_manifest": {
-            "id": "RevoPluginConfig",
-            "name": "E3D Revo Config Plugin",
-            "author": "Christian Hammacher",
-            "version": "1.2.0",
-            "license": "MIT",
-            "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
-            "tags": [
-                "config",
-                "revo"
-            ],
-            "rrfVersion": "3.5"
+            "dwcWebpackChunk": "ReleaseMgr",
+            "id": "ReleaseMgr",
+            "name": "ReleaseMgr",
+            "author": "Minty Trebor",
+            "version": "1.3.5",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
+            "dwcVersion": "3.6",
+            "dependencies": {
+                "axios": "^1.7.7",
+                "marked": "^14.1.2"
+            }
         },
         "latest_release": "v1.2.0",
         "releases": [
@@ -749,17 +827,35 @@
         "plugin_id": "SpyglassWebcamServerPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "RevoPluginConfig",
-            "name": "E3D Revo Config Plugin",
-            "author": "Christian Hammacher",
-            "version": "1.2.0",
-            "license": "MIT",
-            "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
-            "tags": [
-                "config",
-                "revo"
+            "id": "SpyglassWebcamServer",
+            "name": "Spyglass Webcam Server",
+            "author": "Duet3D Ltd",
+            "version": "0.15",
+            "license": "GPL-3.0-only",
+            "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3",
+            "sbcExecutable": "scripts/spyglass",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "spyglass.conf"
             ],
-            "rrfVersion": "3.5"
+            "sbcPackageDependencies": [
+                "python3",
+                "python3-libcamera",
+                "python3-picamera2"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
+            "tags": [
+                "spyglass",
+                "webcam",
+                "server"
+            ]
         },
         "latest_release": "v0.15",
         "releases": [
@@ -781,37 +877,34 @@
         "plugin_id": "duetBackup",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "duetBackup",
-            "name": "duetBackup",
-            "author": "Stuartofmt",
-            "version": "1.4",
-            "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt",
+            "id": "SpyglassWebcamServer",
+            "name": "Spyglass Webcam Server",
+            "author": "Duet3D Ltd",
+            "version": "0.15",
+            "license": "GPL-3.0-only",
+            "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
             "sbcRequired": true,
-            "sbcDsfVersion": "3.5",
-            "sbcExecutable": "duetBackup.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
+            "sbcDsfVersion": "3",
+            "sbcExecutable": "scripts/spyglass",
             "sbcOutputRedirected": false,
-            "sbcPermissions": [
-                "networkAccess",
-                "readSystem",
-                "writeSystem",
-                "fileSystemAccess"
+            "sbcConfigFiles": [
+                "spyglass.conf"
             ],
-            "sbcPythonDependencies": [
-                "argparse",
-                "shlex",
-                "sys",
-                "os",
-                "re",
-                "datetime",
-                "cryptography==41.0.5",
-                "pyOpenSSL==20.0.1",
-                "PyGithub==2.1.1",
-                "time",
-                "requests",
-                "json",
-                "signal"
+            "sbcPackageDependencies": [
+                "python3",
+                "python3-libcamera",
+                "python3-picamera2"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
+            "tags": [
+                "spyglass",
+                "webcam",
+                "server"
             ]
         },
         "latest_release": "21/03/2025",
@@ -839,16 +932,16 @@
         "plugin_id": "usbStream",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "duetBackup",
-            "name": "duetBackup",
+            "id": "usbStream",
+            "name": "usbStream",
             "author": "Stuartofmt",
-            "version": "1.4",
+            "version": "1.2",
             "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt",
+            "homepage": "https://github.com/stuartofmt/usbStream",
             "sbcRequired": true,
             "sbcDsfVersion": "3.5",
-            "sbcExecutable": "duetBackup.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
+            "sbcExecutable": "usbStream.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/usbStream/usbStream.config",
             "sbcOutputRedirected": false,
             "sbcPermissions": [
                 "networkAccess",
@@ -857,19 +950,8 @@
                 "fileSystemAccess"
             ],
             "sbcPythonDependencies": [
-                "argparse",
-                "shlex",
-                "sys",
-                "os",
-                "re",
-                "datetime",
-                "cryptography==41.0.5",
-                "pyOpenSSL==20.0.1",
-                "PyGithub==2.1.1",
-                "time",
-                "requests",
-                "json",
-                "signal"
+                "opencv-python",
+                "imutils"
             ]
         },
         "latest_release": "21/03/2025",
