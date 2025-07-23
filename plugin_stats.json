@@ -6,13 +6,13 @@
         "plugin_updated_on": "2025-05-29T11:21:58.195Z",
         "latest_release": "01.04.00",
         "is_reported": false,
-        "total_download_count": 3132,
+        "total_download_count": 3135,
         "total_downloads_on_week_start": 3127,
-        "ongoing_total_weeky_downloads": 5,
-        "latest_release_download_count": 115,
+        "ongoing_total_weeky_downloads": 8,
+        "latest_release_download_count": 118,
         "latest_release_downloads_on_week_start": 110,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "ClosedLoopTuningPlugin",
@@ -21,13 +21,13 @@
         "plugin_updated_on": "2025-06-21T13:48:28.944Z",
         "latest_release": "v3.6.0",
         "is_reported": false,
-        "total_download_count": 1826,
+        "total_download_count": 1828,
         "total_downloads_on_week_start": 1820,
-        "ongoing_total_weeky_downloads": 6,
-        "latest_release_download_count": 85,
+        "ongoing_total_weeky_downloads": 8,
+        "latest_release_download_count": 87,
         "latest_release_downloads_on_week_start": 80,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "DSF_ExecOnMcode_Plugin",
@@ -36,13 +36,13 @@
         "plugin_updated_on": "2022-09-04T19:39:21.743Z",
         "latest_release": "v0.7",
         "is_reported": false,
-        "total_download_count": 1489,
+        "total_download_count": 1490,
         "total_downloads_on_week_start": 1484,
-        "ongoing_total_weeky_downloads": 5,
-        "latest_release_download_count": 43,
+        "ongoing_total_weeky_downloads": 6,
+        "latest_release_download_count": 44,
         "latest_release_downloads_on_week_start": 39,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "DWC-CAN-Manager",
@@ -51,13 +51,13 @@
         "plugin_updated_on": "2023-09-18T09:01:43.460Z",
         "latest_release": "V1.1.0",
         "is_reported": true,
-        "total_download_count": 1513,
+        "total_download_count": 1514,
         "total_downloads_on_week_start": 1510,
-        "ongoing_total_weeky_downloads": 3,
-        "latest_release_download_count": 1117,
+        "ongoing_total_weeky_downloads": 4,
+        "latest_release_download_count": 1118,
         "latest_release_downloads_on_week_start": 1114,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "DWC_GamepadJogger_Plugin",
@@ -66,13 +66,13 @@
         "plugin_updated_on": "2023-10-11T09:08:36.665Z",
         "latest_release": "1.1",
         "is_reported": false,
-        "total_download_count": 1573,
+        "total_download_count": 1574,
         "total_downloads_on_week_start": 1570,
-        "ongoing_total_weeky_downloads": 3,
-        "latest_release_download_count": 837,
+        "ongoing_total_weeky_downloads": 4,
+        "latest_release_download_count": 838,
         "latest_release_downloads_on_week_start": 834,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "EndstopsMonitorPlugin",
@@ -81,13 +81,13 @@
         "plugin_updated_on": "2023-02-09T13:25:03.138Z",
         "latest_release": "v3.5.0",
         "is_reported": true,
-        "total_download_count": 2921,
+        "total_download_count": 2923,
         "total_downloads_on_week_start": 2915,
-        "ongoing_total_weeky_downloads": 6,
-        "latest_release_download_count": 1214,
+        "ongoing_total_weeky_downloads": 8,
+        "latest_release_download_count": 1216,
         "latest_release_downloads_on_week_start": 1208,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "MotionWebcamServerPlugin",
@@ -96,13 +96,13 @@
         "plugin_updated_on": "2025-05-28T17:03:54.069Z",
         "latest_release": "v3.6.0",
         "is_reported": false,
-        "total_download_count": 1889,
+        "total_download_count": 1892,
         "total_downloads_on_week_start": 1884,
-        "ongoing_total_weeky_downloads": 5,
-        "latest_release_download_count": 100,
+        "ongoing_total_weeky_downloads": 8,
+        "latest_release_download_count": 103,
         "latest_release_downloads_on_week_start": 95,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "ObjectCancelPlugin",
@@ -111,13 +111,13 @@
         "plugin_updated_on": "2025-06-09T17:16:17.746Z",
         "latest_release": "1.3.2",
         "is_reported": false,
-        "total_download_count": 2456,
+        "total_download_count": 2462,
         "total_downloads_on_week_start": 2451,
-        "ongoing_total_weeky_downloads": 5,
-        "latest_release_download_count": 81,
+        "ongoing_total_weeky_downloads": 11,
+        "latest_release_download_count": 87,
         "latest_release_downloads_on_week_start": 76,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "ReleaseMgr",
@@ -126,13 +126,13 @@
         "plugin_updated_on": "2025-05-29T11:22:21.286Z",
         "latest_release": "1.3.5",
         "is_reported": false,
-        "total_download_count": 2415,
+        "total_download_count": 2419,
         "total_downloads_on_week_start": 2410,
-        "ongoing_total_weeky_downloads": 5,
-        "latest_release_download_count": 93,
+        "ongoing_total_weeky_downloads": 9,
+        "latest_release_download_count": 97,
         "latest_release_downloads_on_week_start": 89,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "RevoConfigPlugin",
@@ -141,13 +141,13 @@
         "plugin_updated_on": "2022-12-14T16:41:45.603Z",
         "latest_release": "v1.2.0",
         "is_reported": false,
-        "total_download_count": 1120,
+        "total_download_count": 1123,
         "total_downloads_on_week_start": 1117,
-        "ongoing_total_weeky_downloads": 3,
-        "latest_release_download_count": 569,
+        "ongoing_total_weeky_downloads": 6,
+        "latest_release_download_count": 572,
         "latest_release_downloads_on_week_start": 566,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "SpyglassWebcamServerPlugin",
@@ -156,13 +156,13 @@
         "plugin_updated_on": "2025-01-28T11:43:53.496Z",
         "latest_release": "v0.15",
         "is_reported": false,
-        "total_download_count": 688,
+        "total_download_count": 690,
         "total_downloads_on_week_start": 685,
-        "ongoing_total_weeky_downloads": 3,
-        "latest_release_download_count": 214,
+        "ongoing_total_weeky_downloads": 5,
+        "latest_release_download_count": 216,
         "latest_release_downloads_on_week_start": 211,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "duetBackup",
@@ -171,13 +171,13 @@
         "plugin_updated_on": "2025-03-21T10:04:15.359Z",
         "latest_release": "21/03/2025",
         "is_reported": false,
-        "total_download_count": 711,
+        "total_download_count": 712,
         "total_downloads_on_week_start": 707,
-        "ongoing_total_weeky_downloads": 4,
-        "latest_release_download_count": 156,
+        "ongoing_total_weeky_downloads": 5,
+        "latest_release_download_count": 157,
         "latest_release_downloads_on_week_start": 152,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     },
     {
         "plugin_id": "usbStream",
@@ -186,12 +186,12 @@
         "plugin_updated_on": "2025-04-01T09:29:45.464Z",
         "latest_release": "21/03/2025",
         "is_reported": false,
-        "total_download_count": 57,
+        "total_download_count": 58,
         "total_downloads_on_week_start": 54,
-        "ongoing_total_weeky_downloads": 3,
-        "latest_release_download_count": 38,
+        "ongoing_total_weeky_downloads": 4,
+        "latest_release_download_count": 39,
         "latest_release_downloads_on_week_start": 35,
         "week_start_date": "2025-07-19",
-        "last_updated_date": "2025-07-22"
+        "last_updated_date": "2025-07-23"
     }
 ]
