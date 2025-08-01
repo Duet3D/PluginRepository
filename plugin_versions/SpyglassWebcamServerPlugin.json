@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v0.17",
+        "browser_download_url": "https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/download/v0.17/SpyglassWebcamServer-0.17.zip",
+        "published_at": "2025-07-31T13:51:45Z",
+        "version_list": [
+            {
+                "version": "3",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
         "tagName": "v0.15",
         "browser_download_url": "https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/download/v0.15/SpyglassWebcamServer-v0.15.zip",
         "published_at": "2025-01-28T11:31:20Z",

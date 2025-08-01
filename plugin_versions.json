@@ -830,7 +830,7 @@
             "id": "SpyglassWebcamServer",
             "name": "Spyglass Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "0.15",
+            "version": "0.17",
             "license": "GPL-3.0-only",
             "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
             "sbcRequired": true,
@@ -857,8 +857,14 @@
                 "server"
             ]
         },
-        "latest_release": "v0.15",
+        "latest_release": "v0.17",
         "releases": [
+            {
+                "tag_name": "v0.17",
+                "name": "Version 0.17",
+                "download_url": "https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/download/v0.17/SpyglassWebcamServer-0.17.zip",
+                "published_at": "2025-07-31T13:51:45Z"
+            },
             {
                 "tag_name": "v0.15",
                 "name": "Version 0.15",
@@ -880,7 +886,7 @@
             "id": "SpyglassWebcamServer",
             "name": "Spyglass Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "0.15",
+            "version": "0.17",
             "license": "GPL-3.0-only",
             "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
             "sbcRequired": true,
