@@ -7,7 +7,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.04.00",
+            "version": "01.04.11",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.6",
@@ -21,8 +21,14 @@
                 "mathjs": "^11.6.0"
             }
         },
-        "latest_release": "01.04.00",
+        "latest_release": "01.04.11",
         "releases": [
+            {
+                "tag_name": "01.04.11",
+                "name": "BtnCmd 01.04.11 for DWC 3.6",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.04.11/BtnCmd_DWC3.6_v01.04.11.zip",
+                "published_at": "2025-11-08T11:46:05Z"
+            },
             {
                 "tag_name": "01.04.00",
                 "name": "BtnCmd 01.04.00 for DWC 3.6",
@@ -196,12 +202,6 @@
                 "name": "Beta 0.10.06",
                 "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.06/BtnCmd_DWC3.4RC1_Beta.0.10.06.zip",
                 "published_at": "2022-02-11T17:08:43Z"
-            },
-            {
-                "tag_name": "Beta_0.10.03",
-                "name": "Beta 0.10.03 Input Panel Changes and bug fixes",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/Beta_0.10.03/BtnCmd_DWC3.4b7_Beta.0.10.03.zip",
-                "published_at": "2021-12-28T13:24:32Z"
             }
         ]
     },
@@ -213,7 +213,7 @@
             "id": "BtnCmd",
             "name": "BtnCmd",
             "author": "Minty Trebor",
-            "version": "01.04.00",
+            "version": "01.04.11",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.6",
