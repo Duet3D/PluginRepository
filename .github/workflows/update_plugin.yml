@@ -2,35 +2,37 @@ name: update-plugin
 on:
   issues:
     types: [opened]
-    
+concurrency:
+  group: plugin-repo-write
+  cancel-in-progress: false
 jobs:
   issue_label_check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
-    steps: 
-      - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v6
       - name: label-check
         id: label_check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-update ]]; then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name")
+          if [[ "$issue_label" = plugin-update ]]; then echo "is_check_ok=success" >> $GITHUB_OUTPUT; else echo "is_check_ok=failure" >> $GITHUB_OUTPUT; fi
   precheck:
     needs: issue_label_check
     if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       GITHUB_ISSUE: ${{github.event.issue.number}}
       GITHUB_USER: ${{ github.event.issue.user.login }}
       PAT_DUET3D_ADMIN_ORG_READ: ${{ secrets.PAT_DUET3D_ADMIN_ORG_READ }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
-      - uses: stefanbuck/github-issue-praser@v2
-        id: issue-parser 
+      - uses: stefanbuck/github-issue-praser@v3
+        id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
 
@@ -45,18 +47,18 @@ jobs:
           npm install
           cd src
           npx ts-node updatePrecheck.ts
-                      
+
   plugin-update:
     needs: precheck
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-    steps: 
-      - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v6
       - uses: geertvdc/setup-hub@master
 
-      - uses: stefanbuck/github-issue-praser@v2
+      - uses: stefanbuck/github-issue-praser@v3
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginUpdate.yml
@@ -73,7 +75,7 @@ jobs:
           set -e
 
           repo=$(cat issue.json | jq -r ."PluginID")
-          
+
           mv src/plugins/$repo.md src/plugins/asset_repo.txt
 
           echo $(ls -a)
@@ -88,13 +90,13 @@ jobs:
           cd ../../
           cp nodescriptsTS/src/$repo.md src/plugins
 
-          cd src/plugins 
+          cd src/plugins
 
           branchName=update/$(date +"%y%m%d")$repo
           commituser=Duet3D
-          
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b $branchName
           git add $repo.md
           git commit -m "Updating plugin $repo.md"
@@ -105,7 +107,7 @@ jobs:
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
   merge-pr:
     needs: plugin-update
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: merge-pr
         run: |
@@ -116,25 +118,25 @@ jobs:
           echo $url
 
           echo "auto approving"
-          
+
           echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
           cat merge_response.json | jq
           merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
 
-          if [[ "$merged" = true ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["merged"]}' && curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }} -d '{"state":"closed"}' && exit 0; else exit 1; fi 
+          if [[ "$merged" = true ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["merged"]}' && curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }} -d '{"state":"closed"}' && exit 0; else exit 1; fi
   update-version:
     needs: merge-pr
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
       - name: update-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull
-          
+
 
           cp package.json nodescriptsTS/src/
           cd nodescriptsTS
@@ -152,9 +154,9 @@ jobs:
 
   deploy-gh-pages:
     needs: update-version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: build
         env:
           NODE_OPTIONS: --openssl-legacy-provider
@@ -173,9 +175,9 @@ jobs:
           cp author_stats.json src/.vuepress/dist/assets
 
       - name: deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.PAT_YASASW }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./src/.vuepress/dist
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'

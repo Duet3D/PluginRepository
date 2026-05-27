@@ -6,9 +6,10 @@ on:
       - "feature/*"
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
         with:
           node-version: 18.x
       - name: run test

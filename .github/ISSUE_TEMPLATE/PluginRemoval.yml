@@ -3,7 +3,7 @@ description: Request to remove a plugin
 title: "[PluginRemoval]: "
 labels: [plugin-removal]
 assignees:
-- yasasw
+- chrishamm
 body:
 - type: markdown
   attributes:

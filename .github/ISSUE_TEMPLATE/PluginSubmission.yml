@@ -3,7 +3,7 @@ description: Submit a new plugin for approval
 title: "[PluginSubmission]: "
 labels: [plugin-submission]
 assignees:
-- yasasw
+- chrishamm
 body:
 - type: markdown
   attributes:

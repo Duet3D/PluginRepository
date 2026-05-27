@@ -3,7 +3,7 @@ description: Reporting a plugin
 title: "[PluginReport]: "
 labels: [abuse-report]
 assignees:
-- yasasw
+- chrishamm
 body:
 - type: markdown
   attributes:

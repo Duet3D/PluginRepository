@@ -2,29 +2,32 @@ name: remove-plugin
 on:
   issues:
     types: [opened]
+concurrency:
+  group: plugin-repo-write
+  cancel-in-progress: false
 jobs:
   issue_label_check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       is_check_ok: ${{ steps.label_check.outputs.is_check_ok }}
-    steps: 
-      - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v6
       - name: label-check
         id: label_check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name") 
-          if [[ "$issue_label" = plugin-removal ]];  then echo ::set-output name=is_check_ok::'success'; else echo ::set-output name=is_check_ok::'failure'; fi
+          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name")
+          if [[ "$issue_label" = plugin-removal ]]; then echo "is_check_ok=success" >> $GITHUB_OUTPUT; else echo "is_check_ok=failure" >> $GITHUB_OUTPUT; fi
 
   removal-precheck:
     needs: issue_label_check
     if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success'  }}
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
 
-      - uses: stefanbuck/github-issue-praser@v2
+      - uses: stefanbuck/github-issue-praser@v3
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginRemoval.yml
@@ -49,13 +52,13 @@ jobs:
           npx ts-node removalPrecheck.ts
   plugin-removal:
     needs: removal-precheck
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-    steps: 
-      - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v6
       - uses: geertvdc/setup-hub@master
-      - uses: stefanbuck/github-issue-praser@v2
+      - uses: stefanbuck/github-issue-praser@v3
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/PluginSubmission.yml
@@ -79,8 +82,8 @@ jobs:
           rm $plugin_file
           rm $plugin_version_file
 
-          git config --global user.name "yasasw"
-          git config --global user.email "yasas.wijetilake@gmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b $branchName
           git add $plugin_file $plugin_version_file
           git commit -m "Deleting plugin plugin_file and plugin_version_file"
