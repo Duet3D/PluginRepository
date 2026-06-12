@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v2.1.0",
+        "browser_download_url": "https://github.com/jaysuk/RRF-Alternative-Object-Model-Browser/releases/download/v2.1.0/OmBrowser-2.1.0.zip",
+        "published_at": "2026-06-11T21:55:49Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
         "tagName": "V1.0.0",
         "browser_download_url": "https://github.com/jaysuk/RRF-Alternative-Object-Model-Browser/releases/download/V1.0.0/OmBrowser-1.0.0.zip",
         "published_at": "2026-05-21T20:52:51Z",
