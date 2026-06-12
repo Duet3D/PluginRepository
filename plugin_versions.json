@@ -662,11 +662,23 @@
             "id": "OmBrowser",
             "name": "Object Model Browser",
             "author": "jaysuk",
-            "version": "1.0.0",
-            "dwcVersion": "3.6"
+            "version": "2.1.0",
+            "dwcVersion": "3.7",
+            "dwcFiles": [
+                "js/OmBrowser-BeQjA9tQ.js",
+                "css/OmBrowser-y9uecef4.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
         },
-        "latest_release": "V1.0.0",
+        "latest_release": "v2.1.0",
         "releases": [
+            {
+                "tag_name": "v2.1.0",
+                "name": "v2.1.0 — Self-update + runtime 0.4.0",
+                "download_url": "https://github.com/jaysuk/RRF-Alternative-Object-Model-Browser/releases/download/v2.1.0/OmBrowser-2.1.0.zip",
+                "published_at": "2026-06-11T21:55:49Z"
+            },
             {
                 "tag_name": "V1.0.0",
                 "name": "Version 1.0.0 - RRF 3.6",
@@ -682,8 +694,14 @@
             "id": "OmBrowser",
             "name": "Object Model Browser",
             "author": "jaysuk",
-            "version": "1.0.0",
-            "dwcVersion": "3.6"
+            "version": "2.1.0",
+            "dwcVersion": "3.7",
+            "dwcFiles": [
+                "js/OmBrowser-BeQjA9tQ.js",
+                "css/OmBrowser-y9uecef4.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
         },
         "latest_release": "V1.0.0",
         "releases": [
