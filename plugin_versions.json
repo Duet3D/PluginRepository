@@ -518,11 +518,11 @@
             "id": "MotionWebcamServer",
             "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.6.0",
+            "version": "3.7.0=b1",
             "license": "GPL-2.0-only",
             "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
             "sbcRequired": true,
-            "sbcDsfVersion": "3.6",
+            "sbcDsfVersion": "3.7",
             "sbcExecutable": "motion",
             "sbcOutputRedirected": false,
             "sbcConfigFiles": [
@@ -543,8 +543,14 @@
                 "server"
             ]
         },
-        "latest_release": "v3.6.0",
+        "latest_release": "v3.7.0-b1",
         "releases": [
+            {
+                "tag_name": "v3.7.0-b1",
+                "name": "MotionWebcamServer-3.7.0-b1",
+                "download_url": "https://github.com/Duet3D/MotionWebcamServerPlugin/releases/download/v3.7.0-b1/MotionWebcamServer-3.7.0-b1.zip",
+                "published_at": "2026-07-02T13:40:27Z"
+            },
             {
                 "tag_name": "v3.6.0",
                 "name": "Version 3.6.0",
@@ -590,11 +596,11 @@
             "id": "MotionWebcamServer",
             "name": "Motion Webcam Server",
             "author": "Duet3D Ltd",
-            "version": "3.6.0",
+            "version": "3.7.0=b1",
             "license": "GPL-2.0-only",
             "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
             "sbcRequired": true,
-            "sbcDsfVersion": "3.6",
+            "sbcDsfVersion": "3.7",
             "sbcExecutable": "motion",
             "sbcOutputRedirected": false,
             "sbcConfigFiles": [
