@@ -1,5 +1,16 @@
 [
     {
+        "tagName": "v3.7.0-b1",
+        "browser_download_url": "https://github.com/Duet3D/MotionWebcamServerPlugin/releases/download/v3.7.0-b1/MotionWebcamServer-3.7.0-b1.zip",
+        "published_at": "2026-07-02T13:40:27Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
         "tagName": "v3.6.0",
         "browser_download_url": "https://github.com/Duet3D/MotionWebcamServerPlugin/releases/download/v3.6.0/MotionWebcamServer-3.6.0.zip",
         "published_at": "2025-05-28T16:52:27Z",
