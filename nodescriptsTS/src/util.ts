@@ -77,9 +77,16 @@ const isUserOrgMember = async () => {
 const downloadFile = async (url:string, dest:string) => {
     console.log("Downloading file from URL: ")
     console.log(url);
-    const wget = require('node-wget-promise');
+    const fs = require('fs');
     try{
-        return await wget(url, {output: dest})
+        const {data} = await axios.get(url, {responseType: 'stream'});
+        return await new Promise((resolve, reject) => {
+            const file = fs.createWriteStream(dest);
+            data.on('error', reject);
+            file.on('error', reject);
+            file.on('finish', () => resolve(true));
+            data.pipe(file);
+        });
     }
     catch(e){
         console.log("Error downloading File:")
