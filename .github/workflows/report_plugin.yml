@@ -59,6 +59,6 @@ jobs:
 
           for attempt in 1 2 3 4 5; do
             if git push origin master; then exit 0; fi
-            git pull --rebase origin master
+            git pull --rebase --autostash origin master
           done
           exit 1

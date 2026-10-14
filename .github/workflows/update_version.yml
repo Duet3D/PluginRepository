@@ -39,13 +39,16 @@ jobs:
 
           for attempt in 1 2 3 4 5; do
             if git push origin master; then exit 0; fi
-            git pull --rebase origin master
+            git pull --rebase --autostash origin master
           done
           exit 1
 
   deploy-gh-pages:
     needs: update-version
     runs-on: ubuntu-24.04
+    concurrency:
+      group: gh-pages-deploy
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v6
       - name: build
