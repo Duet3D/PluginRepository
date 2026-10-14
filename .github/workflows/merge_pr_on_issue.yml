@@ -3,27 +3,36 @@ on:
   issues:
     types:
       - labeled
-concurrency:
-  group: plugin-repo-write
-  cancel-in-progress: false
 jobs:
   merge-pr:
     if: ${{ github.event.label.name == 'approved' }}
     runs-on: ubuntu-24.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_ISSUE: ${{ github.event.issue.number }}
     steps:
       - name: merge-pr
         run: |
-          url=$(curl \
-          -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/pulls \
-          | jq '.[] | select(.title | startswith("[${{ github.event.issue.number }}]"))' | jq ."url" | sed 's/"//g')/merge
+          pr_url=$(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/Duet3D/PluginRepository/pulls?per_page=100" \
+          | jq -r --arg prefix "[$GITHUB_ISSUE]" '[.[] | select(.title | startswith($prefix))] | first | .url // empty')
 
-          echo $url
+          echo "Pull request: ${pr_url:-none}"
 
-          echo $(curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" $url | jq )  > merge_response.json
+          if [ -z "$pr_url" ]; then
+            curl -s -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/Duet3D/PluginRepository/issues/$GITHUB_ISSUE/comments -d '{"body":"No open pull request found for this issue, so there is nothing to merge. Close and reopen the issue to run the checks and create the pull request again."}'
+            exit 1
+          fi
+
+          curl -s -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" "$pr_url/merge" > merge_response.json
           cat merge_response.json | jq
-          merged=$(cat merge_response.json | jq ."merged" | sed 's/"//g')
 
-          if [[ "$merged" = true ]]; then curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["merged"]}' && curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }} -d '{"state":"closed"}' && exit 0; else exit 1; fi
+          if [ "$(jq -r '.merged' merge_response.json)" != true ]; then
+            curl -s -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/Duet3D/PluginRepository/issues/$GITHUB_ISSUE/comments -d "$(jq -n --arg msg "$(jq -r '.message // "unknown error"' merge_response.json)" '{body: "Merging the pull request failed: \($msg)"}')"
+            exit 1
+          fi
+
+          curl -s -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/Duet3D/PluginRepository/issues/$GITHUB_ISSUE/labels -d '{"labels":["merged"]}'
+          curl -s -X PATCH -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/Duet3D/PluginRepository/issues/$GITHUB_ISSUE -d '{"state":"closed"}'
   update-version:
     needs: merge-pr
     runs-on: ubuntu-24.04
@@ -50,7 +59,12 @@ jobs:
 
           git add package.json
           git commit -m "Update version"
-          git push -u origin master
+
+          for attempt in 1 2 3 4 5; do
+            if git push origin master; then exit 0; fi
+            git pull --rebase origin master
+          done
+          exit 1
 
   deploy-gh-pages:
     needs: update-version

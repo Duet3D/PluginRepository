@@ -89,6 +89,9 @@ const downloadFile = async (url:string, dest:string) => {
 
 }
 
+// sourcemaps ship as a separate <id>-<version>-srcmap.zip holding no manifest
+const getPluginAsset = (release) => (((release || {}).assets) || []).find(asset => /\.zip$/i.test(asset.name) && !/-srcmap\.zip$/i.test(asset.name));
+
 const isFirstCharNum = (str:string) => {
 	return (str && str.match(/^\d+/) || [])[0] != undefined
 }
@@ -224,6 +227,8 @@ const prepend = (text:string, file:string) => {
 const unzip = () => {
     const fs = require('fs');
     const unzipper = require('unzipper');
+    // a leftover plugin.json would pass the manifest check of the next release
+    fs.rmSync('unzipped', {recursive: true, force: true});
     return new Promise((resolve, reject)=>{
         fs.createReadStream('asset.zip').pipe(unzipper.Extract({ path: 'unzipped/' }))
         .on('error', (err) => reject(err))
@@ -271,6 +276,7 @@ module.exports = {
     isUserCollaborator,
     isUserOrgMember,
     downloadFile,
+    getPluginAsset,
     checkFile,
     fetchURL,
     exitProcess,

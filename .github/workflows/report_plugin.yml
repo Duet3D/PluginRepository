@@ -1,10 +1,7 @@
 name: report-plugin
 on:
   issues:
-    types: [opened]
-concurrency:
-  group: plugin-repo-write
-  cancel-in-progress: false
+    types: [opened, reopened]
 jobs:
   issue_label_check:
     runs-on: ubuntu-24.04
@@ -17,8 +14,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          issue_label=$(curl https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -r .[0]."name")
-          if [[ "$issue_label" = abuse-report ]]; then echo "is_check_ok=success" >> $GITHUB_OUTPUT; else echo "is_check_ok=failure" >> $GITHUB_OUTPUT; fi
+          if curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels | jq -e '[.[].name] | index("abuse-report")' > /dev/null; then echo "is_check_ok=success" >> $GITHUB_OUTPUT; else echo "is_check_ok=failure" >> $GITHUB_OUTPUT; fi
   report_plugin:
     needs: issue_label_check
     if: ${{ needs.issue_label_check.outputs.is_check_ok == 'success' }}
@@ -60,4 +56,9 @@ jobs:
 
           git add plugin_reported.json
           git commit -m "Update plugin_reported"
-          git push -u origin master
+
+          for attempt in 1 2 3 4 5; do
+            if git push origin master; then exit 0; fi
+            git pull --rebase origin master
+          done
+          exit 1

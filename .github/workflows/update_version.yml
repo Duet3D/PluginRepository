@@ -36,7 +36,12 @@ jobs:
 
           git add package.json
           git commit -m "Update version"
-          git push -u origin master
+
+          for attempt in 1 2 3 4 5; do
+            if git push origin master; then exit 0; fi
+            git pull --rebase origin master
+          done
+          exit 1
 
   deploy-gh-pages:
     needs: update-version

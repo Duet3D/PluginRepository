@@ -1,5 +1,5 @@
 import axios from 'axios';
-const {getFrontmatterObject, writeFile:writeLocalFile, readFile:readLocalFile, downloadFile, unzip, checkFile} = require('./util');
+const {getFrontmatterObject, writeFile:writeLocalFile, readFile:readLocalFile, downloadFile, getPluginAsset, unzip, checkFile} = require('./util');
 
 const updatePluginStats = async () => {
     try{
@@ -48,8 +48,8 @@ const createPluginEntry = async (plugin_md_name:string, prev_plugin_stat_json, p
     const {data: gh_release_data} = await axios.get(`https://api.github.com/repos/${author}/${plugin_id}/releases`, { 'headers': { 'Authorization' : `Bearer ${process.env.GITHUB_TOKEN}` } });
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
-    const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
-    const latest_release_download_count = (((gh_release_data|| [])[0].assets[0]||[]).download_count||0)
+    const total_download_count = (gh_release_data|| []).reduce((prev, cur)=> prev + ((getPluginAsset(cur)||{}).download_count||0), 0);
+    const latest_release_download_count = ((getPluginAsset((gh_release_data|| [])[0])||{}).download_count||0)
 
     const prev_plugin_data = prev_plugin_stat_json.find( x=> x.plugin_id == plugin_id && x.author == author); //if undefined, considered new plugin
     let {latest_release: prev_latest_release, total_downloads_on_week_start, latest_release_downloads_on_week_start, week_start_date: prev_week_start_date} = prev_plugin_data  || {};
@@ -105,10 +105,17 @@ const createPluginVersionEntry = async (plugin_id:string, author:string, gh_rele
 
     const latest_release = (gh_release_data|| [])[0].tag_name;
 
-    let browser_download_url = ((((gh_release_data|| [])[0]||{}).assets||[])[0]||{}).browser_download_url
+    let browser_download_url = (getPluginAsset((gh_release_data|| [])[0])||{}).browser_download_url
+    if(!browser_download_url){
+        console.log(`${plugin_id}: latest release has no plugin asset`);
+        return {};
+    }
 
     try{
-        await downloadFile(browser_download_url, 'asset.zip');
+        if(await downloadFile(browser_download_url, 'asset.zip') == false){
+            console.log(`${plugin_id}: unable to download ${browser_download_url}`);
+            return {};
+        }
         await unzip();
     }
     catch(err){
@@ -131,7 +138,7 @@ const createPluginVersionEntry = async (plugin_id:string, author:string, gh_rele
         return {
             tag_name: x.tag_name,
             name: x.name,
-            download_url: (((x||{}).assets||[{}])[0]||{}).browser_download_url,
+            download_url: (getPluginAsset(x)||{}).browser_download_url,
             published_at: x.published_at
         }
     })
