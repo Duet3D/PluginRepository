@@ -1,0 +1,46 @@
+[
+    {
+        "tagName": "v1.4.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.4.0/DuetConfigBackup-1.4.0.zip",
+        "published_at": "2026-09-10T10:42:08Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.3.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.3.0/DuetConfigBackup-1.3.0.zip",
+        "published_at": "2026-08-24T16:07:56Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.2.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.2.0/DuetConfigBackup-1.2.0.zip",
+        "published_at": "2026-08-24T11:14:34Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.1.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.1.0/DuetConfigBackup-1.1.0.zip",
+        "published_at": "2026-08-24T09:17:28Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
