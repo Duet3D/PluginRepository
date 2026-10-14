@@ -97,7 +97,8 @@ const downloadFile = async (url:string, dest:string) => {
 }
 
 // sourcemaps ship as a separate <id>-<version>-srcmap.zip holding no manifest
-const getPluginAsset = (release) => (((release || {}).assets) || []).find(asset => /\.zip$/i.test(asset.name) && !/-srcmap\.zip$/i.test(asset.name));
+// a build for another platform version adds a further suffix, so the primary plugin zip has the shortest name
+const getPluginAsset = (release) => (((release || {}).assets) || []).filter(asset => /\.zip$/i.test(asset.name) && !/-srcmap\.zip$/i.test(asset.name)).sort((a, b) => a.name.length - b.name.length)[0];
 
 const isFirstCharNum = (str:string) => {
 	return (str && str.match(/^\d+/) || [])[0] != undefined

@@ -7,6 +7,11 @@ describe('Get Plugin Asset', ()=>{
         expect(getPluginAsset(release).name).to.equal('FlexibleLayouts-1.12.3.zip');
     });
 
+    it('prefers the plugin zip over a build for another platform version', ()=>{
+        const release = {assets: [{name: 'ResonanceLab-1.4.4-dwc36.zip'}, {name: 'ResonanceLab-1.4.4.zip'}]};
+        expect(getPluginAsset(release).name).to.equal('ResonanceLab-1.4.4.zip');
+    });
+
     it('skips assets that are not zips', ()=>{
         const release = {assets: [{name: 'plugin.json'}, {name: 'DuetEddyAlign-1.0.0.zip'}]};
         expect(getPluginAsset(release).name).to.equal('DuetEddyAlign-1.0.0.zip');
