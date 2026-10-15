@@ -104,7 +104,7 @@
             {
                 "tag_name": "01.02.07",
                 "name": "BtnCmd 01.02.07 for DWC 3.5.0-rc.4",
-                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.4%2B1_v01.02.07.zip",
+                "download_url": "https://github.com/MintyTrebor/BtnCmd/releases/download/01.02.07/BtnCmd_DWC3.5.0-rc.4_v01.02.07.zip",
                 "published_at": "2023-09-17T16:45:41Z"
             },
             {
@@ -209,30 +209,24 @@
         "plugin_id": "ClosedLoopTuningPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "dwcWebpackChunk": "BtnCmd",
-            "id": "BtnCmd",
-            "name": "BtnCmd",
-            "author": "Minty Trebor",
-            "version": "01.04.12",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/MintyTrebor",
-            "dwcVersion": "3.6",
-            "dependencies": {
-                "precompiled-mqtt": "^4.3.7",
-                "deepmerge": "^4.2.2",
-                "axios": "^1.2.1",
-                "vue-draggable-resizable": "^2.3.0",
-                "jsonpath": "^1.1.1",
-                "vuedraggable": "^2.24.3",
-                "mathjs": "^11.6.0"
-            }
+            "id": "ClosedLoopTuning",
+            "name": "Closed Loop Tuning",
+            "author": "Louis Irwin, Juan Rosario, Christian Hammacher",
+            "version": "3.7.0",
+            "dwcVersion": "3.7",
+            "license": "GPL-3.0",
+            "homepage": "https://duet3d.com",
+            "tags": [
+                "closed loop",
+                "tuning"
+            ]
         },
         "latest_release": "v3.7.0",
         "releases": [
             {
                 "tag_name": "v3.7.0",
                 "name": "Version 3.7.0",
-                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.7.0/ClosedLoopTuning-3.7.0-srcmap.zip",
+                "download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.7.0/ClosedLoopTuning-3.7.0.zip",
                 "published_at": "2026-10-08T16:16:27Z"
             },
             {
@@ -365,31 +359,13 @@
         "plugin_id": "DWC-CAN-Manager",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "ExecOnMcode",
-            "name": "Exec On M-Code",
-            "author": "Loïc GRENON",
-            "version": "0.7",
-            "license": "GPL-3.0-or-later",
-            "homepage": "https://github.com/LoicGRENON/DSF_ExecOnMcode_Plugin",
-            "dwcVersion": "3.6",
-            "sbcRequired": true,
-            "sbcDsfVersion": "3.6",
-            "sbcExecutable": "execOnMcode.py",
-            "sbcOutputRedirected": true,
-            "sbcPermissions": [
-                "commandExecution",
-                "codeInterceptionReadWrite",
-                "objectModelReadWrite",
-                "registerHttpEndpoints",
-                "fileSystemAccess",
-                "launchProcesses",
-                "networkAccess",
-                "webcamAccess",
-                "gpioAccess"
-            ],
-            "sbcPackageDependencies": [
-                "python3-dsf-python"
-            ]
+            "id": "CANManager",
+            "name": "CAN Manager",
+            "author": "Juan Rosario",
+            "version": "1.1.0",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/CANManager",
+            "dwcVersion": "3.5"
         },
         "latest_release": "V1.1.0",
         "releases": [
@@ -469,13 +445,16 @@
         "plugin_id": "EndstopsMonitorPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "GamepadJogger",
-            "name": "Gamepad Jogger",
-            "author": "Juan Rosario (Sindarius)",
-            "version": "1.1.0",
+            "id": "EndstopsMonitor",
+            "name": "Endstops Monitor",
+            "author": "Duet3D Ltd",
+            "version": "3.5.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/Duet3D/EndstopsMonitorPlugin",
             "dwcVersion": "3.5",
-            "license": "LGPL-3.0-or-later",
-            "homepage": "https://github.com/Sindarius/DWC_GamepadJogger_Plugin"
+            "tags": [
+                "endstops"
+            ]
         },
         "latest_release": "v3.5.0",
         "releases": [
@@ -514,6 +493,216 @@
                 "name": "Version 3.4-rc1",
                 "download_url": "https://github.com/Duet3D/EndstopsMonitorPlugin/releases/download/v3.4-rc1/EndstopsMonitor-3.4.0-rc1.zip",
                 "published_at": "2022-06-14T08:34:30Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "Flexible-Layouts",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "FlexibleLayouts",
+            "name": "Flexible Layouts",
+            "author": "James Skitt",
+            "version": "1.12.3",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/Duet3D/DuetWebControl",
+            "dwcVersion": "3.7",
+            "tags": [
+                "layout",
+                "customisation",
+                "dashboard",
+                "theme"
+            ],
+            "dwcFiles": [
+                "js/FlexibleLayouts-BRnbk8DY.js",
+                "css/FlexibleLayouts-BFbz8fRL.css",
+                "js/flexible-layouts-banner-fonts.json",
+                "js/flexible-layouts-gcode-parse.worker.js"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.12.3",
+        "releases": [
+            {
+                "tag_name": "v1.12.3",
+                "name": "v1.12.3 — \"Inner Peace\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.12.3/FlexibleLayouts-1.12.3.zip",
+                "published_at": "2026-10-13T13:57:30Z"
+            },
+            {
+                "tag_name": "v1.12.2",
+                "name": "v1.12.2 — \"Find Your Center\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.12.2/FlexibleLayouts-1.12.2.zip",
+                "published_at": "2026-10-10T09:15:35Z"
+            },
+            {
+                "tag_name": "v1.12.1",
+                "name": "v1.12.1 — \"Contortionist\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.12.1/FlexibleLayouts-1.12.1.zip",
+                "published_at": "2026-10-05T16:39:53Z"
+            },
+            {
+                "tag_name": "v1.12.0",
+                "name": "v1.12.0 — \"Spring Loaded\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.12.0/FlexibleLayouts-1.12.0.zip",
+                "published_at": "2026-10-01T13:28:14Z"
+            },
+            {
+                "tag_name": "v1.11.0",
+                "name": "v1.11.0 — \"Snap Back\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.11.0/FlexibleLayouts-1.11.0.zip",
+                "published_at": "2026-09-29T21:21:59Z"
+            },
+            {
+                "tag_name": "v1.10.1",
+                "name": "v1.10.1 — \"Full Extension\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.10.1/FlexibleLayouts-1.10.1.zip",
+                "published_at": "2026-09-11T10:54:35Z"
+            },
+            {
+                "tag_name": "v1.10.0",
+                "name": "v1.10.0 — \"Joint Effort\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.10.0/FlexibleLayouts-1.10.0.zip",
+                "published_at": "2026-09-10T10:42:12Z"
+            },
+            {
+                "tag_name": "v1.9.1",
+                "name": "v1.9.1 — \"Range of Motion\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.9.1/FlexibleLayouts-1.9.1.zip",
+                "published_at": "2026-09-07T11:58:56Z"
+            },
+            {
+                "tag_name": "v1.9.0",
+                "name": "v1.9.0 — \"Elastic Heart\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.9.0/FlexibleLayouts-1.9.0.zip",
+                "published_at": "2026-09-06T15:33:08Z"
+            },
+            {
+                "tag_name": "v1.8.1",
+                "name": "v1.8.1 — \"Stretch Armstrong\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.8.1/FlexibleLayouts-1.8.1.zip",
+                "published_at": "2026-08-24T18:23:45Z"
+            },
+            {
+                "tag_name": "v1.6.2",
+                "name": "v1.6.2 — \"Twist and Shout\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.6.2/FlexibleLayouts-1.6.2.zip",
+                "published_at": "2026-07-21T20:53:46Z"
+            },
+            {
+                "tag_name": "v1.6.0",
+                "name": "v1.6.0 — \"Flex Appeal\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.6.0/FlexibleLayouts-1.6.0.zip",
+                "published_at": "2026-07-09T17:44:53Z"
+            },
+            {
+                "tag_name": "v1.4.9",
+                "name": "v1.4.9 — \"Deep Stretch\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.4.9/FlexibleLayouts-1.4.9.zip",
+                "published_at": "2026-07-08T06:06:48Z"
+            },
+            {
+                "tag_name": "v1.4.5",
+                "name": "v1.4.5 — \"Seated Twist\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.4.5/FlexibleLayouts-1.4.5.zip",
+                "published_at": "2026-07-06T11:28:12Z"
+            },
+            {
+                "tag_name": "v1.4.4",
+                "name": "v1.4.4 — \"Chair Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.4.4/FlexibleLayouts-1.4.4.zip",
+                "published_at": "2026-07-03T12:05:11Z"
+            },
+            {
+                "tag_name": "v1.4.0",
+                "name": "v1.4.0 — \"Triangle Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.4.0/FlexibleLayouts-1.4.0.zip",
+                "published_at": "2026-07-02T18:00:27Z"
+            },
+            {
+                "tag_name": "v1.3.0",
+                "name": "v1.3.0 — \"Boat Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.3.0/FlexibleLayouts-1.3.0.zip",
+                "published_at": "2026-07-02T13:32:43Z"
+            },
+            {
+                "tag_name": "v1.2.1",
+                "name": "v1.2.1 — \"Camel Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.2.1/FlexibleLayouts-1.2.1.zip",
+                "published_at": "2026-06-29T21:36:21Z"
+            },
+            {
+                "tag_name": "v1.2.0",
+                "name": "v1.2.0 — \"Wheel Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.2.0/FlexibleLayouts-1.2.0.zip",
+                "published_at": "2026-06-29T14:31:13Z"
+            },
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0 — \"Standing Split\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.1.0/FlexibleLayouts-1.1.0.zip",
+                "published_at": "2026-06-26T14:00:05Z"
+            },
+            {
+                "tag_name": "v1.0.39",
+                "name": "v1.0.39 — \"Crow Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.39/FlexibleLayouts-1.0.39.zip",
+                "published_at": "2026-06-22T13:22:51Z"
+            },
+            {
+                "tag_name": "v1.0.38",
+                "name": "v1.0.38 — \"Half Moon\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.38/FlexibleLayouts-1.0.38.zip",
+                "published_at": "2026-06-20T15:31:52Z"
+            },
+            {
+                "tag_name": "v1.0.37",
+                "name": "v1.0.37 — \"Plank Mode\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.37/FlexibleLayouts-1.0.37.zip",
+                "published_at": "2026-06-18T13:56:37Z"
+            },
+            {
+                "tag_name": "v1.0.36",
+                "name": "v1.0.36 — \"Mountain Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.36/FlexibleLayouts-1.0.36.zip",
+                "published_at": "2026-06-18T13:00:05Z"
+            },
+            {
+                "tag_name": "v1.0.35",
+                "name": "v1.0.35 — \"Pigeon Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.35/FlexibleLayouts-1.0.35.zip",
+                "published_at": "2026-06-18T08:02:28Z"
+            },
+            {
+                "tag_name": "v1.0.34",
+                "name": "v1.0.34 — \"Eagle Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.34/FlexibleLayouts-1.0.34.zip",
+                "published_at": "2026-06-17T13:18:56Z"
+            },
+            {
+                "tag_name": "v1.0.33",
+                "name": "v1.0.33 — \"Tree Pose\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.33/FlexibleLayouts-1.0.33.zip",
+                "published_at": "2026-06-16T05:59:48Z"
+            },
+            {
+                "tag_name": "v1.0.32",
+                "name": "v1.0.32 — \"Lotus Position\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.32/FlexibleLayouts-1.0.32.zip",
+                "published_at": "2026-06-15T19:04:33Z"
+            },
+            {
+                "tag_name": "v1.0.31",
+                "name": "v1.0.31 — \"Namaste Put\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.31/FlexibleLayouts-1.0.31.zip",
+                "published_at": "2026-06-15T10:27:52Z"
+            },
+            {
+                "tag_name": "v1.0.30",
+                "name": "v1.0.30 — \"Reach for It\"",
+                "download_url": "https://github.com/jaysuk/Flexible-Layouts/releases/download/v1.0.30/FlexibleLayouts-1.0.30.zip",
+                "published_at": "2026-06-15T08:41:59Z"
             }
         ]
     },
@@ -599,33 +788,13 @@
         "plugin_id": "ObjectCancelPlugin",
         "author": "Sindarius",
         "plugin_manifest": {
-            "id": "MotionWebcamServer",
-            "name": "Motion Webcam Server",
-            "author": "Duet3D Ltd",
-            "version": "3.7.0=b1",
-            "license": "GPL-2.0-only",
-            "homepage": "https://github.com/Duet3D/MotionWebcamServerPlugin",
-            "sbcRequired": true,
-            "sbcDsfVersion": "3.7",
-            "sbcExecutable": "motion",
-            "sbcOutputRedirected": false,
-            "sbcConfigFiles": [
-                "motion.conf"
-            ],
-            "sbcPackageDependencies": [
-                "motion"
-            ],
-            "sbcPermissions": [
-                "launchProcesses",
-                "networkAccess",
-                "webcamAccess",
-                "readSystem"
-            ],
-            "tags": [
-                "motion",
-                "webcam",
-                "server"
-            ]
+            "id": "ObjectCancel",
+            "name": "Object Cancel",
+            "author": "Juan Rosario",
+            "version": "1.3.2",
+            "license": "LGPL-3.0-or-later",
+            "homepage": "https://github.com/Sindarius/ObjectCancelPlugin",
+            "dwcVersion": "3.6"
         },
         "latest_release": "1.3.2",
         "releases": [
@@ -662,7 +831,7 @@
             {
                 "tag_name": "1.0.0",
                 "name": "Initial Release",
-                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.0.0/ObjectCancelPlugin-3.3.zip",
+                "download_url": "https://github.com/Sindarius/ObjectCancelPlugin/releases/download/1.0.0/ObjectCancelPlugin.zip",
                 "published_at": "2021-08-22T12:36:15Z"
             }
         ]
@@ -721,17 +890,19 @@
         "plugin_id": "RRF-Globals-Editor",
         "author": "jaysuk",
         "plugin_manifest": {
-            "id": "OmBrowser",
-            "name": "Object Model Browser",
+            "id": "GlobalsManager",
+            "name": "Globals Editor",
             "author": "jaysuk",
-            "version": "2.1.5",
-            "dwcVersion": "3.7",
+            "version": "1.0.0",
+            "dwcVersion": "3.6",
             "dwcFiles": [
-                "js/OmBrowser-CP89o6W5.js",
-                "css/OmBrowser-y9uecef4.css"
-            ],
-            "dsfFiles": [],
-            "rrfFiles": []
+                "css/GlobalsManager.f22d800b.css",
+                "css/GlobalsManager.f22d800b.css.gz",
+                "js/GlobalsManager.8bfa76e1.js",
+                "js/GlobalsManager.8bfa76e1.js.gz",
+                "js/GlobalsManager.8bfa76e1.js.map",
+                "js/GlobalsManager.8bfa76e1.js.map.gz"
+            ]
         },
         "latest_release": "V1.0.0",
         "releases": [
@@ -775,19 +946,18 @@
         "plugin_id": "ReleaseMgr",
         "author": "MintyTrebor",
         "plugin_manifest": {
-            "id": "NeopixelControl",
-            "name": "Neopixel Control",
-            "author": "jaysuk",
-            "version": "1.0.0",
+            "dwcWebpackChunk": "ReleaseMgr",
+            "id": "ReleaseMgr",
+            "name": "ReleaseMgr",
+            "author": "Minty Trebor",
+            "version": "1.3.5",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/MintyTrebor",
             "dwcVersion": "3.6",
-            "dwcFiles": [
-                "css/NeopixelControl.d03a02c2.css",
-                "css/NeopixelControl.d03a02c2.css.gz",
-                "js/NeopixelControl.afc9c007.js",
-                "js/NeopixelControl.afc9c007.js.gz",
-                "js/NeopixelControl.afc9c007.js.map",
-                "js/NeopixelControl.afc9c007.js.map.gz"
-            ]
+            "dependencies": {
+                "axios": "^1.7.7",
+                "marked": "^14.1.2"
+            }
         },
         "latest_release": "1.3.5",
         "releases": [
@@ -943,17 +1113,35 @@
         "plugin_id": "SpyglassWebcamServerPlugin",
         "author": "Duet3D",
         "plugin_manifest": {
-            "id": "RevoPluginConfig",
-            "name": "E3D Revo Config Plugin",
-            "author": "Christian Hammacher",
-            "version": "1.2.0",
-            "license": "MIT",
-            "homepage": "https://github.com/chrishamm/RevoConfigPlugin",
-            "tags": [
-                "config",
-                "revo"
+            "id": "SpyglassWebcamServer",
+            "name": "Spyglass Webcam Server",
+            "author": "Duet3D Ltd",
+            "version": "0.17",
+            "license": "GPL-3.0-only",
+            "homepage": "https://github.com/Duet3D/SpyglassWebcamServerPlugin",
+            "sbcRequired": true,
+            "sbcDsfVersion": "3",
+            "sbcExecutable": "scripts/spyglass",
+            "sbcOutputRedirected": false,
+            "sbcConfigFiles": [
+                "spyglass.conf"
             ],
-            "rrfVersion": "3.5"
+            "sbcPackageDependencies": [
+                "python3",
+                "python3-libcamera",
+                "python3-picamera2"
+            ],
+            "sbcPermissions": [
+                "launchProcesses",
+                "networkAccess",
+                "webcamAccess",
+                "readSystem"
+            ],
+            "tags": [
+                "spyglass",
+                "webcam",
+                "server"
+            ]
         },
         "latest_release": "v0.17",
         "releases": [
@@ -974,6 +1162,332 @@
                 "name": "Version 0.13 for DSF 3.5",
                 "download_url": "https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/download/v3.5.0/SpyglassWebcamServer-3.5.0.zip",
                 "published_at": "2024-02-21T15:06:57Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "duet-config-backup-plugin",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "DuetConfigBackup",
+            "name": "Duet Config Backup",
+            "author": "James Skitt",
+            "version": "1.4.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/duet-config-backup-plugin",
+            "dwcVersion": "3.7",
+            "tags": [
+                "backup",
+                "restore",
+                "config",
+                "utility"
+            ],
+            "dwcFiles": [
+                "js/DuetConfigBackup-DEN2dsgn.js",
+                "css/DuetConfigBackup-DTxkeVAH.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.4.0",
+        "releases": [
+            {
+                "tag_name": "v1.4.0",
+                "name": "v1.4.0",
+                "download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.4.0/DuetConfigBackup-1.4.0.zip",
+                "published_at": "2026-09-10T10:42:08Z"
+            },
+            {
+                "tag_name": "v1.3.0",
+                "name": "v1.3.0",
+                "download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.3.0/DuetConfigBackup-1.3.0.zip",
+                "published_at": "2026-08-24T16:07:56Z"
+            },
+            {
+                "tag_name": "v1.2.0",
+                "name": "v1.2.0",
+                "download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.2.0/DuetConfigBackup-1.2.0.zip",
+                "published_at": "2026-08-24T11:14:34Z"
+            },
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0",
+                "download_url": "https://github.com/jaysuk/duet-config-backup-plugin/releases/download/v1.1.0/DuetConfigBackup-1.1.0.zip",
+                "published_at": "2026-08-24T09:17:28Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "duet-eddy-align",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "DuetEddyAlign",
+            "name": "Duet Eddy Align",
+            "author": "James Skitt",
+            "version": "1.0.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/duet-eddy-align",
+            "dwcVersion": "3.7",
+            "tags": [
+                "toolchanger",
+                "alignment",
+                "eddy-current",
+                "scanning-probe",
+                "calibration"
+            ],
+            "dwcFiles": [
+                "js/DuetEddyAlign-BUkhdUVL.js",
+                "css/DuetEddyAlign-BOTBcplu.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.0.0",
+        "releases": [
+            {
+                "tag_name": "v1.0.0",
+                "name": "v1.0.0 — \"Current Affairs\"",
+                "download_url": "https://github.com/jaysuk/duet-eddy-align/releases/download/v1.0.0/DuetEddyAlign-1.0.0.zip",
+                "published_at": "2026-08-29T08:03:06Z"
+            },
+            {
+                "tag_name": "v0.15.0",
+                "name": "v0.15.0",
+                "download_url": "https://github.com/jaysuk/duet-eddy-align/releases/download/v0.15.0/DuetEddyAlign-0.15.0.zip",
+                "published_at": "2026-08-29T07:32:58Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "duet-gcode-postprocessor",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "GCodePostProcessor",
+            "name": "G-code Post-Processor",
+            "author": "James Skitt",
+            "version": "1.3.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/duet-gcode-postprocessor",
+            "dwcVersion": "3.7",
+            "tags": [
+                "gcode",
+                "post-processing",
+                "find-replace",
+                "scripting",
+                "files"
+            ],
+            "dwcFiles": [
+                "js/GCodePostProcessor-Dgh7N9lS.js",
+                "css/GCodePostProcessor-0OBxkNgy.css",
+                "GCodePostProcessor/quickjs.bin"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.3.0",
+        "releases": [
+            {
+                "tag_name": "v1.3.0",
+                "name": "v1.3.0",
+                "download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.3.0/GCodePostProcessor-1.3.0.zip",
+                "published_at": "2026-09-29T21:14:43Z"
+            },
+            {
+                "tag_name": "v1.2.1",
+                "name": "v1.2.1",
+                "download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.2.1/GCodePostProcessor-1.2.1.zip",
+                "published_at": "2026-09-11T14:30:06Z"
+            },
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0",
+                "download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.1.0/GCodePostProcessor-1.1.0.zip",
+                "published_at": "2026-09-02T16:04:50Z"
+            },
+            {
+                "tag_name": "v1.0.0",
+                "name": "v1.0.0",
+                "download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.0.0/GCodePostProcessor-1.0.0.zip",
+                "published_at": "2026-09-01T21:05:50Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "duet-tmc-tuner",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "DuetTmcTuner",
+            "name": "Duet TMC Tuner",
+            "author": "James Skitt",
+            "version": "1.1.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/duet-tmc-tuner",
+            "dwcVersion": "3.7",
+            "rrfVersion": "3.7",
+            "tags": [
+                "tmc",
+                "stepper",
+                "drivers",
+                "tuning",
+                "stealthchop"
+            ],
+            "dwcFiles": [
+                "js/DuetTmcTuner-LqEQtCHq.js",
+                "css/DuetTmcTuner-D3bedo17.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.1.0",
+        "releases": [
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0 — \"The Quiet Type\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.1.0/DuetTmcTuner-1.1.0.zip",
+                "published_at": "2026-09-29T07:13:52Z"
+            },
+            {
+                "tag_name": "v1.0.7",
+                "name": "v1.0.7 — \"Full Steam Ahead\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.7/DuetTmcTuner-1.0.7.zip",
+                "published_at": "2026-09-02T06:27:13Z"
+            },
+            {
+                "tag_name": "v1.0.6",
+                "name": "v1.0.6 — \"Stealth Mode\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.6/DuetTmcTuner-1.0.6.zip",
+                "published_at": "2026-07-06T10:41:03Z"
+            },
+            {
+                "tag_name": "v1.0.5",
+                "name": "v1.0.5 — \"Chop Chop\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.5/DuetTmcTuner-1.0.5.zip",
+                "published_at": "2026-06-29T10:52:58Z"
+            },
+            {
+                "tag_name": "v1.0.4",
+                "name": "v1.0.4 — \"Hush Now\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.4/DuetTmcTuner-1.0.4.zip",
+                "published_at": "2026-06-22T12:55:19Z"
+            },
+            {
+                "tag_name": "v1.0.3",
+                "name": "v1.0.3 — \"Step Change\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.3/DuetTmcTuner-1.0.3.zip",
+                "published_at": "2026-06-22T12:37:18Z"
+            },
+            {
+                "tag_name": "v1.0.2",
+                "name": "v1.0.2 — \"Quiet Riot\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.2/DuetTmcTuner-1.0.2.zip",
+                "published_at": "2026-06-22T12:26:48Z"
+            },
+            {
+                "tag_name": "v1.0.1",
+                "name": "v1.0.1 — \"Smooth Operator\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.1/DuetTmcTuner-1.0.1.zip",
+                "published_at": "2026-06-22T12:14:26Z"
+            },
+            {
+                "tag_name": "v1.0.0",
+                "name": "v1.0.0 — \"Silent Running\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.0.0/DuetTmcTuner-1.0.0.zip",
+                "published_at": "2026-06-22T12:01:58Z"
+            }
+        ]
+    },
+    {
+        "plugin_id": "duet-tool-align",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "DuetToolAlign",
+            "name": "Duet Tool Align",
+            "author": "James Skitt",
+            "version": "1.2.0",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/duet-tool-align",
+            "dwcVersion": "3.7",
+            "tags": [
+                "toolchanger",
+                "alignment",
+                "camera",
+                "calibration"
+            ],
+            "dwcFiles": [
+                "js/DuetToolAlign-DqIrE-1U.js",
+                "css/DuetToolAlign-CqNEWScU.css",
+                "DuetToolAlign/opencv.bin"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.2.0",
+        "releases": [
+            {
+                "tag_name": "v1.2.0",
+                "name": "v1.2.0 — \"Calibration Celebration\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.2.0/DuetToolAlign-1.2.0.zip",
+                "published_at": "2026-09-01T22:00:15Z"
+            },
+            {
+                "tag_name": "v1.1.1",
+                "name": "v1.1.1 — \"Focus Pocus\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.1.1/DuetToolAlign-1.1.1.zip",
+                "published_at": "2026-08-29T06:55:50Z"
+            },
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0 — \"The Sharpest Tool\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.1.0/DuetToolAlign-1.1.0.zip",
+                "published_at": "2026-08-20T10:07:38Z"
+            },
+            {
+                "tag_name": "v1.0.2",
+                "name": "v1.0.2 — \"Centre of Attention\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.0.2/DuetToolAlign-1.0.2.zip",
+                "published_at": "2026-08-17T08:30:28Z"
+            },
+            {
+                "tag_name": "v1.0.1",
+                "name": "v1.0.1 — \"Offset and Match\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.0.1/DuetToolAlign-1.0.1.zip",
+                "published_at": "2026-08-13T07:32:45Z"
+            },
+            {
+                "tag_name": "v1.0.0",
+                "name": "v1.0.0 — \"Crosshairs Crossed\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v1.0.0/DuetToolAlign-1.0.0.zip",
+                "published_at": "2026-08-12T11:32:25Z"
+            },
+            {
+                "tag_name": "v0.3.3",
+                "name": "v0.3.3 — \"Right on the Nozzle\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v0.3.3/DuetToolAlign-0.3.3.zip",
+                "published_at": "2026-06-21T20:59:44Z"
+            },
+            {
+                "tag_name": "v0.3.2",
+                "name": "v0.3.2 — \"Bang On\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v0.3.2/DuetToolAlign-0.3.2.zip",
+                "published_at": "2026-06-20T20:36:25Z"
+            },
+            {
+                "tag_name": "v0.3.1",
+                "name": "v0.3.1 — \"On the Dot\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v0.3.1/DuetToolAlign-0.3.1.zip",
+                "published_at": "2026-06-18T18:20:12Z"
+            },
+            {
+                "tag_name": "v0.2.1",
+                "name": "v0.2.1 — \"Hole in One\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v0.2.1/DuetToolAlign-0.2.1.zip",
+                "published_at": "2026-06-17T16:44:11Z"
+            },
+            {
+                "tag_name": "v0.2.0",
+                "name": "v0.2.0 — \"Dead Centre\"",
+                "download_url": "https://github.com/jaysuk/duet-tool-align/releases/download/v0.2.0/DuetToolAlign-0.2.0.zip",
+                "published_at": "2026-06-17T13:17:21Z"
             }
         ]
     },
@@ -1036,19 +1550,102 @@
         ]
     },
     {
+        "plugin_id": "resonance-lab",
+        "author": "jaysuk",
+        "plugin_manifest": {
+            "id": "ResonanceLab",
+            "name": "Resonance Lab",
+            "author": "James Skitt",
+            "version": "1.4.4",
+            "license": "GPL-3.0-or-later",
+            "homepage": "https://github.com/jaysuk/resonance-lab",
+            "dwcVersion": "3.7",
+            "tags": [
+                "input shaping",
+                "resonance",
+                "accelerometer",
+                "tuning",
+                "vibration"
+            ],
+            "dwcFiles": [
+                "js/ResonanceLab-Cx4PR4XA.js",
+                "css/ResonanceLab-GjQsNtM2.css"
+            ],
+            "dsfFiles": [],
+            "rrfFiles": []
+        },
+        "latest_release": "v1.4.4",
+        "releases": [
+            {
+                "tag_name": "v1.4.4",
+                "name": "v1.4.4",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.4.4/ResonanceLab-1.4.4.zip",
+                "published_at": "2026-10-13T14:46:40Z"
+            },
+            {
+                "tag_name": "v1.4.3",
+                "name": "v1.4.3",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.4.3/ResonanceLab-1.4.3.zip",
+                "published_at": "2026-10-10T09:21:42Z"
+            },
+            {
+                "tag_name": "v1.4.0",
+                "name": "v1.4.0",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.4.0/ResonanceLab-1.4.0.zip",
+                "published_at": "2026-09-28T20:19:11Z"
+            },
+            {
+                "tag_name": "v1.3.0",
+                "name": "v1.3.0",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.3.0/ResonanceLab-1.3.0.zip",
+                "published_at": "2026-09-14T10:04:10Z"
+            },
+            {
+                "tag_name": "v1.2.0",
+                "name": "v1.2.0",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.2.0/ResonanceLab-1.2.0.zip",
+                "published_at": "2026-09-09T08:09:29Z"
+            },
+            {
+                "tag_name": "v1.1.0",
+                "name": "v1.1.0",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.1.0/ResonanceLab-1.1.0.zip",
+                "published_at": "2026-08-20T08:27:54Z"
+            },
+            {
+                "tag_name": "v1.0.2",
+                "name": "v1.0.2",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.0.2/ResonanceLab-1.0.2.zip",
+                "published_at": "2026-07-17T12:01:17Z"
+            },
+            {
+                "tag_name": "v1.0.1",
+                "name": "v1.0.1",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.0.1/ResonanceLab-1.0.1.zip",
+                "published_at": "2026-07-15T15:50:38Z"
+            },
+            {
+                "tag_name": "v1.0.0",
+                "name": "v1.0.0",
+                "download_url": "https://github.com/jaysuk/resonance-lab/releases/download/v1.0.0/ResonanceLab-1.0.0.zip",
+                "published_at": "2026-07-10T07:38:12Z"
+            }
+        ]
+    },
+    {
         "plugin_id": "usbStream",
         "author": "stuartofmt",
         "plugin_manifest": {
-            "id": "duetBackup",
-            "name": "duetBackup",
+            "id": "usbStream",
+            "name": "usbStream",
             "author": "Stuartofmt",
-            "version": "1.4",
+            "version": "1.2",
             "license": "GPL-2.0-or-later",
-            "homepage": "https://github.com/stuartofmt",
+            "homepage": "https://github.com/stuartofmt/usbStream",
             "sbcRequired": true,
             "sbcDsfVersion": "3.5",
-            "sbcExecutable": "duetBackup.py",
-            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/duetBackup/duetBackup.config",
+            "sbcExecutable": "usbStream.py",
+            "sbcExecutableArguments": "-file /opt/dsf/sd/sys/usbStream/usbStream.config",
             "sbcOutputRedirected": false,
             "sbcPermissions": [
                 "networkAccess",
@@ -1057,19 +1654,8 @@
                 "fileSystemAccess"
             ],
             "sbcPythonDependencies": [
-                "argparse",
-                "shlex",
-                "sys",
-                "os",
-                "re",
-                "datetime",
-                "cryptography==41.0.5",
-                "pyOpenSSL==20.0.1",
-                "PyGithub==2.1.1",
-                "time",
-                "requests",
-                "json",
-                "signal"
+                "opencv-python",
+                "imutils"
             ]
         },
         "latest_release": "21/03/2025",
