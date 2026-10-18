@@ -1,12 +1,12 @@
 [
     {
         "tagName": "v3.7.0",
-        "browser_download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.7.0/ClosedLoopTuning-3.7.0-srcmap.zip",
+        "browser_download_url": "https://github.com/Duet3D/ClosedLoopTuningPlugin/releases/download/v3.7.0/ClosedLoopTuning-3.7.0.zip",
         "published_at": "2026-10-08T16:16:27Z",
         "version_list": [
             {
-                "version": "3.5",
-                "platform": "DSF"
+                "version": "3.7",
+                "platform": "DWC"
             }
         ]
     },
@@ -16,8 +16,8 @@
         "published_at": "2025-05-28T16:59:58Z",
         "version_list": [
             {
-                "version": "not_found",
-                "platform": "not_found"
+                "version": "3.6",
+                "platform": "DWC"
             }
         ]
     },
