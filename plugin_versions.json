@@ -1319,7 +1319,7 @@
             "id": "DuetTmcTuner",
             "name": "Duet TMC Tuner",
             "author": "James Skitt",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "license": "GPL-3.0-or-later",
             "homepage": "https://github.com/jaysuk/duet-tmc-tuner",
             "dwcVersion": "3.7",
@@ -1332,14 +1332,20 @@
                 "stealthchop"
             ],
             "dwcFiles": [
-                "js/DuetTmcTuner-LqEQtCHq.js",
-                "css/DuetTmcTuner-D3bedo17.css"
+                "js/DuetTmcTuner-BH4tuadj.js",
+                "css/DuetTmcTuner-5LpVM2xi.css"
             ],
             "dsfFiles": [],
             "rrfFiles": []
         },
-        "latest_release": "v1.1.0",
+        "latest_release": "v1.2.0",
         "releases": [
+            {
+                "tag_name": "v1.2.0",
+                "name": "v1.2.0 — \"Microstep in the Right Direction\"",
+                "download_url": "https://github.com/jaysuk/duet-tmc-tuner/releases/download/v1.2.0/DuetTmcTuner-1.2.0.zip",
+                "published_at": "2026-10-18T08:56:54Z"
+            },
             {
                 "tag_name": "v1.1.0",
                 "name": "v1.1.0 — \"The Quiet Type\"",
