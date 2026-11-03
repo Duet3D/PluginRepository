@@ -1,0 +1,58 @@
+[
+    {
+        "tagName": "v2.4.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPiHealth/releases/download/v2.4.9/WorkshopPiHealth-2.4.9-dwc3.6.zip",
+        "published_at": "2026-11-01T02:39:52Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.4.7",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPiHealth/releases/download/v2.4.7/WorkshopPiHealth-2.4.7-dwc3.6.zip",
+        "published_at": "2026-10-30T22:01:53Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.4.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPiHealth/releases/download/v2.4.5/WorkshopPiHealth-2.4.5-dwc3.6.zip",
+        "published_at": "2026-10-30T17:44:17Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.4.4",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPiHealth/releases/download/v2.4.4/WorkshopPiHealth-2.4.4-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:40Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
