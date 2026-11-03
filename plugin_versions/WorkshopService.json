@@ -1,0 +1,92 @@
+[
+    {
+        "tagName": "v2.22.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.22.5/WorkshopService-2.22.5-dwc3.6.zip",
+        "published_at": "2026-11-03T21:45:45Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.22.1",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.22.1/WorkshopService-2.22.1-dwc3.6.zip",
+        "published_at": "2026-11-01T03:36:18Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.22.0",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.22.0/WorkshopService-2.22.0-dwc3.6.zip",
+        "published_at": "2026-11-01T02:30:31Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.21.36",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.21.36/WorkshopService-2.21.36-dwc3.6.zip",
+        "published_at": "2026-10-30T21:58:00Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.21.34",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.21.34/WorkshopService-2.21.34-dwc3.6.zip",
+        "published_at": "2026-10-30T17:42:49Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.21.33",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopService/releases/download/v2.21.33/WorkshopService-2.21.33-dwc3.6.zip",
+        "published_at": "2026-10-30T15:00:36Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    }
+]
