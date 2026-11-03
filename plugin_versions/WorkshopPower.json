@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v2.7.14",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPower/releases/download/v2.7.14/WorkshopPower-2.7.14-dwc3.6.zip",
+        "published_at": "2026-11-01T02:40:59Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.10",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPower/releases/download/v2.7.10/WorkshopPower-2.7.10-dwc3.6.zip",
+        "published_at": "2026-10-30T22:02:31Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPower/releases/download/v2.7.9/WorkshopPower-2.7.9-dwc3.6.zip",
+        "published_at": "2026-10-30T19:15:00Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.6",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPower/releases/download/v2.7.6/WorkshopPower-2.7.6-dwc3.6.zip",
+        "published_at": "2026-10-30T17:44:27Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPower/releases/download/v2.7.5/WorkshopPower-2.7.5-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:48Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
