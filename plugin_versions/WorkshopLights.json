@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v2.8.10",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopLights/releases/download/v2.8.10/WorkshopLights-2.8.10-dwc3.6.zip",
+        "published_at": "2026-11-03T21:08:15Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.8.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopLights/releases/download/v2.8.9/WorkshopLights-2.8.9-dwc3.6.zip",
+        "published_at": "2026-11-01T02:37:17Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.8.6",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopLights/releases/download/v2.8.6/WorkshopLights-2.8.6-dwc3.6.zip",
+        "published_at": "2026-10-30T21:59:50Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.8.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopLights/releases/download/v2.8.5/WorkshopLights-2.8.5-dwc3.6.zip",
+        "published_at": "2026-10-30T17:43:44Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.8.4",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopLights/releases/download/v2.8.4/WorkshopLights-2.8.4-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:14Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
