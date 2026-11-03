@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v2.12.6",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopCamera/releases/download/v2.12.6/WorkshopCamera-2.12.6-dwc3.6.zip",
+        "published_at": "2026-11-03T21:07:20Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.11.10",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopCamera/releases/download/v2.11.10/WorkshopCamera-2.11.10-dwc3.6.zip",
+        "published_at": "2026-11-01T02:33:44Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.11.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopCamera/releases/download/v2.11.5/WorkshopCamera-2.11.5-dwc3.6.zip",
+        "published_at": "2026-10-30T21:58:37Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.11.3",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopCamera/releases/download/v2.11.3/WorkshopCamera-2.11.3-dwc3.6.zip",
+        "published_at": "2026-10-30T17:43:08Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.11.2",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopCamera/releases/download/v2.11.2/WorkshopCamera-2.11.2-dwc3.6.zip",
+        "published_at": "2026-10-30T15:00:51Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
