@@ -1,0 +1,92 @@
+[
+    {
+        "tagName": "v1.8.16",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.8.16/WorkshopMachine-1.8.16-dwc3.6.zip",
+        "published_at": "2026-11-03T21:55:44Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.8.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.8.9/WorkshopMachine-1.8.9-dwc3.6.zip",
+        "published_at": "2026-11-01T02:38:11Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.8.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.8.5/WorkshopMachine-1.8.5-dwc3.6.zip",
+        "published_at": "2026-10-30T22:00:45Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.8.3",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.8.3/WorkshopMachine-1.8.3-dwc3.6.zip",
+        "published_at": "2026-10-30T19:14:38Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.8.1",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.8.1/WorkshopMachine-1.8.1-dwc3.6.zip",
+        "published_at": "2026-10-30T17:43:56Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.7.0",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMachine/releases/download/v1.7.0/WorkshopMachine-1.7.0-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:24Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    }
+]
