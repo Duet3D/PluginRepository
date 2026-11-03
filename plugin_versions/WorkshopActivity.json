@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v2.7.14",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopActivity/releases/download/v2.7.14/WorkshopActivity-2.7.14-dwc3.6.zip",
+        "published_at": "2026-11-01T02:32:12Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.10",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopActivity/releases/download/v2.7.10/WorkshopActivity-2.7.10-dwc3.6.zip",
+        "published_at": "2026-10-30T21:58:18Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopActivity/releases/download/v2.7.9/WorkshopActivity-2.7.9-dwc3.6.zip",
+        "published_at": "2026-10-30T19:14:02Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.7",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopActivity/releases/download/v2.7.7/WorkshopActivity-2.7.7-dwc3.6.zip",
+        "published_at": "2026-10-30T17:42:59Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopActivity/releases/download/v2.7.5/WorkshopActivity-2.7.5-dwc3.6.zip",
+        "published_at": "2026-10-30T15:00:44Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
