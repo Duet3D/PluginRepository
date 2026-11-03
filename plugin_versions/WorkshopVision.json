@@ -1,0 +1,47 @@
+[
+    {
+        "tagName": "v2.7.9",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopVision/releases/download/v2.7.9/WorkshopVision-2.7.9-dwc3.6.zip",
+        "published_at": "2026-11-03T21:08:35Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.6",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopVision/releases/download/v2.7.6/WorkshopVision-2.7.6-dwc3.6.zip",
+        "published_at": "2026-11-01T02:42:50Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.7.2",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopVision/releases/download/v2.7.2/WorkshopVision-2.7.2-dwc3.6.zip",
+        "published_at": "2026-10-30T15:02:15Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    }
+]
