@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v2.22.17",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopWorkbench/releases/download/v2.22.17/WorkshopWorkbench-2.22.17-dwc3.6.zip",
+        "published_at": "2026-11-03T21:46:13Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.22.7",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopWorkbench/releases/download/v2.22.7/WorkshopWorkbench-2.22.7-dwc3.6.zip",
+        "published_at": "2026-11-01T02:43:28Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.22.1",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopWorkbench/releases/download/v2.22.1/WorkshopWorkbench-2.22.1-dwc3.6.zip",
+        "published_at": "2026-10-30T22:04:18Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.21.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopWorkbench/releases/download/v2.21.5/WorkshopWorkbench-2.21.5-dwc3.6.zip",
+        "published_at": "2026-10-30T17:45:05Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.21.4",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopWorkbench/releases/download/v2.21.4/WorkshopWorkbench-2.21.4-dwc3.6.zip",
+        "published_at": "2026-10-30T15:02:24Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
