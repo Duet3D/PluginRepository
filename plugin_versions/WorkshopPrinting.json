@@ -1,0 +1,88 @@
+[
+    {
+        "tagName": "v2.15.19",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.19/WorkshopPrinting-2.15.19-dwc3.6.zip",
+        "published_at": "2026-11-03T21:09:07Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.15.17",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.17/WorkshopPrinting-2.15.17-dwc3.6.zip",
+        "published_at": "2026-11-01T02:41:37Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.15.14",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.14/WorkshopPrinting-2.15.14-dwc3.6.zip",
+        "published_at": "2026-10-30T22:03:20Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.15.10",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.10/WorkshopPrinting-2.15.10-dwc3.6.zip",
+        "published_at": "2026-10-30T19:15:11Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.15.8",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.8/WorkshopPrinting-2.15.8-dwc3.6.zip",
+        "published_at": "2026-10-30T17:44:38Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.15.4",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopPrinting/releases/download/v2.15.4/WorkshopPrinting-2.15.4-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:59Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
