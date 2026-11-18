@@ -1,0 +1,73 @@
+[
+    {
+        "tagName": "v3.13.42",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopJog/releases/download/v3.13.42/WorkshopJog-3.13.42-dwc3.6.zip",
+        "published_at": "2026-11-03T21:07:55Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v3.13.36",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopJog/releases/download/v3.13.36/WorkshopJog-3.13.36-dwc3.6.zip",
+        "published_at": "2026-11-01T02:36:01Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v3.13.33",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopJog/releases/download/v3.13.33/WorkshopJog-3.13.33-dwc3.6.zip",
+        "published_at": "2026-10-30T21:59:19Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v3.13.32",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopJog/releases/download/v3.13.32/WorkshopJog-3.13.32-dwc3.6.zip",
+        "published_at": "2026-10-30T17:43:32Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v3.13.31",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopJog/releases/download/v3.13.31/WorkshopJog-3.13.31-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:06Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
