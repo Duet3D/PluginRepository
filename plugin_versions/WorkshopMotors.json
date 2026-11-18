@@ -1,0 +1,58 @@
+[
+    {
+        "tagName": "v2.6.11",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMotors/releases/download/v2.6.11/WorkshopMotors-2.6.11-dwc3.6.zip",
+        "published_at": "2026-11-01T02:39:29Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.6.8",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMotors/releases/download/v2.6.8/WorkshopMotors-2.6.8-dwc3.6.zip",
+        "published_at": "2026-10-30T22:01:22Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.6.6",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMotors/releases/download/v2.6.6/WorkshopMotors-2.6.6-dwc3.6.zip",
+        "published_at": "2026-10-30T17:44:07Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            },
+            {
+                "version": "3.6",
+                "platform": "DSF"
+            }
+        ]
+    },
+    {
+        "tagName": "v2.6.5",
+        "browser_download_url": "https://github.com/jhonf441/WorkshopMotors/releases/download/v2.6.5/WorkshopMotors-2.6.5-dwc3.6.zip",
+        "published_at": "2026-10-30T15:01:32Z",
+        "version_list": [
+            {
+                "version": "3.6",
+                "platform": "DWC"
+            }
+        ]
+    }
+]
