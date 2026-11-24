@@ -10,6 +10,7 @@ const updatePluginReleasesFiles = async () => {
         }
         catch(e){
             console.error(`[updatePluginReleasesFiles] Error occurred while running getPluginVersionList fetching plugin version list for ${plugin_stats_file[x]['author']}/${plugin_stats_file[x]['plugin_id']}:`, e);
+            throw new Error(`Failed to fetch plugin version list for ${plugin_stats_file[x]['author']}/${plugin_stats_file[x]['plugin_id']}`);
         }
     }
     const fs = require('fs');
