@@ -48,11 +48,8 @@ jobs:
     needs: precheck
 
     runs-on: ubuntu-24.04
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - uses: actions/checkout@v6
-      - uses: geertvdc/setup-hub@master
       - uses: stefanbuck/github-issue-praser@v3
         id: issue-parser
         with:
@@ -118,6 +115,6 @@ jobs:
           git commit -m "Updating plugin $repo.md"
           git push -u origin $branchName
 
-          hub pull-request -m "[${{ github.event.issue.number }}]-$branchName" -l plugin-submission --base $commituser:master --head $commituser:$branchName
+          gh pr create --title "[${{ github.event.issue.number }}]-$branchName" --body "" --label plugin-submission --base master --head "$branchName"
 
           curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" https://api.github.com/repos/Duet3D/PluginRepository/issues/${{ github.event.issue.number }}/labels -d '{"labels":["ready-for-approval"]}'
