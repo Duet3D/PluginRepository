@@ -1,10 +1,10 @@
 ---
 plugin_submitted_by: chrishamm
 plugin_submitted_on: 2024-02-21T15:11:27.167Z
-plugin_updated_on: 2025-01-28T11:43:53.496Z
+plugin_updated_on: 2026-10-28T20:45:07.831Z
 plugin: true
 title: Spyglass Webcam Server
-abstract: SpyglassWebcamServerPlugin
+abstract: This plugin runs the Spyglass webcam streaming service as a DSF plugin
 author: Duet3D
 repo: SpyglassWebcamServerPlugin
 branch: master
@@ -13,12 +13,12 @@ dwcVersion: undefined
 sbcDSfVersion: 3
 rrfVersion: undefined
 oem: true
-latest_version: v0.15
-release_date: 2025-01-28T11:31:20Z
-release_page: https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/tag/v0.15
+latest_version: v0.19.0
+release_date: 2026-10-28T16:18:21Z
+release_page: https://github.com/Duet3D/SpyglassWebcamServerPlugin/releases/tag/v0.19.0
 license: GPL-3.0-only
-license_file: https://spdx.org/licenses/GPL-3.0-only
-download_count: 449
+license_file: https://raw.githubusercontent.com/Duet3D/SpyglassWebcamServerPlugin/master/LICENSE
+download_count: 1216
 tags:
 - spyglass
 - webcam
@@ -37,12 +37,15 @@ Depending on your choice of camera, extra customizations may be required.
 
 This plugin requires DSF >= 3.5 and Python >= 3.8 (i.e. Debian Bookworm or newer).
 
+The WebRTC settings in `spyglass.conf` have no effect unless the `python3-aiortc` package is installed, which this plugin does not pull in. Without it, only the MJPEG stream and snapshot endpoints are served.
+
 ## Setup in DWC
 
-To configure this service in DWC, go to the `Settings` -> `General` page and make the following changes:
+To configure this service in DWC, go to the `Settings` -> `Webcam` page and make the following changes:
 
-- Set `Webcam URL` to `http://[HOSTNAME]:8080/stream`
-- Set `Webcam update interval (in ms)` to `0`
+- Enable `Show webcam feed`
+- Set `Image URL` to `http://[HOSTNAME]:8080/stream`
+- Set `Update interval` to `0`
 - Go to the `Job` -> `Webcam` page to see your live stream
 
 For snapshots it is also possible to use `http://[HOSTNAME]:8080/snapshot` instead.
@@ -64,7 +67,7 @@ To view the log of the Spyglass service, open a Linux console (or connect over S
 journalctl -u duetpluginservice -f
 ```
 
-Then restart the Motion Webcam Server plugin and look for potential errors.
+Then restart the Spyglass Webcam Server plugin and look for potential errors.
 
 
 ### Modify plugin manifest to see all messages in DWC

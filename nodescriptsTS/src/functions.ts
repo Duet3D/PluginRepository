@@ -1,4 +1,4 @@
-const { insertLineToStr, git, downloadFile, checkFile, exitProcess, 
+const { insertLineToStr, git, downloadFile, getPluginAsset, checkFile, exitProcess,
         readFile: {JSON: readJSON, TEXT: readTEXT}, writeLinetoFile, prepend, unzip, isFirstCharNum, writeFile: {writeJSONSync},
         getStatus, getFrontmatterObject, isUserCollaborator, lowerCaseKeys, extractRepoURLDetails, isUserOrgMember, getFileSizeKiB} = require('./util');
 
@@ -66,24 +66,17 @@ const submissionPrecheck = async () => {
         console.log(e);
         await exitProcess(e, checklog);
     }
-    let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
-    if((status != 200) || browser_download_url == undefined){
-        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+    const plugin_asset = getPluginAsset(((data||[])[0]||{}));
+    if((status != 200) || plugin_asset == undefined){
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository. Assets named *-srcmap.zip are skipped.`, checklog)
         await exitProcess('Exiting', checklog);
     }
-    
-    let ext = browser_download_url.split('.');
-    res = ext[ext.length-1] == 'zip';
-    if(!res){
-        await exitProcess('Release available is not zip, Exiting', checklog);
-    }
-    checklog = insertLineToStr(`Release:  ${getStatus(res)}`, checklog);
-    isOK = isOK && res;
+    checklog = insertLineToStr(`Release:  ${plugin_asset.name}`, checklog);
 
     //3. Download latest ZIP bundle
-    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    const res1 = await downloadFile(plugin_asset.browser_download_url, 'asset.zip')
     if(res1 == false){
-        await exitProcess("Error downloading file, Exiting", checklog);        
+        await exitProcess("Error downloading file, Exiting", checklog);
     }
 
     //4. Make sure plugin.json exists and is below 16KiB
@@ -210,24 +203,17 @@ const updatePrecheck = async () => {
             "content-type": "application/json"
         }
     });
-    let browser_download_url = ((((data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
-    if((status != 200) || browser_download_url == undefined){
-        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+    const plugin_asset = getPluginAsset(((data||[])[0]||{}));
+    if((status != 200) || plugin_asset == undefined){
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository. Assets named *-srcmap.zip are skipped.`, checklog)
         await exitProcess('Exiting', checklog);
     }
-    
-    let ext = browser_download_url.split('.');
-    res = ext[ext.length-1] == 'zip';
-    if(!res){
-        await exitProcess('Release available is not zip, Exiting', checklog);
-    }
-    checklog = insertLineToStr(`Release:  ${getStatus(res)}`, checklog);
-    isOK = isOK && res;
+    checklog = insertLineToStr(`Release:  ${plugin_asset.name}`, checklog);
 
     //3. Download latest ZIP bundle
-    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    const res1 = await downloadFile(plugin_asset.browser_download_url, 'asset.zip')
     if(res1 == false){
-        await exitProcess("Error downloading file, Exiting", checklog);        
+        await exitProcess("Error downloading file, Exiting", checklog);
     }
 
     //4. Make sure plugin.json exists and below 16KiB
@@ -315,22 +301,16 @@ const updateCreatePR = async () => {
         }
     });
 
-    let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
-    
-    if((status != 200) || browser_download_url == undefined){
-        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+    const plugin_asset = getPluginAsset((((gh_release_data||{}).data||[])[0]||{}));
+
+    if((status != 200) || plugin_asset == undefined){
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository. Assets named *-srcmap.zip are skipped.`, checklog)
         await exitProcess('Exiting', checklog);
     }
-    
-    let ext = browser_download_url.split('.');
-    res = ext[ext.length-1] == 'zip';
-    if(!res){
-        await exitProcess('Release available is not zip, Exiting', checklog);
-    }
 
-    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    const res1 = await downloadFile(plugin_asset.browser_download_url, 'asset.zip')
     if(res1 == false){
-        await exitProcess("Error downloading file, Exiting", checklog);        
+        await exitProcess("Error downloading file, Exiting", checklog);
     }
     try{
         await unzip();
@@ -354,7 +334,7 @@ const updateCreatePR = async () => {
     const latest_version =  ((gh_release_data||{}).data || [])[0].tag_name;
     const release_page =  ((gh_release_data||{}).data || [])[0].html_url;
     const release_date = ((gh_release_data||{}).data || [])[0].published_at;
-    const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
+    const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((getPluginAsset(cur)||{}).download_count||0), 0);
     const oem = author == 'Duet3D'
 
     const plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);
@@ -452,22 +432,16 @@ const submissionCreatePR = async () => {
     console.log("Received latest release with status: ", (gh_release_data||{}).status, ". data: ")
     console.log(JSON.stringify(( ((gh_release_data||{}).data||[])[0]) || {}))
 
-    let browser_download_url = (((((gh_release_data||{}).data||[])[0]||{}).assets||[])[0]||{}).browser_download_url
-    console.log("browser_download_url for latest release: ");
-    console.log(browser_download_url);
-    
-    if((status != 200) || browser_download_url == undefined){
-        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository.`)
+    const plugin_asset = getPluginAsset((((gh_release_data||{}).data||[])[0]||{}));
+    console.log("plugin asset for latest release: ");
+    console.log(plugin_asset);
+
+    if((status != 200) || plugin_asset == undefined){
+        checklog = insertLineToStr(`Release not available. Please ensure that you are required to [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This release must be in .zip format and should contain your plugin as this will be the downloadable file via the plugin repository. Assets named *-srcmap.zip are skipped.`, checklog)
         await exitProcess('Exiting', checklog);
     }
-    
-    let ext = browser_download_url.split('.');
-    res = ext[ext.length-1] == 'zip';
-    if(!res){
-        await exitProcess('Release available is not zip, Exiting', checklog);
-    }
 
-    const res1 = await downloadFile(browser_download_url, 'asset.zip')
+    const res1 = await downloadFile(plugin_asset.browser_download_url, 'asset.zip')
     if(res1 == false){
         await exitProcess("Error downloading file, Exiting", checklog);        
     }
@@ -494,7 +468,7 @@ const submissionCreatePR = async () => {
     const latest_version =  ((gh_release_data||{}).data || [])[0].tag_name;
     const release_page =  ((gh_release_data||{}).data || [])[0].html_url;
     const release_date = ((gh_release_data||{}).data || [])[0].published_at;
-    const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((((cur||{}).assets || [])[0]||{}).download_count||0), 0);
+    const download_count = ((gh_release_data||{}).data || []).reduce((prev, cur)=> prev + ((getPluginAsset(cur)||{}).download_count||0), 0);
     const oem = author == 'Duet3D'
 
     const plugin_md_status = await checkFile.remote(`https://raw.githubusercontent.com/${author}/${repo}/${branch}/PLUGIN.md`);

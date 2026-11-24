@@ -1,0 +1,46 @@
+[
+    {
+        "tagName": "v1.3.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.3.0/GCodePostProcessor-1.3.0.zip",
+        "published_at": "2026-09-29T21:14:43Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.2.1",
+        "browser_download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.2.1/GCodePostProcessor-1.2.1.zip",
+        "published_at": "2026-09-11T14:30:06Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.1.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.1.0/GCodePostProcessor-1.1.0.zip",
+        "published_at": "2026-09-02T16:04:50Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    },
+    {
+        "tagName": "v1.0.0",
+        "browser_download_url": "https://github.com/jaysuk/duet-gcode-postprocessor/releases/download/v1.0.0/GCodePostProcessor-1.0.0.zip",
+        "published_at": "2026-09-01T21:05:50Z",
+        "version_list": [
+            {
+                "version": "3.7",
+                "platform": "DWC"
+            }
+        ]
+    }
+]

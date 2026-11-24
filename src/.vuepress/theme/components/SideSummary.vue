@@ -113,6 +113,9 @@
 <script>
 import fetch from 'cross-fetch';
 
+// sourcemaps ship as a separate <id>-<version>-srcmap.zip, not as the plugin
+const getPluginAsset = (release) => (((release || {}).assets) || []).find(asset => /\.zip$/i.test(asset.name) && !/-srcmap\.zip$/i.test(asset.name));
+
 export default {
 	data() {
 		return {
@@ -144,12 +147,12 @@ export default {
 				const release_count = (data || []).length
 				const download_count_all_time = data.reduce(
 					(previousValue, item) => {
-						return previousValue + ((item||{}).assets[0]||{}).download_count || 0
+						return previousValue + ((getPluginAsset(item)||{}).download_count || 0)
 						},0);
 				const {published_at: first_release_date} = (data||[])[release_count-1] || {}
 
 				const item = data[0]
-          		const {browser_download_url, download_count:download_count_latest} = item.assets[0]
+          		const {browser_download_url, download_count:download_count_latest} = getPluginAsset(item) || {}
 				const {tag_name, published_at} = item || {}
 
 				this.$data.items.plugin_info = {browser_download_url, download_count_latest, tag_name, published_at, download_count_all_time, release_count, first_release_date}

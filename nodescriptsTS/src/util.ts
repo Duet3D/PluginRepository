@@ -77,9 +77,16 @@ const isUserOrgMember = async () => {
 const downloadFile = async (url:string, dest:string) => {
     console.log("Downloading file from URL: ")
     console.log(url);
-    const wget = require('node-wget-promise');
+    const fs = require('fs');
     try{
-        return await wget(url, {output: dest})
+        const {data} = await axios.get(url, {responseType: 'stream'});
+        return await new Promise((resolve, reject) => {
+            const file = fs.createWriteStream(dest);
+            data.on('error', reject);
+            file.on('error', reject);
+            file.on('finish', () => resolve(true));
+            data.pipe(file);
+        });
     }
     catch(e){
         console.log("Error downloading File:")
@@ -88,6 +95,10 @@ const downloadFile = async (url:string, dest:string) => {
     }
 
 }
+
+// sourcemaps ship as a separate <id>-<version>-srcmap.zip holding no manifest
+// a build for another platform version adds a further suffix, so the primary plugin zip has the shortest name
+const getPluginAsset = (release) => (((release || {}).assets) || []).filter(asset => /\.zip$/i.test(asset.name) && !/-srcmap\.zip$/i.test(asset.name)).sort((a, b) => a.name.length - b.name.length)[0];
 
 const isFirstCharNum = (str:string) => {
 	return (str && str.match(/^\d+/) || [])[0] != undefined
@@ -224,6 +235,8 @@ const prepend = (text:string, file:string) => {
 const unzip = () => {
     const fs = require('fs');
     const unzipper = require('unzipper');
+    // a leftover plugin.json would pass the manifest check of the next release
+    fs.rmSync('unzipped', {recursive: true, force: true});
     return new Promise((resolve, reject)=>{
         fs.createReadStream('asset.zip').pipe(unzipper.Extract({ path: 'unzipped/' }))
         .on('error', (err) => reject(err))
@@ -271,6 +284,7 @@ module.exports = {
     isUserCollaborator,
     isUserOrgMember,
     downloadFile,
+    getPluginAsset,
     checkFile,
     fetchURL,
     exitProcess,

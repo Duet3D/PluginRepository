@@ -1,24 +1,24 @@
 ---
 plugin_submitted_by: yasasw
 plugin_submitted_on: 2022-09-02T12:28:22.328Z
-plugin_updated_on: 2025-05-28T17:03:54.069Z
+plugin_updated_on: 2026-10-28T20:34:37.713Z
 plugin: true
 title: Motion Webcam Server
-abstract: MotionWebcamServerPlugin v3.6.0
+abstract: This plugin runs the motion webcam streaming service as a DSF plugin
 author: Duet3D
 repo: MotionWebcamServerPlugin
 branch: master
 homepage: https://github.com/Duet3D/MotionWebcamServerPlugin
 dwcVersion: undefined
-sbcDSfVersion: 3.6
+sbcDSfVersion: 3.7
 rrfVersion: undefined
 oem: true
-latest_version: v3.6.0
-release_date: 2025-05-28T16:52:27Z
-release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.6.0
+latest_version: v3.7.0
+release_date: 2026-10-28T09:27:44Z
+release_page: https://github.com/Duet3D/MotionWebcamServerPlugin/releases/tag/v3.7.0
 license: GPL-2.0-only
-license_file: https://spdx.org/licenses/GPL-2.0-only
-download_count: 1755
+license_file: https://raw.githubusercontent.com/Duet3D/MotionWebcamServerPlugin/master/LICENSE
+download_count: 2570
 tags:
 - motion
 - webcam
@@ -37,10 +37,11 @@ Note that the default configuration uses the default `/dev/video0` device node, 
 
 ## Setup in DWC
 
-To configure this service in DWC, go to the `Settings` -> `General` page and make the following changes:
+To configure this service in DWC, go to the `Settings` -> `Webcam` page and make the following changes:
 
-- Set `Webcam URL` to `http://[HOSTNAME]:8081/0/stream`
-- Set `Webcam update interval (in ms)` to `0`
+- Enable `Show webcam feed`
+- Set `Image URL` to `http://[HOSTNAME]:8081/0/stream`
+- Set `Update interval` to `0`
 - Go to the `Job` -> `Webcam` page to see your live stream
 
 ## Build instructions

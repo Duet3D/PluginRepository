@@ -1,4 +1,4 @@
-const { downloadFile:downloadRemoteFile, checkFile:checkLocalFile, fetchURL,
+const { downloadFile:downloadRemoteFile, checkFile:checkLocalFile, fetchURL, getPluginAsset:getReleaseAsset,
     readFile, unzip:unzipFile, isFirstCharNum:firstCharNumCheck, writeFile, lowerCaseKeys:lowerCaseObjKeys } = require('./util');
 
 const getReleases = async (gituser, gitrepo, latest_tagName) => {
@@ -18,7 +18,7 @@ const getReleases = async (gituser, gitrepo, latest_tagName) => {
         }
         const obj = {
             tagName: (item || {}).tag_name,
-            browser_download_url: (((item || {}).assets || [])[0] || {})['browser_download_url'],
+            browser_download_url: (getReleaseAsset(item) || {})['browser_download_url'],
             published_at: (item || {}).published_at || (item || {}).created_at
         }
         items.push(obj)
