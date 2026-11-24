@@ -534,7 +534,8 @@ const submissionCreatePR = async () => {
         await getReleasePlatformVersion(author, repo, '.', true);
     }
     catch(e){
-        console.error(`Error occurred while fetching release platform versions for ${author}/${repo}:`, e);
+        console.error(`[SubmissionCreatePR] Error occurred while running getReleasePlatformVersion fetching release platform versions for ${author}/${repo}:`, e);
+        throw new Error(`Failed to fetch release platform versions for ${author}/${repo}`);
     }
 };
 
