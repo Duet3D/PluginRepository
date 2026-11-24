@@ -5,7 +5,12 @@ const updatePluginReleasesFiles = async () => {
     const plugin_stats_file = await readFile2.JSON('plugin_stats.json') || [];
     let x;
     for (x = 0; x < plugin_stats_file.length; x++) {
-        await getPluginVersionList(plugin_stats_file[x]['author'], plugin_stats_file[x]['plugin_id'])
+        try{
+            await getPluginVersionList(plugin_stats_file[x]['author'], plugin_stats_file[x]['plugin_id'])
+        }
+        catch(e){
+            console.error(`Error [updatePluginReleasesFiles] occurred while fetching plugin version list for ${plugin_stats_file[x]['author']}/${plugin_stats_file[x]['plugin_id']}:`, e);
+        }
     }
     const fs = require('fs');
     console.log('Plugin Version/Platform Files:')
