@@ -530,8 +530,12 @@ const submissionCreatePR = async () => {
 
     await prepend(frontmatter, `${repo}.md`);
 
-    await getReleasePlatformVersion(author, repo, '.', true);
-
+    try{
+        await getReleasePlatformVersion(author, repo, '.', true);
+    }
+    catch(e){
+        console.error(`Error occurred while fetching release platform versions for ${author}/${repo}:`, e);
+    }
 };
 
 const removalPrecheck = async () => {
