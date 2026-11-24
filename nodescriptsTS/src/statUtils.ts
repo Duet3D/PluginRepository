@@ -36,9 +36,14 @@ const updatePluginStats = async () => {
     }
 }
 
-const createPluginEntry = async (plugin_md_name:string, prev_plugin_stat_json, plugin_reported_json) => {
+const createPluginEntry = async (plugin_md_name:string, prev_plugin_stat_json = [], plugin_reported_json = []) => {
     const plugin_md = await readLocalFile.TEXT(`../../src/plugins/${plugin_md_name}`);
-    const plugin_id = plugin_md_name.substring(0, plugin_md_name.length-3);
+    if(!plugin_md){
+        console.log(`Error [createPluginEntry]: Failed to read plugin_md_name: ${plugin_md_name}`);
+        console.log(`[prev_plugin_stat_json]: ${JSON.stringify(prev_plugin_stat_json)}`);
+        console.log(`[plugin_reported_json]: ${JSON.stringify(plugin_reported_json)}`);
+    }
+    const plugin_id = (plugin_md_name||'').substring(0, plugin_md_name.length-3);
 
     const author = getFrontmatterObject('author', plugin_md);
     const plugin_submitted_on = getFrontmatterObject('plugin_submitted_on', plugin_md);
