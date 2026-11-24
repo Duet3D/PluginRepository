@@ -9,11 +9,8 @@ concurrency:
 jobs:
   update-plugin-stats:
     runs-on: ubuntu-24.04
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - uses: actions/checkout@v6
-      - uses: geertvdc/setup-hub@master
       - name: update-plugin-stats
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,7 +49,7 @@ jobs:
           git commit -m "Stat update - $(date +"%Y-%m-%d")"
           git push -u origin $branchName
 
-          hub pull-request -m "[StatsUpdate]/$(date +"%Y-%m-%d")" --base $commituser:master --head $commituser:$branchName
+          gh pr create --title "[StatsUpdate]/$(date +"%Y-%m-%d")" --body "" --base master --head "$branchName"
   merge-pr:
     needs: update-plugin-stats
     runs-on: ubuntu-24.04
